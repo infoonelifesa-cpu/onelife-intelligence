@@ -7,1269 +7,420 @@
 <title>Onelife Intelligence | 19 Mar 2026</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#06060f;color:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:16px}
-.container{max-width:1300px;margin:0 auto}
-
-/* Header */
-.header{display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:20px;margin-bottom:24px;border-bottom:1px solid #1e1e2e}
-.header h1{font-size:28px;font-weight:900;color:#f1f5f9;letter-spacing:-0.5px}
-.header .sub{font-size:12px;color:#64748b;margin-top:4px}
-.combined{text-align:right}
-.combined-val{font-size:36px;font-weight:900;color:#22c55e}
-.combined-sub{font-size:13px;color:#64748b}
-
-/* Store Sections */
-.store-section{background:#0d0d1a;border:1px solid #1e1e2e;border-radius:16px;padding:24px;margin-bottom:20px}
-.store-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px}
-.store-name{font-size:24px;font-weight:800;color:#f1f5f9}
-.store-target{font-size:14px;color:#64748b}
-.status-badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:1px;margin-left:12px}
-
-.store-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
-.skpi{background:#0a0a14;border-radius:10px;padding:14px;text-align:center}
-.skpi-label{font-size:10px;color:#64748b;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px}
-.skpi-val{font-size:24px;font-weight:800;color:#f1f5f9}
-.skpi-sub{font-size:11px;color:#64748b;margin-top:2px}
-
-.progress-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.progress-bar{flex:1;background:#1e1e2e;border-radius:4px;height:8px;overflow:hidden}
-.progress-fill{height:100%;border-radius:4px;transition:width 0.5s}
-.progress-pct{font-size:12px;font-weight:700;min-width:40px}
-.narrative{font-size:13px;color:#94a3b8;margin-bottom:16px;padding:10px 14px;background:#0a0a14;border-left:3px solid #3b82f6;border-radius:0 8px 8px 0;line-height:1.5}
-
-.trend-section{margin-bottom:16px;padding:12px;background:#0a0a14;border-radius:8px}
-.mini-label{font-size:10px;color:#64748b;letter-spacing:2px;margin-bottom:8px}
-.trend-bars{display:flex;align-items:flex-end;height:56px;gap:1px}
-
-.store-columns{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
-.table-title{font-size:13px;font-weight:700;color:#94a3b8;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #1e1e2e}
-
-/* Data Tables */
-.data-table{width:100%;border-collapse:collapse}
-.data-table th{font-size:10px;color:#404040;text-align:left;padding:6px 8px;letter-spacing:1px;text-transform:uppercase}
-.data-table td{padding:7px 8px;border-bottom:1px solid #0f0f1a;font-size:12px}
-.rank{color:#404040;font-size:11px;width:20px}
-.prod-name{max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.supplier{font-size:11px;color:#64748b;max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.num{text-align:right;font-variant-numeric:tabular-nums}
-.dim{color:#64748b}
-
-.hero-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
-.hero-chip{background:#22c55e15;color:#22c55e;border:1px solid #22c55e30;padding:4px 10px;border-radius:20px;font-size:11px;white-space:nowrap}
-.delist-callout{margin-top:12px;padding:10px 14px;background:#ef444410;border-left:3px solid #ef4444;border-radius:0 8px 8px 0;font-size:12px;color:#f87171}
-
-/* Cross-Store Section */
-.cross-section{background:#0d0d1a;border:1px solid #1e1e2e;border-radius:16px;padding:24px;margin-bottom:20px}
-.cross-section h3{font-size:18px;font-weight:800;margin-bottom:6px}
-.cross-narrative{font-size:13px;color:#94a3b8;margin-bottom:16px;line-height:1.5}
-
-/* Supplier Section */
-.supplier-section{background:#0d0d1a;border:1px solid #1e1e2e;border-radius:16px;padding:24px;margin-bottom:20px}
-
-.footer{text-align:center;padding:24px;font-size:11px;color:#1e1e2e;letter-spacing:2px}
-
-@media(max-width:768px){
-    .store-kpis{grid-template-columns:repeat(2,1fr)}
-    .store-columns{grid-template-columns:1fr}
-    .header{flex-direction:column;gap:12px}
-}
+body{background:#0a0a14;color:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:20px}
+table{border-collapse:collapse;width:100%}
+.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600}
+@media(max-width:768px){.grid-3{grid-template-columns:1fr!important}}
 </style>
 </head>
 <body>
-<div class="container">
 
-<div class="header">
+<!-- Header -->
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid #2d2d3d">
     <div>
-        <h1>Onelife Intelligence</h1>
-        <div class="sub">Real-time retail intelligence · All figures excl VAT · 19 Mar 2026 19:03 SAST</div>
+        <h1 style="font-size:28px;font-weight:800;color:#f1f5f9;letter-spacing:-0.5px">Onelife Intelligence</h1>
+        <div style="font-size:13px;color:#64748b;margin-top:4px">Real-time store performance · All figures excl VAT · Updated 19 Mar 2026 19:28 SAST</div>
     </div>
-    <div class="combined">
-        <div class="combined-val">R1.3M</div>
-        <div class="combined-sub">Combined MTD · GP R444k (33.9%) · Target R2.2M</div>
+    <div style="text-align:right">
+        <div style="font-size:11px;color:#64748b;margin-bottom:2px">COMBINED MTD</div>
+        <div style="font-size:32px;font-weight:800;color:#22c55e">R1.3M</div>
+        <div style="font-size:13px;color:#64748b">GP R444k (33.9%)</div>
     </div>
 </div>
 
+<!-- Store Dashboards -->
 
-        <div class="store-section">
-            <div class="store-header">
+        <div style="background:#1a1a2e;border:1px solid #2d2d3d;border-radius:12px;padding:24px;margin-bottom:20px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
                 <div>
-                    <h2 class="store-name">Centurion</h2>
-                    <span class="status-badge" style="background:#22c55e20;color:#22c55e">ON TRACK</span>
+                    <h2 style="margin:0;font-size:22px;color:#f1f5f9">Centurion</h2>
+                    <span style="font-size:12px;color:#22c55e;font-weight:600;letter-spacing:1px">On Track</span>
                 </div>
-                <div class="store-target">Target: R1.4M</div>
-            </div>
-
-            <!-- KPIs -->
-            <div class="store-kpis">
-                <div class="skpi">
-                    <div class="skpi-label">TODAY</div>
-                    <div class="skpi-val">R56k</div>
-                    <div class="skpi-sub">GP R18k</div>
-                </div>
-                <div class="skpi">
-                    <div class="skpi-label">MTD REVENUE</div>
-                    <div class="skpi-val">R850k</div>
-                    <div class="skpi-sub">GP R287k (33.8%)</div>
-                </div>
-                <div class="skpi">
-                    <div class="skpi-label">PROJECTED</div>
-                    <div class="skpi-val" style="color:#22c55e">R1.4M</div>
-                    <div class="skpi-sub">95.3% of target</div>
-                </div>
-                <div class="skpi">
-                    <div class="skpi-label">NEED/DAY</div>
-                    <div class="skpi-val">R60k</div>
-                    <div class="skpi-sub">10 days left</div>
+                <div style="text-align:right">
+                    <div style="font-size:11px;color:#64748b;margin-bottom:2px">TARGET</div>
+                    <div style="font-size:18px;font-weight:700;color:#64748b">R1.4M</div>
                 </div>
             </div>
 
-            <!-- Progress + Narrative -->
-            <div class="progress-row">
-                <div class="progress-bar"><div class="progress-fill" style="width:58.6%;background:#22c55e"></div></div>
-                <span class="progress-pct">58.6%</span>
+            <!-- KPI Grid -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
+                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
+                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">TODAY REV</div>
+                    <div style="font-size:22px;font-weight:700;color:#f1f5f9">R56k</div>
+                    <div style="font-size:11px;color:#22c55e">GP R18k</div>
+                </div>
+                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
+                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">MTD REV</div>
+                    <div style="font-size:22px;font-weight:700;color:#f1f5f9">R850k</div>
+                    <div style="font-size:11px;color:#22c55e">GP R287k</div>
+                </div>
+                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
+                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">GP%</div>
+                    <div style="font-size:22px;font-weight:700;color:#f59e0b">33.8%</div>
+                    <div style="font-size:11px;color:#64748b">16 trading days</div>
+                </div>
+                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
+                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">PROJECTED</div>
+                    <div style="font-size:22px;font-weight:700;color:#22c55e">R1.4M</div>
+                    <div style="font-size:11px;color:#64748b">95.3% of target</div>
+                </div>
             </div>
-            <div class="narrative">Strong month. Averaging R53k/day, projected to close at R1.4M. Keep this momentum.</div>
 
-            <!-- Daily Trend -->
-            <div class="trend-section">
-                <div class="mini-label">DAILY REVENUE TREND</div>
-                <div class="trend-bars"><div title="Day 02: R46k" style="width:12px;height:28px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 03: R63k" style="width:12px;height:38px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 04: R74k" style="width:12px;height:45px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 05: R28k" style="width:12px;height:17px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 06: R37k" style="width:12px;height:22px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 07: R85k" style="width:12px;height:52px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 09: R53k" style="width:12px;height:32px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 10: R46k" style="width:12px;height:28px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 11: R69k" style="width:12px;height:41px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 12: R50k" style="width:12px;height:30px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 13: R57k" style="width:12px;height:34px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 14: R61k" style="width:12px;height:37px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 16: R38k" style="width:12px;height:23px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 17: R40k" style="width:12px;height:24px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 18: R44k" style="width:12px;height:26px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 19: R56k" style="width:12px;height:34px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div></div>
+            <!-- Progress bar -->
+            <div style="margin-bottom:8px">
+                <div style="display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-bottom:4px">
+                    <span>MTD Progress: 58.6%</span>
+                    <span>Need R7k/day to hit target</span>
+                </div>
+                <div style="background:#2d2d3d;border-radius:4px;height:8px;overflow:hidden">
+                    <div style="background:#22c55e;height:100%;width:58.6%;border-radius:4px;transition:width 0.3s"></div>
+                </div>
             </div>
 
-            <!-- Two Column: Top Sellers + Intelligence -->
-            <div class="store-columns">
+            <!-- Daily trend sparkline -->
+            <div style="margin-bottom:20px;padding:12px;background:#0f0f1a;border-radius:8px">
+                <div style="font-size:11px;color:#64748b;margin-bottom:8px;letter-spacing:1px">DAILY TREND (MTD)</div>
+                <div style="display:flex;align-items:flex-end;height:52px;gap:1px">
+                    <div title="Day 02: R46k" style="width:10px;height:26px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 03: R63k" style="width:10px;height:35px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 04: R74k" style="width:10px;height:41px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 05: R28k" style="width:10px;height:15px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 06: R37k" style="width:10px;height:21px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 07: R85k" style="width:10px;height:48px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 09: R53k" style="width:10px;height:29px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 10: R46k" style="width:10px;height:26px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 11: R69k" style="width:10px;height:38px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 12: R50k" style="width:10px;height:28px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 13: R57k" style="width:10px;height:32px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 14: R61k" style="width:10px;height:34px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 16: R38k" style="width:10px;height:21px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 17: R40k" style="width:10px;height:22px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 18: R44k" style="width:10px;height:24px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 19: R56k" style="width:10px;height:31px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div>
+                </div>
+            </div>
+
+            <!-- Tables in 3 columns -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+                <!-- Top Sellers -->
                 <div>
-                    <div class="table-title">🏆 Top Sellers (Annual · by Revenue)</div>
-                    <table class="data-table">
-                        <thead><tr><th>#</th><th>Product</th><th>Supplier</th><th>Revenue</th><th>GP%</th><th>Units</th></tr></thead>
-                        <tbody><tr>
-                <td class="rank">1</td>
-                <td class="prod-name" title="MAG 7/87 60'S">MAG 7/87 60'S</td>
-                <td class="supplier">ECO VALLEY NUTRITION</td>
-                <td class="num">R183k</td>
-                <td class="num" style="color:#94a3b8">35.0%</td>
-                <td class="num dim">1,007</td>
-            </tr><tr>
-                <td class="rank">2</td>
-                <td class="prod-name" title="VIT D3 5000IU 120'S">VIT D3 5000IU 120'S</td>
-                <td class="supplier">DS INTERNATIONAL</td>
-                <td class="num">R149k</td>
-                <td class="num" style="color:#94a3b8">36.8%</td>
-                <td class="num dim">450</td>
-            </tr><tr>
-                <td class="rank">3</td>
-                <td class="prod-name" title="BRD WHITE RICE">BRD WHITE RICE</td>
-                <td class="supplier">LOVE YOURSELF BREADZ</td>
-                <td class="num">R138k</td>
-                <td class="num" style="color:#ef4444">18.0%</td>
-                <td class="num dim">2,058</td>
-            </tr><tr>
-                <td class="rank">4</td>
-                <td class="prod-name" title="OMEGA 3 Z+L   60"S">OMEGA 3 Z+L   60"S</td>
-                <td class="supplier">NATROCEUTICS SA</td>
-                <td class="num">R125k</td>
-                <td class="num" style="color:#94a3b8">29.7%</td>
-                <td class="num dim">303</td>
-            </tr><tr>
-                <td class="rank">5</td>
-                <td class="prod-name" title="FLORISH SPORE PROBIOTIC 60C">FLORISH SPORE PROBIOTIC 60C</td>
-                <td class="supplier">INOVO</td>
-                <td class="num">R101k</td>
-                <td class="num" style="color:#94a3b8">28.6%</td>
-                <td class="num dim">278</td>
-            </tr><tr>
-                <td class="rank">6</td>
-                <td class="prod-name" title="MAGN GLYC 120C">MAGN GLYC 120C</td>
-                <td class="supplier">LONGEVITY SUPPLEMENTS PTY LTD</td>
-                <td class="num">R98k</td>
-                <td class="num" style="color:#22c55e">41.1%</td>
-                <td class="num dim">322</td>
-            </tr><tr>
-                <td class="rank">7</td>
-                <td class="prod-name" title="OMEGA 3 60"S">OMEGA 3 60"S</td>
-                <td class="supplier">NATROCEUTICS SA</td>
-                <td class="num">R94k</td>
-                <td class="num" style="color:#94a3b8">30.3%</td>
-                <td class="num dim">298</td>
-            </tr><tr>
-                <td class="rank">8</td>
-                <td class="prod-name" title="VIT D3 5000IU 240'S">VIT D3 5000IU 240'S</td>
-                <td class="supplier">DS INTERNATIONAL</td>
-                <td class="num">R83k</td>
-                <td class="num" style="color:#94a3b8">33.7%</td>
-                <td class="num dim">169</td>
-            </tr><tr>
-                <td class="rank">9</td>
-                <td class="prod-name" title="HEART HEALTH 60 CAPS">HEART HEALTH 60 CAPS</td>
-                <td class="supplier">OXYGEN PRODUCTS</td>
-                <td class="num">R79k</td>
-                <td class="num" style="color:#22c55e">40.3%</td>
-                <td class="num dim">253</td>
-            </tr><tr>
-                <td class="rank">10</td>
-                <td class="prod-name" title="Posgeld/Postage/Courier">Posgeld/Postage/Courier</td>
-                <td class="supplier"></td>
-                <td class="num">R75k</td>
-                <td class="num" style="color:#22c55e">64.8%</td>
-                <td class="num dim">879</td>
-            </tr><tr>
-                <td class="rank">11</td>
-                <td class="prod-name" title="BERBERINE COMPLEX 60"S">BERBERINE COMPLEX 60"S</td>
-                <td class="supplier">NATROCEUTICS SA</td>
-                <td class="num">R73k</td>
-                <td class="num" style="color:#94a3b8">30.6%</td>
-                <td class="num dim">194</td>
-            </tr><tr>
-                <td class="rank">12</td>
-                <td class="prod-name" title="KILL A GERM 60s">KILL A GERM 60s</td>
-                <td class="supplier">PMR NUTRITION</td>
-                <td class="num">R72k</td>
-                <td class="num" style="color:#94a3b8">34.6%</td>
-                <td class="num dim">386</td>
-            </tr></tbody>
+                    <div style="font-size:12px;color:#94a3b8;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">TOP SELLERS (ANNUAL)</div>
+                    <table style="width:100%;border-collapse:collapse">
+                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Rev</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">GP%</th></tr>
+                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>MAG 7/87 60'S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R183k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>35.0%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>VIT D3 5000IU 120'S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R149k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>36.8%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>BRD WHITE RICE</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R138k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>18.0%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>OMEGA 3 Z+L   60"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R125k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>29.7%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>FLORISH SPORE PROBIOTIC 60C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R101k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>28.6%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>MAGN GLYC 120C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R98k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>41.1%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>OMEGA 3 60"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R94k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>30.3%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>VIT D3 5000IU 240'S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R83k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>33.7%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>HEART HEALTH 60 CAPS</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R79k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>40.3%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>Posgeld/Postage/Courier</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R75k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>64.8%</td></tr>
                     </table>
                 </div>
+                <!-- Low GP Items -->
                 <div>
-                    <div class="table-title">💰 GP Heroes (>40% GP, >R10k rev)</div>
-                    <div class="hero-chips"><span class="hero-chip">💰 MAGN GLYC 120C (41.1% GP · LONGEVITY SUPPLEMENTS PTY LTD)</span><span class="hero-chip">💰 HEART HEALTH 60 CAPS (40.3% GP · OXYGEN PRODUCTS)</span><span class="hero-chip">💰 Posgeld/Postage/Courier (64.8% GP · )</span><span class="hero-chip">💰 450G MOBILITY COLL (42.6% GP · WELL I AM)</span><span class="hero-chip">💰 3PHASE LIVER 60S (43.0% GP · BEAUTY ENCAPSULATED)</span><span class="hero-chip">💰 NERVE REGENERERATOR 100C (40.9% GP · LONGEVITY SUPPLEMENTS PTY LTD)</span></div>
-
-                    <div class="table-title" style="margin-top:16px">⚠️ Low GP Items (excl bakery)</div>
-                    <table class="data-table">
-                        <thead><tr><th>Product</th><th>Supplier</th><th>Rev</th><th>GP%</th></tr></thead>
-                        <tbody><tr>
-                <td class="prod-name">NUTRA C COMBO 90C</td>
-                <td class="supplier">The Real Thing Food Supplement</td>
-                <td class="num">R3k</td>
-                <td class="num" style="color:#ef4444">20.3%</td>
-            </tr><tr>
-                <td class="prod-name">DNA WATER PURIFIER</td>
-                <td class="supplier">DNA HEALTH APPLIANCES BURNBERR</td>
-                <td class="num">R5k</td>
-                <td class="num" style="color:#ef4444">20.5%</td>
-            </tr><tr>
-                <td class="prod-name">500ML FLORADIX IRON</td>
-                <td class="supplier">TOPMED 102405</td>
-                <td class="num">R4k</td>
-                <td class="num" style="color:#ef4444">21.1%</td>
-            </tr><tr>
-                <td class="prod-name">LIVER HEALTH 270CAPS</td>
-                <td class="supplier">SOLACE HEALTH</td>
-                <td class="num">R5k</td>
-                <td class="num" style="color:#ef4444">21.2%</td>
-            </tr><tr>
-                <td class="prod-name">DRIPDROP NO SUG BOX</td>
-                <td class="supplier">PHARMED PHARMACEUTICALS PTY</td>
-                <td class="num">R5k</td>
-                <td class="num" style="color:#ef4444">21.3%</td>
-            </tr><tr>
-                <td class="prod-name">HANDWASH LIQ 5L</td>
-                <td class="supplier">BIOLOGICAL BRANDS SA</td>
-                <td class="num">R4k</td>
-                <td class="num" style="color:#ef4444">21.3%</td>
-            </tr><tr>
-                <td class="prod-name">MIX RAW NUTS 1KG</td>
-                <td class="supplier">ALMAN'S DRIED FRUIT & NUTS</td>
-                <td class="num">R5k</td>
-                <td class="num" style="color:#ef4444">21.3%</td>
-            </tr><tr>
-                <td class="prod-name">EXTREME WHEY 2KG STRAW</td>
-                <td class="supplier">PRO NUTRITION</td>
-                <td class="num">R8k</td>
-                <td class="num" style="color:#ef4444">21.4%</td>
-            </tr></tbody>
+                    <div style="font-size:12px;color:#ef4444;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">LOW GP ITEMS (EXCL BAKERY)</div>
+                    <table style="width:100%;border-collapse:collapse">
+                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">GP%</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Supplier</th></tr>
+                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>NUTRA C COMBO 90C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>20.3%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>TRTFC</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>DNA WATER PURIFIER</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>20.5%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>HEALTH</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>500ML FLORADIX IRON</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.1%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>TOPMED</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>LIVER HEALTH 270CAPS</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.2%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>SOLACEH</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>DRIPDROP NO SUG BOX</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.3%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>PHAR</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>HANDWASH LIQ 5L</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.3%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>BBSA</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>MIX RAW NUTS 1KG</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.3%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>ALMANS</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>EXTREME WHEY 2KG STRAW</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.4%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>PRON</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>EXTREME MASS VAN 2KG</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.4%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>PRON</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>STEVIA POWDER 50g</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.9%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>NCH</td></tr>
                     </table>
-
-                    <div class="delist-callout">📦 2460 products sold fewer than 6 units at under R1k annual revenue. Delist candidates.</div>
+                </div>
+                <!-- Non-Movers -->
+                <div>
+                    <div style="font-size:12px;color:#f59e0b;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">NON-MOVERS (≤1 UNIT)</div>
+                    <table style="width:100%;border-collapse:collapse">
+                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Supplier</th></tr>
+                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>VOUCHER R500</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>OLSHOP</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>BLACK S CROP/ 3/4 LEGGINGS</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>BOODY</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>SCHISANDRA  50ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>AETHER</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>BUFF VIT C 180G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>VERHAKI</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>NUTRA C COMBO 127g</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>TRTFC</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>AO SSA WHEY DELI ADD ON</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>OLSHOP</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>ORANGE JUICE 300ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>OASIS</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>SERE-CREPE BAND 50 X4.5M 1</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>SMED</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>DESTRESS  BODY WRAP</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>IMPO</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>EURO WHITE PIPE(3 WHITE CONNECTI</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>EURO</td></tr>
+                    </table>
                 </div>
             </div>
         </div>
 
-        <div class="store-section">
-            <div class="store-header">
+        <div style="background:#1a1a2e;border:1px solid #2d2d3d;border-radius:12px;padding:24px;margin-bottom:20px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
                 <div>
-                    <h2 class="store-name">Glen Village</h2>
-                    <span class="status-badge" style="background:#22c55e20;color:#22c55e">ON TRACK</span>
+                    <h2 style="margin:0;font-size:22px;color:#f1f5f9">Glen Village</h2>
+                    <span style="font-size:12px;color:#22c55e;font-weight:600;letter-spacing:1px">On Track</span>
                 </div>
-                <div class="store-target">Target: R330k</div>
-            </div>
-
-            <!-- KPIs -->
-            <div class="store-kpis">
-                <div class="skpi">
-                    <div class="skpi-label">TODAY</div>
-                    <div class="skpi-val">R7k</div>
-                    <div class="skpi-sub">GP R2k</div>
-                </div>
-                <div class="skpi">
-                    <div class="skpi-label">MTD REVENUE</div>
-                    <div class="skpi-val">R215k</div>
-                    <div class="skpi-sub">GP R72k (33.7%)</div>
-                </div>
-                <div class="skpi">
-                    <div class="skpi-label">PROJECTED</div>
-                    <div class="skpi-val" style="color:#22c55e">R351k</div>
-                    <div class="skpi-sub">106.3% of target</div>
-                </div>
-                <div class="skpi">
-                    <div class="skpi-label">NEED/DAY</div>
-                    <div class="skpi-val">R10k</div>
-                    <div class="skpi-sub">12 days left</div>
+                <div style="text-align:right">
+                    <div style="font-size:11px;color:#64748b;margin-bottom:2px">TARGET</div>
+                    <div style="font-size:18px;font-weight:700;color:#64748b">R330k</div>
                 </div>
             </div>
 
-            <!-- Progress + Narrative -->
-            <div class="progress-row">
-                <div class="progress-bar"><div class="progress-fill" style="width:65.2%;background:#22c55e"></div></div>
-                <span class="progress-pct">65.2%</span>
+            <!-- KPI Grid -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
+                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
+                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">TODAY REV</div>
+                    <div style="font-size:22px;font-weight:700;color:#f1f5f9">R7k</div>
+                    <div style="font-size:11px;color:#22c55e">GP R2k</div>
+                </div>
+                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
+                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">MTD REV</div>
+                    <div style="font-size:22px;font-weight:700;color:#f1f5f9">R215k</div>
+                    <div style="font-size:11px;color:#22c55e">GP R72k</div>
+                </div>
+                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
+                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">GP%</div>
+                    <div style="font-size:22px;font-weight:700;color:#f59e0b">33.7%</div>
+                    <div style="font-size:11px;color:#64748b">19 trading days</div>
+                </div>
+                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
+                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">PROJECTED</div>
+                    <div style="font-size:22px;font-weight:700;color:#22c55e">R351k</div>
+                    <div style="font-size:11px;color:#64748b">106.3% of target</div>
+                </div>
             </div>
-            <div class="narrative">Strong month. Averaging R11k/day, projected to close at R351k. Keep this momentum.</div>
 
-            <!-- Daily Trend -->
-            <div class="trend-section">
-                <div class="mini-label">DAILY REVENUE TREND</div>
-                <div class="trend-bars"><div title="Day 01: R9k" style="width:12px;height:23px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 02: R6k" style="width:12px;height:15px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 03: R14k" style="width:12px;height:34px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 04: R21k" style="width:12px;height:52px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 05: R11k" style="width:12px;height:26px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 06: R13k" style="width:12px;height:32px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 07: R8k" style="width:12px;height:20px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 08: R7k" style="width:12px;height:17px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 09: R11k" style="width:12px;height:26px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 10: R10k" style="width:12px;height:25px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 11: R15k" style="width:12px;height:37px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 12: R13k" style="width:12px;height:31px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 13: R15k" style="width:12px;height:35px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 14: R10k" style="width:12px;height:23px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 15: R5k" style="width:12px;height:11px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 16: R10k" style="width:12px;height:25px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 17: R14k" style="width:12px;height:34px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 18: R17k" style="width:12px;height:41px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 19: R7k" style="width:12px;height:17px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div></div>
+            <!-- Progress bar -->
+            <div style="margin-bottom:8px">
+                <div style="display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-bottom:4px">
+                    <span>MTD Progress: 65.2%</span>
+                    <span>Projecting to hit target</span>
+                </div>
+                <div style="background:#2d2d3d;border-radius:4px;height:8px;overflow:hidden">
+                    <div style="background:#22c55e;height:100%;width:65.2%;border-radius:4px;transition:width 0.3s"></div>
+                </div>
             </div>
 
-            <!-- Two Column: Top Sellers + Intelligence -->
-            <div class="store-columns">
+            <!-- Daily trend sparkline -->
+            <div style="margin-bottom:20px;padding:12px;background:#0f0f1a;border-radius:8px">
+                <div style="font-size:11px;color:#64748b;margin-bottom:8px;letter-spacing:1px">DAILY TREND (MTD)</div>
+                <div style="display:flex;align-items:flex-end;height:52px;gap:1px">
+                    <div title="Day 01: R9k" style="width:10px;height:21px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 02: R6k" style="width:10px;height:14px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 03: R14k" style="width:10px;height:31px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 04: R21k" style="width:10px;height:48px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 05: R11k" style="width:10px;height:24px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 06: R13k" style="width:10px;height:29px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 07: R8k" style="width:10px;height:18px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 08: R7k" style="width:10px;height:15px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 09: R11k" style="width:10px;height:24px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 10: R10k" style="width:10px;height:23px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 11: R15k" style="width:10px;height:34px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 12: R13k" style="width:10px;height:29px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 13: R15k" style="width:10px;height:33px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 14: R10k" style="width:10px;height:21px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 15: R5k" style="width:10px;height:10px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 16: R10k" style="width:10px;height:23px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 17: R14k" style="width:10px;height:31px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 18: R17k" style="width:10px;height:37px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 19: R7k" style="width:10px;height:16px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div>
+                </div>
+            </div>
+
+            <!-- Tables in 3 columns -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+                <!-- Top Sellers -->
                 <div>
-                    <div class="table-title">🏆 Top Sellers (Annual · by Revenue)</div>
-                    <table class="data-table">
-                        <thead><tr><th>#</th><th>Product</th><th>Supplier</th><th>Revenue</th><th>GP%</th><th>Units</th></tr></thead>
-                        <tbody><tr>
-                <td class="rank">1</td>
-                <td class="prod-name" title="BRD WHITE RICE">BRD WHITE RICE</td>
-                <td class="supplier">LOVE YOURSELF BREADZ</td>
-                <td class="num">R59k</td>
-                <td class="num" style="color:#ef4444">18.9%</td>
-                <td class="num dim">861</td>
-            </tr><tr>
-                <td class="rank">2</td>
-                <td class="prod-name" title="CRITICAL CARE 500ML">CRITICAL CARE 500ML</td>
-                <td class="supplier">Cili Health S.A.</td>
-                <td class="num">R41k</td>
-                <td class="num" style="color:#94a3b8">29.4%</td>
-                <td class="num dim">80</td>
-            </tr><tr>
-                <td class="rank">3</td>
-                <td class="prod-name" title="FLORISH SPORE PROBIOTIC 60C">FLORISH SPORE PROBIOTIC 60C</td>
-                <td class="supplier">INOVO</td>
-                <td class="num">R37k</td>
-                <td class="num" style="color:#94a3b8">29.8%</td>
-                <td class="num dim">100</td>
-            </tr><tr>
-                <td class="rank">4</td>
-                <td class="prod-name" title="OMEGA 3 Z+L   60"S">OMEGA 3 Z+L   60"S</td>
-                <td class="supplier">NATROCEUTICS SA</td>
-                <td class="num">R37k</td>
-                <td class="num" style="color:#94a3b8">30.8%</td>
-                <td class="num dim">88</td>
-            </tr><tr>
-                <td class="rank">5</td>
-                <td class="prod-name" title="MAGN GLYC 120C">MAGN GLYC 120C</td>
-                <td class="supplier">LONGEVITY SUPPLEMENTS PTY LTD</td>
-                <td class="num">R27k</td>
-                <td class="num" style="color:#22c55e">42.6%</td>
-                <td class="num dim">87</td>
-            </tr><tr>
-                <td class="rank">6</td>
-                <td class="prod-name" title="B COMPLEX 30"S">B COMPLEX 30"S</td>
-                <td class="supplier">NATROCEUTICS SA</td>
-                <td class="num">R27k</td>
-                <td class="num" style="color:#94a3b8">31.4%</td>
-                <td class="num dim">105</td>
-            </tr><tr>
-                <td class="rank">7</td>
-                <td class="prod-name" title="OMEGA 3 60"S">OMEGA 3 60"S</td>
-                <td class="supplier">NATROCEUTICS SA</td>
-                <td class="num">R26k</td>
-                <td class="num" style="color:#94a3b8">31.2%</td>
-                <td class="num dim">82</td>
-            </tr><tr>
-                <td class="rank">8</td>
-                <td class="prod-name" title="BRD BANTING">BRD BANTING</td>
-                <td class="supplier">LOVE YOURSELF BREADZ</td>
-                <td class="num">R25k</td>
-                <td class="num" style="color:#ef4444">25.1%</td>
-                <td class="num dim">313</td>
-            </tr><tr>
-                <td class="rank">9</td>
-                <td class="prod-name" title="BLK SEED OIL120C">BLK SEED OIL120C</td>
-                <td class="supplier">Nativa</td>
-                <td class="num">R22k</td>
-                <td class="num" style="color:#94a3b8">32.5%</td>
-                <td class="num dim">52</td>
-            </tr><tr>
-                <td class="rank">10</td>
-                <td class="prod-name" title="LIONS MANE EXT 180'S">LIONS MANE EXT 180'S</td>
-                <td class="supplier">SFERA BIO NUTRITION</td>
-                <td class="num">R21k</td>
-                <td class="num" style="color:#22c55e">40.2%</td>
-                <td class="num dim">33</td>
-            </tr><tr>
-                <td class="rank">11</td>
-                <td class="prod-name" title="BRD BROWN RICE">BRD BROWN RICE</td>
-                <td class="supplier">LOVE YOURSELF BREADZ</td>
-                <td class="num">R21k</td>
-                <td class="num" style="color:#ef4444">19.2%</td>
-                <td class="num dim">305</td>
-            </tr><tr>
-                <td class="rank">12</td>
-                <td class="prod-name" title="BERBERINE COMPLEX 60"S">BERBERINE COMPLEX 60"S</td>
-                <td class="supplier">NATROCEUTICS SA</td>
-                <td class="num">R20k</td>
-                <td class="num" style="color:#94a3b8">32.0%</td>
-                <td class="num dim">52</td>
-            </tr></tbody>
+                    <div style="font-size:12px;color:#94a3b8;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">TOP SELLERS (ANNUAL)</div>
+                    <table style="width:100%;border-collapse:collapse">
+                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Rev</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">GP%</th></tr>
+                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>BRD WHITE RICE</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R59k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>18.9%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>CRITICAL CARE 500ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R41k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>29.4%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>FLORISH SPORE PROBIOTIC 60C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R37k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>29.8%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>OMEGA 3 Z+L   60"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R37k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>30.8%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>MAGN GLYC 120C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R27k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>42.6%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>B COMPLEX 30"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R27k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>31.4%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>OMEGA 3 60"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R26k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>31.2%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>BRD BANTING</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R25k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>25.1%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>BLK SEED OIL120C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R22k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>32.5%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>LIONS MANE EXT 180'S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R21k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>40.2%</td></tr>
                     </table>
                 </div>
+                <!-- Low GP Items -->
                 <div>
-                    <div class="table-title">💰 GP Heroes (>40% GP, >R10k rev)</div>
-                    <div class="hero-chips"><span class="hero-chip">💰 MAGN GLYC 120C (42.6% GP · LONGEVITY SUPPLEMENTS PTY LTD)</span><span class="hero-chip">💰 LIONS MANE EXT 180'S (40.2% GP · SFERA BIO NUTRITION)</span><span class="hero-chip">💰 LIONS MANE EXT 60'S (41.8% GP · SFERA BIO NUTRITION)</span><span class="hero-chip">💰 NA NEURO NIGHT 60s (40.2% GP · PRIME HEALTH HOLDINGS)</span><span class="hero-chip">💰 30C NIGHTCAPS (41.7% GP · NEOGENESIS HEALTH PRODUCTS)</span></div>
-
-                    <div class="table-title" style="margin-top:16px">⚠️ Low GP Items (excl bakery)</div>
-                    <table class="data-table">
-                        <thead><tr><th>Product</th><th>Supplier</th><th>Rev</th><th>GP%</th></tr></thead>
-                        <tbody><tr>
-                <td class="prod-name">1L BERRY WATER KEFIR</td>
-                <td class="supplier">NUMESA</td>
-                <td class="num">R3k</td>
-                <td class="num" style="color:#ef4444">24.3%</td>
-            </tr><tr>
-                <td class="prod-name">350ML GINGER WATER KEFIR</td>
-                <td class="supplier">NUMESA</td>
-                <td class="num">R2k</td>
-                <td class="num" style="color:#ef4444">24.6%</td>
-            </tr></tbody>
+                    <div style="font-size:12px;color:#ef4444;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">LOW GP ITEMS (EXCL BAKERY)</div>
+                    <table style="width:100%;border-collapse:collapse">
+                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">GP%</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Supplier</th></tr>
+                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>1L BERRY WATER KEFIR</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>24.3%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>NUM</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>350ML GINGER WATER KEFIR</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>24.6%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>NUM</td></tr>
                     </table>
-
-                    <div class="delist-callout">📦 1259 products sold fewer than 6 units at under R1k annual revenue. Delist candidates.</div>
+                </div>
+                <!-- Non-Movers -->
+                <div>
+                    <div style="font-size:12px;color:#f59e0b;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">NON-MOVERS (≤1 UNIT)</div>
+                    <table style="width:100%;border-collapse:collapse">
+                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Supplier</th></tr>
+                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>VOUCHER</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>OLSHOP</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>LECITHIN 1200MG 100S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>DSI</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>CHOLINE 500MG 120 CAPS</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>LV</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>CAROB CHUNKS 1KG</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>KOMATI</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>SCO ACTIVE B PLEX + MAGN 30C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>MEDFORD</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>WHITE WILLOW BARK 100G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>PGER</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>D6 SILICEA 12 200's</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>WILLOW</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>BERB 2 MONTHS</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>None</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>CREATINE 40 SERVINGS</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>None</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>D3 LONG TERM</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>None</td></tr>
+                    </table>
                 </div>
             </div>
         </div>
 
-        <div class="store-section">
-            <div class="store-header">
+        <div style="background:#1a1a2e;border:1px solid #2d2d3d;border-radius:12px;padding:24px;margin-bottom:20px">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
                 <div>
-                    <h2 class="store-name">Edenvale</h2>
-                    <span class="status-badge" style="background:#22c55e20;color:#22c55e">ON TRACK</span>
+                    <h2 style="margin:0;font-size:22px;color:#f1f5f9">Edenvale</h2>
+                    <span style="font-size:12px;color:#22c55e;font-weight:600;letter-spacing:1px">On Track</span>
                 </div>
-                <div class="store-target">Target: R450k</div>
-            </div>
-
-            <!-- KPIs -->
-            <div class="store-kpis">
-                <div class="skpi">
-                    <div class="skpi-label">TODAY</div>
-                    <div class="skpi-val">R11k</div>
-                    <div class="skpi-sub">GP R4k</div>
-                </div>
-                <div class="skpi">
-                    <div class="skpi-label">MTD REVENUE</div>
-                    <div class="skpi-val">R244k</div>
-                    <div class="skpi-sub">GP R85k (34.7%)</div>
-                </div>
-                <div class="skpi">
-                    <div class="skpi-label">PROJECTED</div>
-                    <div class="skpi-val" style="color:#22c55e">R399k</div>
-                    <div class="skpi-sub">88.6% of target</div>
-                </div>
-                <div class="skpi">
-                    <div class="skpi-label">NEED/DAY</div>
-                    <div class="skpi-val">R17k</div>
-                    <div class="skpi-sub">12 days left</div>
+                <div style="text-align:right">
+                    <div style="font-size:11px;color:#64748b;margin-bottom:2px">TARGET</div>
+                    <div style="font-size:18px;font-weight:700;color:#64748b">R450k</div>
                 </div>
             </div>
 
-            <!-- Progress + Narrative -->
-            <div class="progress-row">
-                <div class="progress-bar"><div class="progress-fill" style="width:54.3%;background:#22c55e"></div></div>
-                <span class="progress-pct">54.3%</span>
+            <!-- KPI Grid -->
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
+                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
+                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">TODAY REV</div>
+                    <div style="font-size:22px;font-weight:700;color:#f1f5f9">R11k</div>
+                    <div style="font-size:11px;color:#22c55e">GP R4k</div>
+                </div>
+                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
+                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">MTD REV</div>
+                    <div style="font-size:22px;font-weight:700;color:#f1f5f9">R244k</div>
+                    <div style="font-size:11px;color:#22c55e">GP R85k</div>
+                </div>
+                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
+                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">GP%</div>
+                    <div style="font-size:22px;font-weight:700;color:#f59e0b">34.7%</div>
+                    <div style="font-size:11px;color:#64748b">19 trading days</div>
+                </div>
+                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
+                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">PROJECTED</div>
+                    <div style="font-size:22px;font-weight:700;color:#22c55e">R399k</div>
+                    <div style="font-size:11px;color:#64748b">88.6% of target</div>
+                </div>
             </div>
-            <div class="narrative">Solid but needs a push. Need R17k/day for the remaining 12 days to hit target.</div>
 
-            <!-- Daily Trend -->
-            <div class="trend-section">
-                <div class="mini-label">DAILY REVENUE TREND</div>
-                <div class="trend-bars"><div title="Day 01: R13k" style="width:12px;height:38px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 02: R13k" style="width:12px;height:37px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 03: R14k" style="width:12px;height:40px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 04: R11k" style="width:12px;height:31px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 05: R14k" style="width:12px;height:40px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 06: R7k" style="width:12px;height:20px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 07: R14k" style="width:12px;height:40px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 08: R16k" style="width:12px;height:48px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 09: R12k" style="width:12px;height:36px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 10: R16k" style="width:12px;height:45px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 11: R18k" style="width:12px;height:52px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 12: R8k" style="width:12px;height:24px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 13: R12k" style="width:12px;height:35px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 14: R15k" style="width:12px;height:44px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 15: R13k" style="width:12px;height:37px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 16: R15k" style="width:12px;height:43px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 17: R11k" style="width:12px;height:31px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 18: R12k" style="width:12px;height:35px;background:#f59e0b;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 19: R11k" style="width:12px;height:33px;background:#ef4444;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div></div>
+            <!-- Progress bar -->
+            <div style="margin-bottom:8px">
+                <div style="display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-bottom:4px">
+                    <span>MTD Progress: 54.3%</span>
+                    <span>Need R4k/day to hit target</span>
+                </div>
+                <div style="background:#2d2d3d;border-radius:4px;height:8px;overflow:hidden">
+                    <div style="background:#22c55e;height:100%;width:54.3%;border-radius:4px;transition:width 0.3s"></div>
+                </div>
             </div>
 
-            <!-- Two Column: Top Sellers + Intelligence -->
-            <div class="store-columns">
+            <!-- Daily trend sparkline -->
+            <div style="margin-bottom:20px;padding:12px;background:#0f0f1a;border-radius:8px">
+                <div style="font-size:11px;color:#64748b;margin-bottom:8px;letter-spacing:1px">DAILY TREND (MTD)</div>
+                <div style="display:flex;align-items:flex-end;height:52px;gap:1px">
+                    <div title="Day 01: R13k" style="width:10px;height:35px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 02: R13k" style="width:10px;height:35px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 03: R14k" style="width:10px;height:37px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 04: R11k" style="width:10px;height:29px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 05: R14k" style="width:10px;height:37px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 06: R7k" style="width:10px;height:19px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 07: R14k" style="width:10px;height:37px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 08: R16k" style="width:10px;height:44px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 09: R12k" style="width:10px;height:33px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 10: R16k" style="width:10px;height:42px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 11: R18k" style="width:10px;height:48px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 12: R8k" style="width:10px;height:22px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 13: R12k" style="width:10px;height:32px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 14: R15k" style="width:10px;height:41px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 15: R13k" style="width:10px;height:34px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 16: R15k" style="width:10px;height:40px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 17: R11k" style="width:10px;height:29px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 18: R12k" style="width:10px;height:33px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 19: R11k" style="width:10px;height:30px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div>
+                </div>
+            </div>
+
+            <!-- Tables in 3 columns -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+                <!-- Top Sellers -->
                 <div>
-                    <div class="table-title">🏆 Top Sellers (Annual · by Revenue)</div>
-                    <table class="data-table">
-                        <thead><tr><th>#</th><th>Product</th><th>Supplier</th><th>Revenue</th><th>GP%</th><th>Units</th></tr></thead>
-                        <tbody><tr>
-                <td class="rank">1</td>
-                <td class="prod-name" title="ZENTIUM 60T">ZENTIUM 60T</td>
-                <td class="supplier">EVA HOLDINGS</td>
-                <td class="num">R54k</td>
-                <td class="num" style="color:#94a3b8">32.8%</td>
-                <td class="num dim">122</td>
-            </tr><tr>
-                <td class="rank">2</td>
-                <td class="prod-name" title="OMEGA 3 Z+L   60"S">OMEGA 3 Z+L   60"S</td>
-                <td class="supplier">NATROCEUTICS SA</td>
-                <td class="num">R33k</td>
-                <td class="num" style="color:#94a3b8">30.2%</td>
-                <td class="num dim">79</td>
-            </tr><tr>
-                <td class="rank">3</td>
-                <td class="prod-name" title="COLL COMPL 600G">COLL COMPL 600G</td>
-                <td class="supplier">WELL I AM</td>
-                <td class="num">R32k</td>
-                <td class="num" style="color:#94a3b8">35.2%</td>
-                <td class="num dim">54</td>
-            </tr><tr>
-                <td class="rank">4</td>
-                <td class="prod-name" title="OMEGA 3 60"S">OMEGA 3 60"S</td>
-                <td class="supplier">NATROCEUTICS SA</td>
-                <td class="num">R26k</td>
-                <td class="num" style="color:#94a3b8">31.4%</td>
-                <td class="num dim">81</td>
-            </tr><tr>
-                <td class="rank">5</td>
-                <td class="prod-name" title="LIONS MANE EXT 180'S">LIONS MANE EXT 180'S</td>
-                <td class="supplier">SFERA BIO NUTRITION</td>
-                <td class="num">R23k</td>
-                <td class="num" style="color:#94a3b8">38.0%</td>
-                <td class="num dim">36</td>
-            </tr><tr>
-                <td class="rank">6</td>
-                <td class="prod-name" title="NMN+1200 60S">NMN+1200 60S</td>
-                <td class="supplier">Infinity Therapeutics Africa</td>
-                <td class="num">R22k</td>
-                <td class="num" style="color:#22c55e">41.4%</td>
-                <td class="num dim">19</td>
-            </tr><tr>
-                <td class="rank">7</td>
-                <td class="prod-name" title="METHYL CARE 60C">METHYL CARE 60C</td>
-                <td class="supplier">AMIPRO</td>
-                <td class="num">R21k</td>
-                <td class="num" style="color:#94a3b8">33.7%</td>
-                <td class="num dim">50</td>
-            </tr><tr>
-                <td class="rank">8</td>
-                <td class="prod-name" title="MAGN GLYCINATE 120T">MAGN GLYCINATE 120T</td>
-                <td class="supplier">AMIPRO</td>
-                <td class="num">R20k</td>
-                <td class="num" style="color:#94a3b8">36.9%</td>
-                <td class="num dim">39</td>
-            </tr><tr>
-                <td class="rank">9</td>
-                <td class="prod-name" title="B COMPLEX 30"S">B COMPLEX 30"S</td>
-                <td class="supplier">NATROCEUTICS SA</td>
-                <td class="num">R20k</td>
-                <td class="num" style="color:#94a3b8">31.9%</td>
-                <td class="num dim">78</td>
-            </tr><tr>
-                <td class="rank">10</td>
-                <td class="prod-name" title="ASHWAGANDHA 60"S">ASHWAGANDHA 60"S</td>
-                <td class="supplier">NATROCEUTICS SA</td>
-                <td class="num">R20k</td>
-                <td class="num" style="color:#94a3b8">34.7%</td>
-                <td class="num dim">72</td>
-            </tr><tr>
-                <td class="rank">11</td>
-                <td class="prod-name" title="BRD BANTING">BRD BANTING</td>
-                <td class="supplier">LOVE YOURSELF BREADZ</td>
-                <td class="num">R19k</td>
-                <td class="num" style="color:#ef4444">25.7%</td>
-                <td class="num dim">235</td>
-            </tr><tr>
-                <td class="rank">12</td>
-                <td class="prod-name" title="SHILAJIT RESIN 30g">SHILAJIT RESIN 30g</td>
-                <td class="supplier">EARTH LINKS</td>
-                <td class="num">R19k</td>
-                <td class="num" style="color:#94a3b8">32.0%</td>
-                <td class="num dim">43</td>
-            </tr></tbody>
+                    <div style="font-size:12px;color:#94a3b8;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">TOP SELLERS (ANNUAL)</div>
+                    <table style="width:100%;border-collapse:collapse">
+                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Rev</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">GP%</th></tr>
+                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>ZENTIUM 60T</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R54k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>32.8%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>OMEGA 3 Z+L   60"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R33k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>30.2%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>COLL COMPL 600G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R32k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>35.2%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>OMEGA 3 60"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R26k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>31.4%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>LIONS MANE EXT 180'S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R23k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>38.0%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>NMN+1200 60S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R22k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>41.4%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>METHYL CARE 60C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R21k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>33.7%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>MAGN GLYCINATE 120T</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R20k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>36.9%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>B COMPLEX 30"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R20k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>31.9%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>ASHWAGANDHA 60"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R20k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>34.7%</td></tr>
                     </table>
                 </div>
+                <!-- Low GP Items -->
                 <div>
-                    <div class="table-title">💰 GP Heroes (>40% GP, >R10k rev)</div>
-                    <div class="hero-chips"><span class="hero-chip">💰 NMN+1200 60S (41.4% GP · Infinity Therapeutics Africa)</span><span class="hero-chip">💰 30C SHILAJIT (44.2% GP · NEOGENESIS HEALTH PRODUCTS)</span><span class="hero-chip">💰 SLEEP RECHARGE 30C (43.4% GP · BEAUTY ENCAPSULATED)</span><span class="hero-chip">💰 LIONS MANE EXT 60'S (41.0% GP · SFERA BIO NUTRITION)</span><span class="hero-chip">💰 RED RICE YEAST EXT 60C (41.9% GP · LONGEVITY SUPPLEMENTS PTY LTD)</span><span class="hero-chip">💰 MAGN GLYC 120C (43.1% GP · LONGEVITY SUPPLEMENTS PTY LTD)</span></div>
-
-                    <div class="table-title" style="margin-top:16px">⚠️ Low GP Items (excl bakery)</div>
-                    <table class="data-table">
-                        <thead><tr><th>Product</th><th>Supplier</th><th>Rev</th><th>GP%</th></tr></thead>
-                        <tbody><tr>
-                <td class="prod-name">CRANBERRY DRK 330ML</td>
-                <td class="supplier">Harrewyn Organics</td>
-                <td class="num">R2k</td>
-                <td class="num" style="color:#ef4444">13.1%</td>
-            </tr><tr>
-                <td class="prod-name">COLA DRK 330ML 2</td>
-                <td class="supplier">Harrewyn Organics</td>
-                <td class="num">R4k</td>
-                <td class="num" style="color:#ef4444">14.1%</td>
-            </tr><tr>
-                <td class="prod-name">EGGS 12s EDDIE'S</td>
-                <td class="supplier">Farmer Eddie</td>
-                <td class="num">R3k</td>
-                <td class="num" style="color:#ef4444">17.3%</td>
-            </tr><tr>
-                <td class="prod-name">KARA UHT COC CREAM 1L</td>
-                <td class="supplier">Harrewyn Organics</td>
-                <td class="num">R4k</td>
-                <td class="num" style="color:#ef4444">17.7%</td>
-            </tr><tr>
-                <td class="prod-name">VAN STEVIA 150ML</td>
-                <td class="supplier">HEALTHSMART SOLUTIONS</td>
-                <td class="num">R3k</td>
-                <td class="num" style="color:#ef4444">19.4%</td>
-            </tr><tr>
-                <td class="prod-name">SCO VEG DETOX CLEANSE</td>
-                <td class="supplier">EVOLVED MIND AND BODY WORX PTY</td>
-                <td class="num">R4k</td>
-                <td class="num" style="color:#ef4444">21.1%</td>
-            </tr><tr>
-                <td class="prod-name">ETERNA VIT E 120's</td>
-                <td class="supplier">Something Natural CC</td>
-                <td class="num">R3k</td>
-                <td class="num" style="color:#ef4444">23.4%</td>
-            </tr><tr>
-                <td class="prod-name">500ML MILK KEFIR</td>
-                <td class="supplier">NUMESA</td>
-                <td class="num">R3k</td>
-                <td class="num" style="color:#ef4444">25.0%</td>
-            </tr></tbody>
+                    <div style="font-size:12px;color:#ef4444;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">LOW GP ITEMS (EXCL BAKERY)</div>
+                    <table style="width:100%;border-collapse:collapse">
+                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">GP%</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Supplier</th></tr>
+                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>CRANBERRY DRK 330ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>13.1%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>HAR</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>COLA DRK 330ML 2</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>14.1%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>HAR</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>EGGS 12s EDDIE'S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>17.3%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>FED</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>KARA UHT COC CREAM 1L</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>17.7%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>HAR</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>VAN STEVIA 150ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>19.4%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>HCW</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>SCO VEG DETOX CLEANSE</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.1%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>EVOLV</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>ETERNA VIT E 120's</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>23.4%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>SON</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>500ML MILK KEFIR</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>25.0%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>NUM</td></tr>
                     </table>
-
-                    <div class="delist-callout">📦 1761 products sold fewer than 6 units at under R1k annual revenue. Delist candidates.</div>
+                </div>
+                <!-- Non-Movers -->
+                <div>
+                    <div style="font-size:12px;color:#f59e0b;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">NON-MOVERS (≤1 UNIT)</div>
+                    <table style="width:100%;border-collapse:collapse">
+                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Supplier</th></tr>
+                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>DEODORANT BODY WASH 200ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>NF</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>SENSI/BODYWASH 200ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>NF</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>VOUCHER</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>OLSHOP</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>GINSENG ROOT 50G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>PGER</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>NEUTRAL HENNA 100G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>EARTHL</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>5D LIGHT GOLDEN CHESTNUT HERBATI</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>NC</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>DIGEST BISCUITS 400G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>VAL</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>TEA TREE OIL PURE 25ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>GNP</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>NACHOS AVO/ LEMON 100G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>K4H</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>LENTIL CHIPS SWT CHILLIE 25G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>K4H</td></tr>
+                    </table>
                 </div>
             </div>
         </div>
 
-<!-- Cross-Store Opportunities -->
-<div class="cross-section">
-    <h3>🔄 Cross-Store Opportunities</h3>
-    <div class="cross-narrative">
-        Products selling well in one store but barely stocked or moving in others.
-        Red = zero or near-zero revenue. Orange = underperforming vs potential.
-        These are your easiest wins: the product works, you just need it in the right store.
-    </div>
-    <table class="data-table">
-        <thead><tr><th>Product</th><th>Supplier</th><th>Centurion</th><th>Glen Village</th><th>Edenvale</th><th>Strong In</th><th>Missing From</th></tr></thead>
+<!-- Top Suppliers (Centurion annual) -->
+<div style="background:#1a1a2e;border:1px solid #2d2d3d;border-radius:12px;padding:24px;margin-bottom:20px">
+    <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;color:#f1f5f9">Top Suppliers by Revenue — Centurion (Annual)</h3>
+    <table>
+        <thead><tr>
+            <th style="font-size:11px;color:#64748b;text-align:left;padding:8px 16px;letter-spacing:1px">SUPPLIER</th>
+            <th style="font-size:11px;color:#64748b;text-align:left;padding:8px 16px;letter-spacing:1px">CODE</th>
+            <th style="font-size:11px;color:#64748b;text-align:right;padding:8px 16px;letter-spacing:1px">ANNUAL REV</th>
+            <th style="font-size:11px;color:#64748b;text-align:right;padding:8px 16px;letter-spacing:1px">GP%</th>
+            <th style="font-size:11px;color:#64748b;text-align:right;padding:8px 16px;letter-spacing:1px">UNITS SOLD</th>
+        </tr></thead>
         <tbody><tr>
-            <td class="prod-name">MAG 7/87 60'S</td>
-            <td class="supplier">ECO VALLEY NUTRITION</td>
-            <td class="num" style="color:#f1f5f9">R183k</td>
-            <td class="num" style="color:#f59e0b">R3k</td>
-            <td class="num" style="color:#f59e0b">R4k</td>
-            <td style="font-size:12px;color:#22c55e">Centurion</td>
-            <td style="font-size:12px;color:#ef4444">Glen Village, Edenvale</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">Dis-Chem Suppliers</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">DSI</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R1.3M</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">35.2%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">3,611</td>
         </tr><tr>
-            <td class="prod-name">HEART HEALTH 60 CAPS</td>
-            <td class="supplier">OXYGEN PRODUCTS</td>
-            <td class="num" style="color:#f1f5f9">R79k</td>
-            <td class="num" style="color:#f1f5f9">R8k</td>
-            <td class="num" style="color:#f59e0b">R1k</td>
-            <td style="font-size:12px;color:#22c55e">Centurion</td>
-            <td style="font-size:12px;color:#ef4444">Edenvale</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">WILLOW</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">WILLOW</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R1.0M</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">43.9%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">4,752</td>
         </tr><tr>
-            <td class="prod-name">POTASSIUM MAX 60'S</td>
-            <td class="supplier">ECO VALLEY NUTRITION</td>
-            <td class="num" style="color:#f1f5f9">R67k</td>
-            <td class="num" style="color:#f59e0b">R2k</td>
-            <td class="num" style="color:#f59e0b">R1k</td>
-            <td style="font-size:12px;color:#22c55e">Centurion</td>
-            <td style="font-size:12px;color:#ef4444">Glen Village, Edenvale</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">Natroceutics</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">NATRO</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R746k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">30.7%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">2,270</td>
         </tr><tr>
-            <td class="prod-name">BONE SUPREME 120'S</td>
-            <td class="supplier">Interlife Distributors</td>
-            <td class="num" style="color:#f1f5f9">R63k</td>
-            <td class="num" style="color:#f59e0b">R2k</td>
-            <td class="num" style="color:#f59e0b">R6k</td>
-            <td style="font-size:12px;color:#22c55e">Centurion</td>
-            <td style="font-size:12px;color:#ef4444">Glen Village</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">IL</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">IL</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R741k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">35.4%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">4,205</td>
         </tr><tr>
-            <td class="prod-name">SOFT IRON 60'S</td>
-            <td class="supplier">ECO VALLEY NUTRITION</td>
-            <td class="num" style="color:#f1f5f9">R63k</td>
-            <td class="num" style="color:#f59e0b">R816</td>
-            <td class="num" style="color:#f59e0b">R4k</td>
-            <td style="font-size:12px;color:#22c55e">Centurion</td>
-            <td style="font-size:12px;color:#ef4444">Glen Village</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">Love Bakery</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">LOVE</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R522k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#ef4444">20.1%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">7,487</td>
         </tr><tr>
-            <td class="prod-name">3PHASE LIVER 60S</td>
-            <td class="supplier">BEAUTY ENCAPSULATED</td>
-            <td class="num" style="color:#f1f5f9">R60k</td>
-            <td class="num" style="color:#f59e0b">R389</td>
-            <td class="num" style="color:#f59e0b">R5k</td>
-            <td style="font-size:12px;color:#22c55e">Centurion</td>
-            <td style="font-size:12px;color:#ef4444">Glen Village</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">Evenly (WILLOW)</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">EVN</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R520k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">34.1%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">2,699</td>
         </tr><tr>
-            <td class="prod-name">BRD WHITE RICE</td>
-            <td class="supplier">LOVE YOURSELF BREADZ</td>
-            <td class="num" style="color:#f59e0b">R64</td>
-            <td class="num" style="color:#f1f5f9">R59k</td>
-            <td class="num" style="color:#f1f5f9">R7k</td>
-            <td style="font-size:12px;color:#22c55e">Glen Village</td>
-            <td style="font-size:12px;color:#ef4444">Centurion</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">COYNE</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">COYNE</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R429k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">33.7%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">1,263</td>
         </tr><tr>
-            <td class="prod-name">ADR PLUS 60s</td>
-            <td class="supplier">PMR NUTRITION</td>
-            <td class="num" style="color:#f1f5f9">R57k</td>
-            <td class="num" style="color:#f59e0b">R2k</td>
-            <td class="num" style="color:#f59e0b">R271</td>
-            <td style="font-size:12px;color:#22c55e">Centurion</td>
-            <td style="font-size:12px;color:#ef4444">Glen Village, Edenvale</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">PN</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">PN</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R427k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">35.7%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">2,111</td>
         </tr><tr>
-            <td class="prod-name">BRD BROWN RICE</td>
-            <td class="supplier">LOVE YOURSELF BREADZ</td>
-            <td class="num" style="color:#f1f5f9">R49k</td>
-            <td class="num" style="color:#f1f5f9">R21k</td>
-            <td class="num" style="color:#f59e0b">R1k</td>
-            <td style="font-size:12px;color:#22c55e">Centurion, Glen Village</td>
-            <td style="font-size:12px;color:#ef4444">Edenvale</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">NUG</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">NUG</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R421k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">42.2%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">3,126</td>
         </tr><tr>
-            <td class="prod-name">MEGA OMEGA SUPR150C</td>
-            <td class="supplier">The Real Thing Food Supplement</td>
-            <td class="num" style="color:#f1f5f9">R47k</td>
-            <td class="num" style="color:#f59e0b">R2k</td>
-            <td class="num" style="color:#f59e0b">R3k</td>
-            <td style="font-size:12px;color:#22c55e">Centurion</td>
-            <td style="font-size:12px;color:#ef4444">Glen Village</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">GP</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">GP</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R351k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">34.1%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">2,829</td>
         </tr><tr>
-            <td class="prod-name">VIT K2-7 & D3 60S</td>
-            <td class="supplier">VERHAKI</td>
-            <td class="num" style="color:#f1f5f9">R43k</td>
-            <td class="num" style="color:#f59e0b">R240</td>
-            <td class="num" style="color:#f59e0b">R3k</td>
-            <td style="font-size:12px;color:#22c55e">Centurion</td>
-            <td style="font-size:12px;color:#ef4444">Glen Village</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">VERHAKI</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">VERHAKI</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R317k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">31.1%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">1,231</td>
         </tr><tr>
-            <td class="prod-name">CRITICAL CARE 500ML</td>
-            <td class="supplier">Cili Health S.A.</td>
-            <td class="num" style="color:#f1f5f9">R25k</td>
-            <td class="num" style="color:#f1f5f9">R41k</td>
-            <td class="num" style="color:#ef4444">R0</td>
-            <td style="font-size:12px;color:#22c55e">Centurion, Glen Village</td>
-            <td style="font-size:12px;color:#ef4444">Edenvale</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">NutriNation</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">NN</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R313k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">35.6%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">1,604</td>
         </tr><tr>
-            <td class="prod-name">BRD SORG/QUIN</td>
-            <td class="supplier">LOVE YOURSELF BREADZ</td>
-            <td class="num" style="color:#f1f5f9">R41k</td>
-            <td class="num" style="color:#f1f5f9">R18k</td>
-            <td class="num" style="color:#f59e0b">R2k</td>
-            <td style="font-size:12px;color:#22c55e">Centurion, Glen Village</td>
-            <td style="font-size:12px;color:#ef4444">Edenvale</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">AMIPRO</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">AMIPRO</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R284k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">32.0%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">587</td>
         </tr><tr>
-            <td class="prod-name">DIGESTEZYME H POTENCY 60s</td>
-            <td class="supplier">NUTRIGREEN(Pty) Ltd</td>
-            <td class="num" style="color:#f1f5f9">R41k</td>
-            <td class="num" style="color:#f59e0b">R1k</td>
-            <td class="num" style="color:#f1f5f9">R5k</td>
-            <td style="font-size:12px;color:#22c55e">Centurion</td>
-            <td style="font-size:12px;color:#ef4444">Glen Village</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">ESCP</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">ESCP</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R257k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">34.7%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">2,308</td>
         </tr><tr>
-            <td class="prod-name">OMEGA 3 Z+L   60"S</td>
-            <td class="supplier">NATROCEUTICS SA</td>
-            <td class="num" style="color:#f59e0b">R388</td>
-            <td class="num" style="color:#f1f5f9">R37k</td>
-            <td class="num" style="color:#f1f5f9">R33k</td>
-            <td style="font-size:12px;color:#22c55e">Glen Village, Edenvale</td>
-            <td style="font-size:12px;color:#ef4444">Centurion</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">Nutrigains</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">NG</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R227k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">42.4%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">770</td>
         </tr><tr>
-            <td class="prod-name">BRD FLAX</td>
-            <td class="supplier">LOVE YOURSELF BREADZ</td>
-            <td class="num" style="color:#f1f5f9">R35k</td>
-            <td class="num" style="color:#f59e0b">R158</td>
-            <td class="num" style="color:#ef4444">R0</td>
-            <td style="font-size:12px;color:#22c55e">Centurion</td>
-            <td style="font-size:12px;color:#ef4444">Glen Village, Edenvale</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">TRTFC</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">TRTFC</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R222k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">30.5%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">763</td>
         </tr><tr>
-            <td class="prod-name">CMP 90s</td>
-            <td class="supplier">PMR NUTRITION</td>
-            <td class="num" style="color:#f1f5f9">R32k</td>
-            <td class="num" style="color:#f59e0b">R1k</td>
-            <td class="num" style="color:#f59e0b">R1k</td>
-            <td style="font-size:12px;color:#22c55e">Centurion</td>
-            <td style="font-size:12px;color:#ef4444">Glen Village, Edenvale</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">FERO</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">FERO</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R208k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">30.2%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">1,033</td>
         </tr><tr>
-            <td class="prod-name">GUT PLUS 60S</td>
-            <td class="supplier">BEAUTY ENCAPSULATED</td>
-            <td class="num" style="color:#f1f5f9">R32k</td>
-            <td class="num" style="color:#f59e0b">R1k</td>
-            <td class="num" style="color:#f1f5f9">R3k</td>
-            <td style="font-size:12px;color:#22c55e">Centurion</td>
-            <td style="font-size:12px;color:#ef4444">Glen Village</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">SOL</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">SOL</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R199k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">37.8%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">784</td>
         </tr><tr>
-            <td class="prod-name">MgK ASPARTATE 450mg 90s</td>
-            <td class="supplier">FORTIFOOD HEALTH SERVICES</td>
-            <td class="num" style="color:#f1f5f9">R32k</td>
-            <td class="num" style="color:#ef4444">R0</td>
-            <td class="num" style="color:#f59e0b">R1k</td>
-            <td style="font-size:12px;color:#22c55e">Centurion</td>
-            <td style="font-size:12px;color:#ef4444">Glen Village, Edenvale</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">PRIMES</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">PRIMES</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R199k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">35.5%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">826</td>
         </tr><tr>
-            <td class="prod-name">60C BRO BALANCE</td>
-            <td class="supplier">Plants of the Gods</td>
-            <td class="num" style="color:#f1f5f9">R32k</td>
-            <td class="num" style="color:#ef4444">R0</td>
-            <td class="num" style="color:#f1f5f9">R5k</td>
-            <td style="font-size:12px;color:#22c55e">Centurion</td>
-            <td style="font-size:12px;color:#ef4444">Glen Village</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">Genologix</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">GENO</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R196k</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">32.7%</td>
+            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">985</td>
         </tr></tbody>
     </table>
 </div>
 
-<!-- Supplier Intelligence -->
-<div class="supplier-section">
-    <h3 style="font-size:18px;font-weight:800;margin-bottom:6px">🏭 Supplier Intelligence (All Stores Combined)</h3>
-    <div class="cross-narrative">Revenue contribution, GP quality, and product count per supplier. High rev + low GP = renegotiation target. Low rev + many products = range review candidate.</div>
-    <table class="data-table">
-        <thead><tr><th>Supplier</th><th>Code</th><th>Annual Rev</th><th>GP%</th><th>Products</th><th>Rev/Product</th></tr></thead>
-        <tbody><tr>
-            <td style="font-size:13px">DS INTERNATIONAL</td>
-            <td class="dim" style="font-size:12px">DSI</td>
-            <td class="num">R1.8M</td>
-            <td class="num" style="color:#94a3b8">35.5%</td>
-            <td class="num dim">427</td>
-            <td class="num dim">R4k</td>
-        </tr><tr>
-            <td style="font-size:13px">LONGEVITY SUPPLEMENTS PTY LTD</td>
-            <td class="dim" style="font-size:12px">WILLOW</td>
-            <td class="num">R1.4M</td>
-            <td class="num" style="color:#22c55e">44.1%</td>
-            <td class="num dim">560</td>
-            <td class="num dim">R3k</td>
-        </tr><tr>
-            <td style="font-size:13px">NATROCEUTICS SA</td>
-            <td class="dim" style="font-size:12px">NATRO</td>
-            <td class="num">R1.3M</td>
-            <td class="num" style="color:#94a3b8">31.0%</td>
-            <td class="num dim">171</td>
-            <td class="num dim">R8k</td>
-        </tr><tr>
-            <td style="font-size:13px">Interlife Distributors</td>
-            <td class="dim" style="font-size:12px">IL</td>
-            <td class="num">R892k</td>
-            <td class="num" style="color:#94a3b8">35.6%</td>
-            <td class="num dim">196</td>
-            <td class="num dim">R5k</td>
-        </tr><tr>
-            <td style="font-size:13px">LOVE YOURSELF BREADZ</td>
-            <td class="dim" style="font-size:12px">LOVE</td>
-            <td class="num">R853k</td>
-            <td class="num" style="color:#ef4444">20.9%</td>
-            <td class="num dim">180</td>
-            <td class="num dim">R5k</td>
-        </tr><tr>
-            <td style="font-size:13px">PHYTOCEUTICS</td>
-            <td class="dim" style="font-size:12px">COYNE</td>
-            <td class="num">R676k</td>
-            <td class="num" style="color:#94a3b8">34.3%</td>
-            <td class="num dim">205</td>
-            <td class="num dim">R3k</td>
-        </tr><tr>
-            <td style="font-size:13px">AMIPRO</td>
-            <td class="dim" style="font-size:12px">AMIPRO</td>
-            <td class="num">R652k</td>
-            <td class="num" style="color:#94a3b8">32.5%</td>
-            <td class="num dim">206</td>
-            <td class="num dim">R3k</td>
-        </tr><tr>
-            <td style="font-size:13px">WELL I AM</td>
-            <td class="dim" style="font-size:12px">NN</td>
-            <td class="num">R573k</td>
-            <td class="num" style="color:#94a3b8">35.4%</td>
-            <td class="num dim">256</td>
-            <td class="num dim">R2k</td>
-        </tr><tr>
-            <td style="font-size:13px">NUTRIGREEN(Pty) Ltd</td>
-            <td class="dim" style="font-size:12px">NUG</td>
-            <td class="num">R565k</td>
-            <td class="num" style="color:#22c55e">42.4%</td>
-            <td class="num dim">238</td>
-            <td class="num dim">R2k</td>
-        </tr><tr>
-            <td style="font-size:13px">ECO VALLEY NUTRITION</td>
-            <td class="dim" style="font-size:12px">EVN</td>
-            <td class="num">R561k</td>
-            <td class="num" style="color:#94a3b8">34.1%</td>
-            <td class="num dim">46</td>
-            <td class="num dim">R12k</td>
-        </tr><tr>
-            <td style="font-size:13px">VERHAKI</td>
-            <td class="dim" style="font-size:12px">VERHAKI</td>
-            <td class="num">R533k</td>
-            <td class="num" style="color:#94a3b8">31.4%</td>
-            <td class="num dim">223</td>
-            <td class="num dim">R2k</td>
-        </tr><tr>
-            <td style="font-size:13px">PMR NUTRITION</td>
-            <td class="dim" style="font-size:12px">PN</td>
-            <td class="num">R504k</td>
-            <td class="num" style="color:#94a3b8">35.9%</td>
-            <td class="num dim">76</td>
-            <td class="num dim">R7k</td>
-        </tr><tr>
-            <td style="font-size:13px">GREEN PHARM SOUTH AFRICA</td>
-            <td class="dim" style="font-size:12px">GP</td>
-            <td class="num">R437k</td>
-            <td class="num" style="color:#94a3b8">34.0%</td>
-            <td class="num dim">468</td>
-            <td class="num dim">R934</td>
-        </tr><tr>
-            <td style="font-size:13px">NEOGENESIS HEALTH PRODUCTS</td>
-            <td class="dim" style="font-size:12px">NG</td>
-            <td class="num">R419k</td>
-            <td class="num" style="color:#22c55e">42.1%</td>
-            <td class="num dim">149</td>
-            <td class="num dim">R3k</td>
-        </tr><tr>
-            <td style="font-size:13px">PRIME HEALTH HOLDINGS</td>
-            <td class="dim" style="font-size:12px">PRIMES</td>
-            <td class="num">R406k</td>
-            <td class="num" style="color:#94a3b8">36.0%</td>
-            <td class="num dim">130</td>
-            <td class="num dim">R3k</td>
-        </tr><tr>
-            <td style="font-size:13px">ESCENTIA PRODUCTS</td>
-            <td class="dim" style="font-size:12px">ESCP</td>
-            <td class="num">R343k</td>
-            <td class="num" style="color:#94a3b8">34.7%</td>
-            <td class="num dim">453</td>
-            <td class="num dim">R758</td>
-        </tr><tr>
-            <td style="font-size:13px">Solgar C011175</td>
-            <td class="dim" style="font-size:12px">SOL</td>
-            <td class="num">R294k</td>
-            <td class="num" style="color:#94a3b8">37.9%</td>
-            <td class="num dim">167</td>
-            <td class="num dim">R2k</td>
-        </tr><tr>
-            <td style="font-size:13px">The Real Thing Food Supplement</td>
-            <td class="dim" style="font-size:12px">TRTFC</td>
-            <td class="num">R292k</td>
-            <td class="num" style="color:#94a3b8">30.8%</td>
-            <td class="num dim">68</td>
-            <td class="num dim">R4k</td>
-        </tr><tr>
-            <td style="font-size:13px">GENOLOGIX DISTRIBUTORS PTY LTD</td>
-            <td class="dim" style="font-size:12px">GENO</td>
-            <td class="num">R272k</td>
-            <td class="num" style="color:#94a3b8">32.8%</td>
-            <td class="num dim">109</td>
-            <td class="num dim">R2k</td>
-        </tr><tr>
-            <td style="font-size:13px">CIMO DISTRIBUTION CC</td>
-            <td class="dim" style="font-size:12px">CIMO</td>
-            <td class="num">R248k</td>
-            <td class="num" style="color:#94a3b8">32.7%</td>
-            <td class="num dim">128</td>
-            <td class="num dim">R2k</td>
-        </tr><tr>
-            <td style="font-size:13px">YOUR WELLBEING</td>
-            <td class="dim" style="font-size:12px">YW</td>
-            <td class="num">R245k</td>
-            <td class="num" style="color:#94a3b8">33.8%</td>
-            <td class="num dim">92</td>
-            <td class="num dim">R3k</td>
-        </tr><tr>
-            <td style="font-size:13px">BEAUTY ENCAPSULATED</td>
-            <td class="dim" style="font-size:12px">BE</td>
-            <td class="num">R236k</td>
-            <td class="num" style="color:#22c55e">41.1%</td>
-            <td class="num dim">19</td>
-            <td class="num dim">R12k</td>
-        </tr><tr>
-            <td style="font-size:13px">FEROXII NATURALS</td>
-            <td class="dim" style="font-size:12px">FERO</td>
-            <td class="num">R235k</td>
-            <td class="num" style="color:#94a3b8">30.3%</td>
-            <td class="num dim">48</td>
-            <td class="num dim">R5k</td>
-        </tr><tr>
-            <td style="font-size:13px">SFERA BIO NUTRITION</td>
-            <td class="dim" style="font-size:12px">SFERA</td>
-            <td class="num">R230k</td>
-            <td class="num" style="color:#94a3b8">39.0%</td>
-            <td class="num dim">58</td>
-            <td class="num dim">R4k</td>
-        </tr><tr>
-            <td style="font-size:13px">CHINAHERB</td>
-            <td class="dim" style="font-size:12px">CHINA</td>
-            <td class="num">R218k</td>
-            <td class="num" style="color:#94a3b8">34.0%</td>
-            <td class="num dim">138</td>
-            <td class="num dim">R2k</td>
-        </tr></tbody>
-    </table>
+<!-- Footer -->
+<div style="text-align:center;padding:20px;font-size:12px;color:#64748b">
+    Onelife Intelligence · 19 March 2026 · 3 stores + online · Auto-refreshes every 30 min
 </div>
 
-
-        <div class="cross-section">
-            <h3>📈 Website Analytics (GA4 · 28 days)</h3>
-            <div class="store-kpis" style="margin-bottom:16px">
-                <div class="skpi"><div class="skpi-label">SESSIONS</div><div class="skpi-val" style="color:#3b82f6">35,926</div><div class="skpi-sub">32,764 users</div></div>
-                <div class="skpi"><div class="skpi-label">CONV. RATE</div><div class="skpi-val" style="color:#ef4444">0.14%</div><div class="skpi-sub">51 orders</div></div>
-                <div class="skpi"><div class="skpi-label">ONLINE REV</div><div class="skpi-val">R43k</div><div class="skpi-sub">AOV R839</div></div>
-                <div class="skpi"><div class="skpi-label">AVG SESSION</div><div class="skpi-val">82s</div><div class="skpi-sub">2.3 pages/session</div></div>
-            </div>
-            <div class="narrative">Conversion rate is 0.14%. Industry average for health e-commerce is 1.5-2.5%. With 35,926 sessions, even a 0.5% lift = 179 extra orders.</div>
-            <div class="narrative" style="border-left-color:#f59e0b;margin-top:8px">Funnel: 35,926 sessions → 761 add-to-carts (2.1%) → 132 checkouts (17% of carts) → 51 purchases (39% of checkouts). AOV: R839.</div>
-
-            <div class="table-title" style="margin-top:16px">Traffic Sources → Conversions</div>
-            <table class="data-table">
-                <thead><tr><th>Channel</th><th>Sessions</th><th>Users</th><th>Purchases</th><th>Revenue</th><th>Conv%</th></tr></thead>
-                <tbody><tr>
-                <td style="font-size:13px">Paid Search</td>
-                <td class="num">18,724</td>
-                <td class="num">16,484</td>
-                <td class="num" style="color:#f59e0b">21</td>
-                <td class="num">R16k</td>
-                <td class="num" style="color:#f59e0b">0.11%</td>
-            </tr><tr>
-                <td style="font-size:13px">Direct</td>
-                <td class="num">9,371</td>
-                <td class="num">9,133</td>
-                <td class="num" style="color:#f59e0b">7</td>
-                <td class="num">R5k</td>
-                <td class="num" style="color:#f59e0b">0.07%</td>
-            </tr><tr>
-                <td style="font-size:13px">Organic Search</td>
-                <td class="num">3,917</td>
-                <td class="num">3,253</td>
-                <td class="num" style="color:#f59e0b">11</td>
-                <td class="num">R9k</td>
-                <td class="num" style="color:#f59e0b">0.28%</td>
-            </tr><tr>
-                <td style="font-size:13px">Unassigned</td>
-                <td class="num">2,470</td>
-                <td class="num">2,405</td>
-                <td class="num" style="color:#f59e0b">7</td>
-                <td class="num">R5k</td>
-                <td class="num" style="color:#f59e0b">0.28%</td>
-            </tr><tr>
-                <td style="font-size:13px">Organic Social</td>
-                <td class="num">811</td>
-                <td class="num">799</td>
-                <td class="num" style="color:#f59e0b">1</td>
-                <td class="num">R3k</td>
-                <td class="num" style="color:#f59e0b">0.12%</td>
-            </tr><tr>
-                <td style="font-size:13px">Cross-network</td>
-                <td class="num">790</td>
-                <td class="num">791</td>
-                <td class="num" style="color:#ef4444">0</td>
-                <td class="num">R0</td>
-                <td class="num" style="color:#ef4444">0.00%</td>
-            </tr><tr>
-                <td style="font-size:13px">Paid Social</td>
-                <td class="num">507</td>
-                <td class="num">485</td>
-                <td class="num" style="color:#ef4444">0</td>
-                <td class="num">R0</td>
-                <td class="num" style="color:#ef4444">0.00%</td>
-            </tr><tr>
-                <td style="font-size:13px">Email</td>
-                <td class="num">188</td>
-                <td class="num">120</td>
-                <td class="num" style="color:#22c55e">1</td>
-                <td class="num">R895</td>
-                <td class="num" style="color:#22c55e">0.53%</td>
-            </tr><tr>
-                <td style="font-size:13px">Referral</td>
-                <td class="num">117</td>
-                <td class="num">84</td>
-                <td class="num" style="color:#22c55e">1</td>
-                <td class="num">R2k</td>
-                <td class="num" style="color:#22c55e">0.85%</td>
-            </tr><tr>
-                <td style="font-size:13px">Organic Shopping</td>
-                <td class="num">52</td>
-                <td class="num">35</td>
-                <td class="num" style="color:#22c55e">2</td>
-                <td class="num">R2k</td>
-                <td class="num" style="color:#22c55e">3.85%</td>
-            </tr></tbody>
-            </table>
-        </div>
-
-        <div class="cross-section">
-            <h3>🔍 SEO Performance (Google Search Console · 28 days)</h3>
-            <div class="store-kpis" style="margin-bottom:16px">
-                <div class="skpi"><div class="skpi-label">ORGANIC CLICKS</div><div class="skpi-val" style="color:#22c55e">300</div></div>
-                <div class="skpi"><div class="skpi-label">IMPRESSIONS</div><div class="skpi-val">2,536</div></div>
-                <div class="skpi"><div class="skpi-label">AVG CTR</div><div class="skpi-val">11.8%</div></div>
-                <div class="skpi"><div class="skpi-label">NON-BRANDED</div><div class="skpi-val" style="color:#22c55e">137</div><div class="skpi-sub">46% of clicks</div></div>
-            </div>
-            <div class="narrative">300 organic clicks from 2,536 impressions (11.8% CTR). 163 clicks (54%) are branded searches. Only 137 clicks from non-branded queries. Decent non-branded share. Content is attracting new visitors.</div>
-
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:16px">
-                <div>
-                    <div class="table-title">Top Search Queries</div>
-                    <table class="data-table">
-                        <thead><tr><th>Query</th><th>Clicks</th><th>Impressions</th><th>CTR</th><th>Position</th></tr></thead>
-                        <tbody><tr>
-                <td style="font-size:12px">one life health<span style="background:#3b82f620;color:#3b82f6;padding:2px 6px;border-radius:8px;font-size:10px;margin-left:4px">BRAND</span></td>
-                <td class="num">52</td>
-                <td class="num dim">280</td>
-                <td class="num">18.6%</td>
-                <td class="num" style="color:#22c55e">1.5</td>
-            </tr><tr>
-                <td style="font-size:12px">one life health supermarket<span style="background:#3b82f620;color:#3b82f6;padding:2px 6px;border-radius:8px;font-size:10px;margin-left:4px">BRAND</span></td>
-                <td class="num">31</td>
-                <td class="num dim">192</td>
-                <td class="num">16.1%</td>
-                <td class="num" style="color:#f59e0b">4.1</td>
-            </tr><tr>
-                <td style="font-size:12px">noviful hair growth serum</td>
-                <td class="num">23</td>
-                <td class="num dim">124</td>
-                <td class="num">18.5%</td>
-                <td class="num" style="color:#22c55e">2.5</td>
-            </tr><tr>
-                <td style="font-size:12px">one life health store<span style="background:#3b82f620;color:#3b82f6;padding:2px 6px;border-radius:8px;font-size:10px;margin-left:4px">BRAND</span></td>
-                <td class="num">18</td>
-                <td class="num dim">37</td>
-                <td class="num">48.6%</td>
-                <td class="num" style="color:#22c55e">1.4</td>
-            </tr><tr>
-                <td style="font-size:12px">onelife health shop<span style="background:#3b82f620;color:#3b82f6;padding:2px 6px;border-radius:8px;font-size:10px;margin-left:4px">BRAND</span></td>
-                <td class="num">15</td>
-                <td class="num dim">83</td>
-                <td class="num">18.1%</td>
-                <td class="num" style="color:#22c55e">1.0</td>
-            </tr><tr>
-                <td style="font-size:12px">noviful</td>
-                <td class="num">14</td>
-                <td class="num dim">102</td>
-                <td class="num">13.7%</td>
-                <td class="num" style="color:#f59e0b">4.8</td>
-            </tr><tr>
-                <td style="font-size:12px">ocean therapy sea mag spray</td>
-                <td class="num">14</td>
-                <td class="num dim">27</td>
-                <td class="num">51.9%</td>
-                <td class="num" style="color:#22c55e">1</td>
-            </tr><tr>
-                <td style="font-size:12px">one life health centurion<span style="background:#3b82f620;color:#3b82f6;padding:2px 6px;border-radius:8px;font-size:10px;margin-left:4px">BRAND</span></td>
-                <td class="num">13</td>
-                <td class="num dim">57</td>
-                <td class="num">22.8%</td>
-                <td class="num" style="color:#22c55e">1.1</td>
-            </tr><tr>
-                <td style="font-size:12px">health shop hennopspark</td>
-                <td class="num">12</td>
-                <td class="num dim">54</td>
-                <td class="num">22.2%</td>
-                <td class="num" style="color:#22c55e">1.2</td>
-            </tr><tr>
-                <td style="font-size:12px">health shops near me</td>
-                <td class="num">12</td>
-                <td class="num dim">455</td>
-                <td class="num">2.6%</td>
-                <td class="num" style="color:#f59e0b">6.0</td>
-            </tr><tr>
-                <td style="font-size:12px">one life health shop<span style="background:#3b82f620;color:#3b82f6;padding:2px 6px;border-radius:8px;font-size:10px;margin-left:4px">BRAND</span></td>
-                <td class="num">12</td>
-                <td class="num dim">46</td>
-                <td class="num">26.1%</td>
-                <td class="num" style="color:#22c55e">1.6</td>
-            </tr><tr>
-                <td style="font-size:12px">one life health shop centurion<span style="background:#3b82f620;color:#3b82f6;padding:2px 6px;border-radius:8px;font-size:10px;margin-left:4px">BRAND</span></td>
-                <td class="num">12</td>
-                <td class="num dim">39</td>
-                <td class="num">30.8%</td>
-                <td class="num" style="color:#22c55e">1.0</td>
-            </tr><tr>
-                <td style="font-size:12px">best omega 3 supplement south africa</td>
-                <td class="num">10</td>
-                <td class="num dim">78</td>
-                <td class="num">12.8%</td>
-                <td class="num" style="color:#22c55e">1.9</td>
-            </tr><tr>
-                <td style="font-size:12px">one health shop</td>
-                <td class="num">10</td>
-                <td class="num dim">35</td>
-                <td class="num">28.6%</td>
-                <td class="num" style="color:#22c55e">1.0</td>
-            </tr><tr>
-                <td style="font-size:12px">onelife<span style="background:#3b82f620;color:#3b82f6;padding:2px 6px;border-radius:8px;font-size:10px;margin-left:4px">BRAND</span></td>
-                <td class="num">10</td>
-                <td class="num dim">431</td>
-                <td class="num">2.3%</td>
-                <td class="num" style="color:#22c55e">3.0</td>
-            </tr></tbody>
-                    </table>
-                </div>
-                <div>
-                    <div class="table-title">Top Landing Pages</div>
-                    <table class="data-table">
-                        <thead><tr><th>Page</th><th>Clicks</th><th>Impressions</th><th>Pos</th></tr></thead>
-                        <tbody><tr>
-                <td style="font-size:12px;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/</td>
-                <td class="num">533</td>
-                <td class="num dim">14,633</td>
-                <td class="num" style="color:#f59e0b">7.8</td>
-            </tr><tr>
-                <td style="font-size:12px;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/blogs/the-ultimate-parasite-cleanse/21-days-to-a-healt</td>
-                <td class="num">107</td>
-                <td class="num dim">13,354</td>
-                <td class="num" style="color:#f59e0b">5.6</td>
-            </tr><tr>
-                <td style="font-size:12px;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/blogs/health-wellness-hub/best-protein-supplements-sou</td>
-                <td class="num">51</td>
-                <td class="num dim">4,587</td>
-                <td class="num" style="color:#22c55e">5.0</td>
-            </tr><tr>
-                <td style="font-size:12px;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/products/6009616300928</td>
-                <td class="num">34</td>
-                <td class="num dim">3,003</td>
-                <td class="num" style="color:#22c55e">3.1</td>
-            </tr><tr>
-                <td style="font-size:12px;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/blogs/health-wellness-hub/21-days-to-a-healthier-you</td>
-                <td class="num">33</td>
-                <td class="num dim">4,724</td>
-                <td class="num" style="color:#f59e0b">5.3</td>
-            </tr><tr>
-                <td style="font-size:12px;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/blogs/health-wellness-hub/omega-3-fish-oil-benefits-be</td>
-                <td class="num">30</td>
-                <td class="num dim">2,237</td>
-                <td class="num" style="color:#ef4444">12.8</td>
-            </tr><tr>
-                <td style="font-size:12px;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/blogs/health-wellness-hub/weight-loss-supplements-sout</td>
-                <td class="num">30</td>
-                <td class="num dim">1,718</td>
-                <td class="num" style="color:#f59e0b">9.9</td>
-            </tr><tr>
-                <td style="font-size:12px;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/blogs/health-wellness-hub/gut-health-supplements-south</td>
-                <td class="num">28</td>
-                <td class="num dim">2,026</td>
-                <td class="num" style="color:#f59e0b">7.0</td>
-            </tr><tr>
-                <td style="font-size:12px;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/products/tim-jan-natural-tonic-375ml</td>
-                <td class="num">26</td>
-                <td class="num dim">3,826</td>
-                <td class="num" style="color:#22c55e">3.5</td>
-            </tr><tr>
-                <td style="font-size:12px;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/products/6001651016604</td>
-                <td class="num">25</td>
-                <td class="num dim">3,812</td>
-                <td class="num" style="color:#22c55e">3.5</td>
-            </tr><tr>
-                <td style="font-size:12px;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/products/600000000592</td>
-                <td class="num">20</td>
-                <td class="num dim">1,805</td>
-                <td class="num" style="color:#f59e0b">6.6</td>
-            </tr><tr>
-                <td style="font-size:12px;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/blogs/health-wellness-hub/best-collagen-supplements-so</td>
-                <td class="num">19</td>
-                <td class="num dim">1,254</td>
-                <td class="num" style="color:#f59e0b">5.6</td>
-            </tr></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-<div class="footer">ONELIFE INTELLIGENCE × JARVIS 🦞 × 19 March 2026 · Auto-refresh 30 min</div>
-
-</div>
 </body>
 </html>
