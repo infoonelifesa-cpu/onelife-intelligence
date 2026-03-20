@@ -1,0 +1,1358 @@
+{
+ "generated": "21 March 2026 01:38",
+ "date_range": "2026-03-01 to 2026-03-20",
+ "kpi": {
+  "mtd_rev": 908717.31,
+  "mtd_gp": 33.9,
+  "mtd_days": 17,
+  "avg_daily": 53454.0,
+  "cen_mtd": 429008.29,
+  "gvs_mtd": 225950.62,
+  "edn_mtd": 253758.4,
+  "cen_trend": -31.7,
+  "gvs_trend": 51.0,
+  "edn_trend": 38.2,
+  "today_rev": 36269.69,
+  "today_gp": 35.6
+ },
+ "narrative": "March is tracking well \u2014 <strong>R908,717 MTD</strong> across 3 stores over 17 trading days. CEN is your engine: <strong>R429,008 MTD</strong>, running 32% below Feb\u2019s daily pace. GVS at R225,951 is 51% ahead of Feb daily (strong growth). EDN at R253,758 is 38% ahead of Feb \u2014 on track. Top mover at CEN: <strong>MAG 7/87 60'S</strong> (R177,030). Watch <strong>LOVE YOURSELF BREADZ</strong> (LOVE) \u2014 lowest GP in top 20 at 20.9%. \u26a0\ufe0f EDN stock crisis: <strong>22 items completely out of stock</strong>, 20 more dangerously low \u2014 every day is lost GP. Blended GP: <strong>33.9%</strong> \u26a0 below target. This week: CEN R174,565 | GVS R72,819 | EDN R86,316.",
+ "gaps": [
+  {
+   "desc": "MgK ASPARTATE 450mg 90s",
+   "rev": 34874.0,
+   "qty": 239,
+   "gp": 33.3,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "BRD FLAX",
+   "rev": 33950.0,
+   "qty": 431,
+   "gp": 22.9,
+   "miss": [
+    "EDN"
+   ]
+  },
+  {
+   "desc": "60C BRO BALANCE",
+   "rev": 29160.0,
+   "qty": 82,
+   "gp": 31.3,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "BODYMAG 120VC",
+   "rev": 27316.0,
+   "qty": 95,
+   "gp": 32.8,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "CRITICAL CARE 500ML",
+   "rev": 24917.0,
+   "qty": 47,
+   "gp": 31.7,
+   "miss": [
+    "EDN"
+   ]
+  },
+  {
+   "desc": "COQ10 BIOMAX",
+   "rev": 24449.0,
+   "qty": 74,
+   "gp": 32.9,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "QUERCETIN COMPLEX 60S",
+   "rev": 23518.0,
+   "qty": 98,
+   "gp": 34.8,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "ENERGY FLOW 45S",
+   "rev": 23446.0,
+   "qty": 47,
+   "gp": 35.9,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "BLUE LIGHTNING 500ML",
+   "rev": 23136,
+   "qty": 67,
+   "gp": 30.5,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "LIVERTONE 60C",
+   "rev": 22770.0,
+   "qty": 119,
+   "gp": 41.1,
+   "miss": [
+    "GVS",
+    "EDN"
+   ]
+  },
+  {
+   "desc": "POTCILYTE 90C",
+   "rev": 22176.0,
+   "qty": 58,
+   "gp": 31.8,
+   "miss": [
+    "GVS",
+    "EDN"
+   ]
+  },
+  {
+   "desc": "CALM FLOW 45S",
+   "rev": 21753.0,
+   "qty": 44,
+   "gp": 35.3,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "VITAMIN B5 60'S",
+   "rev": 21484.0,
+   "qty": 103,
+   "gp": 32.2,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "ZINC & GINGER 60'S",
+   "rev": 21200.0,
+   "qty": 124,
+   "gp": 35.5,
+   "miss": [
+    "GVS",
+    "EDN"
+   ]
+  },
+  {
+   "desc": "BONE SUPREME 500'S",
+   "rev": 20694.0,
+   "qty": 25,
+   "gp": 25.5,
+   "miss": [
+    "GVS",
+    "EDN"
+   ]
+  },
+  {
+   "desc": "BIO BERBERINE 60C",
+   "rev": 19771.0,
+   "qty": 55,
+   "gp": 38.3,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "5HTP 60'S",
+   "rev": 19508.0,
+   "qty": 97,
+   "gp": 31.6,
+   "miss": [
+    "EDN"
+   ]
+  },
+  {
+   "desc": "BLOOD PRESSURE 60CAP",
+   "rev": 19272.0,
+   "qty": 75,
+   "gp": 35.2,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "HAIR SKIN & NAILS 90S",
+   "rev": 18618.0,
+   "qty": 39,
+   "gp": 42.4,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "RELAX 60T",
+   "rev": 18036.0,
+   "qty": 114,
+   "gp": 41.4,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "DORMEASAN 50ML",
+   "rev": 17597.0,
+   "qty": 82,
+   "gp": 32.6,
+   "miss": [
+    "GVS",
+    "EDN"
+   ]
+  },
+  {
+   "desc": "LENNON PEPPERMINT DROPS",
+   "rev": 17591.0,
+   "qty": 476,
+   "gp": 25.0,
+   "miss": [
+    "GVS",
+    "EDN"
+   ]
+  },
+  {
+   "desc": "THIAMINE B1 500MG 60",
+   "rev": 17253.0,
+   "qty": 42,
+   "gp": 32.0,
+   "miss": [
+    "GVS",
+    "EDN"
+   ]
+  },
+  {
+   "desc": "MAGN COMPLEX 60VC",
+   "rev": 17187.0,
+   "qty": 87,
+   "gp": 33.7,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "INFLAM X 60S",
+   "rev": 15327.0,
+   "qty": 62,
+   "gp": 34.0,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "CANDLES REPLACEMENT FILTER",
+   "rev": 14961.0,
+   "qty": 37,
+   "gp": 28.3,
+   "miss": [
+    "GVS",
+    "EDN"
+   ]
+  },
+  {
+   "desc": "ANTIOXIDANT 30s",
+   "rev": 14951.0,
+   "qty": 54,
+   "gp": 35.4,
+   "miss": [
+    "GVS",
+    "EDN"
+   ]
+  },
+  {
+   "desc": "COENZYME Q10 60'S",
+   "rev": 14491.0,
+   "qty": 48,
+   "gp": 37.4,
+   "miss": [
+    "GVS"
+   ]
+  },
+  {
+   "desc": "QUERCETIN/ BROM 120C",
+   "rev": 14242.0,
+   "qty": 19,
+   "gp": 34.7,
+   "miss": [
+    "EDN"
+   ]
+  },
+  {
+   "desc": "BF INTESTIFLORA (90 CAP)",
+   "rev": 14225.0,
+   "qty": 63,
+   "gp": 31.0,
+   "miss": [
+    "GVS"
+   ]
+  }
+ ],
+ "suppliers": [
+  {
+   "code": "DSI",
+   "name": "DS INTERNATIONAL",
+   "rev": 1829671.0,
+   "gp": 35.4,
+   "qty": 5118,
+   "abc": "A"
+  },
+  {
+   "code": "WILLOW",
+   "name": "LONGEVITY SUPPLEMENTS PTY LT",
+   "rev": 1413629.0,
+   "gp": 44.1,
+   "qty": 6593,
+   "abc": "A"
+  },
+  {
+   "code": "NATRO",
+   "name": "NATROCEUTICS SA",
+   "rev": 1266006.0,
+   "gp": 31.0,
+   "qty": 3854,
+   "abc": "A"
+  },
+  {
+   "code": "IL",
+   "name": "Interlife Distributors",
+   "rev": 921356.0,
+   "gp": 35.7,
+   "qty": 5325,
+   "abc": "A"
+  },
+  {
+   "code": "LOVE",
+   "name": "LOVE YOURSELF BREADZ",
+   "rev": 831982.0,
+   "gp": 20.9,
+   "qty": 12156,
+   "abc": "A"
+  },
+  {
+   "code": "COYNE",
+   "name": "PHYTOCEUTICS",
+   "rev": 674254.0,
+   "gp": 34.4,
+   "qty": 1984,
+   "abc": "A"
+  },
+  {
+   "code": "AMIPRO",
+   "name": "AMIPRO",
+   "rev": 632339.0,
+   "gp": 32.1,
+   "qty": 1334,
+   "abc": "A"
+  },
+  {
+   "code": "NUG",
+   "name": "NUTRIGREEN",
+   "rev": 561423.0,
+   "gp": 42.4,
+   "qty": 4156,
+   "abc": "A"
+  },
+  {
+   "code": "NN",
+   "name": "WELL I AM",
+   "rev": 553217.0,
+   "gp": 35.6,
+   "qty": 3063,
+   "abc": "A"
+  },
+  {
+   "code": "VERHAKI",
+   "name": "VERHAKI",
+   "rev": 549669.0,
+   "gp": 31.1,
+   "qty": 2565,
+   "abc": "A"
+  },
+  {
+   "code": "EVN",
+   "name": "ECO VALLEY NUTRITION",
+   "rev": 545278.0,
+   "gp": 34.0,
+   "qty": 2833,
+   "abc": "A"
+  },
+  {
+   "code": "PN",
+   "name": "PMR NUTRITION",
+   "rev": 495706.0,
+   "gp": 35.9,
+   "qty": 2528,
+   "abc": "A"
+  },
+  {
+   "code": "GP",
+   "name": "GREEN PHARM SOUTH AFRICA",
+   "rev": 431174.0,
+   "gp": 33.9,
+   "qty": 3592,
+   "abc": "A"
+  },
+  {
+   "code": "NG",
+   "name": "NEOGENESIS HEALTH PRODUCTS",
+   "rev": 397429.0,
+   "gp": 41.7,
+   "qty": 1286,
+   "abc": "A"
+  },
+  {
+   "code": "PRIMES",
+   "name": "PRIME HEALTH HOLDINGS",
+   "rev": 380269.0,
+   "gp": 35.8,
+   "qty": 1859,
+   "abc": "A"
+  },
+  {
+   "code": "ESCP",
+   "name": "ESCENTIA PRODUCTS",
+   "rev": 345510.0,
+   "gp": 34.7,
+   "qty": 3138,
+   "abc": "A"
+  },
+  {
+   "code": "TRTFC",
+   "name": "The Real Thing Food Suppleme",
+   "rev": 295905.0,
+   "gp": 30.9,
+   "qty": 1041,
+   "abc": "B"
+  },
+  {
+   "code": "SOL",
+   "name": "Solgar C011175",
+   "rev": 285563.0,
+   "gp": 38.1,
+   "qty": 1118,
+   "abc": "B"
+  },
+  {
+   "code": "GENO",
+   "name": "GENOLOGIX DISTRIBUTORS PTY L",
+   "rev": 275280.0,
+   "gp": 32.2,
+   "qty": 1398,
+   "abc": "B"
+  },
+  {
+   "code": "CIMO",
+   "name": "CIMO DISTRIBUTION CC",
+   "rev": 252749.0,
+   "gp": 32.8,
+   "qty": 1875,
+   "abc": "B"
+  },
+  {
+   "code": "YW",
+   "name": "YOUR WELLBEING",
+   "rev": 242622.0,
+   "gp": 34.3,
+   "qty": 711,
+   "abc": "B"
+  },
+  {
+   "code": "FERO",
+   "name": "FEROXII NATURALS",
+   "rev": 239389.0,
+   "gp": 30.1,
+   "qty": 1185,
+   "abc": "B"
+  },
+  {
+   "code": "SFERA",
+   "name": "SFERA BIO NUTRITION",
+   "rev": 228428.0,
+   "gp": 38.3,
+   "qty": 632,
+   "abc": "B"
+  },
+  {
+   "code": "PROD",
+   "name": "PRO DISTRIBUTORS",
+   "rev": 210526.0,
+   "gp": 32.6,
+   "qty": 550,
+   "abc": "B"
+  },
+  {
+   "code": "CHINA",
+   "name": "CHINAHERB",
+   "rev": 209407.0,
+   "gp": 34.2,
+   "qty": 1073,
+   "abc": "B"
+  },
+  {
+   "code": "BE",
+   "name": "BEAUTY ENCAPSULATED",
+   "rev": 207326.0,
+   "gp": 41.0,
+   "qty": 499,
+   "abc": "B"
+  },
+  {
+   "code": "INF",
+   "name": "Infinity Therapeutics Africa",
+   "rev": 201910.0,
+   "gp": 36.4,
+   "qty": 328,
+   "abc": "C"
+  },
+  {
+   "code": "ALTW",
+   "name": "ALTWELL",
+   "rev": 201137.0,
+   "gp": 30.7,
+   "qty": 432,
+   "abc": "C"
+  },
+  {
+   "code": "SFS",
+   "name": "SOARING FREE SUPERFOODS",
+   "rev": 200985.0,
+   "gp": 31.7,
+   "qty": 903,
+   "abc": "C"
+  },
+  {
+   "code": "ALMANS",
+   "name": "ALMAN'S DRIED FRUIT & NUTS",
+   "rev": 200426.0,
+   "gp": 27.2,
+   "qty": 3586,
+   "abc": "C"
+  }
+ ],
+ "matrix": {
+  "CEN": {
+   "rev": 1246043.0,
+   "gp": 424.4,
+   "txn": 5575,
+   "basket": 224.0,
+   "top": [
+    {
+     "desc": "LIVERTONE 60C",
+     "rev": 22770.0,
+     "idx": 999
+    },
+    {
+     "desc": "ZINC & GINGER 60'S",
+     "rev": 21200.0,
+     "idx": 999
+    },
+    {
+     "desc": "POTCILYTE 90C",
+     "rev": 22176.0,
+     "idx": 999
+    },
+    {
+     "desc": "DORMEASAN 50ML",
+     "rev": 17597.0,
+     "idx": 999
+    },
+    {
+     "desc": "THIAMINE B1 500MG 60",
+     "rev": 17253.0,
+     "idx": 999
+    }
+   ]
+  },
+  "GVS": {
+   "rev": 267354.0,
+   "gp": 389.4,
+   "txn": 939,
+   "basket": 285.0,
+   "top": [
+    {
+     "desc": "SCO ULTRACLEAR RENEW DETOX PWD 756G",
+     "rev": 5289.0,
+     "idx": 999
+    },
+    {
+     "desc": "NAD PLUS COMP 60VC",
+     "rev": 3909.0,
+     "idx": 999
+    },
+    {
+     "desc": "BODY CLEANSE DETOX PACK",
+     "rev": 1668.0,
+     "idx": 999
+    },
+    {
+     "desc": "ULTRACLEAR PLUS 860G",
+     "rev": 3530.0,
+     "idx": 999
+    },
+    {
+     "desc": "NO85 BOSWELLIA 100ML",
+     "rev": 1607.0,
+     "idx": 999
+    }
+   ]
+  },
+  "EDN": {
+   "rev": 457370.0,
+   "gp": 274.8,
+   "txn": 1383,
+   "basket": 331.0,
+   "top": [
+    {
+     "desc": "NMN & TRANS RESVERATROL 60'S",
+     "rev": 6447.0,
+     "idx": 999
+    },
+    {
+     "desc": "LUCENT 90C",
+     "rev": 2059.0,
+     "idx": 999
+    },
+    {
+     "desc": "NMN NAD + ACTIVATER 30G",
+     "rev": 2810.0,
+     "idx": 999
+    },
+    {
+     "desc": "SCO VEG DETOX CLEANSE",
+     "rev": 3800,
+     "idx": 999
+    },
+    {
+     "desc": "JOINT ACTIVE 30C",
+     "rev": 2084.0,
+     "idx": 999
+    }
+   ]
+  }
+ },
+ "trend": [
+  {
+   "date": "02-10",
+   "cen": 40762.0,
+   "gvs": 15910.0,
+   "edn": 7805.0,
+   "total": 64476.0
+  },
+  {
+   "date": "02-11",
+   "cen": 55710.0,
+   "gvs": 14928.0,
+   "edn": 12598.0,
+   "total": 83236.0
+  },
+  {
+   "date": "02-12",
+   "cen": 48832.0,
+   "gvs": 12840.0,
+   "edn": 7465.0,
+   "total": 69136.0
+  },
+  {
+   "date": "02-13",
+   "cen": 43297.0,
+   "gvs": 7968.0,
+   "edn": 13591.0,
+   "total": 64857.0
+  },
+  {
+   "date": "02-14",
+   "cen": 38830.0,
+   "gvs": 5065.0,
+   "edn": 21535.0,
+   "total": 65430.0
+  },
+  {
+   "date": "02-15",
+   "cen": 0,
+   "gvs": 3906.0,
+   "edn": 13898.0,
+   "total": 17804.0
+  },
+  {
+   "date": "02-16",
+   "cen": 56820.0,
+   "gvs": 12495.0,
+   "edn": 18548.0,
+   "total": 87863.0
+  },
+  {
+   "date": "02-17",
+   "cen": 44731.0,
+   "gvs": 4438.0,
+   "edn": 11980.0,
+   "total": 61149.0
+  },
+  {
+   "date": "02-18",
+   "cen": 51237.0,
+   "gvs": 7722.0,
+   "edn": 2809.0,
+   "total": 61767.0
+  },
+  {
+   "date": "02-19",
+   "cen": 51202.0,
+   "gvs": 6569.0,
+   "edn": 5471.0,
+   "total": 63242.0
+  },
+  {
+   "date": "02-20",
+   "cen": 46083.0,
+   "gvs": 8494.0,
+   "edn": 12174.0,
+   "total": 66750.0
+  },
+  {
+   "date": "02-21",
+   "cen": 50766.0,
+   "gvs": 10932.0,
+   "edn": 14315.0,
+   "total": 76012.0
+  },
+  {
+   "date": "02-22",
+   "cen": 0,
+   "gvs": 2880.0,
+   "edn": 7865.0,
+   "total": 10746.0
+  },
+  {
+   "date": "02-23",
+   "cen": 29893.0,
+   "gvs": 5204.0,
+   "edn": 8376.0,
+   "total": 43473.0
+  },
+  {
+   "date": "03-01",
+   "cen": 1204.0,
+   "gvs": 8630.0,
+   "edn": 12838.0,
+   "total": 22671.0
+  },
+  {
+   "date": "03-02",
+   "cen": 50190.0,
+   "gvs": 6229.0,
+   "edn": 12901.0,
+   "total": 69320.0
+  },
+  {
+   "date": "03-03",
+   "cen": 63121.0,
+   "gvs": 13948.0,
+   "edn": 13651.0,
+   "total": 90720.0
+  },
+  {
+   "date": "03-04",
+   "cen": 74500.0,
+   "gvs": 21092.0,
+   "edn": 10752.0,
+   "total": 106345.0
+  },
+  {
+   "date": "03-05",
+   "cen": 28234.0,
+   "gvs": 10591.0,
+   "edn": 13742.0,
+   "total": 52567.0
+  },
+  {
+   "date": "03-06",
+   "cen": 37341.0,
+   "gvs": 13019.0,
+   "edn": 7072.0,
+   "total": 57432.0
+  },
+  {
+   "date": "03-07",
+   "cen": 86979.0,
+   "gvs": 8149.0,
+   "edn": 14350.0,
+   "total": 109478.0
+  },
+  {
+   "date": "03-08",
+   "cen": 959.0,
+   "gvs": 6998.0,
+   "edn": 15351.0,
+   "total": 23308.0
+  },
+  {
+   "date": "03-09",
+   "cen": 54149.0,
+   "gvs": 11002.0,
+   "edn": 11515.0,
+   "total": 76665.0
+  },
+  {
+   "date": "03-10",
+   "cen": 46401.0,
+   "gvs": 10261.0,
+   "edn": 15507.0,
+   "total": 72170.0
+  },
+  {
+   "date": "03-11",
+   "cen": 68705.0,
+   "gvs": 15221.0,
+   "edn": 17665.0,
+   "total": 101592.0
+  },
+  {
+   "date": "03-12",
+   "cen": 50221.0,
+   "gvs": 12762.0,
+   "edn": 8292.0,
+   "total": 71275.0
+  },
+  {
+   "date": "03-13",
+   "cen": 57392.0,
+   "gvs": 14547.0,
+   "edn": 12091.0,
+   "total": 84030.0
+  },
+  {
+   "date": "03-14",
+   "cen": 62513.0,
+   "gvs": 9511.0,
+   "edn": 14468.0,
+   "total": 86493.0
+  },
+  {
+   "date": "03-17",
+   "cen": 40318.0,
+   "gvs": 13817.0,
+   "edn": 10720.0,
+   "total": 64856.0
+  },
+  {
+   "date": "03-18",
+   "cen": 44259.0,
+   "gvs": 16565.0,
+   "edn": 12172.0,
+   "total": 72996.0
+  }
+ ],
+ "alerts": {
+  "critical": [
+   {
+    "desc": "FLORISH SPORE PROBIOTIC 60C",
+    "stock": 0,
+    "price": 382.66,
+    "co_gp": 45519.46,
+    "gp_pct": 29.0,
+    "supplier": "NH",
+    "daily_gp_lost": 19.0
+   },
+   {
+    "desc": "BRD WHITE RICE",
+    "stock": 0,
+    "price": 71.35,
+    "co_gp": 36354.84,
+    "gp_pct": 18.3,
+    "supplier": "LOVE",
+    "daily_gp_lost": 15.0
+   },
+   {
+    "desc": "NERVE REGENERERATOR 100C",
+    "stock": 0,
+    "price": 516.52,
+    "co_gp": 29387.98,
+    "gp_pct": 41.3,
+    "supplier": "WILLOW",
+    "daily_gp_lost": 12.0
+   },
+   {
+    "desc": "FLEXIJOINT ADVANCED 120'S",
+    "stock": 0,
+    "price": 256.0,
+    "co_gp": 21967.25,
+    "gp_pct": 36.2,
+    "supplier": "IL",
+    "daily_gp_lost": 9.0
+   },
+   {
+    "desc": "SG SUPER HYDRO GEL 200ML",
+    "stock": 0,
+    "price": 168.0,
+    "co_gp": 21696.85,
+    "gp_pct": 36.0,
+    "supplier": "SG",
+    "daily_gp_lost": 9.0
+   },
+   {
+    "desc": "CRITICAL CARE 500ML",
+    "stock": 0,
+    "price": 621.0,
+    "co_gp": 20077.56,
+    "gp_pct": 30.3,
+    "supplier": "CHSA",
+    "daily_gp_lost": 8.0
+   },
+   {
+    "desc": "PCOSITOL 8g 30 SATCHET",
+    "stock": 0,
+    "price": 537.3,
+    "co_gp": 15668.58,
+    "gp_pct": 30.1,
+    "supplier": "DELF",
+    "daily_gp_lost": 6.0
+   },
+   {
+    "desc": "BRD BROWN RICE",
+    "stock": 0,
+    "price": 71.35,
+    "co_gp": 12862.519999999999,
+    "gp_pct": 18.3,
+    "supplier": "LOVE",
+    "daily_gp_lost": 5.0
+   },
+   {
+    "desc": "dc SHILAJIT RESIN 30G",
+    "stock": 0,
+    "price": 433.91,
+    "co_gp": 10799.27,
+    "gp_pct": 34.8,
+    "supplier": "INF",
+    "daily_gp_lost": 4.0
+   },
+   {
+    "desc": "QUERCETIN COMPLEX 60S",
+    "stock": 0,
+    "price": 251.2,
+    "co_gp": 8929.99,
+    "gp_pct": 35.0,
+    "supplier": "IL",
+    "daily_gp_lost": 4.0
+   },
+   {
+    "desc": "C19+IMMUNE BSTR 360G",
+    "stock": 0,
+    "price": 520.87,
+    "co_gp": 8243.73,
+    "gp_pct": 29.5,
+    "supplier": "ALTW",
+    "daily_gp_lost": 3.0
+   },
+   {
+    "desc": "MULLEIN 60'S",
+    "stock": 0,
+    "price": 108.8,
+    "co_gp": 8221.68,
+    "gp_pct": 34.2,
+    "supplier": "IL",
+    "daily_gp_lost": 3.0
+   },
+   {
+    "desc": "LENNON PEPPERMINT DROPS",
+    "stock": 0,
+    "price": 36.96,
+    "co_gp": 7933.42,
+    "gp_pct": 24.0,
+    "supplier": "CITY",
+    "daily_gp_lost": 3.0
+   },
+   {
+    "desc": "BRD FLAX",
+    "stock": 0,
+    "price": 85.05,
+    "co_gp": 7822.16,
+    "gp_pct": 22.9,
+    "supplier": "LOVE",
+    "daily_gp_lost": 3.0
+   },
+   {
+    "desc": "COLOPERM POWDER 400G",
+    "stock": 0,
+    "price": 365.22,
+    "co_gp": 7522.570000000001,
+    "gp_pct": 29.6,
+    "supplier": "BIODOSA",
+    "daily_gp_lost": 3.0
+   },
+   {
+    "desc": "TUDCA 30S",
+    "stock": 0,
+    "price": 730.42,
+    "co_gp": 7116.299999999999,
+    "gp_pct": 37.8,
+    "supplier": "INF",
+    "daily_gp_lost": 3.0
+   },
+   {
+    "desc": "ARTHRITIS ADV FRML 180G",
+    "stock": 0,
+    "price": 520.87,
+    "co_gp": 6946.349999999999,
+    "gp_pct": 29.5,
+    "supplier": "ALTW",
+    "daily_gp_lost": 3.0
+   },
+   {
+    "desc": "DMSO 500ML",
+    "stock": 0,
+    "price": 584.96,
+    "co_gp": 6085.2,
+    "gp_pct": 35.0,
+    "supplier": "BIOS",
+    "daily_gp_lost": 3.0
+   },
+   {
+    "desc": "DORMEASAN 50ML",
+    "stock": 0,
+    "price": 226.22,
+    "co_gp": 5744.15,
+    "gp_pct": 32.6,
+    "supplier": "GNP",
+    "daily_gp_lost": 2.0
+   },
+   {
+    "desc": "ANTIOXIDANT 30s",
+    "stock": 0,
+    "price": 286.96,
+    "co_gp": 5356.62,
+    "gp_pct": 35.2,
+    "supplier": "PN",
+    "daily_gp_lost": 2.0
+   },
+   {
+    "desc": "THIAMINE B1 500MG 60",
+    "stock": 0,
+    "price": 440.03,
+    "co_gp": 5311.06,
+    "gp_pct": 31.7,
+    "supplier": "LV",
+    "daily_gp_lost": 2.0
+   },
+   {
+    "desc": "HIBISCUS FLOWER 100G",
+    "stock": 0,
+    "price": 67.28,
+    "co_gp": 5244.16,
+    "gp_pct": 36.6,
+    "supplier": "PGER",
+    "daily_gp_lost": 2.0
+   }
+  ],
+  "warning": [
+   {
+    "desc": "HEART HEALTH 60 CAPS",
+    "stock": 2,
+    "price": 329.57,
+    "co_gp": 34715.71,
+    "gp_pct": 40.3,
+    "supplier": "OP",
+    "daily_gp_lost": 14.0
+   },
+   {
+    "desc": "VIT K2 MCG 60C",
+    "stock": 2,
+    "price": 208.7,
+    "co_gp": 30146.879999999997,
+    "gp_pct": 48.0,
+    "supplier": "WILLOW",
+    "daily_gp_lost": 12.0
+   },
+   {
+    "desc": "5HTP PLUS 60s",
+    "stock": 1,
+    "price": 286.96,
+    "co_gp": 27972.730000000003,
+    "gp_pct": 35.9,
+    "supplier": "PN",
+    "daily_gp_lost": 11.0
+   },
+   {
+    "desc": "RED RICE YEAST EXT 60C",
+    "stock": 3,
+    "price": 285.22,
+    "co_gp": 24829.31,
+    "gp_pct": 40.8,
+    "supplier": "WILLOW",
+    "daily_gp_lost": 10.0
+   },
+   {
+    "desc": "BONE SUPREME 120'S",
+    "stock": 3,
+    "price": 313.04,
+    "co_gp": 24481.39,
+    "gp_pct": 34.1,
+    "supplier": "IL",
+    "daily_gp_lost": 10.0
+   },
+   {
+    "desc": "TRI MAG 90CAPS",
+    "stock": 1,
+    "price": 255.0,
+    "co_gp": 21458.5,
+    "gp_pct": 31.3,
+    "supplier": "TRTFC",
+    "daily_gp_lost": 9.0
+   },
+   {
+    "desc": "DIGESTEZYME H POTENCY 60s",
+    "stock": 3,
+    "price": 123.48,
+    "co_gp": 19796.920000000002,
+    "gp_pct": 42.2,
+    "supplier": "NUG",
+    "daily_gp_lost": 8.0
+   },
+   {
+    "desc": "NMN+1200 60S",
+    "stock": 2,
+    "price": 1232.59,
+    "co_gp": 19515.449999999997,
+    "gp_pct": 38.3,
+    "supplier": "INF",
+    "daily_gp_lost": 8.0
+   },
+   {
+    "desc": "BENFOTIAMINE B1 120C",
+    "stock": 2,
+    "price": 476.52,
+    "co_gp": 17111.5,
+    "gp_pct": 36.0,
+    "supplier": "WILLOW",
+    "daily_gp_lost": 7.0
+   },
+   {
+    "desc": "DIGESTIVE ENZYMES 100C",
+    "stock": 3,
+    "price": 328.7,
+    "co_gp": 16844.8,
+    "gp_pct": 48.7,
+    "supplier": "WILLOW",
+    "daily_gp_lost": 7.0
+   },
+   {
+    "desc": "GLW GOOD GUT 210G",
+    "stock": 3,
+    "price": 334.06,
+    "co_gp": 16595.7,
+    "gp_pct": 32.0,
+    "supplier": "VERHAKI",
+    "daily_gp_lost": 7.0
+   },
+   {
+    "desc": "AFRI CRANBERRY C 500ML",
+    "stock": 2,
+    "price": 135.85,
+    "co_gp": 16549.85,
+    "gp_pct": 32.9,
+    "supplier": "AC",
+    "daily_gp_lost": 7.0
+   },
+   {
+    "desc": "MEGA OMEGA SUPR150C",
+    "stock": 1,
+    "price": 532.5,
+    "co_gp": 15860.06,
+    "gp_pct": 30.3,
+    "supplier": "TRTFC",
+    "daily_gp_lost": 7.0
+   },
+   {
+    "desc": "500ML CASTOR OIL",
+    "stock": 2,
+    "price": 126.09,
+    "co_gp": 15632.18,
+    "gp_pct": 45.4,
+    "supplier": "ESCP",
+    "daily_gp_lost": 6.0
+   },
+   {
+    "desc": "DIGESTIVE ENZYMES 100",
+    "stock": 2,
+    "price": 277.3,
+    "co_gp": 14808.550000000001,
+    "gp_pct": 38.6,
+    "supplier": "SOL",
+    "daily_gp_lost": 6.0
+   },
+   {
+    "desc": "MEGA OXYGEN 90CAPS",
+    "stock": 2,
+    "price": 310.43,
+    "co_gp": 14561.32,
+    "gp_pct": 38.3,
+    "supplier": "OP",
+    "daily_gp_lost": 6.0
+   },
+   {
+    "desc": "COLEST CONTROL 60",
+    "stock": 1,
+    "price": 206.25,
+    "co_gp": 13935.11,
+    "gp_pct": 37.4,
+    "supplier": "IL",
+    "daily_gp_lost": 6.0
+   },
+   {
+    "desc": "LUGOLS IODINE 20ML",
+    "stock": 1,
+    "price": 114.78,
+    "co_gp": 13222.89,
+    "gp_pct": 48.9,
+    "supplier": "WILLOW",
+    "daily_gp_lost": 5.0
+   },
+   {
+    "desc": "RAW HONEY 1.5KG",
+    "stock": 2,
+    "price": 213.15,
+    "co_gp": 12970.289999999999,
+    "gp_pct": 30.6,
+    "supplier": "DOP",
+    "daily_gp_lost": 5.0
+   },
+   {
+    "desc": "CMP 90s",
+    "stock": 2,
+    "price": 286.96,
+    "co_gp": 12265.439999999999,
+    "gp_pct": 36.0,
+    "supplier": "PN",
+    "daily_gp_lost": 5.0
+   }
+  ],
+  "info": [
+   {
+    "desc": "KILL A GERM 60s",
+    "stock": 5,
+    "price": 194.78,
+    "co_gp": 28392.799999999996,
+    "gp_pct": 34.6,
+    "supplier": "PN",
+    "daily_gp_lost": 12.0
+   },
+   {
+    "desc": "1L GUT RAWBIOTICS",
+    "stock": 4,
+    "price": 329.57,
+    "co_gp": 26345.01,
+    "gp_pct": 35.0,
+    "supplier": "EFM",
+    "daily_gp_lost": 11.0
+   },
+   {
+    "desc": "ADR PLUS 60s",
+    "stock": 4,
+    "price": 271.3,
+    "co_gp": 20448.02,
+    "gp_pct": 35.9,
+    "supplier": "PN",
+    "daily_gp_lost": 8.0
+   },
+   {
+    "desc": "BRD BANTING",
+    "stock": 5,
+    "price": 85.05,
+    "co_gp": 20186.300000000003,
+    "gp_pct": 24.3,
+    "supplier": "LOVE",
+    "daily_gp_lost": 8.0
+   },
+   {
+    "desc": "HORMONE ASSIST 60's",
+    "stock": 4,
+    "price": 627.0,
+    "co_gp": 19405.850000000002,
+    "gp_pct": 31.1,
+    "supplier": "PROD",
+    "daily_gp_lost": 8.0
+   },
+   {
+    "desc": "LIVER& KIDNEY FORMULA 90",
+    "stock": 4,
+    "price": 191.3,
+    "co_gp": 17431.34,
+    "gp_pct": 38.0,
+    "supplier": "IL",
+    "daily_gp_lost": 7.0
+   },
+   {
+    "desc": "MAGN GLYC 60C",
+    "stock": 5,
+    "price": 165.22,
+    "co_gp": 16424.219999999998,
+    "gp_pct": 42.4,
+    "supplier": "WILLOW",
+    "daily_gp_lost": 7.0
+   },
+   {
+    "desc": "PROSTA CARE 60'S",
+    "stock": 5,
+    "price": 229.5,
+    "co_gp": 15966.55,
+    "gp_pct": 39.5,
+    "supplier": "IL",
+    "daily_gp_lost": 7.0
+   },
+   {
+    "desc": "MACULAR SUPPORT 60C",
+    "stock": 4,
+    "price": 483.48,
+    "co_gp": 15922.09,
+    "gp_pct": 42.9,
+    "supplier": "WILLOW",
+    "daily_gp_lost": 7.0
+   }
+  ]
+ },
+ "week": {
+  "cen": 174565.0,
+  "gvs": 72819.0,
+  "edn": 86316.0,
+  "total": 333701.0,
+  "daily": [
+   {
+    "date": "03-13",
+    "rev": 57392.0
+   },
+   {
+    "date": "03-14",
+    "rev": 61312.0
+   },
+   {
+    "date": "03-16",
+    "rev": 38365.0
+   },
+   {
+    "date": "03-17",
+    "rev": 40319.0
+   },
+   {
+    "date": "03-18",
+    "rev": 44102.0
+   },
+   {
+    "date": "03-19",
+    "rev": 55941.0
+   },
+   {
+    "date": "03-20",
+    "rev": 36270.0
+   }
+  ]
+ }
+}

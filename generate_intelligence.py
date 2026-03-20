@@ -21,17 +21,35 @@ TARGETS = {"HO": 1450000, "GVS": 330000, "EDN": 450000}
 TRADING_DAYS = {"HO": 26, "GVS": 31, "EDN": 31}
 BAKERY_SUPPLIER = "LOVE"
 
-# Supplier code -> friendly name lookup (known suppliers)
-SUPPLIER_NAMES = {
-    "EVN": "Evenly (WILLOW)", "DSI": "Dis-Chem Suppliers", "NATRO": "Natroceutics",
-    "NH": "Neuro Health", "LOVE": "Love Bakery", "SOLG": "Solgar", "TERRA": "Terranova",
-    "METAG": "Metagenics", "BIOMAX": "Biomax", "HOLI": "Holistq", "NPL": "NPL Sports",
-    "NG": "Nutrigains", "GENO": "Genologix", "VGN": "Vegan", "NN": "NutriNation",
-    "BIOGEN": "Biogen", "SOLAL": "Solal", "ALTW": "Altwell", "APHO": "A.Vogel",
-    "AETHER": "Aether", "FORT": "FortiFOOD", "BARE": "BARE", "BGEN": "Beauty Gen",
-    "IXO": "Ixoreal (KSM-66)", "VITAL": "Vital", "HS": "Health Something",
-    "INTER": "Interlife", "HSW": "Health Shop Wholesale",
-}
+# Supplier code -> name lookup (from Naadir's Suppliers.xlsx — authoritative source)
+def _load_suppliers():
+    """Load supplier names from the xlsx file, fall back to cached JSON."""
+    try:
+        import openpyxl
+        for p in [
+            os.path.expanduser("~/.openclaw/media/inbound/Suppliers---52e19b0a-554e-438c-a34d-6544ac78687f.xlsx"),
+            os.path.expanduser("~/.openclaw/workspace/memory/suppliers.xlsx"),
+        ]:
+            if os.path.exists(p):
+                wb = openpyxl.load_workbook(p, read_only=True)
+                ws = wb["Suppliers"]
+                d = {}
+                for row in ws.iter_rows(min_row=2, values_only=True):
+                    code, name = row[0], row[1]
+                    if code and name and "Category" not in str(name):
+                        d[str(code).strip()] = str(name).strip()
+                wb.close()
+                return d
+    except Exception:
+        pass
+    # Fallback: cached JSON
+    try:
+        with open(os.path.expanduser("~/.openclaw/workspace/memory/supplier_names.json")) as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+SUPPLIER_NAMES = _load_suppliers()
 
 def sup_name(code):
     return SUPPLIER_NAMES.get(code, code)
