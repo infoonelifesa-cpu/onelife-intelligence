@@ -52,26 +52,46 @@ def main():
         sup_names = dict(sup_names)
     gp_data = load_json("memory/snapshots/2026-02/ana_popular_gp.json")
     
-    # MTD
-    mtd = omni.get("mtd", {})
-    combined = mtd.get("combined", {})
-    mtd_rev = combined.get("revenue_excl", 0)
-    mtd_gp = combined.get("gross_profit", 0)
-    mtd_gp_pct = combined.get("gp_pct", 0)
-    days_in_month = NOW.day
-    daily_avg = mtd_rev / days_in_month if days_in_month > 0 else 0
-    projected = daily_avg * 30
-    yesterday_rev = omni.get("yesterday", {}).get("combined", {}).get("revenue_excl", 0)
+    # MTD — compute from daily histories (more accurate than MTD combined endpoint)
+    # The "combined" MTD endpoint only returns HO branch, not all 3 stores
+    ho_history = omni.get("full_history", [])
+    gvs_history = omni.get("gvs_history", [])
+    edn_history = omni.get("edn_history", [])
     
-    # Store MTD
-    store_mtd = {}
-    for code in ["GVS", "EDN"]:
-        s = mtd.get(code, {})
-        store_mtd[code] = {"rev": s.get("revenue_excl", 0), "gp": s.get("gross_profit", 0)}
-    store_mtd["CEN"] = {
-        "rev": mtd_rev - store_mtd["GVS"]["rev"] - store_mtd["EDN"]["rev"],
-        "gp": mtd_gp - store_mtd["GVS"]["gp"] - store_mtd["EDN"]["gp"],
+    current_month = NOW.strftime("%Y-%m")
+    
+    def sum_history(history, month):
+        rev = sum(e.get("value_excl_after_discount", 0) for e in history if e.get("document_date", "").startswith(month))
+        gp = sum(e.get("gross_profit", 0) for e in history if e.get("document_date", "").startswith(month))
+        return {"rev": rev, "gp": gp}
+    
+    cen_mtd_data = sum_history(ho_history, current_month)
+    gvs_mtd_data = sum_history(gvs_history, current_month)
+    edn_mtd_data = sum_history(edn_history, current_month)
+    
+    store_mtd = {
+        "CEN": cen_mtd_data,
+        "GVS": gvs_mtd_data,
+        "EDN": edn_mtd_data,
     }
+    
+    mtd_rev = cen_mtd_data["rev"] + gvs_mtd_data["rev"] + edn_mtd_data["rev"]
+    mtd_gp = cen_mtd_data["gp"] + gvs_mtd_data["gp"] + edn_mtd_data["gp"]
+    mtd_gp_pct = (mtd_gp / mtd_rev * 100) if mtd_rev > 0 else 0
+    
+    # Count actual trading days from history
+    trading_days_cen = len([e for e in ho_history if e.get("document_date", "").startswith(current_month)])
+    trading_days_all = max(trading_days_cen, len([e for e in gvs_history if e.get("document_date", "").startswith(current_month)]))
+    days_in_month = NOW.day  # calendar days
+    
+    # CEN closed Sundays = ~22 trading days/month, GVS+EDN open 7 days
+    # Use calendar days for projection but note trading days
+    daily_avg = mtd_rev / days_in_month if days_in_month > 0 else 0
+    # Project to month end (remaining calendar days)
+    days_remaining = 31 - days_in_month  # March has 31 days
+    projected = mtd_rev + (daily_avg * days_remaining)
+    
+    yesterday_rev = omni.get("yesterday", {}).get("combined", {}).get("revenue_excl", 0)
     
     # Weekly trends
     days_data = daily_cache.get("days", {})
@@ -159,30 +179,33 @@ def main():
         cands.sort(key=lambda x: x["rev"], reverse=True)
         unique[store] = cands[:5]
     
-    # Store pcts
+    # Store pcts — project each store to month end
     store_pcts = {}
     for s, t in TARGETS.items():
         r = store_mtd[s]["rev"]
-        p = (r/days_in_month*30) if days_in_month > 0 else 0
-        store_pcts[s] = p/t*100 if t > 0 else 0
+        store_daily = r / days_in_month if days_in_month > 0 else 0
+        store_proj = r + (store_daily * days_remaining)
+        store_pcts[s] = store_proj / t * 100 if t > 0 else 0
     
     # === AI NARRATIVE ===
     parts = []
-    parts.append(f"Month-to-date revenue is R{mtd_rev:,.0f} through {days_in_month} trading days (R{daily_avg:,.0f}/day average).")
+    parts.append(f"Month-to-date revenue is R{mtd_rev:,.0f} across all 3 stores through {days_in_month} calendar days ({trading_days_cen} CEN trading days). Running at R{daily_avg:,.0f}/day.")
     total_target = sum(TARGETS.values())
     pct_target = projected/total_target*100 if total_target > 0 else 0
     if pct_target >= 100:
-        parts.append(f"Projected R{projected:,.0f} for the month, {pct_target:.0f}% of the R{total_target/1e6:.1f}M target. On track.")
+        parts.append(f"Projected R{projected:,.0f} for March, {pct_target:.0f}% of the R{total_target/1e6:.1f}M combined target. On track.")
     else:
-        parts.append(f"Projected R{projected:,.0f} at current pace: {pct_target:.0f}% of target. Need R{(total_target-projected):,.0f} more run rate.")
+        parts.append(f"Projected R{projected:,.0f} at current pace: {pct_target:.0f}% of target. Need to lift daily avg by R{((total_target - projected) / max(days_remaining, 1)):,.0f}/day to hit target.")
     
     for s in ["CEN","GVS","EDN"]:
         p = store_pcts[s]
         r = store_mtd[s]["rev"]
-        if p >= 105: parts.append(f"{s} is flying at {p:.0f}% of target (R{r:,.0f} MTD).")
-        elif p >= 95: parts.append(f"{s} tracking on target at {p:.0f}%.")
-        elif p >= 80: parts.append(f"{s} trailing at {p:.0f}% of target. Needs a push.")
-        else: parts.append(f"{s} significantly behind at {p:.0f}%. Red flag.")
+        store_daily = r / days_in_month if days_in_month > 0 else 0
+        store_proj = r + (store_daily * days_remaining)
+        if p >= 105: parts.append(f"{s}: R{r:,.0f} MTD, projected R{store_proj:,.0f} ({p:.0f}% of R{TARGETS[s]/1e6:.2f}M target). Strong.")
+        elif p >= 95: parts.append(f"{s}: R{r:,.0f} MTD, projected R{store_proj:,.0f} ({p:.0f}% of target). On track.")
+        elif p >= 80: parts.append(f"{s}: R{r:,.0f} MTD, projected R{store_proj:,.0f} ({p:.0f}% of target). Needs a push.")
+        else: parts.append(f"{s}: R{r:,.0f} MTD, projected R{store_proj:,.0f} ({p:.0f}% of R{TARGETS[s]/1e6:.2f}M target). Behind.")
     
     if gp_rows:
         top = gp_rows[0]
