@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onelife Competitive Price Intelligence</title>
+<style>
+:root {
+    --bg: #0f1117; --card: #1a1d27; --border: #2a2d37;
+    --text: #e4e4e7; --muted: #9ca3af; --green: #22c55e;
+    --red: #ef4444; --blue: #3b82f6; --yellow: #eab308;
+    --purple: #a855f7; --teal: #14b8a6;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); padding: 20px; }
+.header { text-align: center; margin-bottom: 30px; }
+.header h1 { font-size: 24px; margin-bottom: 5px; }
+.header .sub { color: var(--muted); font-size: 14px; }
+.kpi-strip { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; justify-content: center; }
+.kpi { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; min-width: 140px; text-align: center; }
+.kpi .value { font-size: 28px; font-weight: 700; }
+.kpi .label { color: var(--muted); font-size: 12px; margin-top: 4px; }
+.kpi.green .value { color: var(--green); }
+.kpi.red .value { color: var(--red); }
+.kpi.blue .value { color: var(--blue); }
+.kpi.yellow .value { color: var(--yellow); }
+.kpi.purple .value { color: var(--purple); }
+.kpi.teal .value { color: var(--teal); }
+.section { margin-bottom: 24px; }
+.section h2 { font-size: 16px; margin-bottom: 12px; padding-left: 4px; }
+table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 10px; overflow: hidden; font-size: 13px; }
+th { background: #22252f; padding: 10px 8px; text-align: left; font-weight: 600; color: var(--muted); font-size: 11px; text-transform: uppercase; cursor: pointer; white-space: nowrap; }
+th:hover { color: var(--text); }
+td { padding: 8px; border-top: 1px solid var(--border); white-space: nowrap; }
+tr:hover { background: #1f2231; }
+.tag { padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+.tag-hold { background: rgba(34,197,94,0.15); color: var(--green); }
+.tag-increase { background: rgba(59,130,246,0.15); color: var(--blue); }
+.tag-decrease { background: rgba(239,68,68,0.15); color: var(--red); }
+.tag-monitor { background: rgba(234,179,8,0.15); color: var(--yellow); }
+.tag-exclusive { background: rgba(168,85,247,0.15); color: var(--purple); }
+.tag-nodata { background: rgba(75,85,99,0.15); color: var(--muted); }
+.price { font-family: 'SF Mono', monospace; }
+.price-cheaper { color: var(--green); }
+.price-expensive { color: var(--red); }
+.price-same { color: var(--muted); }
+.insight-box { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+.insight-box h3 { font-size: 14px; margin-bottom: 8px; }
+.insight-box p { color: var(--muted); font-size: 13px; line-height: 1.5; }
+.filter-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.filter-btn { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; color: var(--text); cursor: pointer; font-size: 12px; }
+.filter-btn:hover, .filter-btn.active { border-color: var(--green); color: var(--green); }
+.cheapest { font-weight: 700; color: var(--green); }
+.most-expensive { color: var(--red); opacity: 0.7; }
+</style>
+</head>
+<body>
+<div class="header">
+<h1>🦞 Onelife Competitive Price Intelligence</h1>
+<div class="sub">Top 100 Centurion Products vs FTN | Dis-Chem | Wellness Warehouse — 21 March 2026</div>
+</div>
+
+<div class="kpi-strip">
+<div class="kpi teal"><div class="value">R4.8M</div><div class="label">Total Revenue (Top 100)</div></div>
+<div class="kpi green"><div class="value">9</div><div class="label">Price on Target</div></div>
+<div class="kpi blue"><div class="value">3</div><div class="label">Increase Opportunity</div></div>
+<div class="kpi red"><div class="value">4</div><div class="label">Price Too High</div></div>
+<div class="kpi yellow"><div class="value">1</div><div class="label">Monitor</div></div>
+<div class="kpi purple"><div class="value">20</div><div class="label">Exclusive (No Competitor)</div></div>
+</div>
+
+<div class="kpi-strip">
+<div class="kpi"><div class="value">9</div><div class="label">FTN Matches</div></div>
+<div class="kpi"><div class="value">6</div><div class="label">Dis-Chem Matches</div></div>
+<div class="kpi"><div class="value">24</div><div class="label">WW Matches</div></div>
+</div>
+
+<div class="section">
+<h2>💡 Key Insights</h2>
+<div class="insight-box">
+<h3>Your Competitive Moat is Range, Not Price</h3>
+<p>Only 17 of your top 100 products have ANY competitor pricing data. The other 83 are either exclusive brands (Farmer Eddie, Natroceutics, Prime Health, Willow, NeuroActive, Interlife) or specialist products competitors don't carry. This means you have significant pricing power on these products.</p>
+</div>
+<div class="insight-box">
+<h3>Dis-Chem Overlap: Almost Zero</h3>
+<p>Only 6 products from your top 100 appear on Dis-Chem. Your top sellers come from brands Dis-Chem doesn't stock. Wellness Warehouse has more overlap (24 matches) because they target a similar health-conscious customer.</p>
+</div>
+</div>
+
+<div class="section">
+<h2>📊 Full Price Comparison</h2>
+<div class="filter-bar">
+<button class="filter-btn active" onclick="filterTable('all')">All (100)</button>
+<button class="filter-btn" onclick="filterTable('HOLD')">🟢 Hold</button>
+<button class="filter-btn" onclick="filterTable('INCREASE')">🔵 Increase</button>
+<button class="filter-btn" onclick="filterTable('DECREASE')">🔴 Decrease</button>
+<button class="filter-btn" onclick="filterTable('EXCLUSIVE')">🟣 Exclusive</button>
+<button class="filter-btn" onclick="filterTable('MONITOR')">🟡 Monitor</button>
+</div>
+<table id="priceTable">
+<thead>
+<tr>
+<th onclick="sortTable(0)">Rank</th>
+<th onclick="sortTable(1)">Product</th>
+<th onclick="sortTable(2)">Brand</th>
+<th onclick="sortTable(3)">Revenue</th>
+<th onclick="sortTable(4)">GP%</th>
+<th onclick="sortTable(5)">Onelife</th>
+<th onclick="sortTable(6)">FTN</th>
+<th onclick="sortTable(7)">Dis-Chem</th>
+<th onclick="sortTable(8)">WW</th>
+<th onclick="sortTable(9)">vs Avg</th>
+<th onclick="sortTable(10)">Action</th>
+</tr>
+</thead>
+<tbody>
+<tr data-rec="NO_DATA">
+<td>1</td>
+<td>MAG 7/87 60'S</td>
+<td>Farmer Eddie</td>
+<td class="price">R178,820</td>
+<td>35%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>2</td>
+<td>VIT D3 5000IU 120'S</td>
+<td>Now Foods</td>
+<td class="price">R160,567</td>
+<td>36%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>3</td>
+<td>BRD WHITE RICE</td>
+<td>Love Yourself</td>
+<td class="price">R138,134</td>
+<td>18%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>4</td>
+<td>OMEGA 3 Z+L   60"S</td>
+<td>Natroceutics</td>
+<td class="price">R123,998</td>
+<td>30%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>5</td>
+<td>FLORISH SPORE PROBIOTIC 60C</td>
+<td></td>
+<td class="price">R111,306</td>
+<td>28%</td>
+<td class="price">R440</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>6</td>
+<td>MAGN GLYC 120C</td>
+<td>Willow</td>
+<td class="price">R104,116</td>
+<td>40%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="DECREASE">
+<td>7</td>
+<td>OMEGA 3 60"S</td>
+<td>Natroceutics</td>
+<td class="price">R94,258</td>
+<td>30%</td>
+<td class="price">R377</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price most-expensive">R500</span></td>
+<td class="price-cheaper">-24.6%</td>
+<td><span class="tag tag-decrease">DECREASE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>8</td>
+<td>VIT D3 5000IU 240'S</td>
+<td>Now Foods</td>
+<td class="price">R82,627</td>
+<td>34%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>9</td>
+<td>KILL-A-GERM 60s</td>
+<td>Prime Health</td>
+<td class="price">R82,377</td>
+<td>34%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>10</td>
+<td>HEART HEALTH 60 CAPS</td>
+<td></td>
+<td class="price">R79,844</td>
+<td>40%</td>
+<td class="price">R379</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="HOLD">
+<td>11</td>
+<td>450G MOBILITY COLLAGEN</td>
+<td></td>
+<td class="price">R73,558</td>
+<td>41%</td>
+<td class="price">R575</td>
+<td><span class="price most-expensive">R615</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price">R576</span></td>
+<td class="price-same">-3.4%</td>
+<td><span class="tag tag-hold">HOLD</span></td>
+</tr><tr data-rec="HOLD">
+<td>12</td>
+<td>BERBERINE COMPLEX 60"S</td>
+<td>Natroceutics</td>
+<td class="price">R71,797</td>
+<td>31%</td>
+<td class="price">R448</td>
+<td><span class="price">R449</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price">R450</span></td>
+<td class="price-same">-0.3%</td>
+<td><span class="tag tag-hold">HOLD</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>13</td>
+<td>POTASSIUM MAX 60'S</td>
+<td>Farmer Eddie</td>
+<td class="price">R68,218</td>
+<td>31%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>14</td>
+<td>CHLOROPHYLL MINT 473ML</td>
+<td>Now Foods</td>
+<td class="price">R67,065</td>
+<td>31%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price">R560</span></td>
+<td><span class="price">R700</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>15</td>
+<td>NERVE REGENERERATOR 100C</td>
+<td>Willow</td>
+<td class="price">R66,846</td>
+<td>40%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>16</td>
+<td>BONE SUPREME 120'S</td>
+<td></td>
+<td class="price">R65,298</td>
+<td>34%</td>
+<td class="price">R992</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="HOLD">
+<td>17</td>
+<td>B-COMPLEX 30"S</td>
+<td>Natroceutics</td>
+<td class="price">R63,940</td>
+<td>30%</td>
+<td class="price">R323</td>
+<td><span class="price">R325</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price cheapest">R300</span></td>
+<td class="price-same">+3.4%</td>
+<td><span class="tag tag-hold">HOLD</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>18</td>
+<td>SOFT IRON 60'S</td>
+<td>Farmer Eddie</td>
+<td class="price">R63,217</td>
+<td>36%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>19</td>
+<td>5-HTP PLUS 60s</td>
+<td>Prime Health</td>
+<td class="price">R60,743</td>
+<td>36%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>20</td>
+<td>VIT D3 10 000IU 120'S</td>
+<td>Now Foods</td>
+<td class="price">R59,088</td>
+<td>34%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price">R280</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>21</td>
+<td>LIONS MANE EXT 180'S</td>
+<td>Sfera</td>
+<td class="price">R57,352</td>
+<td>35%</td>
+<td class="price">R324</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>22</td>
+<td>ADR PLUS 60s</td>
+<td>Prime Health</td>
+<td class="price">R55,049</td>
+<td>35%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>23</td>
+<td>NAC 600MG 100C</td>
+<td>Now Foods</td>
+<td class="price">R54,722</td>
+<td>34%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price">R550</span></td>
+<td><span class="price">R450</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>24</td>
+<td>TRI-MAG 90CAPS</td>
+<td></td>
+<td class="price">R52,430</td>
+<td>30%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="HOLD">
+<td>25</td>
+<td>1L GUT RAWBIOTICS</td>
+<td></td>
+<td class="price">R52,324</td>
+<td>34%</td>
+<td class="price">R379</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price">R380</span></td>
+<td><span class="price">R380</span></td>
+<td class="price-same">-0.3%</td>
+<td><span class="tag tag-hold">HOLD</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>26</td>
+<td>MELATONIN 5MG 60C</td>
+<td>Now Foods</td>
+<td class="price">R52,102</td>
+<td>36%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>27</td>
+<td>3PHASE LIVER 60S</td>
+<td></td>
+<td class="price">R51,870</td>
+<td>43%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="HOLD">
+<td>28</td>
+<td>COLLAGEN COMPLETE 600G</td>
+<td></td>
+<td class="price">R51,764</td>
+<td>31%</td>
+<td class="price">R695</td>
+<td><span class="price">R695</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price cheapest">R640</span></td>
+<td class="price-same">+4.1%</td>
+<td><span class="tag tag-hold">HOLD</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>29</td>
+<td>Posgeld/Postage/Courier</td>
+<td></td>
+<td class="price">R51,513</td>
+<td>64%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>30</td>
+<td>GLUTAMINE POWDER 500G</td>
+<td></td>
+<td class="price">R49,524</td>
+<td>28%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price">R810</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>31</td>
+<td>BRD BROWN RICE</td>
+<td>Love Yourself</td>
+<td class="price">R49,445</td>
+<td>18%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="HOLD">
+<td>32</td>
+<td>PRO-PROBIOTIC 30 CAPS</td>
+<td></td>
+<td class="price">R48,515</td>
+<td>31%</td>
+<td class="price">R326</td>
+<td><span class="price">R329</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">-1.0%</td>
+<td><span class="tag tag-hold">HOLD</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>33</td>
+<td>SG SUPER HYDRO GEL 200ML</td>
+<td></td>
+<td class="price">R48,204</td>
+<td>35%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>34</td>
+<td>FLEXIJOINT ADVANCED 120'S</td>
+<td></td>
+<td class="price">R47,762</td>
+<td>36%</td>
+<td class="price">R294</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="INCREASE">
+<td>35</td>
+<td>CELTIC SALT 400G</td>
+<td></td>
+<td class="price">R47,663</td>
+<td>38%</td>
+<td class="price">R289</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price cheapest">R250</span></td>
+<td class="price-expensive">+15.6%</td>
+<td><span class="tag tag-increase">INCREASE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>36</td>
+<td>MEGA OMEGA SUPR150C</td>
+<td></td>
+<td class="price">R47,506</td>
+<td>30%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price">R590</span></td>
+<td><span class="price">R540</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>37</td>
+<td>VIT K2 MCG 60C</td>
+<td>Willow</td>
+<td class="price">R45,591</td>
+<td>48%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="HOLD">
+<td>38</td>
+<td>HORMONE ASSIST 60's</td>
+<td></td>
+<td class="price">R45,345</td>
+<td>30%</td>
+<td class="price">R721</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price">R750</span></td>
+<td class="price-same">-3.9%</td>
+<td><span class="tag tag-hold">HOLD</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>39</td>
+<td>PCOSITOL 8g 30 SATCHET</td>
+<td></td>
+<td class="price">R45,275</td>
+<td>30%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>40</td>
+<td>MEGA VIT D3 MK7 60VCAP</td>
+<td>Now Foods</td>
+<td class="price">R44,749</td>
+<td>34%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>41</td>
+<td>BRD BANTING</td>
+<td>Love Yourself</td>
+<td class="price">R44,549</td>
+<td>22%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>42</td>
+<td>RED RICE YEAST EXT 60C</td>
+<td>Willow</td>
+<td class="price">R43,140</td>
+<td>40%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>43</td>
+<td>60C NEOMAG</td>
+<td></td>
+<td class="price">R42,526</td>
+<td>40%</td>
+<td class="price">R492</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>44</td>
+<td>TUDCA 60CS</td>
+<td>Prime Health</td>
+<td class="price">R41,883</td>
+<td>32%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>45</td>
+<td>DIGESTEZYME H POTENCY 60s</td>
+<td></td>
+<td class="price">R41,189</td>
+<td>42%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>46</td>
+<td>BRD SORG/QUIN</td>
+<td>Love Yourself</td>
+<td class="price">R41,089</td>
+<td>18%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>47</td>
+<td>METHYL B-12 100S</td>
+<td>Now Foods</td>
+<td class="price">R40,991</td>
+<td>33%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>48</td>
+<td>PHYTOMULTI 60T</td>
+<td></td>
+<td class="price">R40,844</td>
+<td>33%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price">R895</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="INCREASE">
+<td>49</td>
+<td>ADVANCED BERBERINE 60C</td>
+<td></td>
+<td class="price">R39,017</td>
+<td>31%</td>
+<td class="price">R585</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price cheapest">R400</span></td>
+<td><span class="price cheapest">R540</span></td>
+<td class="price-expensive">+24.5%</td>
+<td><span class="tag tag-increase">INCREASE</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>50</td>
+<td>LIVER& KIDNEY FORMULA 90</td>
+<td></td>
+<td class="price">R38,421</td>
+<td>37%</td>
+<td class="price">R220</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>51</td>
+<td>VIT K2-7 & D3 60S</td>
+<td>Wazoogles</td>
+<td class="price">R38,359</td>
+<td>29%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>52</td>
+<td>BLK SEED OIL120C</td>
+<td></td>
+<td class="price">R37,960</td>
+<td>31%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="MONITOR">
+<td>53</td>
+<td>PUREST OMEGA 3 60C</td>
+<td></td>
+<td class="price">R37,804</td>
+<td>35%</td>
+<td class="price">R369</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price most-expensive">R400</span></td>
+<td class="price-cheaper">-7.7%</td>
+<td><span class="tag tag-monitor">MONITOR</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>54</td>
+<td>BENFOTIAMINE B1 120C</td>
+<td>Willow</td>
+<td class="price">R37,295</td>
+<td>36%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>55</td>
+<td>GLW GOOD GUT 210G</td>
+<td>Wazoogles</td>
+<td class="price">R36,462</td>
+<td>32%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>56</td>
+<td>NA NEURO NIGHT 60s</td>
+<td>Prime Health</td>
+<td class="price">R36,273</td>
+<td>38%</td>
+<td class="price">—</td>
+<td><span class="price">R299</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>57</td>
+<td>PROSTA CARE 60'S</td>
+<td></td>
+<td class="price">R35,879</td>
+<td>39%</td>
+<td class="price">R264</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>58</td>
+<td>BRD FLAX</td>
+<td>Love Yourself</td>
+<td class="price">R35,416</td>
+<td>23%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>59</td>
+<td>MgK ASPARTATE 450mg 90s</td>
+<td></td>
+<td class="price">R34,889</td>
+<td>33%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="HOLD">
+<td>60</td>
+<td>ASHWAGANDHA 60"S</td>
+<td>Natroceutics</td>
+<td class="price">R34,380</td>
+<td>34%</td>
+<td class="price">R327</td>
+<td><span class="price">R311</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price">R325</span></td>
+<td class="price-same">+2.8%</td>
+<td><span class="tag tag-hold">HOLD</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>61</td>
+<td>ARTHRITIS ADV FRML 360G</td>
+<td></td>
+<td class="price">R33,106</td>
+<td>27%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>62</td>
+<td>AFRICAN CRANBERRY CONCENTRATE 500ML</td>
+<td></td>
+<td class="price">R33,062</td>
+<td>32%</td>
+<td class="price">R156</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>63</td>
+<td>SL VIT D-3 & K-2</td>
+<td>Now Foods</td>
+<td class="price">R32,558</td>
+<td>33%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price">R370</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>64</td>
+<td>METHYLENE BLUE 59.2ml</td>
+<td></td>
+<td class="price">R32,318</td>
+<td>30%</td>
+<td class="price">R1,498</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>65</td>
+<td>GLUCO SCRIPT 90s</td>
+<td></td>
+<td class="price">R32,152</td>
+<td>31%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>66</td>
+<td>MEGA OXYGEN 90CAPS</td>
+<td></td>
+<td class="price">R32,074</td>
+<td>37%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>67</td>
+<td>MACULAR SUPPORT 60C</td>
+<td>Willow</td>
+<td class="price">R32,025</td>
+<td>42%</td>
+<td class="price">R556</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>68</td>
+<td>NATRITIOUS DRINK 300G</td>
+<td></td>
+<td class="price">R32,003</td>
+<td>30%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>69</td>
+<td>G PLUS CAPSULES</td>
+<td></td>
+<td class="price">R31,971</td>
+<td>35%</td>
+<td class="price">R169</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>70</td>
+<td>BETTERGUT 30 VEG CAPS</td>
+<td></td>
+<td class="price">R31,882</td>
+<td>35%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>71</td>
+<td>COLEST CONTROL 60</td>
+<td></td>
+<td class="price">R31,666</td>
+<td>36%</td>
+<td class="price">R237</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>72</td>
+<td>SUPER ENZYMES 90S</td>
+<td>Now Foods</td>
+<td class="price">R31,340</td>
+<td>33%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price">R720</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>73</td>
+<td>CMP 90s</td>
+<td>Prime Health</td>
+<td class="price">R31,192</td>
+<td>36%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>74</td>
+<td>REMEDY ANTI PARASITIC 50ML</td>
+<td></td>
+<td class="price">R30,865</td>
+<td>32%</td>
+<td class="price">R238</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>75</td>
+<td>TEST UP 60'S</td>
+<td>Farmer Eddie</td>
+<td class="price">R30,653</td>
+<td>31%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>76</td>
+<td>BODYMAG 120VC</td>
+<td></td>
+<td class="price">R30,137</td>
+<td>32%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>77</td>
+<td>METHYL B-12 60s 5000mcg</td>
+<td>Now Foods</td>
+<td class="price">R29,993</td>
+<td>42%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>78</td>
+<td>COLOPERM POWDER 900G</td>
+<td></td>
+<td class="price">R29,836</td>
+<td>29%</td>
+<td class="price">R420</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>79</td>
+<td>RAW HONEY 1.5KG</td>
+<td></td>
+<td class="price">R29,798</td>
+<td>30%</td>
+<td class="price">R245</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="DECREASE">
+<td>80</td>
+<td>500ML CASTOR OIL</td>
+<td></td>
+<td class="price">R29,769</td>
+<td>45%</td>
+<td class="price">R125</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price most-expensive">R160</span></td>
+<td class="price-cheaper">-21.7%</td>
+<td><span class="tag tag-decrease">DECREASE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>81</td>
+<td>ALOE DRINK GEL 1L</td>
+<td></td>
+<td class="price">R29,682</td>
+<td>28%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>82</td>
+<td>LIONS MANE EXT 60'S</td>
+<td>Sfera</td>
+<td class="price">R29,570</td>
+<td>38%</td>
+<td class="price">R324</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>83</td>
+<td>CEYLON CINN  200G</td>
+<td></td>
+<td class="price">R28,527</td>
+<td>31%</td>
+<td class="price">R193</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>84</td>
+<td>DIGESTIVE ENZYMES 100</td>
+<td></td>
+<td class="price">R28,367</td>
+<td>36%</td>
+<td class="price">R378</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>85</td>
+<td>PAK FAH YEOW 20ML</td>
+<td></td>
+<td class="price">R28,284</td>
+<td>29%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>86</td>
+<td>MELATONIN 3MG 60C</td>
+<td>Now Foods</td>
+<td class="price">R28,111</td>
+<td>38%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>87</td>
+<td>C19+IMMUNE BSTR 360G</td>
+<td></td>
+<td class="price">R27,954</td>
+<td>28%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>88</td>
+<td>PURE ALOE GEL 125ML</td>
+<td></td>
+<td class="price">R27,814</td>
+<td>29%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="DECREASE">
+<td>89</td>
+<td>QUERCETIN COMPLEX 60S</td>
+<td></td>
+<td class="price">R27,796</td>
+<td>33%</td>
+<td class="price">R289</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price most-expensive">R380</span></td>
+<td class="price-cheaper">-24.0%</td>
+<td><span class="tag tag-decrease">DECREASE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>90</td>
+<td>SLEEP RECHARGE 30C</td>
+<td></td>
+<td class="price">R27,621</td>
+<td>43%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="EXCLUSIVE">
+<td>91</td>
+<td>XX ASSIST 60'S</td>
+<td></td>
+<td class="price">R27,475</td>
+<td>32%</td>
+<td class="price">R240</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-exclusive">EXCLUSIVE</span></td>
+</tr><tr data-rec="DECREASE">
+<td>92</td>
+<td>ASHWAGANDA 60S</td>
+<td></td>
+<td class="price">R27,171</td>
+<td>41%</td>
+<td class="price">R153</td>
+<td><span class="price most-expensive">R311</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-cheaper">-50.8%</td>
+<td><span class="tag tag-decrease">DECREASE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>93</td>
+<td>PRIME 1 900ML</td>
+<td></td>
+<td class="price">R27,032</td>
+<td>28%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="INCREASE">
+<td>94</td>
+<td>MEGA OMEGA SUPREME CAPS 60S</td>
+<td></td>
+<td class="price">R26,985</td>
+<td>29%</td>
+<td class="price">R612</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price cheapest">R290</span></td>
+<td><span class="price cheapest">R290</span></td>
+<td class="price-expensive">+111.2%</td>
+<td><span class="tag tag-increase">INCREASE</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>95</td>
+<td>BRD SWEET POTATOE</td>
+<td>Love Yourself</td>
+<td class="price">R26,794</td>
+<td>23%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>96</td>
+<td>60C BRO BALANCE</td>
+<td>Prime Health</td>
+<td class="price">R26,784</td>
+<td>31%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>97</td>
+<td>PAK FAH YEOW 5ml</td>
+<td></td>
+<td class="price">R26,653</td>
+<td>33%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>98</td>
+<td>LIQ MELATONIN 59ML</td>
+<td>Now Foods</td>
+<td class="price">R26,620</td>
+<td>34%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="NO_DATA">
+<td>99</td>
+<td>VIT B.CO LIPO 30C</td>
+<td></td>
+<td class="price">R26,535</td>
+<td>38%</td>
+<td class="price">—</td>
+<td><span class="price-same">—</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price">R345</span></td>
+<td class="price-same">—</td>
+<td><span class="tag tag-nodata">NO_DATA</span></td>
+</tr><tr data-rec="HOLD">
+<td>100</td>
+<td>MAGNESIUM COMPLEX  60"S</td>
+<td>Natroceutics</td>
+<td class="price">R26,326</td>
+<td>31%</td>
+<td class="price">R320</td>
+<td><span class="price">R320</span></td>
+<td><span class="price-same">—</span></td>
+<td><span class="price most-expensive">R340</span></td>
+<td class="price-same">-3.0%</td>
+<td><span class="tag tag-hold">HOLD</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<script>
+function filterTable(rec) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('#priceTable tbody tr').forEach(row => {
+        if (rec === 'all' || row.dataset.rec === rec) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+
+let sortDir = {};
+function sortTable(col) {
+    const table = document.getElementById('priceTable');
+    const tbody = table.querySelector('tbody');
+    const rows = Array.from(tbody.querySelectorAll('tr'));
+    sortDir[col] = !sortDir[col];
+    rows.sort((a, b) => {
+        let aVal = a.cells[col].textContent.replace(/[R,%—+]/g, '').trim();
+        let bVal = b.cells[col].textContent.replace(/[R,%—+]/g, '').trim();
+        let aNum = parseFloat(aVal);
+        let bNum = parseFloat(bVal);
+        if (!isNaN(aNum) && !isNaN(bNum)) {
+            return sortDir[col] ? aNum - bNum : bNum - aNum;
+        }
+        return sortDir[col] ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+    });
+    rows.forEach(row => tbody.appendChild(row));
+}
+</script>
+</body>
+</html>
