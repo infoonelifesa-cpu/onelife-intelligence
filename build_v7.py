@@ -106,20 +106,29 @@ def main():
     gvs_week = week_trend("GVS")
     edn_week = week_trend("EDN")
     
-    # Monthly totals
+    # Monthly totals — use Omni histories for current month (more complete), daily cache for older months
     monthly = {}
     for offset in range(3):
         dt = NOW - timedelta(days=30*offset)
         ym = f"{dt.year}-{dt.month:02d}"
-        totals = {"CEN": 0, "GVS": 0, "EDN": 0}
-        for d_str, d_val in days_data.items():
-            try:
-                dd = datetime.strptime(d_str, "%Y-%m-%d")
-                if dd.year == dt.year and dd.month == dt.month:
-                    for s in totals:
-                        totals[s] += d_val.get(s, {}).get("revenue", 0)
-            except: pass
-        monthly[ym] = totals
+        if offset == 0:
+            # Current month: use Omni daily histories (most accurate)
+            monthly[ym] = {
+                "CEN": cen_mtd_data["rev"],
+                "GVS": gvs_mtd_data["rev"],
+                "EDN": edn_mtd_data["rev"],
+            }
+        else:
+            # Older months: use daily cache
+            totals = {"CEN": 0, "GVS": 0, "EDN": 0}
+            for d_str, d_val in days_data.items():
+                try:
+                    dd = datetime.strptime(d_str, "%Y-%m-%d")
+                    if dd.year == dt.year and dd.month == dt.month:
+                        for s in totals:
+                            totals[s] += d_val.get(s, {}).get("revenue", 0)
+                except: pass
+            monthly[ym] = totals
     
     # GP analysis
     gp_rows = gp_data.get("rows", gp_data if isinstance(gp_data, list) else [])
