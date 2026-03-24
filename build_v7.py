@@ -53,6 +53,24 @@ def sparkline_svg(values, color="#22c55e", width=120, height=30):
         pts.append(f"{x:.1f},{y:.1f}")
     return f'<svg width="{width}" height="{height}" style="vertical-align:middle"><polyline points="{" ".join(pts)}" fill="none" stroke="{color}" stroke-width="2"/></svg>'
 
+
+def wow_pct(this_vals, last_vals):
+    """Week-over-week percentage change"""
+    t, l = sum(this_vals), sum(last_vals)
+    if l == 0: return None
+    return (t - l) / l * 100
+
+def trend_badge(pct):
+    """HTML trend indicator with arrow"""
+    if pct is None: return '<span style="color:#475569;font-size:11px">\u2014</span>'
+    arrow = "\u2191" if pct >= 0 else "\u2193"
+    col = "#22c55e" if pct >= 0 else "#ef4444"
+    sign = "+" if pct >= 0 else "-"
+    return f'<span style="color:{col};font-size:11px;font-weight:700">{arrow}&nbsp;{sign}{abs(pct):.1f}%</span>'
+
+def esc(s):
+    return str(s).replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
+
 def main():
     # Load data
     omni = load_json("memory/omni_cache.json")
@@ -63,7 +81,7 @@ def main():
     gp_data = load_json("memory/snapshots/2026-02/ana_popular_gp.json")
 
     # MTD — compute from daily histories (more accurate than MTD combined endpoint)
-    ho_history = omni.get("full_history", [])
+    ho_history = omni.get("ho_history", omni.get("full_history", []))
     gvs_history = omni.get("gvs_history", [])
     edn_history = omni.get("edn_history", [])
 
@@ -137,6 +155,65 @@ def main():
     cen_week = week_trend("CEN")
     gvs_week = week_trend("GVS")
     edn_week = week_trend("EDN")
+    # WoW: compare last 7 trading days vs same 7 days a week prior
+    # Only count days that have data in cache (non-zero total)
+    def recent_trading_days(key, n=7):
+        """Get n most recent days that have actual data"""
+        vals = []
+        i = 1
+        while len(vals) < n and i < 60:
+            d = (NOW - timedelta(days=i)).strftime("%Y-%m-%d")
+            rev = days_data.get(d, {}).get(key, {}).get("revenue", 0)
+            if rev > 0:
+                vals.append((d, rev))
+            i += 1
+        return vals  # list of (date, revenue)
+
+    def wow_from_trading_days(key, n=7):
+        recent = recent_trading_days(key, n)
+        if len(recent) < n: return None
+        this_sum = sum(v for _, v in recent)
+        # Get the same n days shifted back 7 calendar days
+        prev_sum = 0
+        count = 0
+        for d, _ in recent:
+            pd = (datetime.strptime(d, "%Y-%m-%d") - timedelta(days=7)).strftime("%Y-%m-%d")
+            prev_rev = days_data.get(pd, {}).get(key, {}).get("revenue", 0)
+            if prev_rev > 0:
+                prev_sum += prev_rev
+                count += 1
+        if count < 3: return None
+        if prev_sum == 0: return None
+        return (this_sum - prev_sum) / prev_sum * 100
+
+    wow = {
+        "CEN": wow_from_trading_days("CEN"),
+        "GVS": wow_from_trading_days("GVS"),
+        "EDN": wow_from_trading_days("EDN"),
+    }
+    overall_wow_this = sum(sum(v for _,v in recent_trading_days(k, 7)) for k in ["CEN","GVS","EDN"])
+    overall_wow = None  # recalculate below as aggregate
+    try:
+        recent_cen = recent_trading_days("CEN", 7)
+        recent_gvs = recent_trading_days("GVS", 7)
+        recent_edn = recent_trading_days("EDN", 7)
+        this_w = sum(v for _,v in recent_cen) + sum(v for _,v in recent_gvs) + sum(v for _,v in recent_edn)
+        prev_w = 0; cnt = 0
+        for key, recent in [("CEN",recent_cen),("GVS",recent_gvs),("EDN",recent_edn)]:
+            for d, _ in recent:
+                pd = (datetime.strptime(d, "%Y-%m-%d") - timedelta(days=7)).strftime("%Y-%m-%d")
+                pv = days_data.get(pd, {}).get(key, {}).get("revenue", 0)
+                if pv > 0:
+                    prev_w += pv; cnt += 1
+        if cnt >= 5 and prev_w > 0:
+            overall_wow = (this_w - prev_w) / prev_w * 100
+    except: pass
+
+    cen_prev = [days_data.get((NOW - timedelta(days=i+8)).strftime("%Y-%m-%d"), {}).get("CEN", {}).get("revenue", 0) for i in range(6, -1, -1)]
+    gvs_prev = [days_data.get((NOW - timedelta(days=i+8)).strftime("%Y-%m-%d"), {}).get("GVS", {}).get("revenue", 0) for i in range(6, -1, -1)]
+    edn_prev = [days_data.get((NOW - timedelta(days=i+8)).strftime("%Y-%m-%d"), {}).get("EDN", {}).get("revenue", 0) for i in range(6, -1, -1)]
+
+
 
     # Monthly totals — Omni histories for current month, daily cache for older
     monthly = {}
@@ -239,56 +316,111 @@ def main():
         cands.sort(key=lambda x: x["rev"], reverse=True)
         unique[store] = cands[:5]
 
-    # === AI NARRATIVE (compact numbers, richer analysis) ===
-    F = fmt_r_narrative  # shorthand
-    parts = []
 
-    # Overview
+    # Hidden gems: high GP% + low units = visibility problem
+    hidden_gems = []
+    for prod, stores in pbs.items():
+        for sc, sd in stores.items():
+            if sd["rev"] < 800: continue
+            gp_p = (sd["gp"] / sd["rev"] * 100) if sd["rev"] > 0 else 0
+            if gp_p >= 40 and sd["qty"] <= 12:
+                hidden_gems.append({
+                    "p": prod, "store": sc, "gp_pct": gp_p,
+                    "qty": sd["qty"], "rev": sd["rev"],
+                    "potential": sd["rev"] * 3, "sup": sd["sup"]
+                })
+    hidden_gems.sort(key=lambda x: x["gp_pct"], reverse=True)
+
+    # Low GP action card candidates
+    low_gp_items = []
+    for prod, stores_d in pbs.items():
+        total_rev = sum(sd.get("rev",0) for sd in stores_d.values())
+        total_gp_val = sum(sd.get("gp",0) for sd in stores_d.values())
+        total_qty = sum(sd.get("qty",0) for sd in stores_d.values())
+        if total_rev < 5000: continue
+        gp_p = (total_gp_val / total_rev * 100) if total_rev > 0 else 0
+        if gp_p < 20:
+            uplift = total_rev * 0.35 - total_gp_val
+            sup = list(stores_d.values())[0].get("sup","")
+            low_gp_items.append({
+                "p": prod, "rev": total_rev, "gp_pct": gp_p,
+                "gp_val": total_gp_val, "qty": total_qty,
+                "uplift_est": uplift, "sup": sup
+            })
+    low_gp_items.sort(key=lambda x: x["uplift_est"], reverse=True)
+
+    # Supplier concentration
+    top1_name = sup_name(sup_sorted[0][0], sup_names) if sup_sorted else "?"
+    top1_pct = (sup_sorted[0][1]["rev"] / total_rev_all * 100) if sup_sorted and total_rev_all > 0 else 0
+
+    # === TODAY'S STORY + DAILY ACTION (V8) ===
+    F = fmt_r_narrative
+
     pct_target = combined_projected / total_target * 100 if total_target > 0 else 0
-    parts.append(f"MTD revenue: {F(mtd_rev)} across 3 stores ({days_elapsed} days in). Running {F(combined_daily_avg)}/day.")
 
     if pct_target >= 100:
-        parts.append(f"Projected {F(combined_projected)} for March ({pct_target:.0f}% of {F(total_target)} target). On track.")
+        lead = f"All 3 stores are running ahead of target — projected {F(combined_projected)} against a {F(total_target)} March target ({pct_target:.0f}%). The month is looking strong."
     elif pct_target >= 90:
-        parts.append(f"Projected {F(combined_projected)} ({pct_target:.0f}% of target). Close but needs a push in the final {days_remaining} days.")
+        lead = f"March is close but not there yet — projected {F(combined_projected)} vs {F(total_target)} target ({pct_target:.0f}%). A {F(total_target - combined_projected)} gap remains with {days_remaining} days left."
     else:
-        gap = total_target - combined_projected
-        parts.append(f"Projected {F(combined_projected)} ({pct_target:.0f}% of target). {F(gap)} shortfall at current pace.")
+        lead = f"March is under pressure — projected {F(combined_projected)} vs {F(total_target)} target ({pct_target:.0f}%). The {F(total_target - combined_projected)} shortfall needs action in the next {days_remaining} days."
 
-    # Per-store analysis with run rates
-    for s in ["CEN", "GVS", "EDN"]:
+    story_parts = [{"text": lead, "cls": "lead"}]
+
+    for s in ["CEN","GVS","EDN"]:
         sa = store_analysis[s]
         label = STORE_LABELS[s]
+        w_pct = wow.get(s)
+        w_str = ""
+        if w_pct is not None:
+            w_str = f", {'up' if w_pct >= 0 else 'down'} {abs(w_pct):.0f}% WoW"
         if sa["pct"] >= 100:
-            parts.append(f"{label}: {F(store_mtd[s]['rev'])} MTD at {F(sa['run_rate'])}/day. Projected {F(sa['projected'])} ({sa['pct']:.0f}% of target). Strong.")
-        elif sa["pct"] >= 90:
-            parts.append(f"{label}: {F(store_mtd[s]['rev'])} MTD at {F(sa['run_rate'])}/day. Needs {F(sa['required_daily'])}/day to hit {F(TARGETS[s])}.")
+            txt = f"{label} is the standout \u2014 {F(store_mtd[s]['rev'])} MTD at {F(sa['run_rate'])}/day{w_str}, projecting to hit target."
+            cls = ""
+        elif sa["pct"] >= 85:
+            txt = f"{label} at {sa['pct']:.0f}% trajectory{w_str} \u2014 needs {F(sa['required_daily'])}/day to close the {F(sa['gap'])} gap."
+            cls = ""
         else:
-            parts.append(f"{label}: {F(store_mtd[s]['rev'])} MTD at {F(sa['run_rate'])}/day. Behind: needs {F(sa['required_daily'])}/day to close {F(sa['gap'])} gap.")
+            txt = f"{label} is the concern \u2014 {sa['pct']:.0f}% trajectory{w_str}. Running {F(sa['run_rate'])}/day, needs {F(sa['required_daily'])}/day."
+            cls = "alert-sentence"
+        story_parts.append({"text": txt, "cls": cls})
 
-    # GP margin check
     if mtd_gp_pct < 33:
-        parts.append(f"Blended GP at {mtd_gp_pct:.1f}%, below 33.8% benchmark. Check supplier pricing or discount controls.")
+        story_parts.append({"text": f"Blended GP is {mtd_gp_pct:.1f}% \u2014 below the 33.8% benchmark. Discount controls or low-margin products are dragging this number.", "cls": "alert-sentence"})
     else:
-        parts.append(f"GP margin healthy at {mtd_gp_pct:.1f}%.")
+        story_parts.append({"text": f"GP margin healthy at {mtd_gp_pct:.1f}%.", "cls": ""})
 
-    # Best/worst store GP
-    best_gp_store = max(store_analysis, key=lambda s: store_analysis[s]["gp_pct"])
-    worst_gp_store = min(store_analysis, key=lambda s: store_analysis[s]["gp_pct"])
-    if store_analysis[best_gp_store]["gp_pct"] - store_analysis[worst_gp_store]["gp_pct"] > 3:
-        parts.append(f"GP spread: {STORE_LABELS[best_gp_store]} {store_analysis[best_gp_store]['gp_pct']:.1f}% vs {STORE_LABELS[worst_gp_store]} {store_analysis[worst_gp_store]['gp_pct']:.1f}%. Investigate the gap.")
-
-    # Top performer
-    if gp_rows:
-        top = gp_rows[0]
-        parts.append(f"Top seller: {top.get('line_item_description','?')} ({F(top.get('value_excl_after_discount',0))} rev, {F(top.get('gross_profit',0))} GP).")
-
-    # Cross-store opportunity
     if gaps:
-        top10_gap = sum(g["rev"] for g in gaps[:10])
-        parts.append(f"Cross-store opportunity: {len(gaps)} CEN products absent from GVS/EDN. Top 10 = {F(top10_gap)} untapped revenue.")
+        tg = gaps[0]
+        tg_gp = (tg["gp"]/tg["rev"]*100) if tg["rev"] > 0 else 0
+        story_parts.append({"text": f"Best cross-store opp: {esc(tg['p'])} ({tg_gp:.0f}% GP, {F(tg['rev'])} at CEN) is absent from {', '.join(tg['m'])} \u2014 free revenue waiting.", "cls": "opp-sentence"})
 
-    narrative = " ".join(parts)
+    if top1_pct > 25:
+        story_parts.append({"text": f"RISK: {esc(top1_name)} accounts for {top1_pct:.0f}% of total revenue. Supplier concentration is high.", "cls": "alert-sentence"})
+
+    # DAILY ACTION
+    most_behind = min(store_analysis, key=lambda s: store_analysis[s]["pct"])
+    sa_b = store_analysis[most_behind]
+    if sa_b["pct"] < 85:
+        da_text = f"URGENT \u2014 {STORE_LABELS[most_behind]} is at {sa_b['pct']:.0f}% of target: running {F(sa_b['run_rate'])}/day but needs {F(sa_b['required_daily'])}/day. Call the manager and plan a weekend push today."
+        da_type = "urgent"; da_icon = "&#x1f6a8;"
+    elif hidden_gems:
+        gem = hidden_gems[0]
+        da_text = f"SHELF MOVE \u2014 {esc(gem['p'])} at {STORE_LABELS.get(gem['store'], gem['store'])} earns {gem['gp_pct']:.0f}% GP but only moved {gem['qty']} units. It's invisible. Move to eye level or endcap today. 3x potential = {F(gem['potential'])}/month."
+        da_type = "opportunity"; da_icon = "&#x1f4a1;"
+    elif gaps:
+        tg2 = gaps[0]; tg2_gp = (tg2["gp"]/tg2["rev"]*100) if tg2["rev"] > 0 else 0
+        da_text = f"RANGE IT \u2014 {esc(tg2['p'])} sells {F(tg2['rev'])} at CEN ({tg2_gp:.0f}% GP) but isn't stocked at {', '.join(tg2['m'])}. Order stock today \u2014 free revenue."
+        da_type = "opportunity"; da_icon = "&#x1f4e6;"
+    elif low_gp_items:
+        item = low_gp_items[0]
+        da_text = f"MARGIN FIX \u2014 {esc(item['p'])} runs {item['gp_pct']:.0f}% GP on {F(item['rev'])} revenue. A 35%+ GP replacement adds ~{F(item['uplift_est'])}/month. Review suppliers today."
+        da_type = "margin"; da_icon = "&#x1f4c8;"
+    else:
+        da_text = f"CROSS-SELL \u2014 {len(gaps)} CEN products not ranged at GVS/EDN. Pick top 3 by GP and place transfer orders today."
+        da_type = "opportunity"; da_icon = "&#x1f4e6;"
+
+    narrative = lead  # keep for backward compat
 
     # === BUILD HTML ===
     lines = []
@@ -297,7 +429,7 @@ def main():
     w('<!DOCTYPE html>')
     w('<html lang="en"><head>')
     w('<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">')
-    w('<title>Onelife Intelligence | V7</title>')
+    w('<title>Onelife Intelligence | V8</title>')
     w('<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">')
     w('<style>')
     w("""
@@ -377,6 +509,42 @@ td{padding:6px 10px;border-bottom:1px solid #1e293b22}
 .data-warning{background:#1e293b;border:1px solid #f59e0b;border-radius:8px;padding:12px;margin-bottom:16px;font-size:12px;color:#fbbf24;display:flex;align-items:center;gap:8px}
 .data-warning .icon{font-size:16px}
 
+/* Today's Story */
+.story-card{background:linear-gradient(135deg,#142314,#0f1e10);border:1px solid #22c55e33;border-left:4px solid #22c55e;border-radius:14px;padding:18px;margin-bottom:16px}
+.story-header{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.story-title{color:#22c55e;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.story-date{color:#64748b;font-size:10px;margin-left:auto}
+.story-sentences{display:flex;flex-direction:column;gap:7px}
+.story-sentence{color:#cbd5e1;font-size:13px;line-height:1.65;padding:6px 12px;border-left:3px solid #1e3a2e;border-radius:0 6px 6px 0}
+.story-sentence.lead{color:#e2e8f0;font-size:14px;font-weight:500;border-left-color:#22c55e;background:#22c55e0a}
+.story-sentence.alert-sentence{border-left-color:#ef4444;color:#fca5a5;background:#ef44440a}
+.story-sentence.opp-sentence{border-left-color:#f59e0b;color:#fde68a;background:#f59e0b0a}
+
+/* Daily Action */
+.daily-action{border-radius:14px;padding:16px 18px;margin-bottom:16px;display:flex;align-items:flex-start;gap:14px}
+.daily-action.urgent{background:linear-gradient(135deg,#2d1515,#1c0d0d);border:1px solid #ef444444;border-left:4px solid #ef4444}
+.daily-action.opportunity{background:linear-gradient(135deg,#0e1e3a,#091525);border:1px solid #3b82f644;border-left:4px solid #3b82f6}
+.daily-action.margin{background:linear-gradient(135deg,#1e1a0a,#150f05);border:1px solid #f59e0b44;border-left:4px solid #f59e0b}
+.da-icon{font-size:22px;flex-shrink:0;margin-top:1px}
+.da-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
+.urgent .da-label{color:#ef4444}.opportunity .da-label{color:#3b82f6}.margin .da-label{color:#f59e0b}
+.da-text{color:#f1f5f9;font-size:14px;line-height:1.65;font-weight:500}
+
+/* Action Cards (low GP / hidden gems) */
+.action-cards{display:flex;flex-direction:column;gap:10px}
+.action-card{border-radius:10px;padding:14px 16px;border:1px solid #334155;background:#1a2535}
+.action-card.swap{border-left:3px solid #ef4444}
+.action-card.gem{border-left:3px solid #a855f7}
+.action-card.range{border-left:3px solid #3b82f6}
+.ac-badge{display:inline-block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:2px 7px;border-radius:4px;margin-bottom:6px}
+.ac-badge.swap{background:#ef444422;color:#ef4444}.ac-badge.gem{background:#a855f722;color:#a855f7}.ac-badge.range{background:#3b82f622;color:#3b82f6}
+.ac-title{color:#f1f5f9;font-size:13px;font-weight:600;line-height:1.5;margin-bottom:4px}
+.ac-meta{color:#64748b;font-size:11px}
+.ac-uplift{color:#22c55e;font-weight:700;font-size:12px;margin-top:4px}
+
+/* WoW badge in store card */
+.store-wow{text-align:right;margin-top:5px;font-size:11px}
+
 footer{text-align:center;padding:24px 0;color:#475569;font-size:11px}
 footer .lo{color:#22c55e}
 
@@ -400,10 +568,27 @@ footer .lo{color:#22c55e}
     if "error" in str(fetch_status).lower() or "Version" in str(fetch_status):
         w('<div class="data-warning"><span class="icon">&#x26a0;</span> Omni API may be down. Using cached data. Numbers may not reflect today\'s full trading.</div>')
 
+    # === TODAY'S STORY CARD ===
+    w('<div class="story-card">')
+    w(f'<div class="story-header"><span style="font-size:18px">&#x1f9e0;</span><span class="story-title">Today\'s Story</span><span class="story-date">{NOW.strftime("%d %B %Y")}</span></div>')
+    w('<div class="story-sentences">')
+    for sp in story_parts:
+        cls_attr = f' {sp["cls"]}' if sp.get("cls") else ""
+        w(f'<div class="story-sentence{cls_attr}">{esc(sp["text"])}</div>')
+    w('</div></div>')
+
+    # === DAILY ACTION CARD ===
+    w(f'<div class="daily-action {da_type}">')
+    w(f'<div class="da-icon">{da_icon}</div>')
+    w('<div class="da-body">')
+    w(f'<div class="da-label">&#x2605; Daily Action</div>')
+    w(f'<div class="da-text">{esc(da_text)}</div>')
+    w('</div></div>')
+
     # KPI Strip
     proj_class = "green" if combined_projected >= total_target * 0.95 else ("yellow" if combined_projected >= total_target * 0.80 else "red")
     w('<div class="kpi-strip">')
-    w(f'<div class="kpi"><div class="label">MTD Revenue</div><div class="val">{fmt_r(mtd_rev)}</div><div class="note">Day {days_elapsed} of {days_in_month_total}</div></div>')
+    w(f'<div class="kpi"><div class="label">MTD Revenue</div><div class="val">{fmt_r(mtd_rev)}</div><div class="note">Day {days_elapsed} of {days_in_month_total}</div><div class="wow">WoW: {trend_badge(overall_wow)}</div></div>')
     w(f'<div class="kpi"><div class="label">MTD Gross Profit</div><div class="val green">{fmt_r(mtd_gp)}</div><div class="note">{mtd_gp_pct:.1f}% blended GP</div></div>')
     w(f'<div class="kpi"><div class="label">Daily Run Rate</div><div class="val blue">{fmt_r(combined_daily_avg)}</div><div class="note">Yesterday: {fmt_r(yesterday_rev)}</div></div>')
     w(f'<div class="kpi"><div class="label">Projected Month</div><div class="val {proj_class}">{fmt_r(combined_projected)}</div><div class="note">Target: {fmt_r(total_target)}</div></div>')
@@ -427,6 +612,7 @@ footer .lo{color:#22c55e}
         w(f'<div class="srow"><span>Projected</span><span class="sv">{fmt_r(sa["projected"])}</span></div>')
         w(f'<div class="srow"><span>GP Margin</span><span class="sv">{sa["gp_pct"]:.1f}%</span></div>')
         w(f'<div class="srow"><span>Trading Days</span><span class="sv">{sa["trading_days"]} done, {sa["remaining_trading"]} left</span></div>')
+        w(f'<div class="store-wow">WoW: {trend_badge(wow.get(s))}</div>')
         w(f'</div>')
     w('</div>')
 
@@ -439,20 +625,55 @@ footer .lo{color:#22c55e}
         w(f'<div class="progress-row"><div class="sn">{s}</div>')
         w(f'<div class="bar-wrap"><div class="bar {cls}" style="width:{min(sa["pct"],100):.0f}%">{sa["pct"]:.0f}%</div></div>')
         w(f'<div class="spark">{spark}</div>')
-        w(f'<div class="tgt">{fmt_r(store_mtd[s]["rev"])} / {fmt_r(TARGETS[s])}</div></div>')
+        w(f'<div class="tgt">{fmt_r(store_mtd[s]["rev"])} / {fmt_r(TARGETS[s])} {trend_badge(wow.get(s))}</div></div>')
     w('</div>')
 
-    # AI Narrative
-    w(f'<div class="narrative"><h3>&#x1f9e0; AI Briefing</h3><p>{narrative}</p></div>')
+    # === HIDDEN GEMS SECTION ===
+    if hidden_gems:
+        w('<div class="card"><h3>&#x1f48e; Hidden Gems</h3>')
+        w('<div class="desc">High GP% products with low unit sales — shelf visibility problem. Move them and watch revenue climb.</div>')
+        w('<div class="action-cards">')
+        for gem in hidden_gems[:6]:
+            w(f'<div class="action-card gem">')
+            w(f'<span class="ac-badge gem">Hidden Gem</span>')
+            w(f'<div class="ac-title">{esc(gem["p"])} @ {STORE_LABELS.get(gem["store"], gem["store"])}</div>')
+            w(f'<div class="ac-meta">{gem["gp_pct"]:.0f}% GP &middot; only {gem["qty"]} units sold &middot; {fmt_r(gem["rev"])} revenue</div>')
+            w(f'<div class="ac-uplift">&#x27a4; Move to eye level or endcap. 3x sales potential = {fmt_r(gem["potential"])}/month</div>')
+            w('</div>')
+        w('</div></div>')
 
-    # Cross-Store Gap Analysis
-    w('<div class="card"><h3>Cross-Store Product Gaps</h3>')
-    w(f'<div class="desc">Products selling well at CEN but missing from other stores. {len(gaps)} opportunities found.</div>')
+    # === LOW GP ACTION CARDS ===
+    if low_gp_items:
+        w('<div class="card"><h3>&#x26a0;&#xfe0f; Low GP Action Cards</h3>')
+        w('<div class="desc">Products dragging your margin. Each card shows the swap opportunity and estimated monthly GP uplift.</div>')
+        w('<div class="action-cards">')
+        for item in low_gp_items[:5]:
+            w(f'<div class="action-card swap">')
+            w(f'<span class="ac-badge swap">Swap / Reprice</span>')
+            w(f'<div class="ac-title">{esc(item["p"])}</div>')
+            w(f'<div class="ac-meta">{item["gp_pct"]:.0f}% GP &middot; {fmt_r(item["rev"])} revenue &middot; {item["qty"]} units &middot; Supplier: {sup_name(item["sup"], sup_names)}</div>')
+            w(f'<div class="ac-uplift">&#x27a4; Replace with 35%+ GP equivalent &rarr; est. +{fmt_r(item["uplift_est"])}/month GP uplift</div>')
+            w('</div>')
+        w('</div></div>')
+
+    # === CROSS-STORE RANGE ACTION CARDS ===
+    w('<div class="card"><h3>&#x1f4e6; Cross-Store Range Opportunities</h3>')
+    w(f'<div class="desc">Products selling well at CEN but missing from other stores. {len(gaps)} opportunities — top 5 shown as action cards, full list below.</div>')
+    w('<div class="action-cards" style="margin-bottom:16px">')
+    for g in gaps[:5]:
+        gpp = (g["gp"]/g["rev"]*100) if g["rev"]>0 else 0
+        w(f'<div class="action-card range">')
+        w(f'<span class="ac-badge range">Range It</span>')
+        w(f'<div class="ac-title">{esc(g["p"])}</div>')
+        w(f'<div class="ac-meta">{gpp:.0f}% GP &middot; {fmt_r(g["rev"])} at CEN &middot; {g["qty"]} units &middot; Missing: {", ".join(g["m"])}</div>')
+        w(f'<div class="ac-uplift">&#x27a4; Stock at {", ".join(g["m"])} &rarr; potential {fmt_r(g["rev"] * 0.4)}/month additional revenue per store</div>')
+        w('</div>')
+    w('</div>')
     w('<table><thead><tr><th>Product</th><th>Supplier</th><th class="num">CEN Revenue</th><th class="num">CEN Units</th><th class="num">GP%</th><th>Missing At</th></tr></thead><tbody>')
     for g in gaps[:25]:
         gpp = (g["gp"]/g["rev"]*100) if g["rev"]>0 else 0
         gpc = "gph" if gpp>=40 else ("gpm" if gpp>=30 else "gpl")
-        w(f'<tr><td>{g["p"]}</td><td>{sup_name(g["sup"], sup_names)}</td><td class="num">{fmt_r(g["rev"])}</td><td class="num">{g["qty"]}</td><td class="num {gpc}">{gpp:.0f}%</td><td class="miss">{", ".join(g["m"])}</td></tr>')
+        w(f'<tr><td>{esc(g["p"])}</td><td>{esc(sup_name(g["sup"], sup_names))}</td><td class="num">{fmt_r(g["rev"])}</td><td class="num">{g["qty"]}</td><td class="num {gpc}">{gpp:.0f}%</td><td class="miss">{", ".join(g["m"])}</td></tr>')
     w('</tbody></table></div>')
 
     # Supplier ABC Scorecard
