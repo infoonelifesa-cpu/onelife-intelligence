@@ -7,6 +7,7 @@ import json, os, sys
 from datetime import datetime, timedelta, timezone
 from collections import defaultdict
 import calendar
+import subprocess
 
 SAST = timezone(timedelta(hours=2))
 NOW = datetime.now(SAST)
@@ -22,6 +23,103 @@ def load_json(path):
     except Exception as e:
         print(f"WARN: {path}: {e}", file=sys.stderr)
         return {}
+
+def load_search_console():
+    """Pull Search Console data via API. Returns dict with pages, queries, totals, and period comparison."""
+    try:
+        sa_path = os.path.join(WORKSPACE, "credentials/onelife-analytics-sa.json")
+        if not os.path.exists(sa_path):
+            print("WARN: No SA credentials for Search Console", file=sys.stderr)
+            return None
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = sa_path
+        from googleapiclient.discovery import build
+        from google.oauth2 import service_account
+
+        creds = service_account.Credentials.from_service_account_file(
+            sa_path, scopes=["https://www.googleapis.com/auth/webmasters.readonly"]
+        )
+        service = build("searchconsole", "v1", credentials=creds)
+        site = "https://onelife.co.za/"
+
+        end = (NOW - timedelta(days=2)).strftime("%Y-%m-%d")
+        start = (NOW - timedelta(days=30)).strftime("%Y-%m-%d")
+        prev_end = (NOW - timedelta(days=31)).strftime("%Y-%m-%d")
+        prev_start = (NOW - timedelta(days=59)).strftime("%Y-%m-%d")
+
+        # Current period — top pages
+        pages_resp = service.searchanalytics().query(siteUrl=site, body={
+            "startDate": start, "endDate": end, "dimensions": ["page"], "rowLimit": 20
+        }).execute()
+
+        # Current period — top queries
+        queries_resp = service.searchanalytics().query(siteUrl=site, body={
+            "startDate": start, "endDate": end, "dimensions": ["query"], "rowLimit": 25
+        }).execute()
+
+        # Current period — daily totals
+        daily_resp = service.searchanalytics().query(siteUrl=site, body={
+            "startDate": start, "endDate": end, "dimensions": ["date"], "rowLimit": 30
+        }).execute()
+
+        # Previous period — daily totals for comparison
+        prev_resp = service.searchanalytics().query(siteUrl=site, body={
+            "startDate": prev_start, "endDate": prev_end, "dimensions": ["date"], "rowLimit": 30
+        }).execute()
+
+        # Compute totals
+        curr_clicks = sum(r["clicks"] for r in daily_resp.get("rows", []))
+        curr_impr = sum(r["impressions"] for r in daily_resp.get("rows", []))
+        curr_ctr = curr_clicks / curr_impr * 100 if curr_impr > 0 else 0
+        curr_pos = sum(r["position"] for r in daily_resp.get("rows", [])) / max(len(daily_resp.get("rows", [])), 1)
+
+        prev_clicks = sum(r["clicks"] for r in prev_resp.get("rows", []))
+        prev_impr = sum(r["impressions"] for r in prev_resp.get("rows", []))
+        prev_ctr = prev_clicks / prev_impr * 100 if prev_impr > 0 else 0
+
+        clicks_chg = ((curr_clicks - prev_clicks) / prev_clicks * 100) if prev_clicks > 0 else 0
+        impr_chg = ((curr_impr - prev_impr) / prev_impr * 100) if prev_impr > 0 else 0
+
+        # Categorise pages
+        blogs, products, collections = [], [], []
+        for row in pages_resp.get("rows", []):
+            page = row["keys"][0].replace("https://onelife.co.za", "")
+            entry = {"page": page, "clicks": row["clicks"], "impr": row["impressions"],
+                     "ctr": row["ctr"]*100, "pos": row["position"]}
+            if "/blogs/" in page: blogs.append(entry)
+            elif "/products/" in page: products.append(entry)
+            elif "/collections/" in page: collections.append(entry)
+        blogs.sort(key=lambda x: x["clicks"], reverse=True)
+        products.sort(key=lambda x: x["clicks"], reverse=True)
+
+        # Categorise queries
+        branded, non_branded = [], []
+        for row in queries_resp.get("rows", []):
+            q = row["keys"][0]
+            entry = {"q": q, "clicks": row["clicks"], "impr": row["impressions"],
+                     "ctr": row["ctr"]*100, "pos": row["position"]}
+            if any(x in q.lower() for x in ["onelife", "one life", "one health"]):
+                branded.append(entry)
+            else:
+                non_branded.append(entry)
+
+        # Daily click trend for sparkline
+        daily_clicks = []
+        for row in sorted(daily_resp.get("rows", []), key=lambda r: r["keys"][0]):
+            daily_clicks.append(row["clicks"])
+
+        return {
+            "period": f"{start} to {end}",
+            "clicks": curr_clicks, "impressions": curr_impr,
+            "ctr": curr_ctr, "position": curr_pos,
+            "clicks_chg": clicks_chg, "impr_chg": impr_chg,
+            "prev_ctr": prev_ctr,
+            "blogs": blogs[:6], "products": products[:6], "collections": collections[:4],
+            "branded": branded[:5], "non_branded": non_branded[:12],
+            "daily_clicks": daily_clicks,
+        }
+    except Exception as e:
+        print(f"WARN: Search Console failed: {e}", file=sys.stderr)
+        return None
 
 def sup_name(code, names):
     full = names.get(code, code or "Unknown")
@@ -79,6 +177,7 @@ def main():
     if isinstance(sup_names, list):
         sup_names = dict(sup_names)
     gp_data = load_json("memory/snapshots/2026-02/ana_popular_gp.json")
+    gsc = load_search_console()  # Google Search Console data
 
     # MTD — compute from daily histories (more accurate than MTD combined endpoint)
     ho_history = omni.get("ho_history", omni.get("full_history", []))
@@ -561,6 +660,7 @@ footer .lo{color:#22c55e}
 .kpi-strip{grid-template-columns:repeat(2,1fr)}
 .ugrid,.mgrid,.store-grid{grid-template-columns:1fr}
 .progress-row .spark{display:none}
+div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 }
 """)
     w('</style></head><body><div class="container">')
@@ -729,6 +829,116 @@ footer .lo{color:#22c55e}
         w('</div>')
     w('</div></div>')
 
+    # === SEARCH PERFORMANCE (Google Search Console) ===
+    if gsc:
+        w('<div class="card"><h3>&#x1f50d; Search Performance</h3>')
+        w(f'<div class="desc">Google organic search data — {gsc["period"]} vs prior 28 days</div>')
+
+        # KPI row for search
+        click_cls = "green" if gsc["clicks_chg"] >= 0 else "red"
+        impr_cls = "green" if gsc["impr_chg"] >= 0 else "red"
+        spark_html = sparkline_svg(gsc["daily_clicks"], "#3b82f6", 140, 35)
+        w('<div class="kpi-strip" style="margin-bottom:16px">')
+        w(f'<div class="kpi"><div class="label">Clicks (28d)</div><div class="val">{gsc["clicks"]:,}</div><div class="note">{trend_badge(gsc["clicks_chg"])} vs prior</div></div>')
+        w(f'<div class="kpi"><div class="label">Impressions</div><div class="val">{gsc["impressions"]:,}</div><div class="note">{trend_badge(gsc["impr_chg"])} vs prior</div></div>')
+        w(f'<div class="kpi"><div class="label">Avg CTR</div><div class="val">{gsc["ctr"]:.1f}%</div><div class="note">Was {gsc["prev_ctr"]:.1f}%</div></div>')
+        w(f'<div class="kpi"><div class="label">Avg Position</div><div class="val">{gsc["position"]:.1f}</div><div class="note">{spark_html}</div></div>')
+        w('</div>')
+
+        # Blog and product performance tables side by side
+        w('<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">')
+
+        # Blog posts
+        if gsc["blogs"]:
+            w('<div>')
+            w('<h4 style="color:#22c55e;font-size:12px;margin-bottom:6px">&#x1f4dd; Top Blog Posts</h4>')
+            w('<table style="font-size:11px"><thead><tr><th>Post</th><th class="num">Clicks</th><th class="num">Impr</th><th class="num">Pos</th></tr></thead><tbody>')
+            for b in gsc["blogs"]:
+                title = b["page"].split("/")[-1].replace("-", " ").title()[:40]
+                pos_cls = "gph" if b["pos"] <= 5 else ("gpm" if b["pos"] <= 10 else "gpl")
+                w(f'<tr><td title="{esc(b["page"])}">{esc(title)}</td><td class="num">{b["clicks"]:.0f}</td><td class="num">{b["impr"]:.0f}</td><td class="num {pos_cls}">{b["pos"]:.1f}</td></tr>')
+            w('</tbody></table></div>')
+
+        # Product pages
+        if gsc["products"]:
+            w('<div>')
+            w('<h4 style="color:#3b82f6;font-size:12px;margin-bottom:6px">&#x1f6cd; Top Product Pages</h4>')
+            w('<table style="font-size:11px"><thead><tr><th>Product</th><th class="num">Clicks</th><th class="num">CTR</th><th class="num">Pos</th></tr></thead><tbody>')
+            for p in gsc["products"]:
+                title = p["page"].split("/")[-1].replace("-", " ").title()[:40]
+                # Flag barcode URLs
+                slug = p["page"].split("/")[-1]
+                is_barcode = slug.replace("-","").isdigit()
+                flag = ' <span style="color:#f59e0b;font-size:9px">&#x26a0;barcode URL</span>' if is_barcode else ""
+                w(f'<tr><td title="{esc(p["page"])}">{esc(title)}{flag}</td><td class="num">{p["clicks"]:.0f}</td><td class="num">{p["ctr"]:.1f}%</td><td class="num">{p["pos"]:.1f}</td></tr>')
+            w('</tbody></table></div>')
+        w('</div>')
+
+        # Search queries — non-branded opportunities
+        if gsc["non_branded"]:
+            w('<h4 style="color:#f59e0b;font-size:12px;margin:12px 0 6px">&#x1f4a1; Non-Branded Search Opportunities</h4>')
+            w('<div class="desc" style="margin-bottom:6px">These queries bring people who don\'t know you yet — the highest-value traffic.</div>')
+            w('<table style="font-size:11px"><thead><tr><th>Query</th><th class="num">Clicks</th><th class="num">Impr</th><th class="num">Pos</th><th>Opportunity</th></tr></thead><tbody>')
+            for q in gsc["non_branded"]:
+                if q["pos"] <= 3:
+                    opp = '<span style="color:#22c55e">&#x2713; Ranking well</span>'
+                elif q["pos"] <= 10 and q["impr"] > 100:
+                    opp = '<span style="color:#f59e0b">&#x2191; Push to top 3</span>'
+                elif q["impr"] > 200:
+                    opp = '<span style="color:#3b82f6">&#x2197; High volume — write content</span>'
+                else:
+                    opp = '<span style="color:#64748b">Monitor</span>'
+                w(f'<tr><td>{esc(q["q"])}</td><td class="num">{q["clicks"]:.0f}</td><td class="num">{q["impr"]:.0f}</td><td class="num">{q["pos"]:.1f}</td><td>{opp}</td></tr>')
+            w('</tbody></table>')
+
+        # === SEARCH NARRATIVE ===
+        w('<div class="story-card" style="margin-top:14px">')
+        w('<div class="story-header"><span style="font-size:18px">&#x1f50e;</span><span class="story-title">Search Insights &amp; Recommendations</span></div>')
+        w('<div class="story-sentences">')
+
+        # Growth narrative
+        if gsc["clicks_chg"] > 50:
+            w(f'<div class="story-sentence lead">Organic search is exploding — clicks up {gsc["clicks_chg"]:.0f}% and impressions up {gsc["impr_chg"]:.0f}% vs the prior period. The SEO work is compounding.</div>')
+        elif gsc["clicks_chg"] > 0:
+            w(f'<div class="story-sentence lead">Organic search growing steadily — clicks up {gsc["clicks_chg"]:.0f}% vs prior period.</div>')
+        else:
+            w(f'<div class="story-sentence alert-sentence">Organic search is declining — clicks down {abs(gsc["clicks_chg"]):.0f}%. Investigate lost rankings.</div>')
+
+        # Blog narrative
+        if gsc["blogs"]:
+            top_blog = gsc["blogs"][0]
+            blog_title = top_blog["page"].split("/")[-1].replace("-", " ").title()[:50]
+            total_blog_clicks = sum(b["clicks"] for b in gsc["blogs"])
+            w(f'<div class="story-sentence">Blog content drives {total_blog_clicks} clicks — top performer: "{blog_title}" at position {top_blog["pos"]:.1f}. Every blog post that ranks is free advertising.</div>')
+
+        # Barcode URL warning
+        barcode_products = [p for p in gsc["products"] if p["page"].split("/")[-1].replace("-","").isdigit()]
+        if barcode_products:
+            named_products = [p for p in gsc["products"] if not p["page"].split("/")[-1].replace("-","").isdigit()]
+            bc_ctr = sum(p["ctr"] for p in barcode_products) / len(barcode_products) if barcode_products else 0
+            nm_ctr = sum(p["ctr"] for p in named_products) / len(named_products) if named_products else 0
+            if nm_ctr > bc_ctr:
+                w(f'<div class="story-sentence alert-sentence">Products with barcode URLs ({len(barcode_products)} in top results) average {bc_ctr:.1f}% CTR vs {nm_ctr:.1f}% for named URLs. Fixing these slugs would boost clicks significantly.</div>')
+
+        # Quick win queries
+        quick_wins = [q for q in gsc["non_branded"] if 3 < q["pos"] <= 10 and q["impr"] > 80]
+        if quick_wins:
+            qw_names = ", ".join(f'"{q["q"]}"' for q in quick_wins[:3])
+            w(f'<div class="story-sentence opp-sentence">Quick wins: {qw_names} rank positions 4-10 with decent volume. Optimise these product/collection pages to push into top 3 — each position gained = ~30% more clicks.</div>')
+
+        # High-volume low-ranking
+        big_opps = [q for q in gsc["non_branded"] if q["pos"] > 10 and q["impr"] > 200]
+        if big_opps:
+            opp_names = ", ".join(f'"{q["q"]}"' for q in big_opps[:3])
+            w(f'<div class="story-sentence opp-sentence">Untapped search demand: {opp_names} have high impressions but you\'re off page 1. Create dedicated content or optimise existing pages to capture this traffic.</div>')
+
+        # CTR narrative
+        if gsc["ctr"] < 2.0:
+            w(f'<div class="story-sentence">Overall CTR is {gsc["ctr"]:.1f}% — below the 2-3% e-commerce benchmark. Improving meta titles and descriptions can boost this without changing rankings.</div>')
+
+        w('</div></div>')
+        w('</div>')
+
     # Monthly Trends
     w('<div class="card"><h3>Monthly Revenue Trends</h3><div class="desc">Last 3 months by store</div>')
     w('<div class="mgrid">')
@@ -752,7 +962,8 @@ footer .lo{color:#22c55e}
     with open(out_path, "w") as f:
         f.write(html)
     print(f"Dashboard written: {len(html):,} bytes -> {out_path}")
-    print(f"Sections: KPIs, Store Detail Cards, Store Progress, AI Narrative, Cross-Store Gaps ({len(gaps)}), Supplier ABC ({len(sup_sorted[:30])}), Store Comparison, Unique Sellers, Monthly Trends")
+    gsc_status = f"Search Console ({'✅' if gsc else '❌'})"
+    print(f"Sections: KPIs, Store Detail Cards, Store Progress, AI Narrative, Cross-Store Gaps ({len(gaps)}), Supplier ABC ({len(sup_sorted[:30])}), Store Comparison, Unique Sellers, {gsc_status}, Monthly Trends")
 
 if __name__ == "__main__":
     main()
