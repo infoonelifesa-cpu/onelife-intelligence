@@ -24,6 +24,148 @@ def load_json(path):
         print(f"WARN: {path}: {e}", file=sys.stderr)
         return {}
 
+def load_ga4():
+    """Pull GA4 analytics data. Returns dict with channel performance, engagement, device, daily trends."""
+    try:
+        sa_path = os.path.join(WORKSPACE, "credentials/onelife-analytics-sa.json")
+        if not os.path.exists(sa_path):
+            return None
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = sa_path
+        from google.analytics.data_v1beta import BetaAnalyticsDataClient
+        from google.analytics.data_v1beta.types import RunReportRequest, DateRange, Dimension, Metric, OrderBy
+
+        client = BetaAnalyticsDataClient()
+        PROP = "properties/525312444"
+
+        # Channel performance
+        ch_resp = client.run_report(RunReportRequest(
+            property=PROP,
+            date_ranges=[DateRange(start_date="28daysAgo", end_date="today")],
+            dimensions=[Dimension(name="sessionDefaultChannelGroup")],
+            metrics=[Metric(name="sessions"), Metric(name="totalUsers"), Metric(name="ecommercePurchases"),
+                     Metric(name="purchaseRevenue"), Metric(name="bounceRate")],
+            order_bys=[OrderBy(metric=OrderBy.MetricOrderBy(metric_name="sessions"), desc=True)],
+            limit=12,
+        ))
+        channels = []
+        for row in ch_resp.rows:
+            sess = int(row.metric_values[0].value)
+            users = int(row.metric_values[1].value)
+            orders = int(row.metric_values[2].value)
+            rev = float(row.metric_values[3].value)
+            bounce = float(row.metric_values[4].value) * 100
+            channels.append({
+                "name": row.dimension_values[0].value,
+                "sessions": sess, "users": users, "orders": orders,
+                "revenue": rev, "bounce": bounce,
+                "conv": (orders/sess*100) if sess > 0 else 0,
+                "rps": rev/sess if sess > 0 else 0,
+            })
+
+        # Totals
+        tot_sessions = sum(c["sessions"] for c in channels)
+        tot_users = sum(c["users"] for c in channels)
+        tot_orders = sum(c["orders"] for c in channels)
+        tot_revenue = sum(c["revenue"] for c in channels)
+        tot_conv = (tot_orders/tot_sessions*100) if tot_sessions > 0 else 0
+
+        # Device breakdown
+        dev_resp = client.run_report(RunReportRequest(
+            property=PROP,
+            date_ranges=[DateRange(start_date="28daysAgo", end_date="today")],
+            dimensions=[Dimension(name="deviceCategory")],
+            metrics=[Metric(name="sessions"), Metric(name="ecommercePurchases"), Metric(name="purchaseRevenue")],
+            limit=5,
+        ))
+        devices = []
+        for row in dev_resp.rows:
+            devices.append({
+                "device": row.dimension_values[0].value,
+                "sessions": int(row.metric_values[0].value),
+                "orders": int(row.metric_values[1].value),
+                "revenue": float(row.metric_values[2].value),
+            })
+
+        # Engagement
+        eng_resp = client.run_report(RunReportRequest(
+            property=PROP,
+            date_ranges=[DateRange(start_date="28daysAgo", end_date="today")],
+            metrics=[Metric(name="bounceRate"), Metric(name="averageSessionDuration"),
+                     Metric(name="screenPageViewsPerSession"), Metric(name="engagedSessions")],
+            limit=1,
+        ))
+        eng = eng_resp.rows[0] if eng_resp.rows else None
+        engagement = {
+            "bounce": float(eng.metric_values[0].value) * 100 if eng else 0,
+            "avg_duration": float(eng.metric_values[1].value) if eng else 0,
+            "pages_per_session": float(eng.metric_values[2].value) if eng else 0,
+            "engaged": int(eng.metric_values[3].value) if eng else 0,
+        }
+
+        # Daily trend (14 days)
+        daily_resp = client.run_report(RunReportRequest(
+            property=PROP,
+            date_ranges=[DateRange(start_date="14daysAgo", end_date="today")],
+            dimensions=[Dimension(name="date")],
+            metrics=[Metric(name="sessions"), Metric(name="purchaseRevenue")],
+            order_bys=[OrderBy(dimension=OrderBy.DimensionOrderBy(dimension_name="date"))],
+            limit=30,
+        ))
+        daily_sessions = []
+        daily_revenue = []
+        for row in sorted(daily_resp.rows, key=lambda r: r.dimension_values[0].value):
+            daily_sessions.append(int(row.metric_values[0].value))
+            daily_revenue.append(float(row.metric_values[1].value))
+
+        # Top converting pages
+        page_resp = client.run_report(RunReportRequest(
+            property=PROP,
+            date_ranges=[DateRange(start_date="28daysAgo", end_date="today")],
+            dimensions=[Dimension(name="landingPage")],
+            metrics=[Metric(name="sessions"), Metric(name="purchaseRevenue"), Metric(name="ecommercePurchases")],
+            order_bys=[OrderBy(metric=OrderBy.MetricOrderBy(metric_name="purchaseRevenue"), desc=True)],
+            limit=10,
+        ))
+        top_pages = []
+        for row in page_resp.rows:
+            rev = float(row.metric_values[1].value)
+            if rev > 0:
+                top_pages.append({
+                    "page": row.dimension_values[0].value,
+                    "sessions": int(row.metric_values[0].value),
+                    "revenue": rev,
+                    "orders": int(row.metric_values[2].value),
+                })
+
+        # Previous period for comparison
+        prev_resp = client.run_report(RunReportRequest(
+            property=PROP,
+            date_ranges=[DateRange(start_date="56daysAgo", end_date="29daysAgo")],
+            metrics=[Metric(name="sessions"), Metric(name="ecommercePurchases"), Metric(name="purchaseRevenue")],
+            limit=1,
+        ))
+        prev = prev_resp.rows[0] if prev_resp.rows else None
+        prev_sessions = int(prev.metric_values[0].value) if prev else 0
+        prev_orders = int(prev.metric_values[1].value) if prev else 0
+        prev_revenue = float(prev.metric_values[2].value) if prev else 0
+
+        sessions_chg = ((tot_sessions - prev_sessions) / prev_sessions * 100) if prev_sessions > 0 else 0
+        revenue_chg = ((tot_revenue - prev_revenue) / prev_revenue * 100) if prev_revenue > 0 else 0
+        orders_chg = ((tot_orders - prev_orders) / prev_orders * 100) if prev_orders > 0 else 0
+
+        return {
+            "channels": channels, "devices": devices, "engagement": engagement,
+            "daily_sessions": daily_sessions, "daily_revenue": daily_revenue,
+            "top_pages": top_pages,
+            "totals": {"sessions": tot_sessions, "users": tot_users, "orders": tot_orders,
+                       "revenue": tot_revenue, "conv": tot_conv},
+            "changes": {"sessions": sessions_chg, "revenue": revenue_chg, "orders": orders_chg},
+            "prev": {"sessions": prev_sessions, "orders": prev_orders, "revenue": prev_revenue},
+        }
+    except Exception as e:
+        print(f"WARN: GA4 failed: {e}", file=sys.stderr)
+        return None
+
 def load_search_console():
     """Pull Search Console data via API. Returns dict with pages, queries, totals, and period comparison."""
     try:
@@ -177,6 +319,7 @@ def main():
     if isinstance(sup_names, list):
         sup_names = dict(sup_names)
     gp_data = load_json("memory/snapshots/2026-02/ana_popular_gp.json")
+    ga4 = load_ga4()  # Google Analytics 4 data
     gsc = load_search_console()  # Google Search Console data
 
     # MTD — compute from daily histories (more accurate than MTD combined endpoint)
@@ -737,6 +880,121 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
         w(f'<div class="tgt">{fmt_r(store_mtd[s]["rev"])} / {fmt_r(TARGETS[s])} {trend_badge(wow.get(s))}</div></div>')
     w('</div>')
 
+    # === ONLINE PERFORMANCE (GA4) ===
+    if ga4:
+        t = ga4["totals"]
+        chg = ga4["changes"]
+        eng = ga4["engagement"]
+
+        w('<div class="card"><h3>&#x1f310; Online Performance</h3>')
+        w('<div class="desc">Google Analytics 4 — last 28 days vs prior 28 days | Powered by Analyzify tracking</div>')
+
+        # Online KPIs
+        sess_spark = sparkline_svg(ga4["daily_sessions"], "#3b82f6", 100, 25)
+        rev_spark = sparkline_svg(ga4["daily_revenue"], "#22c55e", 100, 25)
+        w('<div class="kpi-strip" style="margin-bottom:14px">')
+        w(f'<div class="kpi"><div class="label">Sessions</div><div class="val">{t["sessions"]:,}</div><div class="note">{trend_badge(chg["sessions"])} {sess_spark}</div></div>')
+        w(f'<div class="kpi"><div class="label">Online Revenue</div><div class="val green">{fmt_r(t["revenue"])}</div><div class="note">{trend_badge(chg["revenue"])} {rev_spark}</div></div>')
+        w(f'<div class="kpi"><div class="label">Orders</div><div class="val">{t["orders"]}</div><div class="note">{trend_badge(chg["orders"])}</div></div>')
+        w(f'<div class="kpi"><div class="label">Conv. Rate</div><div class="val">{t["conv"]:.2f}%</div><div class="note">Bounce: {eng["bounce"]:.0f}% | {eng["pages_per_session"]:.1f} pg/sess</div></div>')
+        w('</div>')
+
+        # Channel performance table
+        w('<h4 style="color:#f1f5f9;font-size:12px;margin-bottom:6px">Channel Performance</h4>')
+        w('<table style="font-size:11px"><thead><tr><th>Channel</th><th class="num">Sessions</th><th class="num">Revenue</th><th class="num">Orders</th><th class="num">Conv%</th><th class="num">Rev/Session</th><th>Verdict</th></tr></thead><tbody>')
+        for ch in ga4["channels"]:
+            # Verdict logic
+            if ch["orders"] == 0 and ch["sessions"] > 200:
+                verdict = '<span style="color:#ef4444">&#x26a0; No conversions</span>'
+            elif ch["conv"] >= 0.5:
+                verdict = '<span style="color:#22c55e">&#x2713; Strong</span>'
+            elif ch["conv"] >= 0.15 and ch["rps"] >= 1.0:
+                verdict = '<span style="color:#f59e0b">Okay</span>'
+            elif ch["sessions"] > 500 and ch["conv"] < 0.15:
+                verdict = '<span style="color:#ef4444">&#x26a0; High traffic, low conv</span>'
+            else:
+                verdict = '<span style="color:#64748b">Low volume</span>'
+            conv_cls = "gph" if ch["conv"] >= 0.5 else ("gpm" if ch["conv"] >= 0.15 else "gpl")
+            w(f'<tr><td>{esc(ch["name"])}</td><td class="num">{ch["sessions"]:,}</td><td class="num">{fmt_r(ch["revenue"])}</td><td class="num">{ch["orders"]}</td><td class="num {conv_cls}">{ch["conv"]:.2f}%</td><td class="num">R{ch["rps"]:.2f}</td><td>{verdict}</td></tr>')
+        w('</tbody></table>')
+
+        # Device breakdown inline
+        w('<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">')
+        # Devices
+        w('<div>')
+        w('<h4 style="color:#f1f5f9;font-size:12px;margin-bottom:6px">&#x1f4f1; Device Split</h4>')
+        w('<table style="font-size:11px"><thead><tr><th>Device</th><th class="num">Sessions</th><th class="num">Orders</th><th class="num">Revenue</th></tr></thead><tbody>')
+        for d in ga4["devices"]:
+            w(f'<tr><td>{d["device"].title()}</td><td class="num">{d["sessions"]:,}</td><td class="num">{d["orders"]}</td><td class="num">{fmt_r(d["revenue"])}</td></tr>')
+        w('</tbody></table></div>')
+
+        # Top revenue pages
+        if ga4["top_pages"]:
+            w('<div>')
+            w('<h4 style="color:#f1f5f9;font-size:12px;margin-bottom:6px">&#x1f4b0; Top Revenue Pages</h4>')
+            w('<table style="font-size:11px"><thead><tr><th>Page</th><th class="num">Revenue</th><th class="num">Orders</th></tr></thead><tbody>')
+            for p in ga4["top_pages"][:6]:
+                pg = p["page"][:45]
+                if pg in ["/", "(not set)", ""]: pg = pg or "Homepage"
+                w(f'<tr><td>{esc(pg)}</td><td class="num">{fmt_r(p["revenue"])}</td><td class="num">{p["orders"]}</td></tr>')
+            w('</tbody></table></div>')
+        w('</div>')
+
+        # === ONLINE NARRATIVE ===
+        w('<div class="story-card" style="margin-top:14px">')
+        w('<div class="story-header"><span style="font-size:18px">&#x1f4ca;</span><span class="story-title">Online Intelligence &amp; Recommendations</span></div>')
+        w('<div class="story-sentences">')
+
+        # Overall trend
+        if chg["revenue"] > 20:
+            w(f'<div class="story-sentence lead">Online revenue up {chg["revenue"]:.0f}% — {fmt_r(t["revenue"])} from {t["orders"]} orders over 28 days. The growth trend is positive.</div>')
+        elif chg["revenue"] > 0:
+            w(f'<div class="story-sentence lead">Online revenue growing modestly at +{chg["revenue"]:.0f}% — {fmt_r(t["revenue"])} from {t["orders"]} orders.</div>')
+        else:
+            w(f'<div class="story-sentence alert-sentence">Online revenue down {abs(chg["revenue"]):.0f}% — {fmt_r(t["revenue"])} from {t["orders"]} orders. Investigate what changed.</div>')
+
+        # Paid vs organic analysis
+        paid = next((c for c in ga4["channels"] if c["name"] == "Paid Search"), None)
+        organic = next((c for c in ga4["channels"] if c["name"] == "Organic Search"), None)
+        if paid and organic:
+            if organic["rps"] > paid["rps"]:
+                ratio = organic["rps"] / paid["rps"] if paid["rps"] > 0 else 0
+                w(f'<div class="story-sentence opp-sentence">Organic search converts {ratio:.1f}x better than paid search (R{organic["rps"]:.2f} vs R{paid["rps"]:.2f} per session). Every R1 invested in SEO/content works harder than R1 on Google Ads. Ask Digiwiz for ROAS breakdown.</div>')
+            if paid["sessions"] > 10000 and paid["conv"] < 0.2:
+                w(f'<div class="story-sentence alert-sentence">Paid Search is {paid["sessions"]:,} sessions but only {paid["conv"]:.2f}% converts. {paid["sessions"]-paid["orders"]:,} visitors leave without buying. Landing page or keyword targeting needs review.</div>')
+
+        # Email performance
+        email = next((c for c in ga4["channels"] if c["name"] == "Email"), None)
+        if email and email["conv"] > 0.5:
+            w(f'<div class="story-sentence">Email (Klaviyo) converts at {email["conv"]:.1f}% — your highest-quality channel at R{email["rps"]:.2f}/session. Grow the subscriber list; every new subscriber is worth ~R{email["rps"]:.0f} per visit.</div>')
+        elif email:
+            w(f'<div class="story-sentence">Email drives {email["sessions"]} sessions with {email["conv"]:.2f}% conversion. Room to grow — weekly sends, abandoned cart flows, and a bigger list would compound this.</div>')
+
+        # Paid Social
+        paid_social = next((c for c in ga4["channels"] if c["name"] == "Paid Social"), None)
+        if paid_social and paid_social["sessions"] > 100 and paid_social["orders"] == 0:
+            w(f'<div class="story-sentence alert-sentence">Paid Social (Meta/TikTok ads): {paid_social["sessions"]:,} sessions, ZERO conversions. This ad spend is producing awareness but no sales. Review targeting or pause until conversion tracking is fixed.</div>')
+
+        # Cross-network
+        cross = next((c for c in ga4["channels"] if c["name"] == "Cross-network"), None)
+        if cross and cross["sessions"] > 200 and cross["orders"] == 0:
+            w(f'<div class="story-sentence alert-sentence">Cross-network (Performance Max/display): {cross["sessions"]:,} sessions, zero sales. This traffic isn\'t buying. Consider reallocating budget to organic content or email.</div>')
+
+        # Conversion rate benchmark
+        if t["conv"] < 0.5:
+            w(f'<div class="story-sentence">Overall conversion rate is {t["conv"]:.2f}% — below the 1-2% e-commerce benchmark. Priority: improve product pages, add reviews/social proof, simplify checkout. Every 0.1% improvement = ~{int(t["sessions"]*0.001/28*30)} extra orders/month.</div>')
+
+        # Device insight
+        mobile_d = next((d for d in ga4["devices"] if d["device"] == "mobile"), None)
+        desktop_d = next((d for d in ga4["devices"] if d["device"] == "desktop"), None)
+        if mobile_d and desktop_d and mobile_d["sessions"] > desktop_d["sessions"]:
+            m_conv = (mobile_d["orders"]/mobile_d["sessions"]*100) if mobile_d["sessions"] > 0 else 0
+            d_conv = (desktop_d["orders"]/desktop_d["sessions"]*100) if desktop_d["sessions"] > 0 else 0
+            w(f'<div class="story-sentence">{mobile_d["sessions"]:,} mobile vs {desktop_d["sessions"]:,} desktop sessions. Mobile conversion: {m_conv:.2f}%, Desktop: {d_conv:.2f}%. {"Mobile experience needs work — most traffic but lower conversion." if m_conv < d_conv else "Mobile converting well."}</div>')
+
+        w('</div></div>')
+        w('</div>')
+
     # === HIDDEN GEMS SECTION ===
     if hidden_gems:
         w('<div class="card"><h3>&#x1f48e; Hidden Gems</h3>')
@@ -962,8 +1220,9 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
     with open(out_path, "w") as f:
         f.write(html)
     print(f"Dashboard written: {len(html):,} bytes -> {out_path}")
+    ga4_status = f"GA4 Online ({'✅' if ga4 else '❌'})"
     gsc_status = f"Search Console ({'✅' if gsc else '❌'})"
-    print(f"Sections: KPIs, Store Detail Cards, Store Progress, AI Narrative, Cross-Store Gaps ({len(gaps)}), Supplier ABC ({len(sup_sorted[:30])}), Store Comparison, Unique Sellers, {gsc_status}, Monthly Trends")
+    print(f"Sections: KPIs, Store Detail Cards, Store Progress, AI Narrative, {ga4_status}, Hidden Gems, Low GP, Cross-Store Gaps ({len(gaps)}), Supplier ABC ({len(sup_sorted[:30])}), Store Comparison, {gsc_status}, Monthly Trends")
 
 if __name__ == "__main__":
     main()
