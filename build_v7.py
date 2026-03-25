@@ -113,11 +113,17 @@ def main():
         data = store_mtd[s]
         trading_days = data["days"]
         run_rate = data["rev"] / trading_days if trading_days > 0 else 0
-        # CEN closed Sundays (~22 trading days), GVS+EDN open 7 days (~26-31)
+        # Calculate ACTUAL remaining trading days from tomorrow to end of month
         if s == "CEN":
-            remaining_trading = max(0, 22 - trading_days)  # ~22 trading days for CEN
+            # CEN closed Sundays — count remaining weekdays (Mon-Sat) from tomorrow
+            remaining_trading = 0
+            for d in range(NOW.day + 1, days_in_month_total + 1):
+                future_date = NOW.replace(day=d)
+                if future_date.weekday() != 6:  # 6 = Sunday
+                    remaining_trading += 1
         else:
-            remaining_trading = max(0, days_in_month_total - (NOW - timedelta(days=1)).day)
+            # GVS + EDN open 7 days
+            remaining_trading = max(0, days_in_month_total - NOW.day)
         projected = data["rev"] + (run_rate * remaining_trading)
         pct_of_target = (projected / TARGETS[s] * 100) if TARGETS[s] > 0 else 0
         # Required daily to hit target
@@ -264,6 +270,9 @@ def main():
         b = norm(r.get("company_branch_code", ""))
         desc = r.get("line_item_description", "").strip()
         if not desc or b not in ("CEN", "GVS", "EDN"): continue
+        # Exclude courier/postage fees — not real products
+        desc_lower = desc.lower()
+        if any(x in desc_lower for x in ["postgeld", "courier", "postage", "shipping fee", "delivery fee"]): continue
         pbs[desc][b]["rev"] += r.get("value_excl_after_discount", 0)
         pbs[desc][b]["gp"] += r.get("gross_profit", 0)
         pbs[desc][b]["qty"] += r.get("quantity", 0)
@@ -637,7 +646,7 @@ footer .lo{color:#22c55e}
             w(f'<div class="action-card gem">')
             w(f'<span class="ac-badge gem">Hidden Gem</span>')
             w(f'<div class="ac-title">{esc(gem["p"])} @ {STORE_LABELS.get(gem["store"], gem["store"])}</div>')
-            w(f'<div class="ac-meta">{gem["gp_pct"]:.0f}% GP &middot; only {gem["qty"]} units sold &middot; {fmt_r(gem["rev"])} revenue</div>')
+            w(f'<div class="ac-meta">{gem["gp_pct"]:.0f}% GP &middot; only {gem["qty"]} units sold &middot; {fmt_r(gem["rev"])} revenue &middot; Supplier: {sup_name(gem.get("sup",""), sup_names)}</div>')
             w(f'<div class="ac-uplift">&#x27a4; Move to eye level or endcap. 3x sales potential = {fmt_r(gem["potential"])}/month</div>')
             w('</div>')
         w('</div></div>')
@@ -665,7 +674,7 @@ footer .lo{color:#22c55e}
         w(f'<div class="action-card range">')
         w(f'<span class="ac-badge range">Range It</span>')
         w(f'<div class="ac-title">{esc(g["p"])}</div>')
-        w(f'<div class="ac-meta">{gpp:.0f}% GP &middot; {fmt_r(g["rev"])} at CEN &middot; {g["qty"]} units &middot; Missing: {", ".join(g["m"])}</div>')
+        w(f'<div class="ac-meta">{gpp:.0f}% GP &middot; {fmt_r(g["rev"])} at CEN &middot; {g["qty"]} units &middot; Supplier: {sup_name(g.get("sup",""), sup_names)} &middot; Missing: {", ".join(g["m"])}</div>')
         w(f'<div class="ac-uplift">&#x27a4; Stock at {", ".join(g["m"])} &rarr; potential {fmt_r(g["rev"] * 0.4)}/month additional revenue per store</div>')
         w('</div>')
     w('</div>')
