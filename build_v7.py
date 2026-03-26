@@ -391,6 +391,43 @@ def main():
     yesterday_data = omni.get("yesterday", {})
     yesterday_rev = yesterday_data.get("combined", {}).get("revenue_excl", 0)
 
+    # === TODAY'S / LATEST DAY SALES + GP PER STORE ===
+    def latest_day(history):
+        if not history:
+            return {"date": "", "rev": 0, "gp": 0}
+        sorted_days = sorted(
+            [e for e in history if e.get("document_date")],
+            key=lambda e: e["document_date"], reverse=True
+        )
+        if not sorted_days:
+            return {"date": "", "rev": 0, "gp": 0}
+        latest = sorted_days[0]
+        return {
+            "date": latest.get("document_date", ""),
+            "rev": latest.get("value_excl_after_discount", 0),
+            "gp": latest.get("gross_profit", 0),
+        }
+
+    today_cen = latest_day(ho_history)
+    today_gvs = latest_day(gvs_history)
+    today_edn = latest_day(edn_history)
+    store_today = {"CEN": today_cen, "GVS": today_gvs, "EDN": today_edn}
+
+    latest_date_str = today_cen.get("date", "") or today_gvs.get("date", "") or today_edn.get("date", "")
+    if latest_date_str:
+        try:
+            ld = datetime.strptime(latest_date_str, "%Y-%m-%d").date()
+            if ld == NOW.date():
+                latest_day_label = "Today"
+            elif ld == (NOW - timedelta(days=1)).date():
+                latest_day_label = "Yesterday"
+            else:
+                latest_day_label = ld.strftime("%d %b")
+        except:
+            latest_day_label = "Latest"
+    else:
+        latest_day_label = "Latest"
+
     # Weekly trends
     days_data = daily_cache.get("days", {})
     def week_trend(key, n=7):
@@ -859,6 +896,10 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
         w(f'<div class="srev">{fmt_r(data["rev"])}</div>')
         w(f'<div class="bar-mini"><div class="bar-fill {cls}" style="width:{min(sa["pct"],100):.0f}%"></div></div>')
         w(f'<div class="spct">{sa["pct"]:.0f}% of {fmt_r(TARGETS[s])} target</div>')
+        td = store_today[s]
+        td_gp_pct = (td["gp"] / td["rev"] * 100) if td["rev"] > 0 else 0
+        w(f'<div class="srow" style="border-bottom:1px solid #1e1e2e;padding-bottom:6px;margin-bottom:6px"><span style="color:#00ff88;font-weight:700">{latest_day_label} Sales</span><span class="sv" style="color:#00ff88;font-weight:700">{fmt_r(td["rev"])}</span></div>')
+        w(f'<div class="srow"><span style="color:#00ff88">{latest_day_label} GP</span><span class="sv" style="color:#00ff88">{fmt_r(td["gp"])} ({td_gp_pct:.0f}%)</span></div>')
         w(f'<div class="srow"><span>Run Rate</span><span class="sv">{fmt_r(sa["run_rate"])}/day</span></div>')
         w(f'<div class="srow"><span>Required Rate</span><span class="sv {status_cls}">{fmt_r(sa["required_daily"])}/day</span></div>')
         w(f'<div class="srow"><span>Projected</span><span class="sv">{fmt_r(sa["projected"])}</span></div>')
@@ -892,9 +933,13 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
         # Online KPIs
         sess_spark = sparkline_svg(ga4["daily_sessions"], "#3b82f6", 100, 25)
         rev_spark = sparkline_svg(ga4["daily_revenue"], "#22c55e", 100, 25)
+        online_today_rev = ga4["daily_revenue"][-1] if ga4["daily_revenue"] else 0
+        online_yesterday_rev = ga4["daily_revenue"][-2] if len(ga4["daily_revenue"]) >= 2 else 0
+
         w('<div class="kpi-strip" style="margin-bottom:14px">')
-        w(f'<div class="kpi"><div class="label">Sessions</div><div class="val">{t["sessions"]:,}</div><div class="note">{trend_badge(chg["sessions"])} {sess_spark}</div></div>')
-        w(f'<div class="kpi"><div class="label">Online Revenue</div><div class="val green">{fmt_r(t["revenue"])}</div><div class="note">{trend_badge(chg["revenue"])} {rev_spark}</div></div>')
+        w(f'<div class="kpi"><div class="label" style="color:#00ff88">Today Online Sales</div><div class="val" style="color:#00ff88;font-size:26px">{fmt_r(online_today_rev)}</div><div class="note">Yesterday: {fmt_r(online_yesterday_rev)}</div></div>')
+        w(f'<div class="kpi"><div class="label">Sessions (28d)</div><div class="val">{t["sessions"]:,}</div><div class="note">{trend_badge(chg["sessions"])} {sess_spark}</div></div>')
+        w(f'<div class="kpi"><div class="label">Revenue (28d)</div><div class="val green">{fmt_r(t["revenue"])}</div><div class="note">{trend_badge(chg["revenue"])} {rev_spark}</div></div>')
         w(f'<div class="kpi"><div class="label">Orders</div><div class="val">{t["orders"]}</div><div class="note">{trend_badge(chg["orders"])}</div></div>')
         w(f'<div class="kpi"><div class="label">Conv. Rate</div><div class="val">{t["conv"]:.2f}%</div><div class="note">Bounce: {eng["bounce"]:.0f}% | {eng["pages_per_session"]:.1f} pg/sess</div></div>')
         w('</div>')
