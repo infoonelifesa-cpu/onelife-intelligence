@@ -311,6 +311,37 @@ def trend_badge(pct):
 def esc(s):
     return str(s).replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
 
+def load_reviews_data():
+    """Load the latest Google Reviews snapshot and week-start for comparison."""
+    reviews_path = os.path.join(WORKSPACE, "data/google_reviews/review_history.json")
+    baseline = {
+        "date": NOW.strftime("%Y-%m-%d"),
+        "stores": {
+            "CEN": {"rating": 4.7, "total_reviews": 294, "breakdown": {"5": 240, "4": 36, "3": 5, "2": 1, "1": 12}},
+            "GVS": {"rating": 5.0, "total_reviews": 44, "breakdown": {"5": 44, "4": 0, "3": 0, "2": 0, "1": 0}},
+            "EDN": {"rating": 4.9, "total_reviews": 31, "breakdown": {"5": 29, "4": 2, "3": 0, "2": 0, "1": 0}},
+        }
+    }
+    targets = {"CEN": 5, "GVS": 3, "EDN": 3}
+    try:
+        with open(reviews_path) as f:
+            history = json.load(f)
+        snaps = history.get("snapshots", [])
+        if not snaps:
+            return {"latest": baseline, "week_start": baseline, "targets": targets}
+        latest = snaps[-1]
+        # Find Monday's snapshot
+        monday = NOW - timedelta(days=NOW.weekday())
+        monday_str = monday.strftime("%Y-%m-%d")
+        week_start = baseline
+        for s in snaps:
+            if s["date"] <= monday_str:
+                week_start = s
+        return {"latest": latest, "week_start": week_start, "targets": targets}
+    except Exception as e:
+        print(f"WARN: Reviews data: {e}", file=sys.stderr)
+        return {"latest": baseline, "week_start": baseline, "targets": targets}
+
 def main():
     # Load data
     omni = load_json("memory/omni_cache.json")
@@ -321,6 +352,7 @@ def main():
     gp_data = load_json("memory/snapshots/2026-02/ana_popular_gp.json")
     ga4 = load_ga4()  # Google Analytics 4 data
     gsc = load_search_console()  # Google Search Console data
+    reviews = load_reviews_data()  # Google Reviews tracker
 
     # MTD — compute from daily histories (more accurate than MTD combined endpoint)
     ho_history = omni.get("ho_history", omni.get("full_history", []))
@@ -1240,6 +1272,74 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
             w(f'<div class="story-sentence">Overall CTR is {gsc["ctr"]:.1f}% — below the 2-3% e-commerce benchmark. Improving meta titles and descriptions can boost this without changing rankings.</div>')
 
         w('</div></div>')
+        w('</div>')
+
+    # === GOOGLE REVIEWS ===
+    if reviews:
+        rv_latest = reviews["latest"]
+        rv_start = reviews["week_start"]
+        rv_targets = reviews["targets"]
+        rv_date = rv_latest.get("date", "")
+        rv_stores_info = {"CEN": ("Centurion", "🏆"), "GVS": ("Glen Village", "🌿"), "EDN": ("Edenvale", "💚")}
+
+        total_reviews_all = sum(rv_latest["stores"].get(c, {}).get("total_reviews", 0) for c in ["CEN","GVS","EDN"])
+        total_new_week = sum(
+            rv_latest["stores"].get(c, {}).get("total_reviews", 0) - rv_start["stores"].get(c, {}).get("total_reviews", 0)
+            for c in ["CEN","GVS","EDN"]
+        )
+        total_target_week = sum(rv_targets.values())
+
+        w('<div class="card"><h3>⭐ Google Reviews</h3>')
+        w(f'<div class="desc">Review tracking across all 3 stores | Data as at {rv_date} | Weekly target: {total_target_week} new reviews</div>')
+
+        # KPI strip for reviews
+        w('<div class="kpi-strip" style="margin-bottom:14px">')
+        w(f'<div class="kpi"><div class="label">Total Reviews</div><div class="val">{total_reviews_all}</div><div class="note">Across all stores</div></div>')
+        w(f'<div class="kpi"><div class="label">New This Week</div><div class="val {"green" if total_new_week >= total_target_week else ("yellow" if total_new_week >= total_target_week * 0.5 else "red")}">{total_new_week}</div><div class="note">Target: {total_target_week}</div></div>')
+        for c in ["CEN","GVS","EDN"]:
+            sd = rv_latest["stores"].get(c, {})
+            rating = sd.get("rating", 0)
+            total = sd.get("total_reviews", 0)
+            star_start = rv_start["stores"].get(c, {}).get("total_reviews", 0)
+            new_w = total - star_start
+            tgt = rv_targets.get(c, 0)
+            name, emoji = rv_stores_info[c]
+            status = "green" if new_w >= tgt else ("yellow" if new_w >= tgt * 0.5 else "red")
+            w(f'<div class="kpi"><div class="label">{emoji} {name}</div><div class="val">{rating}⭐</div><div class="note">{total} reviews | <span class="{status}">+{new_w}/{tgt} this week</span></div></div>')
+        w('</div>')
+
+        # Per-store breakdown bars
+        w('<div class="store-grid">')
+        for c in ["CEN","GVS","EDN"]:
+            sd = rv_latest["stores"].get(c, {})
+            bd = sd.get("breakdown", {})
+            rating = sd.get("rating", 0)
+            total = sd.get("total_reviews", 0)
+            name, emoji = rv_stores_info[c]
+            star_start = rv_start["stores"].get(c, {}).get("total_reviews", 0)
+            new_w = total - star_start
+            tgt = rv_targets.get(c, 0)
+            pct_tgt = min(100, (new_w / tgt * 100)) if tgt > 0 else 0
+            bar_cls = "ok" if pct_tgt >= 80 else ("warn" if pct_tgt >= 40 else "bad")
+
+            max_bd = max(int(bd.get("5", 0)), int(bd.get("4", 0)), int(bd.get("3", 0)), int(bd.get("2", 0)), int(bd.get("1", 0)), 1)
+            bars_html = ""
+            star_colors = {"5": "#22c55e", "4": "#a3e635", "3": "#fbbf24", "2": "#fb923c", "1": "#ef4444"}
+            for star in ["5","4","3","2","1"]:
+                count = int(bd.get(star, 0))
+                h = int(count / max_bd * 40) if max_bd > 0 else 0
+                bars_html += f'<div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:{h}px;background:{star_colors[star]};border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">{star}★ ({count})</div></div>'
+
+            w(f'<div class="store-card">')
+            w(f'<div class="sname">{emoji} {name}</div>')
+            w(f'<div class="srev">{rating} ⭐</div>')
+            w(f'<div style="color:#94a3b8;font-size:12px;margin-bottom:8px">{total} total reviews</div>')
+            w(f'<div class="bar-mini"><div class="bar-fill {bar_cls}" style="width:{pct_tgt:.0f}%"></div></div>')
+            w(f'<div class="spct">Weekly: +{new_w} / {tgt} target</div>')
+            w(f'<div style="display:flex;gap:4px;margin-top:10px">{bars_html}</div>')
+            w(f'</div>')
+        w('</div>')
+
         w('</div>')
 
     # Monthly Trends

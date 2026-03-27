@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onelife Google Reviews Dashboard</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0f1a; color: #e0e0e0; min-height: 100vh; padding: 24px; }
+  .header { text-align: center; margin-bottom: 32px; }
+  .header h1 { font-size: 28px; color: #4ADE80; letter-spacing: 1px; }
+  .header .subtitle { color: #888; font-size: 14px; margin-top: 4px; }
+  .header .date { color: #4ADE80; font-size: 13px; margin-top: 8px; font-weight: 600; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+  .card { background: #141b2d; border-radius: 16px; padding: 24px; border: 1px solid #1e2a42; }
+  .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .store-name { font-size: 18px; font-weight: 700; }
+  .store-name .emoji { margin-right: 6px; }
+  .rating-badge { background: #1e2a42; border-radius: 12px; padding: 6px 14px; display: flex; align-items: center; gap: 6px; }
+  .rating-badge .stars { color: #fbbf24; font-size: 14px; }
+  .rating-badge .num { color: #fff; font-weight: 700; font-size: 18px; }
+  .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .metric { background: #0d1424; border-radius: 10px; padding: 14px; text-align: center; }
+  .metric .value { font-size: 28px; font-weight: 800; color: #fff; }
+  .metric .label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+  .progress-section { margin-top: 12px; }
+  .progress-header { display: flex; justify-content: space-between; font-size: 13px; color: #888; margin-bottom: 6px; }
+  .progress-bar { background: #1e2a42; border-radius: 8px; height: 12px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 8px; transition: width 0.5s ease; }
+  .progress-fill.green { background: linear-gradient(90deg, #4ADE80, #22c55e); }
+  .progress-fill.yellow { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
+  .progress-fill.red { background: linear-gradient(90deg, #ef4444, #dc2626); }
+  .breakdown { display: flex; gap: 6px; margin-top: 14px; align-items: center; }
+  .breakdown .bar-group { flex: 1; }
+  .breakdown .bar-label { font-size: 10px; color: #666; text-align: center; }
+  .breakdown .bar-container { background: #1e2a42; border-radius: 4px; height: 60px; display: flex; flex-direction: column-reverse; overflow: hidden; }
+  .breakdown .bar-fill { border-radius: 0 0 4px 4px; }
+  .breakdown .bar-fill.s5 { background: #4ADE80; }
+  .breakdown .bar-fill.s4 { background: #a3e635; }
+  .breakdown .bar-fill.s3 { background: #fbbf24; }
+  .breakdown .bar-fill.s2 { background: #fb923c; }
+  .breakdown .bar-fill.s1 { background: #ef4444; }
+  .total-card { background: linear-gradient(135deg, #1B5E20, #0d3310); border: 1px solid #2d7a3a; }
+  .total-card .value { color: #4ADE80; }
+  .target-info { text-align: center; margin-top: 24px; padding: 16px; background: #141b2d; border-radius: 12px; border: 1px solid #1e2a42; max-width: 1100px; margin-left: auto; margin-right: auto; }
+  .target-info h3 { color: #4ADE80; margin-bottom: 8px; }
+  .target-info p { color: #888; font-size: 14px; line-height: 1.6; }
+  .target-row { display: flex; justify-content: center; gap: 40px; margin-top: 12px; }
+  .target-item { text-align: center; }
+  .target-item .store { font-size: 12px; color: #888; }
+  .target-item .num { font-size: 22px; font-weight: 800; color: #fff; }
+  .footer { text-align: center; margin-top: 24px; color: #555; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🌟 Onelife Google Reviews</h1>
+  <div class="subtitle">Weekly Performance Dashboard</div>
+  <div class="date" id="reportDate"></div>
+</div>
+
+<div class="grid" id="storeCards"></div>
+
+<div class="target-info">
+  <h3>🎯 Weekly Targets</h3>
+  <div class="target-row">
+    <div class="target-item">
+      <div class="store">🏆 Centurion</div>
+      <div class="num">5</div>
+      <div class="store">per week</div>
+    </div>
+    <div class="target-item">
+      <div class="store">🌿 Glen Village</div>
+      <div class="num">3</div>
+      <div class="store">per week</div>
+    </div>
+    <div class="target-item">
+      <div class="store">💚 Edenvale</div>
+      <div class="num">3</div>
+      <div class="store">per week</div>
+    </div>
+  </div>
+  <p style="margin-top: 14px;">
+    Total weekly target: <strong style="color:#4ADE80;">11 new reviews</strong> &nbsp;|&nbsp;
+    April goal: <strong style="color:#4ADE80;">100+ new reviews</strong>
+  </p>
+</div>
+
+<div class="footer">
+  Tracked by Jarvis 🦞 &nbsp;|&nbsp; Data from Google Maps &nbsp;|&nbsp; Updated daily
+</div>
+
+<script>
+const data = {
+  date: "2026-03-27",
+  stores: {
+    CEN: { name: "Centurion (Flagship)", emoji: "🏆", rating: 4.7, total: 294, target: 5, newThisWeek: 0, breakdown: {5:240,4:36,3:5,2:1,1:12} },
+    GVS: { name: "Glen Village", emoji: "🌿", rating: 5.0, total: 44, target: 3, newThisWeek: 0, breakdown: {5:44,4:0,3:0,2:0,1:0} },
+    EDN: { name: "Edenvale", emoji: "💚", rating: 4.9, total: 31, target: 3, newThisWeek: 0, breakdown: {5:29,4:2,3:0,2:0,1:0} },
+  }
+};
+
+document.getElementById('reportDate').textContent = `Baseline: ${data.date}`;
+
+const grid = document.getElementById('storeCards');
+
+Object.values(data.stores).forEach(s => {
+  const pct = Math.min(100, (s.newThisWeek / s.target) * 100);
+  const colorClass = pct >= 80 ? 'green' : pct >= 40 ? 'yellow' : 'red';
+  const maxBreakdown = Math.max(...Object.values(s.breakdown), 1);
+  
+  const breakdownBars = [5,4,3,2,1].map(star => {
+    const count = s.breakdown[star] || 0;
+    const h = (count / maxBreakdown) * 100;
+    return `<div class="bar-group">
+      <div class="bar-container"><div class="bar-fill s${star}" style="height:${h}%"></div></div>
+      <div class="bar-label">${star}★ (${count})</div>
+    </div>`;
+  }).join('');
+
+  grid.innerHTML += `
+    <div class="card">
+      <div class="card-header">
+        <div class="store-name"><span class="emoji">${s.emoji}</span>${s.name}</div>
+        <div class="rating-badge">
+          <span class="num">${s.rating}</span>
+          <span class="stars">★</span>
+        </div>
+      </div>
+      <div class="metrics">
+        <div class="metric"><div class="value">${s.total}</div><div class="label">Total Reviews</div></div>
+        <div class="metric"><div class="value">${s.newThisWeek}</div><div class="label">New This Week</div></div>
+      </div>
+      <div class="progress-section">
+        <div class="progress-header"><span>Weekly Progress</span><span>${s.newThisWeek}/${s.target}</span></div>
+        <div class="progress-bar"><div class="progress-fill ${colorClass}" style="width:${pct}%"></div></div>
+      </div>
+      <div class="breakdown">${breakdownBars}</div>
+    </div>`;
+});
+</script>
+</body>
+</html>

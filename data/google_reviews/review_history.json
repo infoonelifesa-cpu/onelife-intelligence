@@ -1,0 +1,42 @@
+{
+  "snapshots": [
+    {
+      "date": "2026-03-27",
+      "stores": {
+        "CEN": {
+          "rating": 4.7,
+          "total_reviews": 294,
+          "breakdown": {
+            "5": 240,
+            "4": 36,
+            "3": 5,
+            "2": 1,
+            "1": 12
+          }
+        },
+        "GVS": {
+          "rating": 5.0,
+          "total_reviews": 44,
+          "breakdown": {
+            "5": 44,
+            "4": 0,
+            "3": 0,
+            "2": 0,
+            "1": 0
+          }
+        },
+        "EDN": {
+          "rating": 4.9,
+          "total_reviews": 31,
+          "breakdown": {
+            "5": 29,
+            "4": 2,
+            "3": 0,
+            "2": 0,
+            "1": 0
+          }
+        }
+      }
+    }
+  ]
+}
