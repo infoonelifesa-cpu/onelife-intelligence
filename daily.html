@@ -17,6 +17,9 @@ body { background:#0f172a; color:#e2e8f0; font-family:-apple-system,BlinkMacSyst
 .narrative ul { list-style:none; padding:0; }
 .narrative li { padding:6px 0; padding-left:20px; position:relative; font-size:0.95em; line-height:1.5; }
 .narrative li:before { content:"→"; position:absolute; left:0; color:#10b981; }
+.narrative-list li { padding:8px 0; padding-left:20px; position:relative; font-size:0.9em; line-height:1.6; border-bottom:1px solid #334155; }
+.narrative-list li:last-child { border-bottom:none; }
+.narrative-list strong { color:#f8fafc; }
 .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; }
 .card { background:#1e293b; border-radius:10px; padding:14px; border:1px solid #334155; }
 .card-title { color:#10b981; font-weight:700; font-size:0.9em; margin-bottom:8px; }
@@ -48,7 +51,7 @@ canvas { max-width:100%; }
 <body>
 <div class="header">
     <h1>🏪 Onelife Daily Ops</h1>
-    <div class="sub">Reporting: 2026-03-28 | Generated: 2026-03-29 12:27</div>
+    <div class="sub">Reporting: 2026-03-28 | Generated: 2026-03-29 13:06</div>
 </div>
 
 <!-- NARRATIVE -->
@@ -138,9 +141,20 @@ canvas { max-width:100%; }
             <td>R57.00</td><td>20.1%</td></tr></table>
 </div>
 
-<!-- BUSY TIMES -->
+<!-- BUSY TIMES NARRATIVE -->
+<div class="section narrative">
+    <h2>⏰ Busy Times — Store Narrative</h2>
+    <ul class="narrative-list">
+        <li><strong>All Stores yesterday:</strong> Peak at 12:00 with 40 invoices (R25,150, avg R629/invoice), followed by 10:00 (30 invoices). Quiet hours: 8:00, 17:00, 16:00. Total: 161 invoices, R95,569.</li>
+<li><strong>All Stores MTD pattern:</strong> Busiest hours: 12:00 (556), 11:00 (519), 13:00 (427). Dead hours: 8:00, 6:00, 7:00.</li>
+<li><strong>Centurion yesterday:</strong> Peak at 12:00 with 21 invoices (R16,217, avg R772/invoice), followed by 11:00 (20 invoices). Quiet hours: 8:00, 14:00, 15:00. Total: 96 invoices, R65,054.</li>
+<li><strong>Centurion MTD pattern:</strong> Busiest hours: 12:00 (312), 11:00 (305), 13:00 (259). Dead hours: 8:00.</li>
+    </ul>
+</div>
+
+<!-- BUSY TIMES CHARTS -->
 <div class="section">
-    <h2>⏰ Busy Times</h2>
+    <h2>📊 Busy Times — Charts</h2>
     <div class="tab-row">
         <button class="tab active" onclick="showBusy('yesterday')">Yesterday</button>
         <button class="tab" onclick="showBusy('mtd')">MTD</button>
@@ -154,6 +168,20 @@ canvas { max-width:100%; }
     <h2>📈 Busy Times Trend</h2>
     <div class="chart-container"><canvas id="trendChart"></canvas></div>
     <p style="color:#64748b;font-size:0.8em;text-align:center;margin-top:6px;">This chart grows more useful every day as data accumulates</p>
+</div>
+
+<!-- STOCK TAKES & ADJUSTMENTS -->
+<div class="section narrative">
+    <h2>📦 Stock Takes & Adjustments</h2>
+    <ul class="narrative-list">
+        <li>⚠️ <strong>No stock takes done yesterday at any store.</strong> If this is a regular counting day, follow up with store managers.</li>
+<li><strong>Stock take adjustments MTD:</strong> R-12,345.39</li>
+<li>  CEN: R-12,345.39 (write-down)</li>
+<li>⚠️ Total stock take write-downs exceed R10K this month. Review what's being counted off — is it damaged stock, expired product, or shrinkage?</li>
+<li><strong>Stock level adjustments MTD:</strong> R-10,190.91</li>
+<li>  CEN: R-10,190.91 (adjusted down)</li>
+<li>⚠️ Level adjustments of R10,191 this month at CEN. These are manual corrections outside stock takes. Check if this is returns processing, breakage write-offs, or unexplained shrinkage.</li>
+    </ul>
 </div>
 
 <!-- WHOLESALE -->
