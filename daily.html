@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onelife Daily Ops — 2026-03-28</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0f172a; color:#e2e8f0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; padding:12px; }
+.header { text-align:center; padding:20px 0 10px; }
+.header h1 { color:#10b981; font-size:1.6em; }
+.header .sub { color:#94a3b8; font-size:0.85em; margin-top:4px; }
+.section { background:#1e293b; border-radius:12px; padding:16px; margin:12px 0; }
+.section h2 { color:#10b981; font-size:1.1em; margin-bottom:12px; border-bottom:1px solid #334155; padding-bottom:8px; }
+.narrative { background:linear-gradient(135deg,#1e293b,#1a2332); border-left:4px solid #10b981; }
+.narrative ul { list-style:none; padding:0; }
+.narrative li { padding:6px 0; padding-left:20px; position:relative; font-size:0.95em; line-height:1.5; }
+.narrative li:before { content:"→"; position:absolute; left:0; color:#10b981; }
+.cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:10px; }
+.card { background:#1e293b; border-radius:10px; padding:14px; border:1px solid #334155; }
+.card-title { color:#10b981; font-weight:700; font-size:0.9em; margin-bottom:8px; }
+.metric-row { display:flex; gap:12px; }
+.metric { flex:1; }
+.metric .label { display:block; color:#94a3b8; font-size:0.7em; text-transform:uppercase; }
+.metric .value { display:block; color:#f8fafc; font-size:1.1em; font-weight:700; }
+.metric .sub { display:block; color:#94a3b8; font-size:0.75em; }
+.progress-bar { background:#334155; border-radius:6px; height:6px; margin-top:8px; overflow:hidden; }
+.progress-fill { height:100%; border-radius:6px; transition:width 0.5s; }
+.progress-label { color:#94a3b8; font-size:0.7em; margin-top:4px; text-align:right; }
+table { width:100%; border-collapse:collapse; font-size:0.85em; }
+th { text-align:left; padding:8px 6px; color:#94a3b8; border-bottom:1px solid #334155; font-size:0.75em; text-transform:uppercase; }
+td { padding:6px; border-bottom:1px solid #1e293b; }
+tr.var-ok td { color:#10b981; }
+tr.var-warn td { color:#f59e0b; }
+tr.var-bad td { color:#ef4444; }
+tr.bakery td { color:#64748b; }
+tr.alert-row td { color:#ef4444; font-weight:600; }
+.badge-green { background:#065f46; color:#10b981; padding:8px 14px; border-radius:8px; text-align:center; font-weight:600; }
+.badge-red { background:#7f1d1d; color:#fca5a5; padding:8px 14px; border-radius:8px; text-align:center; font-weight:600; }
+.chart-container { position:relative; height:280px; margin:10px 0; }
+.tab-row { display:flex; gap:6px; margin-bottom:10px; }
+.tab { padding:6px 14px; border-radius:6px; background:#334155; color:#94a3b8; cursor:pointer; font-size:0.8em; border:none; }
+.tab.active { background:#10b981; color:#0f172a; font-weight:700; }
+canvas { max-width:100%; }
+</style>
+</head>
+<body>
+<div class="header">
+    <h1>🏪 Onelife Daily Ops</h1>
+    <div class="sub">Reporting: 2026-03-28 | Generated: 2026-03-29 12:27</div>
+</div>
+
+<!-- NARRATIVE -->
+<div class="section narrative">
+    <h2>📋 What Matters Today</h2>
+    <ul>
+        <li>MTD Revenue R1,951,872 (88% of R2,230,000 target). Projected month-end: R2,161,001.</li><li>GP yesterday: 34.3% (MTD: 33.7%). Healthy.</li><li>Cash-ups clean. No variances above R5 across all stores.</li><li>No non-bakery items sold under 25% GP yesterday. Clean.</li><li>⚠️ Cost price spike: BARRY'S RAW ENERGY BAR 65G (>27% increase)</li>
+    </ul>
+</div>
+
+<!-- REVENUE -->
+<div class="section">
+    <h2>💰 Revenue</h2>
+    <div class="cards">
+        <div class="card">
+            <div class="card-title">Centurion</div>
+            <div class="metric-row">
+                <div class="metric"><span class="label">Yesterday</span><span class="value">R64,811</span><span class="sub">GP 35.0%</span></div>
+                <div class="metric"><span class="label">MTD</span><span class="value">R1,286,378</span><span class="sub">GP 33.4%</span></div>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:88.71572413793103%;background:#10b981"></div></div>
+            <div class="progress-label">89% of R1,450,000 target</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Glen Village</div>
+            <div class="metric-row">
+                <div class="metric"><span class="label">Yesterday</span><span class="value">R10,334</span><span class="sub">GP 31.0%</span></div>
+                <div class="metric"><span class="label">MTD</span><span class="value">R307,727</span><span class="sub">GP 33.8%</span></div>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:93.25060606060606%;background:#10b981"></div></div>
+            <div class="progress-label">93% of R330,000 target</div>
+        </div>
+        <div class="card">
+            <div class="card-title">Edenvale</div>
+            <div class="metric-row">
+                <div class="metric"><span class="label">Yesterday</span><span class="value">R20,423</span><span class="sub">GP 33.8%</span></div>
+                <div class="metric"><span class="label">MTD</span><span class="value">R357,767</span><span class="sub">GP 34.6%</span></div>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:79.50377777777777%;background:#f59e0b"></div></div>
+            <div class="progress-label">80% of R450,000 target</div>
+        </div>
+        <div class="card">
+            <div class="card-title">All Stores</div>
+            <div class="metric-row">
+                <div class="metric"><span class="label">Yesterday</span><span class="value">R95,569</span><span class="sub">GP 34.3%</span></div>
+                <div class="metric"><span class="label">MTD</span><span class="value">R1,951,872</span><span class="sub">GP 33.7%</span></div>
+            </div>
+            <div class="progress-bar"><div class="progress-fill" style="width:87.52789237668162%;background:#10b981"></div></div>
+            <div class="progress-label">88% of R2,230,000 target</div>
+        </div></div>
+</div>
+
+<!-- CASH-UPS -->
+<div class="section">
+    <h2>🧾 Cash-ups</h2>
+    <table>
+        <tr><th>Store</th><th>Session</th><th>Teller</th><th>Opened</th><th>System</th><th>Counted</th><th>Variance</th></tr>
+        <tr class="var-ok">
+            <td>CEN</td><td>#3456</td><td>Lady</td>
+            <td>JJ</td><td>R37,636.43</td>
+            <td>R37,636.43</td><td>R0.00</td></tr><tr class="var-ok">
+            <td>CEN</td><td>#3457</td><td>TILL2</td>
+            <td>JJ</td><td>R38,657.73</td>
+            <td>R38,657.73</td><td>R0.00</td></tr><tr class="var-warn">
+            <td>GVS</td><td>#3453</td><td>GVS1</td>
+            <td>Chamy</td><td>R11,031.32</td>
+            <td>R11,031.42</td><td>R0.10</td></tr><tr class="var-ok">
+            <td>GVS</td><td>#3459</td><td>GVS1</td>
+            <td>Anais</td><td>R12,077.31</td>
+            <td>R12,077.31</td><td>R0.00</td></tr><tr class="var-warn">
+            <td>EDN</td><td>#3458</td><td>eden1</td>
+            <td>Robin</td><td>R24,494.17</td>
+            <td>R24,494.08</td><td>(R0.09)</td></tr>
+    </table>
+</div>
+
+<!-- LOW GP -->
+<div class="section">
+    <h2>📉 Items Under 25% GP</h2>
+    <div class="badge-green">✅ No non-bakery items under 25% GP</div>
+    <table><tr><th></th><th>Store</th><th>Product</th><th>Selling</th><th>Cost</th><th>GP%</th></tr><tr class="bakery"><td>🍞</td><td>CEN</td>
+            <td>BRD SORG/QUIN</td><td>R71.35</td>
+            <td>R57.00</td><td>20.1%</td></tr><tr class="bakery"><td>🍞</td><td>CEN</td>
+            <td>BROWNIES</td><td>R69.12</td>
+            <td>R53.00</td><td>23.3%</td></tr><tr class="bakery"><td>🍞</td><td>CEN</td>
+            <td>BRD WHITE RICE</td><td>R71.35</td>
+            <td>R57.00</td><td>20.1%</td></tr></table>
+</div>
+
+<!-- BUSY TIMES -->
+<div class="section">
+    <h2>⏰ Busy Times</h2>
+    <div class="tab-row">
+        <button class="tab active" onclick="showBusy('yesterday')">Yesterday</button>
+        <button class="tab" onclick="showBusy('mtd')">MTD</button>
+    </div>
+    <div class="chart-container"><canvas id="busyChart"></canvas></div>
+    <div class="chart-container"><canvas id="busyRevenueChart"></canvas></div>
+</div>
+
+<!-- TREND -->
+<div class="section">
+    <h2>📈 Busy Times Trend</h2>
+    <div class="chart-container"><canvas id="trendChart"></canvas></div>
+    <p style="color:#64748b;font-size:0.8em;text-align:center;margin-top:6px;">This chart grows more useful every day as data accumulates</p>
+</div>
+
+<!-- WHOLESALE -->
+<div class='section'><h2>🏬 Wholesale Watch (GP < 25%)</h2><table><tr><th>Customer</th><th>MTD Sales</th><th>GP%</th></tr><tr><td>MIDSTREAM SUPERSPAR & TOPS</td><td>R26,823.46</td><td>22.1%</td></tr><tr><td>Dumisane - PGF EVENTS</td><td>R22,159.69</td><td>23.4%</td></tr><tr><td>LYTTLETON SUPERSPAR & TOPS</td><td>R26,548.66</td><td>24.1%</td></tr></table></div>
+
+<!-- COST CHANGES -->
+<div class='section'><h2>💲 Cost Price Changes</h2><table><tr><th>Product</th><th>Old</th><th>New</th><th>Change</th></tr><tr class=""><td>C19+IMMUNE BSTR 360G</td>
+            <td>R328.00</td><td>R363.00</td><td>9.6%</td></tr><tr class=""><td>NOUG HONEY NUT BAR</td>
+            <td>R17.25</td><td>R18.98</td><td>9.1%</td></tr><tr class=""><td>DOUB CHOC NOUGAT</td>
+            <td>R17.25</td><td>R18.97</td><td>9.1%</td></tr><tr class=""><td>PEANUT NOUGAT</td>
+            <td>R17.25</td><td>R18.98</td><td>9.1%</td></tr><tr class="alert-row"><td>BARRY'S RAW ENERGY BAR 65G</td>
+            <td>R13.80</td><td>R18.97</td><td>27.2%</td></tr><tr class=""><td>24G CHOC DIP MINI NOUG</td>
+            <td>R6.90</td><td>R7.59</td><td>9.1%</td></tr></table></div>
+
+<script>
+const hours = ["6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"];
+const ydAllCounts = [0, 0, 3, 19, 30, 28, 40, 24, 6, 8, 1, 2, 0];
+const ydCenCounts = [0, 0, 3, 15, 18, 20, 21, 13, 3, 3, 0, 0, 0];
+const mtdAllCounts = [1, 1, 19, 360, 413, 519, 556, 427, 398, 401, 315, 166, 21];
+const mtdCenCounts = [0, 0, 16, 235, 256, 305, 312, 259, 226, 238, 168, 58, 0];
+const ydAllValues = [0, 0, 1098.27, 7930.76, 19791.18, 19854.18, 25149.55, 13711.36, 2881.08, 4022.36, 351.35, 778.46, 0];
+const ydCenValues = [0, 0, 1098.27, 6687.45, 14334.12, 15542.51, 16216.75, 8332.56, 1694.73, 1148.03, 0, 0, 0];
+const mtdAllValues = [22.17, 54.66, 7013.02, 203739.01, 244735.97, 283740.18, 306257.33, 226015.65, 215591.71, 207240.86, 169560.65, 76943.61, 10957.37];
+const mtdCenValues = [0, 0, 5850.41, 144469.07, 175751.25, 189909.73, 205616.43, 153701.1, 135047.24, 146726.71, 102359.22, 29896.82, 0];
+
+const chartOpts = {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { labels: { color: '#94a3b8' } } },
+    scales: {
+        x: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
+        y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' } }
+    }
+};
+
+let busyChart = new Chart(document.getElementById('busyChart'), {
+    type: 'bar',
+    data: {
+        labels: hours,
+        datasets: [
+            { label: 'All Stores', data: ydAllCounts, backgroundColor: '#10b981cc', borderRadius: 4 },
+            { label: 'Centurion', data: ydCenCounts, backgroundColor: '#3b82f6cc', borderRadius: 4 }
+        ]
+    },
+    options: { ...chartOpts, plugins: { ...chartOpts.plugins, title: { display: true, text: 'Invoice Count by Hour', color: '#e2e8f0' } } }
+});
+
+let busyRevChart = new Chart(document.getElementById('busyRevenueChart'), {
+    type: 'line',
+    data: {
+        labels: hours,
+        datasets: [
+            { label: 'All Stores (R)', data: ydAllValues, borderColor: '#10b981', tension: 0.3, fill: false },
+            { label: 'Centurion (R)', data: ydCenValues, borderColor: '#3b82f6', tension: 0.3, fill: false }
+        ]
+    },
+    options: { ...chartOpts, plugins: { ...chartOpts.plugins, title: { display: true, text: 'Revenue by Hour', color: '#e2e8f0' } } }
+});
+
+function showBusy(period) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+    if (period === 'yesterday') {
+        busyChart.data.datasets[0].data = ydAllCounts;
+        busyChart.data.datasets[1].data = ydCenCounts;
+        busyRevChart.data.datasets[0].data = ydAllValues;
+        busyRevChart.data.datasets[1].data = ydCenValues;
+    } else {
+        busyChart.data.datasets[0].data = mtdAllCounts;
+        busyChart.data.datasets[1].data = mtdCenCounts;
+        busyRevChart.data.datasets[0].data = mtdAllValues;
+        busyRevChart.data.datasets[1].data = mtdCenValues;
+    }
+    busyChart.update();
+    busyRevChart.update();
+}
+
+// Trend chart
+const trendDates = ["2026-03-28"];
+const trendCounts = [161];
+if (trendDates.length > 0) {
+    new Chart(document.getElementById('trendChart'), {
+        type: 'line',
+        data: {
+            labels: trendDates,
+            datasets: [{ label: 'Total Invoices', data: trendCounts, borderColor: '#10b981', tension: 0.3, fill: true, backgroundColor: '#10b98122' }]
+        },
+        options: chartOpts
+    });
+}
+</script>
+</body>
+</html>
