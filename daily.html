@@ -45,13 +45,21 @@ tr.alert-row td { color:#ef4444; font-weight:600; }
 .tab-row { display:flex; gap:6px; margin-bottom:10px; }
 .tab { padding:6px 14px; border-radius:6px; background:#334155; color:#94a3b8; cursor:pointer; font-size:0.8em; border:none; }
 .tab.active { background:#10b981; color:#0f172a; font-weight:700; }
+.empty-state { padding:14px; border:1px dashed #475569; border-radius:10px; color:#cbd5e1; background:#0f172a; }
+.heatmap-wrap { overflow-x:auto; }
+.heatmap-table { min-width:760px; font-size:0.78em; }
+.heatmap-table th, .heatmap-table td { text-align:center; padding:8px 6px; }
+.heatmap-table th:first-child, .heatmap-table td:first-child { text-align:left; }
+.heat-date span { display:block; color:#94a3b8; font-size:0.72em; margin-top:2px; }
+.heatmap-cell { min-width:44px; font-weight:700; color:#ecfdf5; border-radius:6px; }
+.heat-total { color:#f8fafc; font-weight:700; }
 canvas { max-width:100%; }
 </style>
 </head>
 <body>
 <div class="header">
     <h1>🏪 Onelife Daily Ops</h1>
-    <div class="sub">Reporting: 2026-03-29 | Generated: 2026-03-30 05:15</div>
+    <div class="sub">Reporting: 2026-03-29 | Generated: 2026-03-30 08:57</div>
 </div>
 
 <!-- NARRATIVE -->
@@ -142,9 +150,10 @@ canvas { max-width:100%; }
 <div class="section narrative">
     <h2>⏰ Busy Times — Store Narrative</h2>
     <ul class="narrative-list">
-        <li><strong>Centurion yesterday:</strong> Peak 12:00 (21 invoices, R16,217, avg R772), then 11:00 (20). <span style='color:#f59e0b'>Quiet: 8:00, 14:00, 15:00.</span> Day total: 96 invoices, R65,054.</li>
+        <li><strong>All Stores yesterday:</strong> Peak 12:00 (33 invoices, R21,215, avg R643), then 11:00 (32). <span style='color:#f59e0b'>Quiet: 8:00.</span> Day total: 158 invoices, R86,233.</li>
+<li><strong>All Stores MTD:</strong> Peak hours: 12:00 (568), 11:00 (531), 13:00 (428). <span style='color:#f59e0b'>Slow: 18:00, 8:00, 6:00, 7:00.</span> Month total: 3,659 invoices, R1,973,050.</li>
+<li><strong>Centurion yesterday:</strong> Peak 12:00 (21 invoices, R16,217, avg R772), then 11:00 (20). <span style='color:#f59e0b'>Quiet: 8:00, 14:00, 15:00.</span> Day total: 96 invoices, R65,054.</li>
 <li><strong>Centurion MTD:</strong> Peak hours: 12:00 (312), 11:00 (305), 13:00 (259). <span style='color:#f59e0b'>Slow: 16:00, 17:00, 8:00.</span> Month total: 2,073 invoices, R1,289,328.</li>
-<li><strong>GVS + Edenvale yesterday:</strong> No busy times data available.</li>
     </ul>
 </div>
 
@@ -152,18 +161,35 @@ canvas { max-width:100%; }
 <div class="section">
     <h2>📊 Busy Times — Charts</h2>
     <div class="tab-row">
-        <button class="tab active" onclick="showBusy('yesterday')">Yesterday</button>
-        <button class="tab" onclick="showBusy('mtd')">MTD</button>
+        <button class="tab busy-tab active" onclick="showBusy('yesterday', this)">Yesterday</button>
+        <button class="tab busy-tab" onclick="showBusy('mtd', this)">MTD</button>
     </div>
     <div class="chart-container"><canvas id="busyChart"></canvas></div>
     <div class="chart-container"><canvas id="busyRevenueChart"></canvas></div>
+</div>
+
+<!-- HEATMAP -->
+<div class="section">
+    <h2>🔥 Busy Times Heatmap</h2>
+    <div class="tab-row">
+        <button class="tab heatmap-tab active" onclick="showHeatmap('all', this)">All Stores</button>
+        <button class="tab heatmap-tab" onclick="showHeatmap('cen', this)">Centurion</button>
+    </div>
+    <div id="heatmap-all"><div class="heatmap-wrap"><table class="heatmap-table">
+        <tr><th>Date</th><th>8:00</th><th>9:00</th><th>10:00</th><th>11:00</th><th>12:00</th><th>13:00</th><th>14:00</th><th>15:00</th><th>16:00</th><th>17:00</th><th>Total</th></tr>
+        <tr><th class="heat-date">2026-03-28<span>Sat</span></th><td class="heatmap-cell" style="background:rgba(16,185,129,0.234)">3</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.522)">19</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.720)">30</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.684)">28</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.900)">40</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.612)">24</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.288)">6</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.324)">8</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.198)">1</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.216)">2</td><td class="heat-total">161</td></tr><tr><th class="heat-date">2026-03-29<span>Sun</span></th><td class="heatmap-cell" style="background:rgba(16,185,129,0.234)">3</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.522)">19</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.720)">30</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.756)">32</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.774)">33</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.432)">14</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.450)">15</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.396)">12</td><td class="heatmap-cell" style="background:rgba(51,65,85,0.45)"></td><td class="heatmap-cell" style="background:rgba(51,65,85,0.45)"></td><td class="heat-total">158</td></tr>
+    </table></div></div>
+    <div id="heatmap-cen" style="display:none"><div class="heatmap-wrap"><table class="heatmap-table">
+        <tr><th>Date</th><th>8:00</th><th>9:00</th><th>10:00</th><th>11:00</th><th>12:00</th><th>13:00</th><th>14:00</th><th>15:00</th><th>Total</th></tr>
+        <tr><th class="heat-date">2026-03-28<span>Sat</span></th><td class="heatmap-cell" style="background:rgba(16,185,129,0.283)">3</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.694)">15</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.797)">18</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.866)">20</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.900)">21</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.626)">13</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.283)">3</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.283)">3</td><td class="heat-total">96</td></tr><tr><th class="heat-date">2026-03-29<span>Sun</span></th><td class="heatmap-cell" style="background:rgba(16,185,129,0.283)">3</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.694)">15</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.797)">18</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.866)">20</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.900)">21</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.626)">13</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.283)">3</td><td class="heatmap-cell" style="background:rgba(16,185,129,0.283)">3</td><td class="heat-total">96</td></tr>
+    </table></div></div>
 </div>
 
 <!-- TREND -->
 <div class="section">
     <h2>📈 Busy Times Trend</h2>
     <div class="chart-container"><canvas id="trendChart"></canvas></div>
-    <p style="color:#64748b;font-size:0.8em;text-align:center;margin-top:6px;">This chart grows more useful every day as data accumulates</p>
+    <p style="color:#64748b;font-size:0.8em;text-align:center;margin-top:6px;">Peak-hour shift is plotted by day, with invoice volume shown alongside it.</p>
 </div>
 
 <!-- STOCK TAKES & ADJUSTMENTS -->
@@ -177,6 +203,9 @@ canvas { max-width:100%; }
 <!-- WHOLESALE -->
 <div class='section'><h2>🏬 Wholesale Watch (GP < 25%)</h2><table><tr><th>Customer</th><th>MTD Sales</th><th>GP%</th></tr><tr><td>SUPERSPAR</td><td>R0.00</td><td>5.0%</td></tr><tr><td>PGF EVENTS</td><td>R0.00</td><td>5.0%</td></tr><tr><td>SUPERSPAR</td><td>R0.00</td><td>6.0%</td></tr></table></div>
 
+<!-- SUPPLIER ALERTS -->
+<div class='section'><h2>🚚 Supplier Alerts</h2><div class='empty-state'>✅ No supplier POs older than 60 days detected in this run.</div></div>
+
 <!-- COST CHANGES -->
 <div class='section'><h2>💲 Cost Price Changes</h2><table><tr><th>Product</th><th>Old</th><th>New</th><th>Change</th></tr><tr class=""><td>C19+IMMUNE BSTR 360G</td>
             <td>R328.00</td><td>R363.00</td><td>9.6%</td></tr><tr class=""><td>NOUG HONEY NUT BAR</td>
@@ -189,13 +218,13 @@ canvas { max-width:100%; }
 <script>
 const hours = ["6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"];
 const ydCenCounts = [0, 0, 3, 15, 18, 20, 21, 13, 3, 3, 0, 0, 0];
-const ydGvsCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+const ydGvsCounts = [0, 0, 0, 4, 12, 12, 12, 1, 12, 9, 0, 0, 0];
 const mtdCenCounts = [0, 0, 16, 235, 256, 305, 312, 259, 226, 238, 168, 58, 0];
-const mtdGvsCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+const mtdGvsCounts = [1, 1, 3, 129, 169, 226, 256, 169, 184, 172, 147, 108, 21];
 const ydCenValues = [0, 0, 1098.27, 6687.45, 14334.12, 15542.51, 16216.75, 8332.56, 1694.73, 1148.03, 0, 0, 0];
-const ydGvsValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+const ydGvsValues = [0, 0, 0, 827.3, 2845.52, 3883.86, 4997.76, 450.0, 5196.29, 2977.52, 0, 0, 0];
 const mtdCenValues = [0, 0, 5850.41, 144469.07, 175751.25, 189909.73, 205616.43, 153701.1, 135047.24, 146726.71, 102359.22, 29896.82, 0];
-const mtdGvsValues = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+const mtdGvsValues = [22.17, 54.66, 1162.61, 60097.24, 71830.24, 97714.31, 105638.66, 72764.55, 85740.76, 63491.67, 67201.43, 47046.79, 10957.37];
 
 const chartOpts = {
     responsive: true, maintainAspectRatio: false,
@@ -230,9 +259,9 @@ let busyRevChart = new Chart(document.getElementById('busyRevenueChart'), {
     options: { ...chartOpts, plugins: { ...chartOpts.plugins, title: { display: true, text: 'Revenue by Hour', color: '#e2e8f0' } } }
 });
 
-function showBusy(period) {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    event.target.classList.add('active');
+function showBusy(period, btn) {
+    document.querySelectorAll('.busy-tab').forEach(t => t.classList.remove('active'));
+    if (btn) btn.classList.add('active');
     if (period === 'yesterday') {
         busyChart.data.datasets[0].data = ydCenCounts;
         busyChart.data.datasets[1].data = ydGvsCounts;
@@ -248,17 +277,51 @@ function showBusy(period) {
     busyRevChart.update();
 }
 
+function showHeatmap(kind, btn) {
+    document.querySelectorAll('.heatmap-tab').forEach(t => t.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    document.getElementById('heatmap-all').style.display = kind === 'all' ? 'block' : 'none';
+    document.getElementById('heatmap-cen').style.display = kind === 'cen' ? 'block' : 'none';
+}
+
 // Trend chart
-const trendDates = ["2026-03-28"];
-const trendCounts = [161];
+const trendDates = ["2026-03-28", "2026-03-29"];
+const trendPeakAll = [12, 12];
+const trendPeakCen = [12, 12];
+const trendTotalsAll = [161, 158];
+const trendTotalsCen = [96, 96];
 if (trendDates.length > 0) {
     new Chart(document.getElementById('trendChart'), {
-        type: 'line',
         data: {
             labels: trendDates,
-            datasets: [{ label: 'Total Invoices', data: trendCounts, borderColor: '#10b981', tension: 0.3, fill: true, backgroundColor: '#10b98122' }]
+            datasets: [
+                { type: 'line', label: 'All Stores Peak Hour', data: trendPeakAll, borderColor: '#10b981', backgroundColor: '#10b98122', tension: 0.25, pointRadius: 4, spanGaps: true, yAxisID: 'y' },
+                { type: 'line', label: 'Centurion Peak Hour', data: trendPeakCen, borderColor: '#3b82f6', backgroundColor: '#3b82f622', tension: 0.25, pointRadius: 4, spanGaps: true, yAxisID: 'y' },
+                { type: 'bar', label: 'All Stores Invoices', data: trendTotalsAll, backgroundColor: '#f59e0b66', borderColor: '#f59e0b', yAxisID: 'y1' },
+                { type: 'bar', label: 'Centurion Invoices', data: trendTotalsCen, backgroundColor: '#8b5cf666', borderColor: '#8b5cf6', yAxisID: 'y1' }
+            ]
         },
-        options: chartOpts
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: { legend: { labels: { color: '#94a3b8' } } },
+            scales: {
+                x: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
+                y: {
+                    min: 6,
+                    max: 18,
+                    ticks: { color: '#94a3b8', callback: (value) => `${value}:00` },
+                    grid: { color: '#334155' },
+                    title: { display: true, text: 'Peak Hour', color: '#94a3b8' }
+                },
+                y1: {
+                    position: 'right',
+                    ticks: { color: '#94a3b8' },
+                    grid: { drawOnChartArea: false },
+                    title: { display: true, text: 'Invoices', color: '#94a3b8' }
+                }
+            }
+        }
     });
 }
 </script>
