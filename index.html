@@ -4,423 +4,190 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="refresh" content="1800">
-<title>Onelife Intelligence | 30 Mar 2026</title>
+<title>Content Intelligence Dashboard</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:#0a0a14;color:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:20px}
-table{border-collapse:collapse;width:100%}
-.badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600}
-@media(max-width:768px){.grid-3{grid-template-columns:1fr!important}}
+body{background:#06060f;color:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background:linear-gradient(rgba(74,222,128,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(56,189,248,0.03) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+.container{max-width:1380px;margin:0 auto;padding:24px;position:relative;z-index:1}
+.header{padding:20px 0 24px;text-align:center}
+.header h1{font-size:40px;font-weight:900;letter-spacing:2px;color:#4ade80;text-shadow:0 0 24px rgba(74,222,128,.22)}
+.subtitle{margin-top:8px;color:#94a3b8;letter-spacing:2px;text-transform:uppercase;font-size:12px}
+.timestamp{margin-top:10px;color:#475569;font-size:11px;font-family:Menlo,monospace}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin:18px 0 24px}
+.kpi{background:#0d0d1a;border:1px solid #1e293b;border-radius:18px;padding:18px 16px;text-align:center;box-shadow:0 20px 40px rgba(2,6,23,.25)}
+.kpi .val{font-size:34px;font-weight:800}
+.kpi .lbl{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:2px;margin-top:4px}
+.section{background:#0d0d1a;border:1px solid #1e293b;border-radius:18px;padding:22px;margin-bottom:20px;box-shadow:0 20px 40px rgba(2,6,23,.18)}
+.section-title{font-size:16px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.section-title::after{content:'';height:1px;flex:1;background:#1e293b}
+.workflow-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.workflow-card{background:#0a0a14;border:1px solid #1f2937;border-radius:16px;padding:18px}
+.workflow-top{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:14px}
+.workflow-name{font-size:20px;font-weight:800}
+.workflow-owner{font-size:12px;color:#94a3b8;text-transform:uppercase;letter-spacing:2px;margin-top:4px}
+.score-ring{width:70px;height:70px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:4px solid #4ade80;background:#0f172a;color:#4ade80;font-size:22px;font-weight:900}
+.signal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.signal-chip{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid #1e293b;border-radius:12px;background:#020617}
+.signal-chip .dot{width:10px;height:10px;border-radius:50%}
+.signal-chip small{margin-left:auto;color:#94a3b8;font-size:11px}
+.matrix-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse}
+th,td{padding:12px 10px;text-align:left;border-bottom:1px solid #132033;font-size:13px}
+th{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:2px}
+.status-pill{display:inline-block;padding:4px 10px;border-radius:999px;font-size:10px;font-weight:800;color:white;text-transform:uppercase;letter-spacing:1px}
+.opp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.opp-card{background:#06101d;border:1px solid #1e293b;border-radius:16px;padding:16px}
+.opp-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.opp-score{font-size:28px;font-weight:900}
+.opp-type{font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:2px}
+.opp-title{font-size:16px;font-weight:800;line-height:1.35;margin-bottom:8px}
+.opp-summary{font-size:13px;color:#cbd5e1;line-height:1.55;margin-bottom:10px}
+.opp-meta{font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:1px}
+.twocol{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+.file-list td:first-child{color:#94a3b8;font-weight:700}
+ul{padding-left:18px;color:#cbd5e1}
+.footer{padding:18px 0 40px;text-align:center;color:#475569;font-size:11px;letter-spacing:2px;text-transform:uppercase}
+a{color:#38bdf8}
+@media (max-width: 960px){
+  .kpis,.workflow-grid,.opp-grid,.twocol{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
+<div class="container">
+  <div class="header">
+    <h1>CONTENT INTELLIGENCE</h1>
+    <div class="subtitle">Virlo • X • Autoresearch • Internal analytics • Paperclip</div>
+    <div class="timestamp">Updated 2026-03-31 01:20:25 SAST · refreshes every 30 min</div>
+  </div>
 
-<!-- Header -->
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid #2d2d3d">
-    <div>
-        <h1 style="font-size:28px;font-weight:800;color:#f1f5f9;letter-spacing:-0.5px">Onelife Intelligence</h1>
-        <div style="font-size:13px;color:#64748b;margin-top:4px">Real-time store performance · All figures excl VAT · Updated 30 Mar 2026 19:40 SAST</div>
+  <div class="kpis">
+    <div class="kpi"><div class="val" style="color:#4ade80">23</div><div class="lbl">Fresh Signals</div></div>
+    <div class="kpi"><div class="val" style="color:#38bdf8">95</div><div class="lbl">Avg Coverage</div></div>
+    <div class="kpi"><div class="val" style="color:#f59e0b">10</div><div class="lbl">Opportunities</div></div>
+    <div class="kpi"><div class="val" style="color:#ef4444">0</div><div class="lbl">Missing Signals</div></div>
+    <div class="kpi"><div class="val" style="color:#a78bfa">1</div><div class="lbl">Paperclip Tickets</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">What’s wired in</div>
+    <div class="workflow-grid"><div class="workflow-card">
+                <div class="workflow-top">
+                    <div>
+                        <div class="workflow-name">Klaviyo Blog Campaign Engine</div>
+                        <div class="workflow-owner">Nova</div>
+                    </div>
+                    <div class="score-ring"><span>100</span></div>
+                </div>
+                <div class="signal-grid"><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Internal analytics</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Autoresearch</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#38bdf833"><span class="dot" style="background:#38bdf8"></span><span>X research</span><small>Connected</small></div><div class="signal-chip" style="border-color:#38bdf833"><span class="dot" style="background:#38bdf8"></span><span>Virlo</span><small>Connected</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Seasonality</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Performance feedback</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Paperclip</span><small>Fresh</small></div></div>
+            </div><div class="workflow-card">
+                <div class="workflow-top">
+                    <div>
+                        <div class="workflow-name">Ad Engine</div>
+                        <div class="workflow-owner">Nova + Scout</div>
+                    </div>
+                    <div class="score-ring"><span>95</span></div>
+                </div>
+                <div class="signal-grid"><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Internal analytics</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#38bdf833"><span class="dot" style="background:#38bdf8"></span><span>Autoresearch</span><small>Connected</small></div><div class="signal-chip" style="border-color:#f59e0b33"><span class="dot" style="background:#f59e0b"></span><span>X research</span><small>Stale</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Virlo</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Product readiness</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Performance feedback</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Paperclip</span><small>Fresh</small></div></div>
+            </div><div class="workflow-card">
+                <div class="workflow-top">
+                    <div>
+                        <div class="workflow-name">Blog / SEO Engine</div>
+                        <div class="workflow-owner">Scout + Nova</div>
+                    </div>
+                    <div class="score-ring"><span>94</span></div>
+                </div>
+                <div class="signal-grid"><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Search Console / SEO</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Autoresearch</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#f59e0b33"><span class="dot" style="background:#f59e0b"></span><span>X research</span><small>Stale</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Virlo</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Performance feedback</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Paperclip</span><small>Fresh</small></div></div>
+            </div><div class="workflow-card">
+                <div class="workflow-top">
+                    <div>
+                        <div class="workflow-name">TikTok Engine</div>
+                        <div class="workflow-owner">Nova</div>
+                    </div>
+                    <div class="score-ring"><span>90</span></div>
+                </div>
+                <div class="signal-grid"><div class="signal-chip" style="border-color:#f59e0b33"><span class="dot" style="background:#f59e0b"></span><span>Internal analytics</span><small>Stale</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Autoresearch</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#f59e0b33"><span class="dot" style="background:#f59e0b"></span><span>X research</span><small>Stale</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Virlo</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Product readiness</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Performance feedback</span><small>Fresh</small></div><div class="signal-chip" style="border-color:#22c55e33"><span class="dot" style="background:#22c55e"></span><span>Paperclip</span><small>Fresh</small></div></div>
+            </div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Signal checklist</div>
+    <div class="matrix-wrap">
+      <table>
+        <thead><tr><th>Workflow</th><th>Signal</th><th>Status</th><th>Why it matters</th></tr></thead>
+        <tbody><tr><td>Klaviyo Blog Campaign Engine</td><td>Internal analytics</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Campaign routine exists</td></tr><tr><td>Klaviyo Blog Campaign Engine</td><td>Autoresearch</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Prompt requires autoresearch</td></tr><tr><td>Klaviyo Blog Campaign Engine</td><td>X research</td><td><span class='status-pill' style='background:#38bdf8'>Connected</span></td><td>Prompt references X research</td></tr><tr><td>Klaviyo Blog Campaign Engine</td><td>Virlo</td><td><span class='status-pill' style='background:#38bdf8'>Connected</span></td><td>Prompt references Virlo</td></tr><tr><td>Klaviyo Blog Campaign Engine</td><td>Seasonality</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Monthly seasonality logic present</td></tr><tr><td>Klaviyo Blog Campaign Engine</td><td>Performance feedback</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Prompt avoids repeats</td></tr><tr><td>Klaviyo Blog Campaign Engine</td><td>Paperclip</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Nova execution path is autonomous</td></tr><tr><td>Ad Engine</td><td>Internal analytics</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Omni sales velocity is wired</td></tr><tr><td>Ad Engine</td><td>Autoresearch</td><td><span class='status-pill' style='background:#38bdf8'>Connected</span></td><td>Autoresearch connected</td></tr><tr><td>Ad Engine</td><td>X research</td><td><span class='status-pill' style='background:#f59e0b'>Stale</span></td><td>Can consume latest X bundle</td></tr><tr><td>Ad Engine</td><td>Virlo</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>mode=browser | stale=True | Virlo login was blocked by robot verification (Cloudflare Turn</td></tr><tr><td>Ad Engine</td><td>Product readiness</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>GP, stock, and repeat guard are wired</td></tr><tr><td>Ad Engine</td><td>Performance feedback</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Promotion history feedback is wired</td></tr><tr><td>Ad Engine</td><td>Paperclip</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Execution path covered via Nova + Scout loops</td></tr><tr><td>Blog / SEO Engine</td><td>Search Console / SEO</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Search Console drives selection</td></tr><tr><td>Blog / SEO Engine</td><td>Autoresearch</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Blog autoresearch is embedded in ticket descriptions</td></tr><tr><td>Blog / SEO Engine</td><td>X research</td><td><span class='status-pill' style='background:#f59e0b'>Stale</span></td><td>Latest X bundle available</td></tr><tr><td>Blog / SEO Engine</td><td>Virlo</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>mode=browser | stale=True | Virlo login was blocked by robot verification (Cloudflare Turn</td></tr><tr><td>Blog / SEO Engine</td><td>Performance feedback</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Blog optimisation loop closes recommendation → ticket loop</td></tr><tr><td>Blog / SEO Engine</td><td>Paperclip</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Scout execution path is autonomous</td></tr><tr><td>TikTok Engine</td><td>Internal analytics</td><td><span class='status-pill' style='background:#f59e0b'>Stale</span></td><td>Best hook: Your brain is 60% fat — and most South Africans are starving it daily.</td></tr><tr><td>TikTok Engine</td><td>Autoresearch</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Pipeline reads autoresearch TSVs</td></tr><tr><td>TikTok Engine</td><td>X research</td><td><span class='status-pill' style='background:#f59e0b'>Stale</span></td><td>Latest X trend bundle available</td></tr><tr><td>TikTok Engine</td><td>Virlo</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>mode=browser | stale=True | Virlo login was blocked by robot verification (Cloudflare Turn</td></tr><tr><td>TikTok Engine</td><td>Product readiness</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Shopify product audit is wired</td></tr><tr><td>TikTok Engine</td><td>Performance feedback</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Avg views: 245.1</td></tr><tr><td>TikTok Engine</td><td>Paperclip</td><td><span class='status-pill' style='background:#22c55e'>Fresh</span></td><td>Nova execution path is autonomous</td></tr></tbody>
+      </table>
     </div>
-    <div style="text-align:right">
-        <div style="font-size:11px;color:#64748b;margin-bottom:2px">COMBINED MTD</div>
-        <div style="font-size:32px;font-weight:800;color:#22c55e">R2.0M</div>
-        <div style="font-size:13px;color:#64748b">GP R680k (34.0%)</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Best actions right now</div>
+    <div class="opp-grid"><div class="opp-card">
+                <div class="opp-header"><span class="opp-score" style="color:#22c55e">92</span><span class="opp-type">feed gap</span></div>
+                <div class="opp-title">Restore daily Virlo feed into the content flywheel</div>
+                <div class="opp-summary">Virlo is missing, stale, or browser-blocked, so TikTok, ads, blogs, and Klaviyo are not getting a trustworthy external trend layer.</div>
+                <div class="opp-meta">Owner: CIPHER · Already on the board</div>
+            </div><div class="opp-card">
+                <div class="opp-header"><span class="opp-score" style="color:#22c55e">90</span><span class="opp-type">theme convergence</span></div>
+                <div class="opp-title">Strong cross-signal theme: Magnesium / sleep</div>
+                <div class="opp-summary">This theme is showing up across 3 sources: tiktok_batch, virlo, x.</div>
+                <div class="opp-meta">Owner: NOVA · Ready for Paperclip</div>
+            </div><div class="opp-card">
+                <div class="opp-header"><span class="opp-score" style="color:#f59e0b">75</span><span class="opp-type">theme convergence</span></div>
+                <div class="opp-title">Strong cross-signal theme: Strong</div>
+                <div class="opp-summary">This theme is showing up across 2 sources: virlo, x.</div>
+                <div class="opp-meta">Owner: NOVA · Ready for Paperclip</div>
+            </div><div class="opp-card">
+                <div class="opp-header"><span class="opp-score" style="color:#f59e0b">75</span><span class="opp-type">theme convergence</span></div>
+                <div class="opp-title">Strong cross-signal theme: Sleep / stress</div>
+                <div class="opp-summary">This theme is showing up across 2 sources: virlo, x.</div>
+                <div class="opp-meta">Owner: NOVA · Ready for Paperclip</div>
+            </div><div class="opp-card">
+                <div class="opp-header"><span class="opp-score" style="color:#f59e0b">75</span><span class="opp-type">theme convergence</span></div>
+                <div class="opp-title">Strong cross-signal theme: Remain</div>
+                <div class="opp-summary">This theme is showing up across 2 sources: virlo, x.</div>
+                <div class="opp-meta">Owner: NOVA · Ready for Paperclip</div>
+            </div><div class="opp-card">
+                <div class="opp-header"><span class="opp-score" style="color:#f59e0b">75</span><span class="opp-type">theme convergence</span></div>
+                <div class="opp-title">Strong cross-signal theme: Probiotics</div>
+                <div class="opp-summary">This theme is showing up across 2 sources: virlo, x.</div>
+                <div class="opp-meta">Owner: NOVA · Ready for Paperclip</div>
+            </div><div class="opp-card">
+                <div class="opp-header"><span class="opp-score" style="color:#f59e0b">75</span><span class="opp-type">theme convergence</span></div>
+                <div class="opp-title">Strong cross-signal theme: Insomnia</div>
+                <div class="opp-summary">This theme is showing up across 2 sources: tiktok_batch, virlo.</div>
+                <div class="opp-meta">Owner: NOVA · Ready for Paperclip</div>
+            </div><div class="opp-card">
+                <div class="opp-header"><span class="opp-score" style="color:#64748b">66</span><span class="opp-type">freshness gap</span></div>
+                <div class="opp-title">[TikTok Engine] Refresh stale inputs: Internal analytics, X research</div>
+                <div class="opp-summary">TikTok Engine is connected, but these inputs are getting old: Internal analytics, X research.</div>
+                <div class="opp-meta">Owner: NOVA · Ready for Paperclip</div>
+            </div><div class="opp-card">
+                <div class="opp-header"><span class="opp-score" style="color:#64748b">59</span><span class="opp-type">freshness gap</span></div>
+                <div class="opp-title">[Ad Engine] Refresh stale inputs: X research</div>
+                <div class="opp-summary">Ad Engine is connected, but these inputs are getting old: X research.</div>
+                <div class="opp-meta">Owner: CIPHER · Ready for Paperclip</div>
+            </div><div class="opp-card">
+                <div class="opp-header"><span class="opp-score" style="color:#64748b">59</span><span class="opp-type">freshness gap</span></div>
+                <div class="opp-title">[Blog / SEO Engine] Refresh stale inputs: X research</div>
+                <div class="opp-summary">Blog / SEO Engine is connected, but these inputs are getting old: X research.</div>
+                <div class="opp-meta">Owner: SCOUT · Ready for Paperclip</div>
+            </div></div>
+  </div>
+
+  <div class="twocol">
+    <div class="section">
+      <div class="section-title">Paperclip actions from this run</div>
+      <ul><li>ONE-186</li></ul>
     </div>
+    <div class="section">
+      <div class="section-title">Source files behind this view</div>
+      <table class="file-list"><tbody><tr><td>tiktok_batch</td><td>/Users/naadir/.openclaw/workspace/memory/tiktok-batch-2026-03-30.json</td></tr><tr><td>tiktok_analytics</td><td>/Users/naadir/.openclaw/workspace/memory/tiktok-analytics-latest.json</td></tr><tr><td>x_markdown</td><td>/Users/naadir/.openclaw/workspace/memory/x-trends-2026-03-29.md</td></tr><tr><td>x_cards</td><td>/Users/naadir/.openclaw/workspace/memory/action-cards-2026-03-30.json</td></tr><tr><td>virlo</td><td>/Users/naadir/.openclaw/workspace/memory/virlo-trends-2026-03-31.json</td></tr><tr><td>blog_opt</td><td>/Users/naadir/.openclaw/workspace/memory/blog-optimization-2026-03-30.json</td></tr><tr><td>content_ar</td><td>—</td></tr></tbody></table>
+    </div>
+  </div>
+
+  <div class="footer">ONELIFE HEALTH · JARVIS CONTENT FLYWHEEL · SIGNALS → SCORES → PAPERCLIP → EXECUTION → FEEDBACK</div>
 </div>
-
-<!-- Store Dashboards -->
-
-        <div style="background:#1a1a2e;border:1px solid #2d2d3d;border-radius:12px;padding:24px;margin-bottom:20px">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
-                <div>
-                    <h2 style="margin:0;font-size:22px;color:#f1f5f9">Centurion</h2>
-                    <span style="font-size:12px;color:#22c55e;font-weight:600;letter-spacing:1px">On Track</span>
-                </div>
-                <div style="text-align:right">
-                    <div style="font-size:11px;color:#64748b;margin-bottom:2px">TARGET</div>
-                    <div style="font-size:18px;font-weight:700;color:#64748b">R1.4M</div>
-                </div>
-            </div>
-
-            <!-- KPI Grid -->
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
-                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
-                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">TODAY REV</div>
-                    <div style="font-size:22px;font-weight:700;color:#f1f5f9">R58k</div>
-                    <div style="font-size:11px;color:#22c55e">GP R20k</div>
-                </div>
-                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
-                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">MTD REV</div>
-                    <div style="font-size:22px;font-weight:700;color:#f1f5f9">R1.3M</div>
-                    <div style="font-size:11px;color:#22c55e">GP R439k</div>
-                </div>
-                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
-                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">GP%</div>
-                    <div style="font-size:22px;font-weight:700;color:#f59e0b">33.9%</div>
-                    <div style="font-size:11px;color:#64748b">25 trading days</div>
-                </div>
-                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
-                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">PROJECTED</div>
-                    <div style="font-size:22px;font-weight:700;color:#22c55e">R1.3M</div>
-                    <div style="font-size:11px;color:#64748b">92.8% of target</div>
-                </div>
-            </div>
-
-            <!-- Progress bar -->
-            <div style="margin-bottom:8px">
-                <div style="display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-bottom:4px">
-                    <span>MTD Progress: 89.3%</span>
-                    <span>Need R104k/day to hit target</span>
-                </div>
-                <div style="background:#2d2d3d;border-radius:4px;height:8px;overflow:hidden">
-                    <div style="background:#22c55e;height:100%;width:89.3%;border-radius:4px;transition:width 0.3s"></div>
-                </div>
-            </div>
-
-            <!-- Daily trend sparkline -->
-            <div style="margin-bottom:20px;padding:12px;background:#0f0f1a;border-radius:8px">
-                <div style="font-size:11px;color:#64748b;margin-bottom:8px;letter-spacing:1px">DAILY TREND (MTD)</div>
-                <div style="display:flex;align-items:flex-end;height:52px;gap:1px">
-                    <div title="Day 02: R46k" style="width:10px;height:26px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 03: R63k" style="width:10px;height:35px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 04: R74k" style="width:10px;height:41px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 05: R28k" style="width:10px;height:15px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 06: R37k" style="width:10px;height:21px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 07: R85k" style="width:10px;height:48px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 09: R53k" style="width:10px;height:29px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 10: R46k" style="width:10px;height:26px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 11: R69k" style="width:10px;height:38px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 12: R50k" style="width:10px;height:28px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 13: R57k" style="width:10px;height:32px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 14: R61k" style="width:10px;height:34px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 16: R38k" style="width:10px;height:21px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 17: R40k" style="width:10px;height:22px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 18: R44k" style="width:10px;height:24px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 19: R56k" style="width:10px;height:31px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 20: R36k" style="width:10px;height:20px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 21: R35k" style="width:10px;height:19px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 23: R37k" style="width:10px;height:20px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 24: R52k" style="width:10px;height:29px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 25: R46k" style="width:10px;height:25px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 26: R61k" style="width:10px;height:34px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 27: R53k" style="width:10px;height:29px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 28: R65k" style="width:10px;height:36px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 30: R58k" style="width:10px;height:32px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div>
-                </div>
-            </div>
-
-            <!-- Tables in 3 columns -->
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
-                <!-- Top Sellers -->
-                <div>
-                    <div style="font-size:12px;color:#94a3b8;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">TOP SELLERS (ANNUAL)</div>
-                    <table style="width:100%;border-collapse:collapse">
-                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Rev</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">GP%</th></tr>
-                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>MAG 7/87 60'S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R183k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>35.2%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>VIT D3 5000IU 120'S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R145k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>36.8%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>BRD WHITE RICE</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R135k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>18.0%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>OMEGA 3 Z+L   60"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R125k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>29.7%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>FLORISH SPORE PROBIOTIC 60C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R101k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>28.7%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>MAGN GLYC 120C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R100k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>41.1%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>OMEGA 3 60"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R93k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>30.4%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>HEART HEALTH 60 CAPS</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R79k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>40.5%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>VIT D3 5000IU 240'S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R79k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>33.8%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>Posgeld/Postage/Courier</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R74k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>64.8%</td></tr>
-                    </table>
-                </div>
-                <!-- Low GP Items -->
-                <div>
-                    <div style="font-size:12px;color:#ef4444;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">LOW GP ITEMS (EXCL BAKERY)</div>
-                    <table style="width:100%;border-collapse:collapse">
-                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">GP%</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Supplier</th></tr>
-                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>BLACK MACA 60C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>19.8%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>SFERA</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>DNA WATER PURIFIER</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>20.5%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>HEALTH</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>100G DRAGONS BLOOD POWDER</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.2%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>RN</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>MIX RAW NUTS 1KG</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.3%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>ALMANS</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>EXTREME WHEY 2KG STRAW</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.4%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>PRON</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>EXTREME MASS VAN 2KG</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.4%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>PRON</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>NUTRA C COMBO 90C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.5%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>TRTFC</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>HANDWASH LIQ 5L</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.5%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>BBSA</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>LIVER HEALTH 270CAPS</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.7%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>SOLACEH</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>DRIPDROP NO SUG BOX</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.8%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>PHAR</td></tr>
-                    </table>
-                </div>
-                <!-- Non-Movers -->
-                <div>
-                    <div style="font-size:12px;color:#f59e0b;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">NON-MOVERS (≤1 UNIT)</div>
-                    <table style="width:100%;border-collapse:collapse">
-                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Supplier</th></tr>
-                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>VOUCHER R500</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>OLSHOP</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>BLACK S CROP/ 3/4 LEGGINGS</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>BOODY</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>dc PTEROSTILBENE 30VC</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>GENO</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>RED SPLIT LENTILS 500G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>TWI</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>SW TART CHERRY 120S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>DSI</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>USB WHITE SALT LAMP 1/2KG</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>SHNOOKIE</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>SCHISANDRA  50ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>AETHER</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>BUFF VIT C 180G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>VERHAKI</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>NUTRA C COMBO 127g</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>TRTFC</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>AO SSA WHEY DELI ADD ON</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>OLSHOP</td></tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div style="background:#1a1a2e;border:1px solid #2d2d3d;border-radius:12px;padding:24px;margin-bottom:20px">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
-                <div>
-                    <h2 style="margin:0;font-size:22px;color:#f1f5f9">Glen Village</h2>
-                    <span style="font-size:12px;color:#22c55e;font-weight:600;letter-spacing:1px">On Track</span>
-                </div>
-                <div style="text-align:right">
-                    <div style="font-size:11px;color:#64748b;margin-bottom:2px">TARGET</div>
-                    <div style="font-size:18px;font-weight:700;color:#64748b">R330k</div>
-                </div>
-            </div>
-
-            <!-- KPI Grid -->
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
-                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
-                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">TODAY REV</div>
-                    <div style="font-size:22px;font-weight:700;color:#f1f5f9">R13k</div>
-                    <div style="font-size:11px;color:#22c55e">GP R5k</div>
-                </div>
-                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
-                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">MTD REV</div>
-                    <div style="font-size:22px;font-weight:700;color:#f1f5f9">R327k</div>
-                    <div style="font-size:11px;color:#22c55e">GP R111k</div>
-                </div>
-                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
-                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">GP%</div>
-                    <div style="font-size:22px;font-weight:700;color:#f59e0b">33.9%</div>
-                    <div style="font-size:11px;color:#64748b">30 trading days</div>
-                </div>
-                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
-                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">PROJECTED</div>
-                    <div style="font-size:22px;font-weight:700;color:#22c55e">R338k</div>
-                    <div style="font-size:11px;color:#64748b">102.3% of target</div>
-                </div>
-            </div>
-
-            <!-- Progress bar -->
-            <div style="margin-bottom:8px">
-                <div style="display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-bottom:4px">
-                    <span>MTD Progress: 99.0%</span>
-                    <span>Projecting to hit target</span>
-                </div>
-                <div style="background:#2d2d3d;border-radius:4px;height:8px;overflow:hidden">
-                    <div style="background:#22c55e;height:100%;width:99.0%;border-radius:4px;transition:width 0.3s"></div>
-                </div>
-            </div>
-
-            <!-- Daily trend sparkline -->
-            <div style="margin-bottom:20px;padding:12px;background:#0f0f1a;border-radius:8px">
-                <div style="font-size:11px;color:#64748b;margin-bottom:8px;letter-spacing:1px">DAILY TREND (MTD)</div>
-                <div style="display:flex;align-items:flex-end;height:52px;gap:1px">
-                    <div title="Day 01: R9k" style="width:10px;height:21px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 02: R6k" style="width:10px;height:14px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 03: R14k" style="width:10px;height:31px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 04: R21k" style="width:10px;height:48px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 05: R11k" style="width:10px;height:24px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 06: R13k" style="width:10px;height:29px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 07: R8k" style="width:10px;height:18px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 08: R7k" style="width:10px;height:15px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 09: R11k" style="width:10px;height:24px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 10: R10k" style="width:10px;height:23px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 11: R15k" style="width:10px;height:34px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 12: R13k" style="width:10px;height:29px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 13: R15k" style="width:10px;height:33px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 14: R10k" style="width:10px;height:21px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 15: R5k" style="width:10px;height:10px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 16: R10k" style="width:10px;height:23px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 17: R14k" style="width:10px;height:31px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 18: R17k" style="width:10px;height:37px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 19: R7k" style="width:10px;height:16px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 20: R11k" style="width:10px;height:24px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 21: R7k" style="width:10px;height:16px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 22: R3k" style="width:10px;height:6px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 23: R10k" style="width:10px;height:22px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 24: R14k" style="width:10px;height:30px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 25: R17k" style="width:10px;height:38px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 26: R12k" style="width:10px;height:26px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 27: R9k" style="width:10px;height:20px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 28: R10k" style="width:10px;height:22px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 29: R7k" style="width:10px;height:15px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 30: R13k" style="width:10px;height:29px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div>
-                </div>
-            </div>
-
-            <!-- Tables in 3 columns -->
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
-                <!-- Top Sellers -->
-                <div>
-                    <div style="font-size:12px;color:#94a3b8;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">TOP SELLERS (ANNUAL)</div>
-                    <table style="width:100%;border-collapse:collapse">
-                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Rev</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">GP%</th></tr>
-                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>BRD WHITE RICE</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R59k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>18.9%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>CRITICAL CARE 500ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R41k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>29.6%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>OMEGA 3 Z+L   60"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R38k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>30.8%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>FLORISH SPORE PROBIOTIC 60C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R36k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>29.9%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>B COMPLEX 30"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R28k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>31.6%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>MAGN GLYC 120C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R28k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>42.7%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>OMEGA 3 60"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R25k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>31.3%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>BRD BANTING</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R25k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>25.1%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>BLK SEED OIL120C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R22k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>32.5%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>BRD BROWN RICE</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R21k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>19.1%</td></tr>
-                    </table>
-                </div>
-                <!-- Low GP Items -->
-                <div>
-                    <div style="font-size:12px;color:#ef4444;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">LOW GP ITEMS (EXCL BAKERY)</div>
-                    <table style="width:100%;border-collapse:collapse">
-                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">GP%</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Supplier</th></tr>
-                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>1L BERRY WATER KEFIR</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>24.1%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>NUM</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>350ML GINGER WATER KEFIR</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>24.8%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>NUM</td></tr>
-                    </table>
-                </div>
-                <!-- Non-Movers -->
-                <div>
-                    <div style="font-size:12px;color:#f59e0b;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">NON-MOVERS (≤1 UNIT)</div>
-                    <table style="width:100%;border-collapse:collapse">
-                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Supplier</th></tr>
-                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>VOUCHER</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>OLSHOP</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>CHOLINE 500MG 120 CAPS</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>LV</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>CAROB CHUNKS 1KG</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>KOMATI</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>SCO ACTIVE B PLEX + MAGN 30C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>MEDFORD</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>WHITE WILLOW BARK 100G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>PGER</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>D6 SILICEA 12 200's</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>WILLOW</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>BERB 2 MONTHS</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>None</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>CREATINE 40 SERVINGS</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>None</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>D3 LONG TERM</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>None</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>IMMUNE 4 MONTHS</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>None</td></tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div style="background:#1a1a2e;border:1px solid #2d2d3d;border-radius:12px;padding:24px;margin-bottom:20px">
-            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
-                <div>
-                    <h2 style="margin:0;font-size:22px;color:#f1f5f9">Edenvale</h2>
-                    <span style="font-size:12px;color:#22c55e;font-weight:600;letter-spacing:1px">On Track</span>
-                </div>
-                <div style="text-align:right">
-                    <div style="font-size:11px;color:#64748b;margin-bottom:2px">TARGET</div>
-                    <div style="font-size:18px;font-weight:700;color:#64748b">R450k</div>
-                </div>
-            </div>
-
-            <!-- KPI Grid -->
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
-                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
-                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">TODAY REV</div>
-                    <div style="font-size:22px;font-weight:700;color:#f1f5f9">R9k</div>
-                    <div style="font-size:11px;color:#22c55e">GP R3k</div>
-                </div>
-                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
-                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">MTD REV</div>
-                    <div style="font-size:22px;font-weight:700;color:#f1f5f9">R379k</div>
-                    <div style="font-size:11px;color:#22c55e">GP R131k</div>
-                </div>
-                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
-                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">GP%</div>
-                    <div style="font-size:22px;font-weight:700;color:#f59e0b">34.5%</div>
-                    <div style="font-size:11px;color:#64748b">30 trading days</div>
-                </div>
-                <div style="background:#0f0f1a;border-radius:8px;padding:14px;text-align:center">
-                    <div style="font-size:11px;color:#64748b;margin-bottom:4px;letter-spacing:1px">PROJECTED</div>
-                    <div style="font-size:22px;font-weight:700;color:#22c55e">R391k</div>
-                    <div style="font-size:11px;color:#64748b">87.0% of target</div>
-                </div>
-            </div>
-
-            <!-- Progress bar -->
-            <div style="margin-bottom:8px">
-                <div style="display:flex;justify-content:space-between;font-size:11px;color:#64748b;margin-bottom:4px">
-                    <span>MTD Progress: 84.2%</span>
-                    <span>Need R59k/day to hit target</span>
-                </div>
-                <div style="background:#2d2d3d;border-radius:4px;height:8px;overflow:hidden">
-                    <div style="background:#22c55e;height:100%;width:84.2%;border-radius:4px;transition:width 0.3s"></div>
-                </div>
-            </div>
-
-            <!-- Daily trend sparkline -->
-            <div style="margin-bottom:20px;padding:12px;background:#0f0f1a;border-radius:8px">
-                <div style="font-size:11px;color:#64748b;margin-bottom:8px;letter-spacing:1px">DAILY TREND (MTD)</div>
-                <div style="display:flex;align-items:flex-end;height:52px;gap:1px">
-                    <div title="Day 01: R13k" style="width:10px;height:30px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 02: R13k" style="width:10px;height:30px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 03: R14k" style="width:10px;height:32px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 04: R11k" style="width:10px;height:25px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 05: R14k" style="width:10px;height:32px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 06: R7k" style="width:10px;height:16px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 07: R14k" style="width:10px;height:32px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 08: R16k" style="width:10px;height:38px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 09: R12k" style="width:10px;height:29px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 10: R16k" style="width:10px;height:36px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 11: R18k" style="width:10px;height:41px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 12: R8k" style="width:10px;height:19px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 13: R12k" style="width:10px;height:28px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 14: R15k" style="width:10px;height:35px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 15: R13k" style="width:10px;height:29px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 16: R15k" style="width:10px;height:35px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 17: R11k" style="width:10px;height:25px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 18: R12k" style="width:10px;height:28px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 19: R11k" style="width:10px;height:26px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 20: R9k" style="width:10px;height:22px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 21: R11k" style="width:10px;height:26px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 22: R11k" style="width:10px;height:26px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 23: R13k" style="width:10px;height:29px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 24: R10k" style="width:10px;height:22px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 25: R12k" style="width:10px;height:27px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 26: R9k" style="width:10px;height:20px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 27: R16k" style="width:10px;height:36px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 28: R20k" style="width:10px;height:48px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 29: R15k" style="width:10px;height:34px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div><div title="Day 30: R9k" style="width:10px;height:21px;background:#22c55e;border-radius:2px;display:inline-block;vertical-align:bottom;margin:0 1px"></div>
-                </div>
-            </div>
-
-            <!-- Tables in 3 columns -->
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
-                <!-- Top Sellers -->
-                <div>
-                    <div style="font-size:12px;color:#94a3b8;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">TOP SELLERS (ANNUAL)</div>
-                    <table style="width:100%;border-collapse:collapse">
-                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Rev</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">GP%</th></tr>
-                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>ZENTIUM 60T</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R57k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>32.8%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>COLL COMPL 600G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R33k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>35.2%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>OMEGA 3 Z+L   60"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R32k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>30.1%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>OMEGA 3 60"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R27k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>31.2%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>NMN+1200 60S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R24k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>41.0%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>LIONS MANE EXT 180'S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R22k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>38.0%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>METHYL CARE 60C</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R21k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>33.7%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>ASHWAGANDHA 60"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R21k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>34.6%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>MAGN GLYCINATE 120T</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R21k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#22c55e'>36.9%</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:150px'>BERBERINE COMPLEX 60"S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right'>R21k</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#f59e0b'>31.4%</td></tr>
-                    </table>
-                </div>
-                <!-- Low GP Items -->
-                <div>
-                    <div style="font-size:12px;color:#ef4444;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">LOW GP ITEMS (EXCL BAKERY)</div>
-                    <table style="width:100%;border-collapse:collapse">
-                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">GP%</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Supplier</th></tr>
-                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>CRANBERRY DRK 330ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>13.1%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>HAR</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>COLA DRK 330ML 2</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>14.4%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>HAR</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>EGGS 12s EDDIE'S</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>17.3%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>FED</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>KARA UHT COC CREAM 1L</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>17.7%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>HAR</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>VAN STEVIA 150ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>18.9%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>HCW</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>SCO VEG DETOX CLEANSE</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>21.1%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>EVOLV</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>ETERNA VIT E 120's</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>23.4%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>SON</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>LIQUID SILICA 1000ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>24.6%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>SON</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>GLW GLYCINE 250G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>24.8%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>VERHAKI</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:140px'>500ML MILK KEFIR</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;text-align:right;color:#ef4444'>25.0%</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>NUM</td></tr>
-                    </table>
-                </div>
-                <!-- Non-Movers -->
-                <div>
-                    <div style="font-size:12px;color:#f59e0b;font-weight:600;letter-spacing:1px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid #2d2d3d">NON-MOVERS (≤1 UNIT)</div>
-                    <table style="width:100%;border-collapse:collapse">
-                        <tr><th style="font-size:11px;color:#64748b;text-align:left;padding:4px 8px">Product</th><th style="font-size:11px;color:#64748b;text-align:right;padding:4px 8px">Supplier</th></tr>
-                        <tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>DEODORANT BODY WASH 200ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>NF</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>SENSI/BODYWASH 200ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>NF</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>VOUCHER</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>OLSHOP</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>GINSENG ROOT 50G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>PGER</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>NEUTRAL HENNA 100G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>EARTHL</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>5D LIGHT GOLDEN CHESTNUT HERBATI</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>NC</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>DIGEST BISCUITS 400G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>VAL</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>TEA TREE OIL PURE 25ML</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>GNP</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>NUT FREE NOUGAT 24G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>PECAN</td></tr><tr><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px'>LENTIL CHIPS SWT CHILLIE 25G</td><td style='padding:5px 8px;border-bottom:1px solid #2d2d3d;font-size:11px;text-align:right;color:#94a3b8'>K4H</td></tr>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-<!-- Top Suppliers (Centurion annual) -->
-<div style="background:#1a1a2e;border:1px solid #2d2d3d;border-radius:12px;padding:24px;margin-bottom:20px">
-    <h3 style="font-size:16px;font-weight:700;margin-bottom:16px;color:#f1f5f9">Top Suppliers by Revenue — Centurion (Annual)</h3>
-    <table>
-        <thead><tr>
-            <th style="font-size:11px;color:#64748b;text-align:left;padding:8px 16px;letter-spacing:1px">SUPPLIER</th>
-            <th style="font-size:11px;color:#64748b;text-align:left;padding:8px 16px;letter-spacing:1px">CODE</th>
-            <th style="font-size:11px;color:#64748b;text-align:right;padding:8px 16px;letter-spacing:1px">ANNUAL REV</th>
-            <th style="font-size:11px;color:#64748b;text-align:right;padding:8px 16px;letter-spacing:1px">GP%</th>
-            <th style="font-size:11px;color:#64748b;text-align:right;padding:8px 16px;letter-spacing:1px">UNITS SOLD</th>
-        </tr></thead>
-        <tbody><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">DS INTERNATIONAL (NOW)</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">DSI</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R1.3M</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">35.2%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">3,526</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">LONGEVITY SUPPLEMENTS PTY LTD (OUTCROP) WILLOW WELLNESS</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">WILLOW</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R1.0M</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">43.9%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">4,772</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">NATROCEUTICS SA (PTY) LTD (ONELI01)</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">NATRO</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R747k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">30.6%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">2,275</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">Interlife Distributors (INTERLIFE WHOLESALERS (PTY) LTD)</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">IL</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R727k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">35.5%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">4,105</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">ECO VALLEY NUTRITION</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">EVN</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R525k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">34.1%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">2,716</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">LOVE YOURSELF BREADZ</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">LOVE</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R513k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#ef4444">20.1%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">7,341</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">PHYTOCEUTICS  (coyne) (ED01)</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">COYNE</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R429k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">33.7%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">1,269</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">PMR NUTRITION</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">PN</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R425k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">35.8%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">2,105</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">NUTRIGREEN(Pty) Ltd</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">NUG</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R424k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">42.1%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">3,148</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">GREEN PHARM SOUTH AFRICA (PTY) LTD</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">GP</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R350k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">34.3%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">2,809</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">VERHAKI (PTY) LTD</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">VERHAKI</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R325k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">31.1%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">1,273</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">WELL I AM</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">NN</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R319k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">35.6%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">1,624</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">AMIPRO</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">AMIPRO</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R283k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">32.0%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">585</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">ESCENTIA PRODUCTS</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">ESCP</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R255k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">34.6%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">2,274</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">NEOGENESIS HEALTH PRODUCTS (PTY) LDT</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">NG</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R230k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">42.3%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">784</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">The Real Thing Food Supplements cc</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">TRTFC</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R221k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">30.6%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">758</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">FEROXII NATURALS</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">FERO</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R208k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#f59e0b">30.3%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">1,034</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">BEAUTY ENCAPSULATED</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">BE</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R204k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">41.0%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">482</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">Solgar C011175 (do not use)</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">SOL</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R202k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">37.9%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">791</td>
-        </tr><tr>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px">PRIME HEALTH HOLDINGS</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:12px;color:#64748b">PRIMES</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right">R200k</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#22c55e">35.6%</td>
-            <td style="padding:8px 16px;border-bottom:1px solid #2d2d3d;font-size:13px;text-align:right;color:#94a3b8">849</td>
-        </tr></tbody>
-    </table>
-</div>
-
-<!-- Footer -->
-<div style="text-align:center;padding:20px;font-size:12px;color:#64748b">
-    Onelife Intelligence · 30 March 2026 · 3 stores + online · Auto-refreshes every 30 min
-</div>
-
 </body>
 </html>
