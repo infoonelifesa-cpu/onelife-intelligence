@@ -24,6 +24,13 @@ def load_json(path):
         print(f"WARN: {path}: {e}", file=sys.stderr)
         return {}
 
+
+def parse_doc_date(value):
+    try:
+        return datetime.strptime(str(value)[:10], "%Y-%m-%d").date()
+    except Exception:
+        return None
+
 def load_ga4():
     """Pull GA4 analytics data. Returns dict with channel performance, engagement, device, daily trends."""
     try:
@@ -362,11 +369,21 @@ def main():
     current_month = NOW.strftime("%Y-%m")
     days_in_month_total = calendar.monthrange(NOW.year, NOW.month)[1]  # 31 for March
 
+    def history_dates_for_month(history, month):
+        dates = []
+        for entry in history:
+            doc_date = parse_doc_date(entry.get("document_date", ""))
+            if doc_date and doc_date.strftime("%Y-%m") == month:
+                dates.append(doc_date)
+        return sorted(set(dates))
+
     def sum_history(history, month):
+        month_dates = history_dates_for_month(history, month)
         rev = sum(e.get("value_excl_after_discount", 0) for e in history if e.get("document_date", "").startswith(month))
         gp = sum(e.get("gross_profit", 0) for e in history if e.get("document_date", "").startswith(month))
-        days = len([e for e in history if e.get("document_date", "").startswith(month)])
-        return {"rev": rev, "gp": gp, "days": days}
+        days = len(month_dates)
+        last_trade_date = month_dates[-1] if month_dates else None
+        return {"rev": rev, "gp": gp, "days": days, "last_trade_date": last_trade_date}
 
     cen_mtd_data = sum_history(ho_history, current_month)
     gvs_mtd_data = sum_history(gvs_history, current_month)
@@ -378,26 +395,29 @@ def main():
     mtd_gp = cen_mtd_data["gp"] + gvs_mtd_data["gp"] + edn_mtd_data["gp"]
     mtd_gp_pct = (mtd_gp / mtd_rev * 100) if mtd_rev > 0 else 0
 
-    days_elapsed = NOW.day
-    days_remaining = days_in_month_total - days_elapsed
-
     # Store-level run rates and projections
     store_analysis = {}
     for s in ["CEN", "GVS", "EDN"]:
         data = store_mtd[s]
         trading_days = data["days"]
         run_rate = data["rev"] / trading_days if trading_days > 0 else 0
-        # Calculate ACTUAL remaining trading days from tomorrow to end of month
+        last_trade_date = data.get("last_trade_date")
+        last_trade_day = last_trade_date.day if last_trade_date else 0
+
+        # Important: projections must use the last traded day in Omni history,
+        # not the current wall-clock date. Otherwise pre-trade mornings collapse
+        # projected month-end to current MTD even when today's trade is not in yet.
         if s == "CEN":
-            # CEN closed Sundays — count remaining weekdays (Mon-Sat) from tomorrow
+            # CEN closed Sundays — count remaining weekdays from the day AFTER
+            # the latest traded date we actually have in Omni.
             remaining_trading = 0
-            for d in range(NOW.day + 1, days_in_month_total + 1):
+            for d in range(last_trade_day + 1, days_in_month_total + 1):
                 future_date = NOW.replace(day=d)
                 if future_date.weekday() != 6:  # 6 = Sunday
                     remaining_trading += 1
         else:
-            # GVS + EDN open 7 days
-            remaining_trading = max(0, days_in_month_total - NOW.day)
+            # GVS + EDN open 7 days. If latest trade is yesterday, today still counts.
+            remaining_trading = max(0, days_in_month_total - last_trade_day)
         projected = data["rev"] + (run_rate * remaining_trading)
         pct_of_target = (projected / TARGETS[s] * 100) if TARGETS[s] > 0 else 0
         # Required daily to hit target
@@ -413,12 +433,14 @@ def main():
             "gap": shortfall,
             "gp": data["gp"],
             "gp_pct": (data["gp"] / data["rev"] * 100) if data["rev"] > 0 else 0,
+            "last_trade_date": last_trade_date,
         }
 
     # Combined projections
     combined_projected = sum(sa["projected"] for sa in store_analysis.values())
     total_target = sum(TARGETS.values())
-    combined_daily_avg = mtd_rev / days_elapsed if days_elapsed > 0 else 0
+    combined_daily_avg = sum(sa["run_rate"] for sa in store_analysis.values())
+    days_remaining = max((sa["remaining_trading"] for sa in store_analysis.values()), default=0)
 
     yesterday_data = omni.get("yesterday", {})
     yesterday_rev = yesterday_data.get("combined", {}).get("revenue_excl", 0)
