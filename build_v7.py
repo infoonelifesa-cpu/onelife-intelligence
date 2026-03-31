@@ -395,6 +395,12 @@ def main():
     mtd_gp = cen_mtd_data["gp"] + gvs_mtd_data["gp"] + edn_mtd_data["gp"]
     mtd_gp_pct = (mtd_gp / mtd_rev * 100) if mtd_rev > 0 else 0
 
+    # days_elapsed = latest traded day across all stores (for KPI display)
+    days_elapsed = max(
+        (d["last_trade_date"].day if d.get("last_trade_date") else 0)
+        for d in [cen_mtd_data, gvs_mtd_data, edn_mtd_data]
+    ) or NOW.day
+
     # Store-level run rates and projections
     store_analysis = {}
     for s in ["CEN", "GVS", "EDN"]:
