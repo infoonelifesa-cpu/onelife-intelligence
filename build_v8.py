@@ -982,6 +982,37 @@ def main():
 
     narrative = lead  # keep for backward compat
 
+    # Friendly summaries for long sections
+    top_gap = gaps[0] if gaps else None
+    total_gap_uplift_top10 = sum(g.get("uplift_total", 0) for g in gaps[:10])
+    multi_store_gap_count = sum(1 for g in gaps if len(g.get("m", [])) > 1)
+    supplier_leader_code, supplier_leader = sup_sorted[0] if sup_sorted else ("", {"rev": 0, "gp_pct": 0, "abc": "-"})
+    supplier_low_gp_count = sum(1 for _, data in sup_sorted[:30] if data.get("gp_pct", 0) < 30)
+    low_gp_exposure = sum(item.get("rev", 0) for item in low_gp_items[:10])
+
+    search_quick_wins = []
+    search_big_opps = []
+    if gsc:
+        search_quick_wins = [q for q in gsc["non_branded"] if 3 < q["pos"] <= 10 and q["impr"] > 80]
+        search_big_opps = [q for q in gsc["non_branded"] if q["pos"] > 10 and q["impr"] > 200]
+
+    review_deltas = []
+    if reviews:
+        rv_latest = reviews["latest"]
+        rv_start = reviews["week_start"]
+        for c in ["CEN", "GVS", "EDN"]:
+            total_now = rv_latest["stores"].get(c, {}).get("total_reviews", 0)
+            total_start = rv_start["stores"].get(c, {}).get("total_reviews", 0)
+            target = reviews["targets"].get(c, 0)
+            review_deltas.append({
+                "store": c,
+                "new": total_now - total_start,
+                "target": target,
+                "gap": (total_now - total_start) - target,
+            })
+    review_best = max(review_deltas, key=lambda x: x["new"] - x["target"]) if review_deltas else None
+    review_laggard = min(review_deltas, key=lambda x: x["new"] - x["target"]) if review_deltas else None
+
     # === BUILD HTML ===
     lines = []
     w = lines.append
@@ -994,6 +1025,7 @@ def main():
     w('<style>')
     w("""
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{font-family:'Inter',sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh}
 .container{max-width:1400px;margin:0 auto;padding:20px}
 header{text-align:center;padding:30px 0 20px}
@@ -1001,6 +1033,23 @@ header h1{font-size:28px;font-weight:800;color:#f8fafc}
 header h1 span{color:#22c55e}
 header .sub{color:#94a3b8;font-size:14px;margin-top:4px}
 header .date{color:#64748b;font-size:12px;margin-top:2px}
+
+.topnav{position:sticky;top:0;z-index:30;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:12px;margin:0 0 18px;background:rgba(15,23,42,.92);backdrop-filter:blur(10px);border:1px solid #334155;border-radius:14px}
+.jump-btn{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:999px;background:#111827;border:1px solid #334155;color:#cbd5e1;text-decoration:none;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.jump-btn:hover{background:#1e293b;border-color:#22c55e;color:#f8fafc}
+.section-anchor{scroll-margin-top:88px}
+
+.mini-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-bottom:14px}
+.mini-card{background:#111827;border:1px solid #334155;border-radius:10px;padding:12px}
+.mini-card .k{color:#94a3b8;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
+.mini-card .v{color:#f8fafc;font-size:18px;font-weight:800}
+.mini-card .n{color:#64748b;font-size:11px;line-height:1.45;margin-top:3px}
+
+.collapse{margin-top:14px;border:1px solid #334155;border-radius:10px;background:#111827;overflow:hidden}
+.collapse summary{cursor:pointer;list-style:none;padding:13px 16px;font-size:12px;font-weight:700;color:#cbd5e1;background:#0f172a}
+.collapse summary::-webkit-details-marker{display:none}
+.collapse[open] summary{border-bottom:1px solid #334155}
+.collapse .collapse-body{padding:0 0 4px}
 
 .kpi-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
 .kpi{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:16px}
@@ -1144,6 +1193,15 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
     last_updated = omni.get("last_updated", "unknown")[:16].replace("T", " ")
     w(f'<div class="date">{NOW.strftime("%d %B %Y")} | Data as at {last_updated}</div>')
     w('</header>')
+    w('<div class="topnav">')
+    w('<a class="jump-btn" href="#overview">Overview</a>')
+    w('<a class="jump-btn" href="#stores">Stores</a>')
+    w('<a class="jump-btn" href="#online">Online</a>')
+    w('<a class="jump-btn" href="#opportunities">Opportunities</a>')
+    w('<a class="jump-btn" href="#search">Search</a>')
+    w('<a class="jump-btn" href="#reviews">Reviews</a>')
+    w('<a class="jump-btn" href="#trends">Trends</a>')
+    w('</div>')
 
     # Data health warning if Omni API is down
     fetch_status = omni.get("fetch_status", "")
@@ -1151,6 +1209,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
         w('<div class="data-warning"><span class="icon">&#x26a0;</span> Omni API may be down. Using cached data. Numbers may not reflect today\'s full trading.</div>')
 
     # === SOURCE HEALTH ===
+    w('<div id="overview" class="section-anchor"></div>')
     w('<div class="card"><h3>&#x1f9ec; Data Source Health</h3><div class="desc">Know what to trust before acting. Freshness is shown per source.</div>')
     w('<div class="source-strip">')
     for src in source_health:
@@ -1204,6 +1263,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
     w('</div>')
 
     # KPI Strip
+    w('<div id="stores" class="section-anchor"></div>')
     proj_class = "green" if combined_projected >= total_target * 0.95 else ("yellow" if combined_projected >= total_target * 0.80 else "red")
     w('<div class="kpi-strip">')
     w(f'<div class="kpi"><div class="label">MTD Revenue</div><div class="val">{fmt_r(mtd_rev)}</div><div class="note">Day {days_elapsed} of {days_in_month_total}</div><div class="wow">WoW: {trend_badge(overall_wow)}</div></div>')
@@ -1252,6 +1312,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 
     # === ONLINE PERFORMANCE (GA4) ===
     if ga4:
+        w('<div id="online" class="section-anchor"></div>')
         t = ga4["totals"]
         chg = ga4["changes"]
         eng = ga4["engagement"]
@@ -1370,6 +1431,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
         w('</div>')
 
     # === HIDDEN GEMS SECTION ===
+    w('<div id="opportunities" class="section-anchor"></div>')
     if hidden_gems:
         w('<div class="card"><h3>&#x1f48e; Hidden Gems</h3>')
         w('<div class="desc">High GP% products with low unit sales — shelf visibility problem. Move them and watch revenue climb.</div>')
@@ -1400,6 +1462,12 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
     # === CROSS-STORE RANGE ACTION CARDS ===
     w('<div class="card"><h3>&#x1f4e6; Cross-Store Range Opportunities</h3>')
     w(f'<div class="desc">Bidirectional range gaps. Products can now originate from any strong store, not just Centurion. {len(gaps)} opportunities — top 5 shown as action cards, full list below.</div>')
+    w('<div class="mini-strip">')
+    w(f'<div class="mini-card"><div class="k">Range gaps found</div><div class="v">{len(gaps)}</div><div class="n">{multi_store_gap_count} products are missing in 2 stores, not just 1.</div></div>')
+    if top_gap:
+        w(f'<div class="mini-card"><div class="k">Best rollout right now</div><div class="v">{fmt_r(top_gap["uplift_total"])} </div><div class="n">{esc(top_gap["p"])} from {STORE_LABELS.get(top_gap["source"], top_gap["source"])} into {", ".join(STORE_LABELS.get(m, m) for m in top_gap["m"])}.</div></div>')
+    w(f'<div class="mini-card"><div class="k">Top 10 uplift pool</div><div class="v">{fmt_r(total_gap_uplift_top10)}</div><div class="n">Combined estimated monthly upside from the strongest 10 rollout ideas.</div></div>')
+    w('</div>')
     w('<div class="action-cards" style="margin-bottom:16px">')
     for g in gaps[:5]:
         w(f'<div class="action-card range">')
@@ -1409,21 +1477,33 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
         w(f'<div class="ac-uplift">&#x27a4; Stock at {", ".join(STORE_LABELS.get(m, m) for m in g["m"])} &rarr; potential {fmt_r(g["uplift_total"])} / month total uplift</div>')
         w('</div>')
     w('</div>')
+    w('<details class="collapse"><summary>View detailed rollout table (top 25 products)</summary><div class="collapse-body">')
     w('<table><thead><tr><th>Product</th><th>Supplier</th><th>Source Store</th><th class="num">Source Revenue</th><th class="num">Source Units</th><th class="num">GP%</th><th>Missing At</th><th class="num">Est. Uplift</th></tr></thead><tbody>')
     for g in gaps[:25]:
         gpc = "gph" if g["gp_pct"]>=40 else ("gpm" if g["gp_pct"]>=30 else "gpl")
         w(f'<tr><td>{esc(g["p"])}</td><td>{esc(sup_name(g["sup"], sup_names))}</td><td>{STORE_LABELS.get(g["source"], g["source"])}</td><td class="num">{fmt_r(g["rev"])}</td><td class="num">{g["qty"]}</td><td class="num {gpc}">{g["gp_pct"]:.0f}%</td><td class="miss">{", ".join(STORE_LABELS.get(m, m) for m in g["m"])}</td><td class="num">{fmt_r(g["uplift_total"])}</td></tr>')
-    w('</tbody></table></div>')
+    w('</tbody></table></div></details></div>')
 
     # Supplier ABC Scorecard
     w('<div class="card"><h3>Supplier ABC Scorecard</h3>')
     w(f'<div class="desc">Top 30 suppliers by revenue. A = top 80% cumulative, B = next 15%, C = bottom 5%.</div>')
+    w('<div class="mini-strip">')
+    w(f'<div class="mini-card"><div class="k">Top supplier</div><div class="v">{esc(sup_name(supplier_leader_code, sup_names))}</div><div class="n">{fmt_r(supplier_leader.get("rev", 0))} revenue at {supplier_leader.get("gp_pct", 0):.1f}% GP.</div></div>')
+    w(f'<div class="mini-card"><div class="k">Low-GP suppliers</div><div class="v">{supplier_low_gp_count}</div><div class="n">Suppliers in the top 30 currently below 30% GP.</div></div>')
+    w(f'<div class="mini-card"><div class="k">Low-GP product exposure</div><div class="v">{fmt_r(low_gp_exposure)}</div><div class="n">Revenue flowing through the biggest low-margin product problems.</div></div>')
+    w('</div>')
     w('<table><thead><tr><th>Class</th><th>Supplier</th><th class="num">Revenue</th><th class="num">GP%</th><th class="num">Units</th><th class="num">Products</th></tr></thead><tbody>')
+    for code, data in sup_sorted[:10]:
+        gpc = "gph" if data["gp_pct"]>=40 else ("gpm" if data["gp_pct"]>=30 else "gpl")
+        ac = f'abc-{data["abc"].lower()}'
+        w(f'<tr><td><span class="{ac}">{data["abc"]}</span></td><td>{sup_name(code, sup_names)}</td><td class="num">{fmt_r(data["rev"])}</td><td class="num {gpc}">{data["gp_pct"]:.1f}%</td><td class="num">{data["qty"]:,}</td><td class="num">{data["prods"]}</td></tr>')
+    w('</tbody></table>')
+    w('<details class="collapse"><summary>View full supplier table (top 30)</summary><div class="collapse-body"><table><thead><tr><th>Class</th><th>Supplier</th><th class="num">Revenue</th><th class="num">GP%</th><th class="num">Units</th><th class="num">Products</th></tr></thead><tbody>')
     for code, data in sup_sorted[:30]:
         gpc = "gph" if data["gp_pct"]>=40 else ("gpm" if data["gp_pct"]>=30 else "gpl")
         ac = f'abc-{data["abc"].lower()}'
         w(f'<tr><td><span class="{ac}">{data["abc"]}</span></td><td>{sup_name(code, sup_names)}</td><td class="num">{fmt_r(data["rev"])}</td><td class="num {gpc}">{data["gp_pct"]:.1f}%</td><td class="num">{data["qty"]:,}</td><td class="num">{data["prods"]}</td></tr>')
-    w('</tbody></table></div>')
+    w('</tbody></table></div></details></div>')
 
     # Store Comparison
     w('<div class="card"><h3>Store Comparison</h3><div class="desc">Revenue, GP, and unique sellers per store (snapshot period)</div>')
@@ -1461,8 +1541,17 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 
     # === SEARCH PERFORMANCE (Google Search Console) ===
     if gsc:
+        w('<div id="search" class="section-anchor"></div>')
         w('<div class="card"><h3>&#x1f50d; Search Performance</h3>')
         w(f'<div class="desc">Google organic search data — {gsc["period"]} vs prior 28 days</div>')
+        w('<div class="mini-strip">')
+        w(f'<div class="mini-card"><div class="k">Quick wins</div><div class="v">{len(search_quick_wins)}</div><div class="n">Queries already ranking 4-10 with enough volume to push into the top 3.</div></div>')
+        w(f'<div class="mini-card"><div class="k">Bigger content gaps</div><div class="v">{len(search_big_opps)}</div><div class="n">High-impression queries still sitting off page 1.</div></div>')
+        if gsc["blogs"]:
+            top_blog = gsc["blogs"][0]
+            top_blog_title = top_blog["page"].split("/")[-1].replace("-", " ").title()[:26]
+            w(f'<div class="mini-card"><div class="k">Top blog right now</div><div class="v">{esc(top_blog_title)}</div><div class="n">{top_blog["clicks"]:.0f} clicks at position {top_blog["pos"]:.1f}.</div></div>')
+        w('</div>')
 
         # KPI row for search
         click_cls = "green" if gsc["clicks_chg"] >= 0 else "red"
@@ -1509,7 +1598,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
             w('<h4 style="color:#f59e0b;font-size:12px;margin:12px 0 6px">&#x1f4a1; Non-Branded Search Opportunities</h4>')
             w('<div class="desc" style="margin-bottom:6px">These queries bring people who don\'t know you yet — the highest-value traffic.</div>')
             w('<table style="font-size:11px"><thead><tr><th>Query</th><th class="num">Clicks</th><th class="num">Impr</th><th class="num">Pos</th><th>Opportunity</th></tr></thead><tbody>')
-            for q in gsc["non_branded"]:
+            for q in gsc["non_branded"][:6]:
                 if q["pos"] <= 3:
                     opp = '<span style="color:#22c55e">&#x2713; Ranking well</span>'
                 elif q["pos"] <= 10 and q["impr"] > 100:
@@ -1520,6 +1609,18 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
                     opp = '<span style="color:#64748b">Monitor</span>'
                 w(f'<tr><td>{esc(q["q"])}</td><td class="num">{q["clicks"]:.0f}</td><td class="num">{q["impr"]:.0f}</td><td class="num">{q["pos"]:.1f}</td><td>{opp}</td></tr>')
             w('</tbody></table>')
+            w('<details class="collapse"><summary>View full non-branded query table</summary><div class="collapse-body"><table style="font-size:11px"><thead><tr><th>Query</th><th class="num">Clicks</th><th class="num">Impr</th><th class="num">Pos</th><th>Opportunity</th></tr></thead><tbody>')
+            for q in gsc["non_branded"]:
+                if q["pos"] <= 3:
+                    opp = '<span style="color:#22c55e">&#x2713; Ranking well</span>'
+                elif q["pos"] <= 10 and q["impr"] > 100:
+                    opp = '<span style="color:#f59e0b">&#x2191; Push to top 3</span>'
+                elif q["impr"] > 200:
+                    opp = '<span style="color:#3b82f6">&#x2197; High volume — write content</span>'
+                else:
+                    opp = '<span style="color:#64748b">Monitor</span>'
+                w(f'<tr><td>{esc(q["q"])}</td><td class="num">{q["clicks"]:.0f}</td><td class="num">{q["impr"]:.0f}</td><td class="num">{q["pos"]:.1f}</td><td>{opp}</td></tr>')
+            w('</tbody></table></div></details>')
 
         # === SEARCH NARRATIVE ===
         w('<div class="story-card" style="margin-top:14px">')
@@ -1571,6 +1672,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 
     # === GOOGLE REVIEWS ===
     if reviews:
+        w('<div id="reviews" class="section-anchor"></div>')
         rv_latest = reviews["latest"]
         rv_start = reviews["week_start"]
         rv_targets = reviews["targets"]
@@ -1586,6 +1688,13 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 
         w('<div class="card"><h3>⭐ Google Reviews</h3>')
         w(f'<div class="desc">Review tracking across all 3 stores | Data as at {rv_date} | Weekly target: {total_target_week} new reviews</div>')
+        w('<div class="mini-strip">')
+        if review_best:
+            w(f'<div class="mini-card"><div class="k">Best pace this week</div><div class="v">{STORE_LABELS.get(review_best["store"], review_best["store"])}</div><div class="n">+{review_best["new"]} reviews against a target of {review_best["target"]}.</div></div>')
+        if review_laggard:
+            w(f'<div class="mini-card"><div class="k">Needs attention</div><div class="v">{STORE_LABELS.get(review_laggard["store"], review_laggard["store"])}</div><div class="n">+{review_laggard["new"]} so far against a target of {review_laggard["target"]}.</div></div>')
+        w(f'<div class="mini-card"><div class="k">Network pace</div><div class="v">+{total_new_week}</div><div class="n">Running against a combined weekly target of {total_target_week} reviews.</div></div>')
+        w('</div>')
 
         # KPI strip for reviews
         w('<div class="kpi-strip" style="margin-bottom:14px">')
@@ -1638,6 +1747,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
         w('</div>')
 
     # Monthly Trends
+    w('<div id="trends" class="section-anchor"></div>')
     w('<div class="card"><h3>Monthly Revenue Trends</h3><div class="desc">Last 3 months by store</div>')
     w('<div class="mgrid">')
     for ym in sorted(monthly.keys()):
