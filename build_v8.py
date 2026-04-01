@@ -950,12 +950,18 @@ def main():
 
     pct_target = combined_projected / total_target * 100 if total_target > 0 else 0
 
-    if pct_target >= 100:
-        lead = f"{report_month_label} is running ahead of target, projected {F(combined_projected)} against a {F(total_target)} month target ({pct_target:.0f}%)."
-    elif pct_target >= 90:
-        lead = f"{report_month_label} is close but not safe yet: projected {F(combined_projected)} vs {F(total_target)} target ({pct_target:.0f}%), with a {F(total_target - combined_projected)} gap still open."
+    if days_remaining == 0:
+        if pct_target >= 100:
+            lead = f"{report_month_label} closed ahead of target at {F(combined_projected)} versus a {F(total_target)} target ({pct_target:.0f}%)."
+        else:
+            lead = f"{report_month_label} closed below target at {F(combined_projected)} versus a {F(total_target)} target ({pct_target:.0f}%), leaving a final shortfall of {F(total_target - combined_projected)}."
     else:
-        lead = f"{report_month_label} is under pressure: projected {F(combined_projected)} vs {F(total_target)} target ({pct_target:.0f}%), leaving a {F(total_target - combined_projected)} shortfall that needs action now."
+        if pct_target >= 100:
+            lead = f"{report_month_label} is running ahead of target, projected {F(combined_projected)} against a {F(total_target)} month target ({pct_target:.0f}%)."
+        elif pct_target >= 90:
+            lead = f"{report_month_label} is close but not safe yet: projected {F(combined_projected)} vs {F(total_target)} target ({pct_target:.0f}%), with a {F(total_target - combined_projected)} gap still open."
+        else:
+            lead = f"{report_month_label} is under pressure: projected {F(combined_projected)} vs {F(total_target)} target ({pct_target:.0f}%), leaving a {F(total_target - combined_projected)} shortfall that needs action now."
 
     story_parts = [{"text": lead, "cls": "lead"}]
     if report_month != NOW.strftime("%Y-%m"):
@@ -974,7 +980,11 @@ def main():
         w_str = ""
         if w_pct is not None:
             w_str = f", {'up' if w_pct >= 0 else 'down'} {abs(w_pct):.0f}% WoW"
-        if sa["pct"] >= 100:
+        if sa["remaining_trading"] == 0:
+            gap_text = "ahead of target" if sa["gap"] <= 0 else f"short by {F(sa['gap'])}"
+            txt = f"{label} closed at {sa['pct']:.0f}% of target, {gap_text}{w_str}."
+            cls = "" if sa["gap"] <= 0 else "alert-sentence"
+        elif sa["pct"] >= 100:
             txt = f"{label} is the standout at {F(store_mtd[s]['rev'])} MTD, running {F(sa['run_rate'])}/day{w_str}."
             cls = ""
         elif sa["pct"] >= 85:
