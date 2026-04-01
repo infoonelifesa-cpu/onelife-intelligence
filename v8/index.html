@@ -85,8 +85,11 @@ td{padding:6px 10px;border-bottom:1px solid #1e293b22}
 
 .ugrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .ustore h4{color:#94a3b8;font-size:12px;margin-bottom:6px}
-.uitem{padding:5px 0;border-bottom:1px solid #334155;font-size:12px;display:flex;justify-content:space-between}
-.uitem .num{color:#22c55e}
+.uitem{padding:7px 0;border-bottom:1px solid #334155;font-size:12px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.uitem-main{display:flex;flex-direction:column;gap:2px;min-width:0}
+.uitem-name{color:#e2e8f0}
+.uitem-supplier{color:#64748b;font-size:10px;text-transform:uppercase;letter-spacing:.04em}
+.uitem .num{color:#22c55e;white-space:nowrap}
 .dim{color:#475569}
 
 .mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center}
@@ -134,6 +137,7 @@ td{padding:6px 10px;border-bottom:1px solid #1e293b22}
 .priority-item.urgent{border-left:4px solid #ef4444}.priority-item.opportunity{border-left:4px solid #3b82f6}.priority-item.margin{border-left:4px solid #f59e0b}
 .priority-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
 .priority-title{font-size:14px;font-weight:700;color:#f8fafc;line-height:1.4}
+.priority-supplier{font-size:10px;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:3px}
 .priority-score{font-size:11px;font-weight:800;padding:5px 8px;border-radius:999px;background:#1e293b;color:#e2e8f0;white-space:nowrap}
 .priority-meta{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 10px}
 .meta-pill{font-size:10px;font-weight:700;padding:4px 7px;border-radius:999px;background:#1e293b;color:#cbd5e1;text-transform:uppercase;letter-spacing:.05em}
@@ -150,6 +154,7 @@ td{padding:6px 10px;border-bottom:1px solid #1e293b22}
 .ac-badge{display:inline-block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:2px 7px;border-radius:4px;margin-bottom:6px}
 .ac-badge.swap{background:#ef444422;color:#ef4444}.ac-badge.gem{background:#a855f722;color:#a855f7}.ac-badge.range{background:#3b82f622;color:#3b82f6}
 .ac-title{color:#f1f5f9;font-size:13px;font-weight:600;line-height:1.5;margin-bottom:4px}
+.ac-supplier{color:#94a3b8;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:-1px;margin-bottom:6px}
 .ac-meta{color:#64748b;font-size:11px}
 .ac-uplift{color:#22c55e;font-weight:700;font-size:12px;margin-top:4px}
 
@@ -231,7 +236,10 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <div class="priority-list">
 <div class="priority-item opportunity">
 <div class="priority-head">
+<div>
 <div class="priority-title">#1 Range KILL A GERM 60s from Centurion into Edenvale</div>
+<div class="priority-supplier">Supplier: PMR NUTRITION</div>
+</div>
 <div class="priority-score">77/100 · Medium</div>
 </div>
 <div class="priority-meta">
@@ -246,7 +254,10 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 </div>
 <div class="priority-item margin">
 <div class="priority-head">
+<div>
 <div class="priority-title">#2 Fix low-GP drag: BRD WHITE RICE</div>
+<div class="priority-supplier">Supplier: LOVE YOURSELF BREADZ</div>
+</div>
 <div class="priority-score">72/100 · Medium</div>
 </div>
 <div class="priority-meta">
@@ -261,7 +272,10 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 </div>
 <div class="priority-item opportunity">
 <div class="priority-head">
+<div>
 <div class="priority-title">#3 Range LIVERTONE 60C from Centurion into Glen Village, Edenvale</div>
+<div class="priority-supplier">Supplier: NUTRIGREEN</div>
+</div>
 <div class="priority-score">71/100 · Medium</div>
 </div>
 <div class="priority-meta">
@@ -276,7 +290,10 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 </div>
 <div class="priority-item opportunity">
 <div class="priority-head">
+<div>
 <div class="priority-title">#4 Range ZINC &amp; GINGER 60'S from Centurion into Glen Village, Edenvale</div>
+<div class="priority-supplier">Supplier: ECO VALLEY NUTRITION</div>
+</div>
 <div class="priority-score">69/100 · Medium</div>
 </div>
 <div class="priority-meta">
@@ -291,7 +308,10 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 </div>
 <div class="priority-item opportunity">
 <div class="priority-head">
+<div>
 <div class="priority-title">#5 Range POTCILYTE 90C from Centurion into Glen Village, Edenvale</div>
+<div class="priority-supplier">Supplier: ENGINEERS AND DOCTORS</div>
+</div>
 <div class="priority-score">68/100 · Medium</div>
 </div>
 <div class="priority-meta">
@@ -376,7 +396,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <div class="desc">Google Analytics 4 — last 28 days vs prior 28 days | Powered by Analyzify tracking</div>
 <div class="kpi-strip" style="margin-bottom:14px">
 <div class="kpi"><div class="label" style="color:#00ff88">Today Online Sales</div><div class="val" style="color:#00ff88;font-size:26px">R1K</div><div class="note">Yesterday: R459</div></div>
-<div class="kpi"><div class="label">Sessions (28d)</div><div class="val">43,492</div><div class="note"><span style="color:#22c55e;font-size:11px;font-weight:700">↑&nbsp;+218.2%</span> <svg width="100" height="25" style="vertical-align:middle"><polyline points="0.0,18.7 7.1,14.6 14.3,16.4 21.4,18.0 28.6,16.0 35.7,17.0 42.9,19.0 50.0,19.3 57.1,19.2 64.3,13.7 71.4,14.6 78.6,2.0 85.7,12.7 92.9,19.7 100.0,23.0" fill="none" stroke="#3b82f6" stroke-width="2"/></svg></div></div>
+<div class="kpi"><div class="label">Sessions (28d)</div><div class="val">43,511</div><div class="note"><span style="color:#22c55e;font-size:11px;font-weight:700">↑&nbsp;+218.4%</span> <svg width="100" height="25" style="vertical-align:middle"><polyline points="0.0,18.8 7.1,14.7 14.3,16.5 21.4,18.1 28.6,16.1 35.7,17.0 42.9,19.1 50.0,19.4 57.1,19.3 64.3,13.8 71.4,14.7 78.6,2.0 85.7,12.7 92.9,19.8 100.0,23.0" fill="none" stroke="#3b82f6" stroke-width="2"/></svg></div></div>
 <div class="kpi"><div class="label">Revenue (28d)</div><div class="val green">R63K</div><div class="note"><span style="color:#22c55e;font-size:11px;font-weight:700">↑&nbsp;+345.1%</span> <svg width="100" height="25" style="vertical-align:middle"><polyline points="0.0,10.9 7.1,23.0 14.3,14.8 21.4,20.1 28.6,10.3 35.7,14.2 42.9,13.3 50.0,15.0 57.1,2.0 64.3,12.7 71.4,19.2 78.6,4.0 85.7,2.9 92.9,21.2 100.0,19.0" fill="none" stroke="#22c55e" stroke-width="2"/></svg></div></div>
 <div class="kpi"><div class="label">Orders</div><div class="val">83</div><div class="note"><span style="color:#22c55e;font-size:11px;font-weight:700">↑&nbsp;+336.8%</span></div></div>
 <div class="kpi"><div class="label">Conv. Rate</div><div class="val">0.19%</div><div class="note">Bounce: 15% | 2.6 pg/sess</div></div>
@@ -386,9 +406,9 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <tr><td>Paid Search</td><td class="num">20,259</td><td class="num">R28K</td><td class="num">38</td><td class="num gpm">0.19%</td><td class="num">R1.39</td><td><span style="color:#f59e0b">Okay</span></td></tr>
 <tr><td>Direct</td><td class="num">10,016</td><td class="num">R6K</td><td class="num">8</td><td class="num gpl">0.08%</td><td class="num">R0.62</td><td><span style="color:#ef4444">&#x26a0; High traffic, low conv</span></td></tr>
 <tr><td>Paid Social</td><td class="num">5,946</td><td class="num">R0</td><td class="num">0</td><td class="num gpl">0.00%</td><td class="num">R0.00</td><td><span style="color:#ef4444">&#x26a0; No conversions</span></td></tr>
-<tr><td>Organic Search</td><td class="num">3,824</td><td class="num">R10K</td><td class="num">15</td><td class="num gpm">0.39%</td><td class="num">R2.68</td><td><span style="color:#f59e0b">Okay</span></td></tr>
-<tr><td>Unassigned</td><td class="num">2,010</td><td class="num">R11K</td><td class="num">16</td><td class="num gph">0.80%</td><td class="num">R5.62</td><td><span style="color:#22c55e">&#x2713; Strong</span></td></tr>
-<tr><td>Cross-network</td><td class="num">771</td><td class="num">R2K</td><td class="num">2</td><td class="num gpm">0.26%</td><td class="num">R2.14</td><td><span style="color:#f59e0b">Okay</span></td></tr>
+<tr><td>Organic Search</td><td class="num">3,831</td><td class="num">R10K</td><td class="num">15</td><td class="num gpm">0.39%</td><td class="num">R2.68</td><td><span style="color:#f59e0b">Okay</span></td></tr>
+<tr><td>Unassigned</td><td class="num">2,017</td><td class="num">R11K</td><td class="num">16</td><td class="num gph">0.79%</td><td class="num">R5.60</td><td><span style="color:#22c55e">&#x2713; Strong</span></td></tr>
+<tr><td>Cross-network</td><td class="num">776</td><td class="num">R2K</td><td class="num">2</td><td class="num gpm">0.26%</td><td class="num">R2.13</td><td><span style="color:#f59e0b">Okay</span></td></tr>
 <tr><td>Organic Social</td><td class="num">310</td><td class="num">R3K</td><td class="num">1</td><td class="num gpm">0.32%</td><td class="num">R8.65</td><td><span style="color:#f59e0b">Okay</span></td></tr>
 <tr><td>Email</td><td class="num">164</td><td class="num">R1K</td><td class="num">2</td><td class="num gph">1.22%</td><td class="num">R7.23</td><td><span style="color:#22c55e">&#x2713; Strong</span></td></tr>
 <tr><td>Referral</td><td class="num">145</td><td class="num">R0</td><td class="num">0</td><td class="num gpl">0.00%</td><td class="num">R0.00</td><td><span style="color:#64748b">Low volume</span></td></tr>
@@ -399,7 +419,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <div>
 <h4 style="color:#f1f5f9;font-size:12px;margin-bottom:6px">&#x1f4f1; Device Split</h4>
 <table style="font-size:11px"><thead><tr><th>Device</th><th class="num">Sessions</th><th class="num">Orders</th><th class="num">Revenue</th></tr></thead><tbody>
-<tr><td>Mobile</td><td class="num">28,224</td><td class="num">51</td><td class="num">R38K</td></tr>
+<tr><td>Mobile</td><td class="num">28,249</td><td class="num">51</td><td class="num">R38K</td></tr>
 <tr><td>Desktop</td><td class="num">14,376</td><td class="num">32</td><td class="num">R25K</td></tr>
 <tr><td>Tablet</td><td class="num">447</td><td class="num">0</td><td class="num">R0</td></tr>
 </tbody></table></div>
@@ -423,7 +443,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <div class="story-sentence">Email (Klaviyo) converts at 1.2% — your highest-quality channel at R7.23/session. Grow the subscriber list; every new subscriber is worth ~R7 per visit.</div>
 <div class="story-sentence alert-sentence">Paid Social (Meta/TikTok ads): 5,946 sessions, ZERO conversions. This ad spend is producing awareness but no sales. Review targeting or pause until conversion tracking is fixed.</div>
 <div class="story-sentence">Overall conversion rate is 0.19% — below the 1-2% e-commerce benchmark. Priority: improve product pages, add reviews/social proof, simplify checkout. Every 0.1% improvement = ~46 extra orders/month.</div>
-<div class="story-sentence">28,224 mobile vs 14,376 desktop sessions. Mobile conversion: 0.18%, Desktop: 0.22%. Mobile experience needs work — most traffic but lower conversion.</div>
+<div class="story-sentence">28,249 mobile vs 14,376 desktop sessions. Mobile conversion: 0.18%, Desktop: 0.22%. Mobile experience needs work — most traffic but lower conversion.</div>
 </div></div>
 </div>
 <div id="opportunities" class="section-anchor"></div>
@@ -433,36 +453,42 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <div class="action-card gem">
 <span class="ac-badge gem">Hidden Gem</span>
 <div class="ac-title">LIFESPAN 30C @ Centurion</div>
+<div class="ac-supplier">Supplier: NEOGENESIS HEALTH PRODUCTS</div>
 <div class="ac-meta">87% GP &middot; only 1 units sold &middot; R851 revenue &middot; Supplier: NEOGENESIS HEALTH PRODUCTS</div>
 <div class="ac-uplift">&#x27a4; Move to eye level or endcap. 3x sales potential = R3K/month</div>
 </div>
 <div class="action-card gem">
 <span class="ac-badge gem">Hidden Gem</span>
 <div class="ac-title">MORINGA 30C @ Centurion</div>
+<div class="ac-supplier">Supplier: NEOGENESIS HEALTH PRODUCTS</div>
 <div class="ac-meta">84% GP &middot; only 6 units sold &middot; R2K revenue &middot; Supplier: NEOGENESIS HEALTH PRODUCTS</div>
 <div class="ac-uplift">&#x27a4; Move to eye level or endcap. 3x sales potential = R5K/month</div>
 </div>
 <div class="action-card gem">
 <span class="ac-badge gem">Hidden Gem</span>
 <div class="ac-title">30C TUDNAC @ Centurion</div>
+<div class="ac-supplier">Supplier: NEOGENESIS HEALTH PRODUCTS</div>
 <div class="ac-meta">74% GP &middot; only 4 units sold &middot; R2K revenue &middot; Supplier: NEOGENESIS HEALTH PRODUCTS</div>
 <div class="ac-uplift">&#x27a4; Move to eye level or endcap. 3x sales potential = R5K/month</div>
 </div>
 <div class="action-card gem">
 <span class="ac-badge gem">Hidden Gem</span>
 <div class="ac-title">SCO DIGESTIGEN 60C @ Centurion</div>
+<div class="ac-supplier">Supplier: NEOGENESIS HEALTH PRODUCTS</div>
 <div class="ac-meta">62% GP &middot; only 2 units sold &middot; R877 revenue &middot; Supplier: NEOGENESIS HEALTH PRODUCTS</div>
 <div class="ac-uplift">&#x27a4; Move to eye level or endcap. 3x sales potential = R3K/month</div>
 </div>
 <div class="action-card gem">
 <span class="ac-badge gem">Hidden Gem</span>
 <div class="ac-title">BODY CLEANSE DETOX PACK @ Glen Village</div>
+<div class="ac-supplier">Supplier: Good Health Products</div>
 <div class="ac-meta">62% GP &middot; only 2 units sold &middot; R2K revenue &middot; Supplier: Good Health Products</div>
 <div class="ac-uplift">&#x27a4; Move to eye level or endcap. 3x sales potential = R5K/month</div>
 </div>
 <div class="action-card gem">
 <span class="ac-badge gem">Hidden Gem</span>
 <div class="ac-title">B12 ENERGY PATCH @ Edenvale</div>
+<div class="ac-supplier">Supplier: NEOGENESIS HEALTH PRODUCTS</div>
 <div class="ac-meta">59% GP &middot; only 8 units sold &middot; R2K revenue &middot; Supplier: NEOGENESIS HEALTH PRODUCTS</div>
 <div class="ac-uplift">&#x27a4; Move to eye level or endcap. 3x sales potential = R5K/month</div>
 </div>
@@ -473,30 +499,35 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <div class="action-card swap">
 <span class="ac-badge swap">Swap / Reprice</span>
 <div class="ac-title">BRD WHITE RICE</div>
+<div class="ac-supplier">Supplier: LOVE YOURSELF BREADZ</div>
 <div class="ac-meta">18% GP &middot; R197K revenue &middot; 2939 units &middot; Supplier: LOVE YOURSELF BREADZ</div>
 <div class="ac-uplift">&#x27a4; Replace with 35%+ GP equivalent &rarr; est. +R33K/month GP uplift</div>
 </div>
 <div class="action-card swap">
 <span class="ac-badge swap">Swap / Reprice</span>
 <div class="ac-title">BRD BROWN RICE</div>
+<div class="ac-supplier">Supplier: LOVE YOURSELF BREADZ</div>
 <div class="ac-meta">18% GP &middot; R70K revenue &middot; 1044 units &middot; Supplier: LOVE YOURSELF BREADZ</div>
 <div class="ac-uplift">&#x27a4; Replace with 35%+ GP equivalent &rarr; est. +R12K/month GP uplift</div>
 </div>
 <div class="action-card swap">
 <span class="ac-badge swap">Swap / Reprice</span>
 <div class="ac-title">BRD SORG/QUIN</div>
+<div class="ac-supplier">Supplier: LOVE YOURSELF BREADZ</div>
 <div class="ac-meta">18% GP &middot; R58K revenue &middot; 869 units &middot; Supplier: LOVE YOURSELF BREADZ</div>
 <div class="ac-uplift">&#x27a4; Replace with 35%+ GP equivalent &rarr; est. +R10K/month GP uplift</div>
 </div>
 <div class="action-card swap">
 <span class="ac-badge swap">Swap / Reprice</span>
 <div class="ac-title">BUNS WHITE  6S</div>
+<div class="ac-supplier">Supplier: LOVE YOURSELF BREADZ</div>
 <div class="ac-meta">18% GP &middot; R22K revenue &middot; 261 units &middot; Supplier: LOVE YOURSELF BREADZ</div>
 <div class="ac-uplift">&#x27a4; Replace with 35%+ GP equivalent &rarr; est. +R4K/month GP uplift</div>
 </div>
 <div class="action-card swap">
 <span class="ac-badge swap">Swap / Reprice</span>
 <div class="ac-title">BRD WHITE MAC</div>
+<div class="ac-supplier">Supplier: LOVE YOURSELF BREADZ</div>
 <div class="ac-meta">18% GP &middot; R19K revenue &middot; 283 units &middot; Supplier: LOVE YOURSELF BREADZ</div>
 <div class="ac-uplift">&#x27a4; Replace with 35%+ GP equivalent &rarr; est. +R3K/month GP uplift</div>
 </div>
@@ -512,30 +543,35 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <div class="action-card range">
 <span class="ac-badge range">Range It</span>
 <div class="ac-title">KILL A GERM 60s</div>
+<div class="ac-supplier">Supplier: PMR NUTRITION</div>
 <div class="ac-meta">Source: Centurion &middot; 35% GP &middot; R66K revenue &middot; 356 units &middot; Supplier: PMR NUTRITION &middot; Missing: Edenvale</div>
 <div class="ac-uplift">&#x27a4; Stock at Edenvale &rarr; potential R26K / month total uplift</div>
 </div>
 <div class="action-card range">
 <span class="ac-badge range">Range It</span>
 <div class="ac-title">LIVERTONE 60C</div>
+<div class="ac-supplier">Supplier: NUTRIGREEN</div>
 <div class="ac-meta">Source: Centurion &middot; 41% GP &middot; R23K revenue &middot; 119 units &middot; Supplier: NUTRIGREEN &middot; Missing: Glen Village, Edenvale</div>
 <div class="ac-uplift">&#x27a4; Stock at Glen Village, Edenvale &rarr; potential R18K / month total uplift</div>
 </div>
 <div class="action-card range">
 <span class="ac-badge range">Range It</span>
 <div class="ac-title">POTCILYTE 90C</div>
+<div class="ac-supplier">Supplier: ENGINEERS AND DOCTORS</div>
 <div class="ac-meta">Source: Centurion &middot; 32% GP &middot; R22K revenue &middot; 58 units &middot; Supplier: ENGINEERS AND DOCTORS &middot; Missing: Glen Village, Edenvale</div>
 <div class="ac-uplift">&#x27a4; Stock at Glen Village, Edenvale &rarr; potential R18K / month total uplift</div>
 </div>
 <div class="action-card range">
 <span class="ac-badge range">Range It</span>
 <div class="ac-title">CRITICAL CARE 500ML</div>
+<div class="ac-supplier">Supplier: Cili Health S.A.</div>
 <div class="ac-meta">Source: Glen Village &middot; 29% GP &middot; R43K revenue &middot; 83 units &middot; Supplier: Cili Health S.A. &middot; Missing: Edenvale</div>
 <div class="ac-uplift">&#x27a4; Stock at Edenvale &rarr; potential R17K / month total uplift</div>
 </div>
 <div class="action-card range">
 <span class="ac-badge range">Range It</span>
 <div class="ac-title">ZINC &amp; GINGER 60'S</div>
+<div class="ac-supplier">Supplier: ECO VALLEY NUTRITION</div>
 <div class="ac-meta">Source: Centurion &middot; 36% GP &middot; R21K revenue &middot; 124 units &middot; Supplier: ECO VALLEY NUTRITION &middot; Missing: Glen Village, Edenvale</div>
 <div class="ac-uplift">&#x27a4; Stock at Glen Village, Edenvale &rarr; potential R17K / month total uplift</div>
 </div>
@@ -630,25 +666,25 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <div class="desc">Products that sell 3x+ more at one store vs others</div>
 <div class="ugrid">
 <div class="ustore"><h4>CEN</h4>
-<div class="uitem">MAG 7/87 60'S <span class="num">R177K</span></div>
-<div class="uitem">VIT D3 5000IU 120'S <span class="num">R162K</span></div>
-<div class="uitem">VIT D3 5000IU 240'S <span class="num">R83K</span></div>
-<div class="uitem">HEART HEALTH 60 CAPS <span class="num">R78K</span></div>
-<div class="uitem">POTASSIUM MAX 60'S <span class="num">R66K</span></div>
+<div class="uitem"><div class="uitem-main"><div class="uitem-name">MAG 7/87 60'S</div><div class="uitem-supplier">Supplier: ECO VALLEY NUTRITION</div></div><span class="num">R177K</span></div>
+<div class="uitem"><div class="uitem-main"><div class="uitem-name">VIT D3 5000IU 120'S</div><div class="uitem-supplier">Supplier: DS INTERNATIONAL</div></div><span class="num">R162K</span></div>
+<div class="uitem"><div class="uitem-main"><div class="uitem-name">VIT D3 5000IU 240'S</div><div class="uitem-supplier">Supplier: DS INTERNATIONAL</div></div><span class="num">R83K</span></div>
+<div class="uitem"><div class="uitem-main"><div class="uitem-name">HEART HEALTH 60 CAPS</div><div class="uitem-supplier">Supplier: OXYGEN PRODUCTS</div></div><span class="num">R78K</span></div>
+<div class="uitem"><div class="uitem-main"><div class="uitem-name">POTASSIUM MAX 60'S</div><div class="uitem-supplier">Supplier: ECO VALLEY NUTRITION</div></div><span class="num">R66K</span></div>
 </div>
 <div class="ustore"><h4>GVS</h4>
-<div class="uitem">UF WOMEN PROB 30S <span class="num">R9K</span></div>
-<div class="uitem">SPR B COMPLX 60S <span class="num">R5K</span></div>
-<div class="uitem">CHILL COCOBALLS  60S <span class="num">R5K</span></div>
-<div class="uitem">SCO ULTRACLEAR RENEW DETOX PWD 756G <span class="num">R5K</span></div>
-<div class="uitem">NAD PLUS COMP 60VC <span class="num">R4K</span></div>
+<div class="uitem"><div class="uitem-main"><div class="uitem-name">UF WOMEN PROB 30S</div><div class="uitem-supplier">Supplier: AMIPRO</div></div><span class="num">R9K</span></div>
+<div class="uitem"><div class="uitem-main"><div class="uitem-name">SPR B COMPLX 60S</div><div class="uitem-supplier">Supplier: YOUR WELLBEING</div></div><span class="num">R5K</span></div>
+<div class="uitem"><div class="uitem-main"><div class="uitem-name">CHILL COCOBALLS  60S</div><div class="uitem-supplier">Supplier: BULUCCHI INNOVATE</div></div><span class="num">R5K</span></div>
+<div class="uitem"><div class="uitem-main"><div class="uitem-name">SCO ULTRACLEAR RENEW DETOX PWD 756G</div><div class="uitem-supplier">Supplier: AMIPRO</div></div><span class="num">R5K</span></div>
+<div class="uitem"><div class="uitem-main"><div class="uitem-name">NAD PLUS COMP 60VC</div><div class="uitem-supplier">Supplier: PRIME HEALTH HOLDINGS</div></div><span class="num">R4K</span></div>
 </div>
 <div class="ustore"><h4>EDN</h4>
-<div class="uitem">ZENTIUM 60T <span class="num">R51K</span></div>
-<div class="uitem">GLYCOGENICS 60T <span class="num">R8K</span></div>
-<div class="uitem">ML COCONUT MILK 1L <span class="num">R8K</span></div>
-<div class="uitem">HUMICAPS 120'S <span class="num">R7K</span></div>
-<div class="uitem">60C CHOLESTIN <span class="num">R7K</span></div>
+<div class="uitem"><div class="uitem-main"><div class="uitem-name">ZENTIUM 60T</div><div class="uitem-supplier">Supplier: EVA HOLDINGS</div></div><span class="num">R51K</span></div>
+<div class="uitem"><div class="uitem-main"><div class="uitem-name">GLYCOGENICS 60T</div><div class="uitem-supplier">Supplier: AMIPRO</div></div><span class="num">R8K</span></div>
+<div class="uitem"><div class="uitem-main"><div class="uitem-name">ML COCONUT MILK 1L</div><div class="uitem-supplier">Supplier: Harrewyn Organics</div></div><span class="num">R8K</span></div>
+<div class="uitem"><div class="uitem-main"><div class="uitem-name">HUMICAPS 120'S</div><div class="uitem-supplier">Supplier: NEOGENESIS HEALTH PRODUCTS</div></div><span class="num">R7K</span></div>
+<div class="uitem"><div class="uitem-main"><div class="uitem-name">60C CHOLESTIN</div><div class="uitem-supplier">Supplier: NEOGENESIS HEALTH PRODUCTS</div></div><span class="num">R7K</span></div>
 </div>
 </div></div>
 <div id="search" class="section-anchor"></div>
@@ -776,5 +812,5 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <div class="bd">CEN: R1.36M | GVS: R341K | EDN: R390K</div>
 </div>
 </div></div>
-<footer>Onelife Intelligence V7 &middot; 01 April 2026 17:54 SAST &middot; 3 stores + online &middot; Powered by <span class="lo">Jarvis</span> &#x1f99e;</footer>
+<footer>Onelife Intelligence V7 &middot; 01 April 2026 18:15 SAST &middot; 3 stores + online &middot; Powered by <span class="lo">Jarvis</span> &#x1f99e;</footer>
 </div></body></html>

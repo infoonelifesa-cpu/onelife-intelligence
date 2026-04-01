@@ -775,7 +775,7 @@ def main():
             this = stores.get(store, {}).get("rev", 0)
             others = sum(stores.get(s,{}).get("rev",0) for s in ["CEN","GVS","EDN"] if s!=store)
             if this > 3000 and (others == 0 or this/max(others,1) > 3):
-                cands.append({"p": prod, "rev": this})
+                cands.append({"p": prod, "rev": this, "sup": stores.get(store, {}).get("sup", "")})
         cands.sort(key=lambda x: x["rev"], reverse=True)
         unique[store] = cands[:5]
 
@@ -897,6 +897,7 @@ def main():
         action_candidates.append({
             "kind": "range",
             "title": f"Range {g['p']} from {STORE_LABELS.get(g['source'], g['source'])} into {', '.join(STORE_LABELS.get(m, m) for m in g['m'])}",
+            "supplier": sup_name(g.get("sup", ""), sup_names),
             "summary": f"Best source store is {STORE_LABELS.get(g['source'], g['source'])}: {fmt_r(g['rev'])} revenue, {g['qty']} units, {g['gp_pct']:.0f}% GP.",
             "owner": "Ops / buying",
             "impact_value": g["uplift_total"],
@@ -914,6 +915,7 @@ def main():
         action_candidates.append({
             "kind": "gem",
             "title": f"Move hidden gem: {gem['p']}",
+            "supplier": sup_name(gem.get("sup", ""), sup_names),
             "summary": f"{STORE_LABELS.get(gem['store'], gem['store'])}: {gem['gp_pct']:.0f}% GP but only {gem['qty']} units sold.",
             "owner": f"{STORE_LABELS.get(gem['store'], gem['store'])} floor team",
             "impact_value": impact_value,
@@ -930,6 +932,7 @@ def main():
         action_candidates.append({
             "kind": "margin",
             "title": f"Fix low-GP drag: {item['p']}",
+            "supplier": sup_name(item.get("sup", ""), sup_names),
             "summary": f"Only {item['gp_pct']:.0f}% GP on {fmt_r(item['rev'])} revenue. Buying or pricing change needed.",
             "owner": "Buying / Naadir",
             "impact_value": item["uplift_est"],
@@ -1154,8 +1157,11 @@ td{padding:6px 10px;border-bottom:1px solid #1e293b22}
 
 .ugrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .ustore h4{color:#94a3b8;font-size:12px;margin-bottom:6px}
-.uitem{padding:5px 0;border-bottom:1px solid #334155;font-size:12px;display:flex;justify-content:space-between}
-.uitem .num{color:#22c55e}
+.uitem{padding:7px 0;border-bottom:1px solid #334155;font-size:12px;display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.uitem-main{display:flex;flex-direction:column;gap:2px;min-width:0}
+.uitem-name{color:#e2e8f0}
+.uitem-supplier{color:#64748b;font-size:10px;text-transform:uppercase;letter-spacing:.04em}
+.uitem .num{color:#22c55e;white-space:nowrap}
 .dim{color:#475569}
 
 .mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center}
@@ -1203,6 +1209,7 @@ td{padding:6px 10px;border-bottom:1px solid #1e293b22}
 .priority-item.urgent{border-left:4px solid #ef4444}.priority-item.opportunity{border-left:4px solid #3b82f6}.priority-item.margin{border-left:4px solid #f59e0b}
 .priority-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
 .priority-title{font-size:14px;font-weight:700;color:#f8fafc;line-height:1.4}
+.priority-supplier{font-size:10px;color:#94a3b8;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:3px}
 .priority-score{font-size:11px;font-weight:800;padding:5px 8px;border-radius:999px;background:#1e293b;color:#e2e8f0;white-space:nowrap}
 .priority-meta{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 10px}
 .meta-pill{font-size:10px;font-weight:700;padding:4px 7px;border-radius:999px;background:#1e293b;color:#cbd5e1;text-transform:uppercase;letter-spacing:.05em}
@@ -1219,6 +1226,7 @@ td{padding:6px 10px;border-bottom:1px solid #1e293b22}
 .ac-badge{display:inline-block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:2px 7px;border-radius:4px;margin-bottom:6px}
 .ac-badge.swap{background:#ef444422;color:#ef4444}.ac-badge.gem{background:#a855f722;color:#a855f7}.ac-badge.range{background:#3b82f622;color:#3b82f6}
 .ac-title{color:#f1f5f9;font-size:13px;font-weight:600;line-height:1.5;margin-bottom:4px}
+.ac-supplier{color:#94a3b8;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-top:-1px;margin-bottom:6px}
 .ac-meta{color:#64748b;font-size:11px}
 .ac-uplift{color:#22c55e;font-weight:700;font-size:12px;margin-top:4px}
 
@@ -1294,7 +1302,11 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
         for idx, action in enumerate(priority_actions, start=1):
             w(f'<div class="priority-item {action["badge_cls"]}">')
             w('<div class="priority-head">')
+            w('<div>')
             w(f'<div class="priority-title">#{idx} {esc(action["title"])}</div>')
+            if action.get("supplier"):
+                w(f'<div class="priority-supplier">Supplier: {esc(action["supplier"])}</div>')
+            w('</div>')
             w(f'<div class="priority-score">{action["score"]:.0f}/100 · {esc(action["score_label"])}</div>')
             w('</div>')
             w('<div class="priority-meta">')
@@ -1490,6 +1502,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
             w(f'<div class="action-card gem">')
             w(f'<span class="ac-badge gem">Hidden Gem</span>')
             w(f'<div class="ac-title">{esc(gem["p"])} @ {STORE_LABELS.get(gem["store"], gem["store"])}</div>')
+            w(f'<div class="ac-supplier">Supplier: {esc(sup_name(gem.get("sup", ""), sup_names))}</div>')
             w(f'<div class="ac-meta">{gem["gp_pct"]:.0f}% GP &middot; only {gem["qty"]} units sold &middot; {fmt_r(gem["rev"])} revenue &middot; Supplier: {sup_name(gem.get("sup",""), sup_names)}</div>')
             w(f'<div class="ac-uplift">&#x27a4; Move to eye level or endcap. 3x sales potential = {fmt_r(gem["potential"])}/month</div>')
             w('</div>')
@@ -1504,6 +1517,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
             w(f'<div class="action-card swap">')
             w(f'<span class="ac-badge swap">Swap / Reprice</span>')
             w(f'<div class="ac-title">{esc(item["p"])}</div>')
+            w(f'<div class="ac-supplier">Supplier: {esc(sup_name(item.get("sup", ""), sup_names))}</div>')
             w(f'<div class="ac-meta">{item["gp_pct"]:.0f}% GP &middot; {fmt_r(item["rev"])} revenue &middot; {item["qty"]} units &middot; Supplier: {sup_name(item["sup"], sup_names)}</div>')
             w(f'<div class="ac-uplift">&#x27a4; Replace with 35%+ GP equivalent &rarr; est. +{fmt_r(item["uplift_est"])}/month GP uplift</div>')
             w('</div>')
@@ -1523,6 +1537,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
         w(f'<div class="action-card range">')
         w(f'<span class="ac-badge range">Range It</span>')
         w(f'<div class="ac-title">{esc(g["p"])}</div>')
+        w(f'<div class="ac-supplier">Supplier: {esc(sup_name(g.get("sup", ""), sup_names))}</div>')
         w(f'<div class="ac-meta">Source: {STORE_LABELS.get(g["source"], g["source"])} &middot; {g["gp_pct"]:.0f}% GP &middot; {fmt_r(g["rev"])} revenue &middot; {g["qty"]} units &middot; Supplier: {sup_name(g.get("sup",""), sup_names)} &middot; Missing: {", ".join(STORE_LABELS.get(m, m) for m in g["m"])}</div>')
         w(f'<div class="ac-uplift">&#x27a4; Stock at {", ".join(STORE_LABELS.get(m, m) for m in g["m"])} &rarr; potential {fmt_r(g["uplift_total"])} / month total uplift</div>')
         w('</div>')
@@ -1583,7 +1598,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
         items = unique.get(s, [])
         if items:
             for it in items:
-                w(f'<div class="uitem">{it["p"]} <span class="num">{fmt_r(it["rev"])}</span></div>')
+                w(f'<div class="uitem"><div class="uitem-main"><div class="uitem-name">{esc(it["p"])}</div><div class="uitem-supplier">Supplier: {esc(sup_name(it.get("sup", ""), sup_names))}</div></div><span class="num">{fmt_r(it["rev"])}</span></div>')
         else:
             w('<div class="uitem dim">No standout unique sellers</div>')
         w('</div>')
