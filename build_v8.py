@@ -350,6 +350,22 @@ def load_reviews_data():
         return {"latest": baseline, "week_start": baseline, "targets": targets}
 
 
+def load_supplier_lookup():
+    """Prefer the explicit supplier master exported from XLSX, then fall back to legacy memory mapping."""
+    preferred = load_json("onelife-intelligence/data/suppliers_master.json")
+    fallback = load_json("memory/supplier_names.json")
+    merged = {}
+    if isinstance(fallback, list):
+        fallback = dict(fallback)
+    if isinstance(fallback, dict):
+        merged.update(fallback)
+    if isinstance(preferred, list):
+        preferred = dict(preferred)
+    if isinstance(preferred, dict):
+        merged.update(preferred)
+    return merged
+
+
 def clamp(value, low=0, high=100):
     return max(low, min(high, value))
 
@@ -399,9 +415,7 @@ def main():
     # Load data
     omni = load_json("memory/omni_cache.json")
     daily_cache = load_json("memory/daily-sales-cache.json")
-    sup_names = load_json("memory/supplier_names.json")
-    if isinstance(sup_names, list):
-        sup_names = dict(sup_names)
+    sup_names = load_supplier_lookup()
     gp_data = load_json("memory/snapshots/2026-02/ana_popular_gp.json")
     ga4 = load_ga4()  # Google Analytics 4 data
     gsc = load_search_console()  # Google Search Console data
