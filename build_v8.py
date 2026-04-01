@@ -388,6 +388,13 @@ def parse_isoish_datetime(value):
             continue
     return None
 
+
+def shift_year_month(year, month, delta_months):
+    month_index = (year * 12 + (month - 1)) + delta_months
+    new_year = month_index // 12
+    new_month = month_index % 12 + 1
+    return new_year, new_month
+
 def main():
     # Load data
     omni = load_json("memory/omni_cache.json")
@@ -405,9 +412,6 @@ def main():
     gvs_history = omni.get("gvs_history", [])
     edn_history = omni.get("edn_history", [])
 
-    current_month = NOW.strftime("%Y-%m")
-    days_in_month_total = calendar.monthrange(NOW.year, NOW.month)[1]  # 31 for March
-
     def history_dates_for_month(history, month):
         dates = []
         for entry in history:
@@ -424,9 +428,29 @@ def main():
         last_trade_date = month_dates[-1] if month_dates else None
         return {"rev": rev, "gp": gp, "days": days, "last_trade_date": last_trade_date}
 
-    cen_mtd_data = sum_history(ho_history, current_month)
-    gvs_mtd_data = sum_history(gvs_history, current_month)
-    edn_mtd_data = sum_history(edn_history, current_month)
+    available_months = sorted({
+        parse_doc_date(e.get("document_date", "")).strftime("%Y-%m")
+        for history in [ho_history, gvs_history, edn_history]
+        for e in history
+        if parse_doc_date(e.get("document_date", ""))
+    })
+
+    report_month = NOW.strftime("%Y-%m")
+    provisional = [
+        sum_history(ho_history, report_month),
+        sum_history(gvs_history, report_month),
+        sum_history(edn_history, report_month),
+    ]
+    if sum(d["rev"] for d in provisional) == 0 and available_months:
+        report_month = available_months[-1]
+
+    report_year, report_month_num = map(int, report_month.split("-"))
+    report_month_label = datetime(report_year, report_month_num, 1, tzinfo=SAST).strftime("%B %Y")
+    days_in_month_total = calendar.monthrange(report_year, report_month_num)[1]
+
+    cen_mtd_data = sum_history(ho_history, report_month)
+    gvs_mtd_data = sum_history(gvs_history, report_month)
+    edn_mtd_data = sum_history(edn_history, report_month)
 
     store_mtd = {"CEN": cen_mtd_data, "GVS": gvs_mtd_data, "EDN": edn_mtd_data}
 
@@ -457,7 +481,7 @@ def main():
             # the latest traded date we actually have in Omni.
             remaining_trading = 0
             for d in range(last_trade_day + 1, days_in_month_total + 1):
-                future_date = NOW.replace(day=d)
+                future_date = datetime(report_year, report_month_num, d, tzinfo=SAST)
                 if future_date.weekday() != 6:  # 6 = Sunday
                     remaining_trading += 1
         else:
@@ -602,8 +626,8 @@ def main():
     # Monthly totals — Omni histories for current month, daily cache for older
     monthly = {}
     for offset in range(3):
-        dt = NOW - timedelta(days=30*offset)
-        ym = f"{dt.year}-{dt.month:02d}"
+        year_i, month_i = shift_year_month(report_year, report_month_num, -offset)
+        ym = f"{year_i}-{month_i:02d}"
         if offset == 0:
             monthly[ym] = {
                 "CEN": cen_mtd_data["rev"],
@@ -625,12 +649,12 @@ def main():
                 for d_str, d_val in days_data.items():
                     try:
                         dd = datetime.strptime(d_str, "%Y-%m-%d")
-                        if dd.year == dt.year and dd.month == dt.month:
+                        if dd.year == year_i and dd.month == month_i:
                             for s in totals:
                                 totals[s] += d_val.get(s, {}).get("revenue", 0)
                     except: pass
             # Check completeness
-            month_days = calendar.monthrange(dt.year, dt.month)[1]
+            month_days = calendar.monthrange(year_i, month_i)[1]
             cache_days = len([k for k in days_data if k.startswith(ym)])
             if cache_days < month_days - 2:
                 totals["_incomplete"] = True
@@ -927,13 +951,15 @@ def main():
     pct_target = combined_projected / total_target * 100 if total_target > 0 else 0
 
     if pct_target >= 100:
-        lead = f"All 3 stores are running ahead of target, projected {F(combined_projected)} against a {F(total_target)} month target ({pct_target:.0f}%)."
+        lead = f"{report_month_label} is running ahead of target, projected {F(combined_projected)} against a {F(total_target)} month target ({pct_target:.0f}%)."
     elif pct_target >= 90:
-        lead = f"The month is close but not safe yet: projected {F(combined_projected)} vs {F(total_target)} target ({pct_target:.0f}%), with a {F(total_target - combined_projected)} gap still open."
+        lead = f"{report_month_label} is close but not safe yet: projected {F(combined_projected)} vs {F(total_target)} target ({pct_target:.0f}%), with a {F(total_target - combined_projected)} gap still open."
     else:
-        lead = f"The month is under pressure: projected {F(combined_projected)} vs {F(total_target)} target ({pct_target:.0f}%), leaving a {F(total_target - combined_projected)} shortfall that needs action now."
+        lead = f"{report_month_label} is under pressure: projected {F(combined_projected)} vs {F(total_target)} target ({pct_target:.0f}%), leaving a {F(total_target - combined_projected)} shortfall that needs action now."
 
     story_parts = [{"text": lead, "cls": "lead"}]
+    if report_month != NOW.strftime("%Y-%m"):
+        story_parts.append({"text": f"Using the latest full trade month with real sales posted: {report_month_label}. Current calendar month has not populated yet.", "cls": ""})
 
     if top_action:
         story_parts.append({
@@ -1189,7 +1215,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 
     # Header
     w(f'<header><h1>Onelife <span>Intelligence</span></h1>')
-    w(f'<div class="sub">V8 Preview | Hybrid owner + operator cockpit | V7 remains live as backup</div>')
+    w(f'<div class="sub">V8 Preview | Hybrid owner + operator cockpit | Reporting month: {report_month_label} | V7 remains live as backup</div>')
     last_updated = omni.get("last_updated", "unknown")[:16].replace("T", " ")
     w(f'<div class="date">{NOW.strftime("%d %B %Y")} | Data as at {last_updated}</div>')
     w('</header>')
