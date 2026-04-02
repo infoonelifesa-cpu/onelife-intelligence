@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-Onelife Intelligence Dashboard V8 Preview — Builder
-Generates a preview dashboard alongside V7 without overwriting the live version.
+Onelife Intelligence Dashboard V8 Builder
+Generates the V8 dashboard as a preview by default, with optional live promotion.
 """
+import argparse
 import json, os, sys
 from datetime import datetime, timedelta, timezone
 from collections import defaultdict
@@ -412,6 +413,9 @@ def shift_year_month(year, month, delta_months):
     return new_year, new_month
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--live", action="store_true", help="Write V8 output to live index.html as well as v8 preview")
+    args = parser.parse_args()
     # Load data
     omni = load_json("memory/omni_cache.json")
     daily_cache = load_json("memory/daily-sales-cache.json")
@@ -1073,7 +1077,7 @@ def main():
     w('<!DOCTYPE html>')
     w('<html lang="en"><head>')
     w('<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">')
-    w('<title>Onelife Intelligence | V8 Preview</title>')
+    w(f'<title>Onelife Intelligence | {'V8 Live' if args.live else 'V8 Preview'}</title>')
     w('<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">')
     w('<style>')
     w("""
@@ -1247,7 +1251,10 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 
     # Header
     w(f'<header><h1>Onelife <span>Intelligence</span></h1>')
-    w(f'<div class="sub">V8 Preview | Hybrid owner + operator cockpit | Reporting month: {report_month_label} | V7 remains live as backup</div>')
+    if args.live:
+        w(f'<div class="sub">V8 | Hybrid owner + operator cockpit | Reporting month: {report_month_label}</div>')
+    else:
+        w(f'<div class="sub">V8 Preview | Hybrid owner + operator cockpit | Reporting month: {report_month_label} | V7 remains live as backup</div>')
     last_updated = omni.get("last_updated", "unknown")[:16].replace("T", " ")
     w(f'<div class="date">{NOW.strftime("%d %B %Y")} | Data as at {last_updated}</div>')
     w('</header>')
@@ -1833,10 +1840,23 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
     html = "\n".join(lines)
     preview_dir = os.path.join(OUT_DIR, "v8")
     os.makedirs(preview_dir, exist_ok=True)
-    out_path = os.path.join(preview_dir, "index.html")
-    with open(out_path, "w") as f:
+    preview_path = os.path.join(preview_dir, "index.html")
+    with open(preview_path, "w") as f:
         f.write(html)
-    print(f"Dashboard written: {len(html):,} bytes -> {out_path}")
+    print(f"Dashboard written: {len(html):,} bytes -> {preview_path}")
+
+    if args.live:
+        backup_dir = os.path.join(OUT_DIR, "backups")
+        os.makedirs(backup_dir, exist_ok=True)
+        live_path = os.path.join(OUT_DIR, "index.html")
+        if os.path.exists(live_path):
+            backup_path = os.path.join(backup_dir, f"index-pre-v8-live-{NOW.strftime('%Y-%m-%d-%H%M')}.html")
+            with open(live_path) as src, open(backup_path, 'w') as dst:
+                dst.write(src.read())
+            print(f"Backed up previous live dashboard -> {backup_path}")
+        with open(live_path, 'w') as f:
+            f.write(html)
+        print(f"Promoted V8 live -> {live_path}")
     ga4_status = f"GA4 Online ({'✅' if ga4 else '❌'})"
     gsc_status = f"Search Console ({'✅' if gsc else '❌'})"
     print(f"Sections: Source Health, Story, Daily Action, Top 5 Priority Actions, KPIs, Store Detail Cards, Store Progress, {ga4_status}, Hidden Gems, Low GP, Cross-Store Gaps ({len(gaps)}), Supplier ABC ({len(sup_sorted[:30])}), Store Comparison, {gsc_status}, Monthly Trends")
