@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Cash Integrity Dashboard | 2026-04</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0f172a;color:#e2e8f0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;padding:18px}
+.container{max-width:1320px;margin:0 auto}
+header{padding:28px 0 18px;text-align:center}
+header h1{font-size:32px;font-weight:800;color:#f8fafc}
+header h1 span{color:#6B8E6B}
+header .sub{color:#94a3b8;font-size:14px;margin-top:6px}
+header .meta{color:#64748b;font-size:12px;margin-top:4px}
+.top-grid{display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:18px}
+.card{background:#111827;border:1px solid #334155;border-radius:16px;padding:18px}
+.risk-card{border-left:5px solid #ef4444;background:linear-gradient(135deg,#111827,#0b1322)}
+.risk-k{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:#94a3b8;margin-bottom:10px}
+.risk-v{font-size:42px;font-weight:900;color:#ef4444;line-height:1}
+.risk-label{font-size:18px;font-weight:700;color:#f8fafc;margin-top:8px}
+.risk-band{font-size:12px;color:#94a3b8;margin-top:4px}
+.mini-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:14px}
+.mini-card{background:#0f172a;border:1px solid #233044;border-radius:12px;padding:14px}
+.mini-k{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:#94a3b8}
+.mini-v{font-size:22px;font-weight:800;color:#f8fafc;margin-top:6px}
+.flag-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.flag-card{background:#0f172a;border:1px solid #334155;border-radius:12px;padding:14px}
+.flag-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.flag-section{font-weight:700;color:#f8fafc;font-size:13px}
+.flag-severity{padding:4px 8px;border-radius:999px;font-size:10px;font-weight:800;letter-spacing:.05em}
+.flag-body{color:#cbd5e1;font-size:13px;line-height:1.6;margin-top:10px}
+.flag-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;color:#94a3b8;font-size:11px}
+.section-block{background:#111827;border:1px solid #334155;border-radius:14px;margin-bottom:14px;overflow:hidden}
+.section-block summary{cursor:pointer;list-style:none;padding:16px 18px;font-size:15px;font-weight:700;color:#6B8E6B;background:#101827}
+.section-block summary::-webkit-details-marker{display:none}
+.section-body{padding:16px 18px;overflow-x:auto}
+.source-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.source-card{background:#0f172a;border:1px solid #233044;border-radius:12px;padding:14px}
+.source-k{color:#94a3b8;font-size:10px;text-transform:uppercase;letter-spacing:.06em}
+.source-v{color:#f8fafc;font-size:20px;font-weight:800;margin:6px 0}
+.source-n{color:#64748b;font-size:11px;line-height:1.5}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:left;padding:10px 8px;color:#94a3b8;border-bottom:1px solid #334155;text-transform:uppercase;font-size:10px;letter-spacing:.05em}
+td{padding:9px 8px;border-bottom:1px solid #1e293b}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.group-row{background:#0b1322;color:#6B8E6B;font-weight:700}
+tr.bad td{color:#fca5a5} tr.warn td{color:#fbbf24} tr.ok td{color:#cbd5e1}
+.placeholder-note{background:#172033;border:1px dashed #6B8E6B;border-radius:10px;padding:12px;color:#cbd5e1;margin-bottom:12px}
+.footer{text-align:center;color:#64748b;font-size:11px;padding:18px 0 10px}
+@media (max-width: 860px){.top-grid{grid-template-columns:1fr} body{padding:12px} header h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div class='container'>
+<header>
+    <h1>🔒 <span>Cash Integrity</span> Dashboard</h1>
+    <div class='sub'>Onelife Health · Monthly integrity watch across credit notes, cancellations, overrides, discounts, transaction patterns, cash-ups and deposits</div>
+    <div class='meta'>Reporting month 2026-04 · Generated 04 Apr 2026 15:56 SAST</div>
+</header>
+
+<div class='top-grid'>
+    <div class='card'>
+        <div class='risk-k'>Anomaly flags detected</div>
+        <div class='flag-grid'>
+        <div class="flag-card">
+            <div class="flag-top">
+                <span class="flag-section">High daily cancellation volume</span>
+                <span class="flag-severity" style="background:#ef444422;color:#ef4444;border:1px solid #ef444455">HIGH</span>
+            </div>
+            <div class="flag-body">PRECIOUS logged 6 order cancellations on 2026-04-04, above the hard threshold of 5 per day.</div>
+            <div class="flag-meta">
+                <span><strong>Who:</strong> PRECIOUS</span>
+                <span><strong>When:</strong> 2026-04-04</span>
+                <span><strong>Store:</strong> Unallocated</span>
+            </div>
+        </div>
+        
+        <div class="flag-card">
+            <div class="flag-top">
+                <span class="flag-section">Cancellation cluster</span>
+                <span class="flag-severity" style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b55">MEDIUM</span>
+            </div>
+            <div class="flag-body">Dorea had 3 cancellations inside 30 minutes on 2026-04-04.</div>
+            <div class="flag-meta">
+                <span><strong>Who:</strong> Dorea</span>
+                <span><strong>When:</strong> 2026-04-04 12:14–12:16</span>
+                <span><strong>Store:</strong> Unallocated</span>
+            </div>
+        </div>
+        
+        <div class="flag-card">
+            <div class="flag-top">
+                <span class="flag-section">Cancellation cluster</span>
+                <span class="flag-severity" style="background:#ef444422;color:#ef4444;border:1px solid #ef444455">HIGH</span>
+            </div>
+            <div class="flag-body">PRECIOUS had 6 cancellations inside 30 minutes on 2026-04-04.</div>
+            <div class="flag-meta">
+                <span><strong>Who:</strong> PRECIOUS</span>
+                <span><strong>When:</strong> 2026-04-04 15:37–15:44</span>
+                <span><strong>Store:</strong> Unallocated</span>
+            </div>
+        </div>
+        
+        <div class="flag-card">
+            <div class="flag-top">
+                <span class="flag-section">Excessive override use</span>
+                <span class="flag-severity" style="background:#ef444422;color:#ef4444;border:1px solid #ef444455">HIGH</span>
+            </div>
+            <div class="flag-body">Lady used override passwords 8 times on 2026-04-04, above the hard threshold of 5/day.</div>
+            <div class="flag-meta">
+                <span><strong>Who:</strong> Lady</span>
+                <span><strong>When:</strong> 2026-04-04</span>
+                <span><strong>Store:</strong> Unallocated</span>
+            </div>
+        </div>
+        
+        <div class="flag-card">
+            <div class="flag-top">
+                <span class="flag-section">Excessive override use</span>
+                <span class="flag-severity" style="background:#ef444422;color:#ef4444;border:1px solid #ef444455">HIGH</span>
+            </div>
+            <div class="flag-body">TILL2 used override passwords 9 times on 2026-04-04, above the hard threshold of 5/day.</div>
+            <div class="flag-meta">
+                <span><strong>Who:</strong> TILL2</span>
+                <span><strong>When:</strong> 2026-04-04</span>
+                <span><strong>Store:</strong> Unallocated</span>
+            </div>
+        </div>
+        
+        <div class="flag-card">
+            <div class="flag-top">
+                <span class="flag-section">Forced logout recorded</span>
+                <span class="flag-severity" style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b55">MEDIUM</span>
+            </div>
+            <div class="flag-body">User forcibly logged out event recorded in Omni audit trail.</div>
+            <div class="flag-meta">
+                <span><strong>Who:</strong> Dorea</span>
+                <span><strong>When:</strong> 2026-04-04T12:11:43.105000+02:00</span>
+                <span><strong>Store:</strong> Unallocated</span>
+            </div>
+        </div>
+        
+        <div class="flag-card">
+            <div class="flag-top">
+                <span class="flag-section">Large individual discount</span>
+                <span class="flag-severity" style="background:#ef444422;color:#ef4444;border:1px solid #ef444455">HIGH</span>
+            </div>
+            <div class="flag-body">Discount transaction 677792 at R732.41 exceeded R500.</div>
+            <div class="flag-meta">
+                <span><strong>Who:</strong> Lady</span>
+                <span><strong>When:</strong> 2026-04-02</span>
+                <span><strong>Store:</strong> Unallocated</span>
+            </div>
+        </div>
+        
+        <div class="flag-card">
+            <div class="flag-top">
+                <span class="flag-section">Consistent cash-up direction</span>
+                <span class="flag-severity" style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b55">MEDIUM</span>
+            </div>
+            <div class="flag-body">All 5 recorded cash-up variances for Centurion moved in the same over direction this month.</div>
+            <div class="flag-meta">
+                <span><strong>Who:</strong> Centurion</span>
+                <span><strong>When:</strong> 2026-04</span>
+                <span><strong>Store:</strong> Centurion</span>
+            </div>
+        </div>
+        
+        <div class="flag-card">
+            <div class="flag-top">
+                <span class="flag-section">Consistent cash-up direction</span>
+                <span class="flag-severity" style="background:#f59e0b22;color:#f59e0b;border:1px solid #f59e0b55">MEDIUM</span>
+            </div>
+            <div class="flag-body">All 3 recorded cash-up variances for Edenvale moved in the same over direction this month.</div>
+            <div class="flag-meta">
+                <span><strong>Who:</strong> Edenvale</span>
+                <span><strong>When:</strong> 2026-04</span>
+                <span><strong>Store:</strong> Edenvale</span>
+            </div>
+        </div>
+        
+        <div class="flag-card">
+            <div class="flag-top">
+                <span class="flag-section">Manual reconciliation required</span>
+                <span class="flag-severity" style="background:#94a3b822;color:#94a3b8;border:1px solid #94a3b855">LOW</span>
+            </div>
+            <div class="flag-body">Bank deposit reconciliation is a placeholder until bank statement imports are wired in. Manual input still required.</div>
+            <div class="flag-meta">
+                <span><strong>Who:</strong> Finance</span>
+                <span><strong>When:</strong> 2026-04</span>
+                <span><strong>Store:</strong> Unallocated</span>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class='card risk-card'>
+        <div class='risk-k'>Risk score</div>
+        <div class='risk-v'>10</div>
+        <div class='risk-label'>Red</div>
+        <div class='risk-band'>6+ flags</div>
+        <div style='margin-top:16px;color:#cbd5e1;font-size:13px;line-height:1.6'>Green means quiet, amber needs review, red means multiple integrity anomalies stacked this month.</div>
+    </div>
+</div>
+
+<div class='card' style='margin-bottom:16px'>
+    <div class='risk-k'>Source health</div>
+    <div class='source-grid'><div class='source-card'><div class='source-k'>Turnover Cen</div><div class='source-v'>3 rows</div><div class='source-n'>Daily Turnover One Life via HO</div></div><div class='source-card'><div class='source-k'>Turnover Gvs</div><div class='source-v'>2 rows</div><div class='source-n'>Daily Turnover GVS via GVS</div></div><div class='source-card'><div class='source-k'>Turnover Edn</div><div class='source-v'>4 rows</div><div class='source-n'>Daily Turnover EDEN via EDN</div></div><div class='source-card'><div class='source-k'>Credit Notes</div><div class='source-v'>1 rows</div><div class='source-n'>Fetched 3 rows across 3 branch calls, deduped to 1; branch filter appears non-isolating</div></div><div class='source-card'><div class='source-k'>Overrides</div><div class='source-v'>153 rows</div><div class='source-n'>Fetched 459 rows across 3 branch calls, deduped to 153; branch filter appears non-isolating</div></div><div class='source-card'><div class='source-k'>Discounts</div><div class='source-v'>37 rows</div><div class='source-n'>Fetched 37 rows across 1 branch calls, deduped to 37</div></div><div class='source-card'><div class='source-k'>Pos Invoices</div><div class='source-v'>46 rows</div><div class='source-n'>Fetched 138 rows across 3 branch calls, deduped to 46; branch filter appears non-isolating</div></div></div>
+</div>
+
+
+        <details class='section-block' open id='credit-note-refund-monitor'>
+            <summary>Credit Note / Refund Monitor</summary>
+            <div class='section-body'>
+        <div class='mini-grid'>
+            <div class='mini-card'><div class='mini-k'>Total credit notes</div><div class='mini-v'>1</div></div>
+            <div class='mini-card'><div class='mini-k'>Total value</div><div class='mini-v'>R101.76</div></div>
+        </div>
+        <table><thead><tr><th>Store</th><th>Count</th><th>Value</th></tr></thead><tbody><tr><td>Unallocated</td><td class='num'>1</td><td class='num'>R101.76</td></tr></tbody></table>
+        </div>
+        </details>
+        
+        <details class='section-block'  id='order-cancellation-monitor'>
+            <summary>Order Cancellation Monitor</summary>
+            <div class='section-body'>
+        <div class='mini-grid'>
+            <div class='mini-card'><div class='mini-k'>MTD cancellations</div><div class='mini-v'>9</div></div>
+            <div class='mini-card'><div class='mini-k'>Tracked users</div><div class='mini-v'>2</div></div>
+        </div>
+        <table><thead><tr><th>User</th><th>Cancellations</th></tr></thead><tbody><tr><td>PRECIOUS</td><td class='num'>6</td></tr><tr><td>Dorea</td><td class='num'>3</td></tr></tbody></table>
+        </div>
+        </details>
+        
+        <details class='section-block'  id='override-security-events'>
+            <summary>Override &amp; Security Events</summary>
+            <div class='section-body'>
+        <div class='mini-grid'>
+            <div class='mini-card'><div class='mini-k'>Override entries</div><div class='mini-v'>22</div></div>
+            <div class='mini-card'><div class='mini-k'>Failed passwords</div><div class='mini-v'>0</div></div>
+            <div class='mini-card'><div class='mini-k'>Forced logouts</div><div class='mini-v'>1</div></div>
+        </div>
+        <table><thead><tr><th>User</th><th>Override count</th></tr></thead><tbody><tr><td>TILL2</td><td class='num'>9</td></tr><tr><td>Lady</td><td class='num'>8</td></tr><tr><td>eden1</td><td class='num'>5</td></tr></tbody></table>
+        </div>
+        </details>
+        
+        <details class='section-block'  id='discount-analysis'>
+            <summary>Discount Analysis</summary>
+            <div class='section-body'><table><thead><tr><th>User</th><th>Store</th><th>Total discount</th><th>Avg discount</th><th>Discount rate</th></tr></thead><tbody><tr><td colspan='5' class='group-row'>Unallocated</td></tr><tr><td>Lady</td><td>Unallocated</td><td class='num'>R3,701.46</td><td class='num'>R132.19</td><td class='num'>n/a</td></tr><tr><td>TILL2</td><td>Unallocated</td><td class='num'>R1,188.06</td><td class='num'>R148.51</td><td class='num'>n/a</td></tr></tbody></table></div>
+        </details>
+        
+        <details class='section-block'  id='transaction-pattern-analysis'>
+            <summary>Transaction Pattern Analysis</summary>
+            <div class='section-body'><table><thead><tr><th>User</th><th>Store</th><th>Transactions</th><th>Avg transaction</th><th>Revenue</th></tr></thead><tbody><tr><td colspan='5' class='group-row'>Edenvale</td></tr><tr><td>Unknown</td><td>Edenvale</td><td class='num'>21</td><td class='num'>R464.80</td><td class='num'>R9,760.79</td></tr></tbody></table></div>
+        </details>
+        
+        <details class='section-block'  id='cash-up-variance-trend'>
+            <summary>Cash-Up Variance Trend</summary>
+            <div class='section-body'><table><thead><tr><th>Date</th><th>Session</th><th>Teller</th><th>System</th><th>Counted</th><th>Variance</th></tr></thead><tbody><tr><td colspan='6' class='group-row'>Centurion · Running variance R0.46</td></tr><tr class='warn'><td>2026-04-01</td><td>3469</td><td>TILL2</td><td class='num'>R12,864.18</td><td class='num'>R12,864.38</td><td class='num'>R0.20</td></tr><tr class='ok'><td>2026-04-01</td><td>3470</td><td>Lady</td><td class='num'>R43,273.23</td><td class='num'>R43,273.23</td><td class='num'>R0.00</td></tr><tr class='ok'><td>2026-04-01</td><td>3471</td><td>TILL2</td><td class='num'>R20,522.13</td><td class='num'>R20,522.13</td><td class='num'>R0.00</td></tr><tr class='ok'><td>2026-04-02</td><td>3476</td><td>Lady</td><td class='num'>R61,481.17</td><td class='num'>R61,481.17</td><td class='num'>R0.00</td></tr><tr class='warn'><td>2026-04-02</td><td>3477</td><td>TILL2</td><td class='num'>R22,167.29</td><td class='num'>R22,167.55</td><td class='num'>R0.26</td></tr><tr><td colspan='6' class='group-row'>Edenvale · Running variance R27.35</td></tr><tr class='warn'><td>2026-04-01</td><td>3473</td><td>eden1</td><td class='num'>R19,907.38</td><td class='num'>R19,907.56</td><td class='num'>R0.18</td></tr><tr class='warn'><td>2026-04-02</td><td>3475</td><td>eden1</td><td class='num'>R17,381.04</td><td class='num'>R17,408.14</td><td class='num'>R27.10</td></tr><tr class='warn'><td>2026-04-03</td><td>3478</td><td>eden1</td><td class='num'>R10,546.63</td><td class='num'>R10,546.70</td><td class='num'>R0.07</td></tr><tr><td colspan='6' class='group-row'>Glen Village · Running variance R5.70</td></tr><tr class='warn'><td>2026-04-02</td><td>3472</td><td>GVS1</td><td class='num'>R13,630.12</td><td class='num'>R13,635.72</td><td class='num'>R5.60</td></tr><tr class='warn'><td>2026-04-02</td><td>3474</td><td>GVS1</td><td class='num'>R10,853.00</td><td class='num'>R10,853.10</td><td class='num'>R0.10</td></tr></tbody></table></div>
+        </details>
+        
+        <details class='section-block'  id='bank-deposit-reconciliation'>
+            <summary>Bank Deposit Reconciliation</summary>
+            <div class='section-body'><div class='placeholder-note'>This section is intentionally a placeholder until bank statement data is wired in.</div><table><thead><tr><th>Store</th><th>Expected deposits</th><th>Actual deposits</th></tr></thead><tbody><tr><td>Centurion</td><td class='num'>R160,308.00</td><td>Manual input required</td></tr><tr><td>Edenvale</td><td class='num'>R47,835.05</td><td>Manual input required</td></tr><tr><td>Glen Village</td><td class='num'>R24,483.12</td><td>Manual input required</td></tr></tbody></table></div>
+        </details>
+        
+
+<div class='footer'>Cash Integrity Dashboard · Premium dark theme with sage green accents · All values excl. VAT</div>
+</div>
+</body>
+</html>
