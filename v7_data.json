@@ -1,21 +1,21 @@
 {
- "generated": "21 March 2026 01:41",
- "date_range": "2026-03-01 to 2026-03-20",
+ "generated": "06 April 2026 08:01",
+ "date_range": "2026-04-01 to 2026-04-05",
  "kpi": {
-  "mtd_rev": 908717.31,
-  "mtd_gp": 33.9,
-  "mtd_days": 17,
-  "avg_daily": 53454.0,
-  "cen_mtd": 429008.29,
-  "gvs_mtd": 225950.62,
-  "edn_mtd": 253758.4,
-  "cen_trend": -31.7,
-  "gvs_trend": 51.0,
-  "edn_trend": 38.2,
-  "today_rev": 36269.69,
-  "today_gp": 35.6
+  "mtd_rev": 263212.68,
+  "mtd_gp": 34.1,
+  "mtd_days": 5,
+  "avg_daily": 52643.0,
+  "cen_mtd": 186960.35,
+  "gvs_mtd": 20526.87,
+  "edn_mtd": 55725.46,
+  "cen_trend": -73.6,
+  "gvs_trend": -87.8,
+  "edn_trend": -73.0,
+  "today_rev": 2135.13,
+  "today_gp": 38.5
  },
- "narrative": "March is tracking well \u2014 <strong>R908,717 MTD</strong> across 3 stores over 17 trading days. CEN is your engine: <strong>R429,008 MTD</strong>, running 32% below Feb\u2019s daily pace. GVS at R225,951 is 51% ahead of Feb daily (strong growth). EDN at R253,758 is 38% ahead of Feb \u2014 on track. Top mover at CEN: <strong>MAG 7/87 60'S</strong> (R177,030). Watch <strong>LOVE YOURSELF BREADZ</strong> (LOVE) \u2014 lowest GP in top 20 at 20.9%. \u26a0\ufe0f EDN stock crisis: <strong>22 items completely out of stock</strong>, 20 more dangerously low \u2014 every day is lost GP. Blended GP: <strong>33.9%</strong> \u26a0 below target. This week: CEN R174,565 | GVS R72,819 | EDN R86,316.",
+ "narrative": "March is tracking well \u2014 <strong>R263,213 MTD</strong> across 3 stores over 5 trading days. CEN is your engine: <strong>R186,960 MTD</strong>, running 74% below Feb\u2019s daily pace. GVS at R20,527 is 88% behind Feb daily (needs a push). EDN at R55,725 is 73% behind Feb \u2014 worth investigating. Top mover at CEN: <strong>MAG 7/87 60'S</strong> (R177,030). Watch <strong>LOVE YOURSELF BREADZ</strong> (LOVE) \u2014 lowest GP in top 20 at 20.9%. \u26a0\ufe0f EDN stock crisis: <strong>22 items completely out of stock</strong>, 20 more dangerously low \u2014 every day is lost GP. Blended GP: <strong>34.1%</strong> \u26a0 below target. This week: CEN R186,960 | GVS R20,527 | EDN R55,725.",
  "gaps": [
   {
    "desc": "MgK ASPARTATE 450mg 90s",
@@ -642,20 +642,6 @@
  },
  "trend": [
   {
-   "date": "02-10",
-   "cen": 40762.0,
-   "gvs": 15910.0,
-   "edn": 7805.0,
-   "total": 64476.0
-  },
-  {
-   "date": "02-11",
-   "cen": 55710.0,
-   "gvs": 14928.0,
-   "edn": 12598.0,
-   "total": 83236.0
-  },
-  {
    "date": "02-12",
    "cen": 48832.0,
    "gvs": 12840.0,
@@ -850,6 +836,20 @@
    "gvs": 16565.0,
    "edn": 12172.0,
    "total": 72996.0
+  },
+  {
+   "date": "03-24",
+   "cen": 52894.0,
+   "gvs": 13574.0,
+   "edn": 9098.0,
+   "total": 75566.0
+  },
+  {
+   "date": "03-25",
+   "cen": 46335.0,
+   "gvs": 16848.0,
+   "edn": 11360.0,
+   "total": 74543.0
   }
  ],
  "alerts": {
@@ -1320,38 +1320,30 @@
   ]
  },
  "week": {
-  "cen": 174565.0,
-  "gvs": 72819.0,
-  "edn": 86316.0,
-  "total": 333701.0,
+  "cen": 186960.0,
+  "gvs": 20527.0,
+  "edn": 55725.0,
+  "total": 263213.0,
   "daily": [
    {
-    "date": "03-13",
-    "rev": 57392.0
+    "date": "04-01",
+    "rev": 82631.0
    },
    {
-    "date": "03-14",
-    "rev": 61312.0
+    "date": "04-02",
+    "rev": 94917.0
    },
    {
-    "date": "03-16",
-    "rev": 38365.0
+    "date": "04-03",
+    "rev": 8419.0
    },
    {
-    "date": "03-17",
-    "rev": 40319.0
+    "date": "04-04",
+    "rev": 75111.0
    },
    {
-    "date": "03-18",
-    "rev": 44102.0
-   },
-   {
-    "date": "03-19",
-    "rev": 55941.0
-   },
-   {
-    "date": "03-20",
-    "rev": 36270.0
+    "date": "04-05",
+    "rev": 2135.0
    }
   ]
  }
