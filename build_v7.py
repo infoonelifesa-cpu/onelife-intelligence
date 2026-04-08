@@ -31,6 +31,24 @@ def parse_doc_date(value):
     except Exception:
         return None
 
+def parse_isoish_datetime(value):
+    if not value:
+        return None
+    text = str(value).strip().replace("Z", "+00:00")
+    try:
+        dt = datetime.fromisoformat(text)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=SAST)
+        return dt.astimezone(SAST)
+    except Exception:
+        pass
+    for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%d %H:%M", "%Y-%m-%d"):
+        try:
+            return datetime.strptime(text[:len(fmt)], fmt).replace(tzinfo=SAST)
+        except Exception:
+            continue
+    return None
+
 def load_ga4():
     """Pull GA4 analytics data. Returns dict with channel performance, engagement, device, daily trends."""
     try:
@@ -797,12 +815,18 @@ def main():
     w("""
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh}
+html{scroll-behavior:smooth}
 .container{max-width:1400px;margin:0 auto;padding:20px}
 header{text-align:center;padding:30px 0 20px}
 header h1{font-size:28px;font-weight:800;color:#f8fafc}
 header h1 span{color:#22c55e}
 header .sub{color:#94a3b8;font-size:14px;margin-top:4px}
 header .date{color:#64748b;font-size:12px;margin-top:2px}
+.quick-nav{position:sticky;top:10px;z-index:30;display:flex;gap:8px;overflow-x:auto;padding:0 0 14px;margin-bottom:16px;background:linear-gradient(180deg,rgba(15,23,42,.98),rgba(15,23,42,.92) 82%,rgba(15,23,42,0))}
+.quick-nav::-webkit-scrollbar{display:none}
+.quick-nav a{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;padding:10px 14px;border-radius:999px;border:1px solid #334155;background:#1e293b;color:#cbd5e1;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.01em}
+.quick-nav a:hover{background:#22c55e;color:#0f172a;border-color:#22c55e}
+.jump-target{scroll-margin-top:90px}
 
 .kpi-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
 .kpi{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:16px}
@@ -915,6 +939,7 @@ footer .lo{color:#22c55e}
 .ugrid,.mgrid,.store-grid{grid-template-columns:1fr}
 .progress-row .spark{display:none}
 div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+.quick-nav{top:8px;padding-bottom:12px}
 }
 """)
     w('</style></head><body><div class="container">')
@@ -922,16 +947,36 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
     # Header
     w(f'<header><h1>Onelife <span>Intelligence</span></h1>')
     w(f'<div class="sub">3 Stores + Online | Real-time Business Intelligence</div>')
-    last_updated = omni.get("last_updated", "unknown")[:16].replace("T", " ")
-    w(f'<div class="date">{NOW.strftime("%d %B %Y")} | Data as at {last_updated}</div>')
+    omni_updated = parse_isoish_datetime(omni.get("last_updated"))
+    omni_updated_label = omni_updated.strftime("%Y-%m-%d %H:%M") if omni_updated else "unknown"
+    omni_latest_trade_date = parse_doc_date(omni.get("today", {}).get("date"))
+    if not omni_latest_trade_date:
+        omni_latest_trade_date = max(
+            [d for d in (
+                parse_doc_date((omni.get("today", {}) or {}).get("date")),
+                parse_doc_date((omni.get("yesterday", {}) or {}).get("date")),
+            ) if d],
+            default=None,
+        )
+    omni_latest_trade_label = omni_latest_trade_date.isoformat() if omni_latest_trade_date else "unknown"
+    w(f'<div class="date">{NOW.strftime("%d %B %Y")} | Refreshed {omni_updated_label} | Omni latest trade date {omni_latest_trade_label}</div>')
     w('</header>')
 
-    # Data health warning if Omni API is down
+    w('<nav class="quick-nav">')
+    for label, target in [("Summary", "summary"), ("Stores", "stores"), ("Online", "online"), ("Products", "products"), ("Suppliers", "suppliers"), ("SEO", "seo"), ("Reviews", "reviews"), ("Trends", "trends")]:
+        w(f'<a href="#{target}">{label}</a>')
+    w('</nav>')
+
+    # Data health warning if Omni API is down or materially stale
     fetch_status = omni.get("fetch_status", "")
+    omni_trade_lag_days = (NOW.date() - omni_latest_trade_date).days if omni_latest_trade_date else 99
     if "error" in str(fetch_status).lower() or "Version" in str(fetch_status):
         w('<div class="data-warning"><span class="icon">&#x26a0;</span> Omni API may be down. Using cached data. Numbers may not reflect today\'s full trading.</div>')
+    elif omni_trade_lag_days > 1:
+        w(f'<div class="data-warning"><span class="icon">&#x26a0;</span> Omni trading data is lagging. Latest trade date is {omni_latest_trade_label}, so business KPIs may be stale until the upstream feed catches up.</div>')
 
     # === TODAY'S STORY CARD ===
+    w('<div id="summary" class="jump-target"></div>')
     w('<div class="story-card">')
     w(f'<div class="story-header"><span style="font-size:18px">&#x1f9e0;</span><span class="story-title">Today\'s Story</span><span class="story-date">{NOW.strftime("%d %B %Y")}</span></div>')
     w('<div class="story-sentences">')
@@ -958,6 +1003,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
     w('</div>')
 
     # === STORE DETAIL CARDS (NEW: per-store revenue, run rate, required rate, GP) ===
+    w('<div id="stores" class="jump-target"></div>')
     w('<div class="store-grid">')
     for s in ["CEN", "GVS", "EDN"]:
         sa = store_analysis[s]
@@ -1001,7 +1047,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
         chg = ga4["changes"]
         eng = ga4["engagement"]
 
-        w('<div class="card"><h3>&#x1f310; Online Performance</h3>')
+        w('<div id="online" class="card jump-target"><h3>&#x1f310; Online Performance</h3>')
         w('<div class="desc">Google Analytics 4 — last 28 days vs prior 28 days | Powered by Analyzify tracking</div>')
 
         # Online KPIs
@@ -1116,7 +1162,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 
     # === HIDDEN GEMS SECTION ===
     if hidden_gems:
-        w('<div class="card"><h3>&#x1f48e; Hidden Gems</h3>')
+        w('<div id="products" class="card jump-target"><h3>&#x1f48e; Hidden Gems</h3>')
         w('<div class="desc">High GP% products with low unit sales — shelf visibility problem. Move them and watch revenue climb.</div>')
         w('<div class="action-cards">')
         for gem in hidden_gems[:6]:
@@ -1163,7 +1209,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
     w('</tbody></table></div>')
 
     # Supplier ABC Scorecard
-    w('<div class="card"><h3>Supplier ABC Scorecard</h3>')
+    w('<div id="suppliers" class="card jump-target"><h3>Supplier ABC Scorecard</h3>')
     w(f'<div class="desc">Top 30 suppliers by revenue. A = top 80% cumulative, B = next 15%, C = bottom 5%.</div>')
     w('<table><thead><tr><th>Class</th><th>Supplier</th><th class="num">Revenue</th><th class="num">GP%</th><th class="num">Units</th><th class="num">Products</th></tr></thead><tbody>')
     for code, data in sup_sorted[:30]:
@@ -1208,7 +1254,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 
     # === SEARCH PERFORMANCE (Google Search Console) ===
     if gsc:
-        w('<div class="card"><h3>&#x1f50d; Search Performance</h3>')
+        w('<div id="seo" class="card jump-target"><h3>&#x1f50d; Search Performance</h3>')
         w(f'<div class="desc">Google organic search data — {gsc["period"]} vs prior 28 days</div>')
 
         # KPI row for search
@@ -1331,7 +1377,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
         )
         total_target_week = sum(rv_targets.values())
 
-        w('<div class="card"><h3>⭐ Google Reviews</h3>')
+        w('<div id="reviews" class="card jump-target"><h3>⭐ Google Reviews</h3>')
         w(f'<div class="desc">Review tracking across all 3 stores | Data as at {rv_date} | Weekly target: {total_target_week} new reviews</div>')
 
         # KPI strip for reviews
@@ -1385,7 +1431,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
         w('</div>')
 
     # Monthly Trends
-    w('<div class="card"><h3>Monthly Revenue Trends</h3><div class="desc">Last 3 months by store</div>')
+    w('<div id="trends" class="card jump-target"><h3>Monthly Revenue Trends</h3><div class="desc">Last 3 months by store</div>')
     w('<div class="mgrid">')
     for ym in sorted(monthly.keys()):
         t = monthly[ym]

@@ -20,7 +20,9 @@ import subprocess
 import sys
 
 WORKSPACE = os.path.expanduser("~/.openclaw/workspace/onelife-intelligence")
+ROOT_WORKSPACE = os.path.dirname(WORKSPACE)
 CANONICAL = os.path.join(WORKSPACE, "build_v7.py")
+OMNI_REFRESH = os.path.join(ROOT_WORKSPACE, "scripts", "omni_cache_refresh.py")
 
 
 def main() -> int:
@@ -32,6 +34,17 @@ def main() -> int:
     if not os.path.exists(CANONICAL):
         print(f"[FATAL] Canonical builder missing: {CANONICAL}", file=sys.stderr)
         return 1
+
+    if os.path.exists(OMNI_REFRESH):
+        refresh = subprocess.run([sys.executable, OMNI_REFRESH], cwd=ROOT_WORKSPACE)
+        if refresh.returncode != 0:
+            print(
+                f"[FATAL] Omni cache refresh failed with exit code {refresh.returncode}. Refusing to build a dashboard from stale turnover data.",
+                file=sys.stderr,
+            )
+            return refresh.returncode
+    else:
+        print(f"[WARN] Omni refresh script missing: {OMNI_REFRESH}", file=sys.stderr)
 
     result = subprocess.run([sys.executable, CANONICAL], cwd=WORKSPACE)
     return result.returncode

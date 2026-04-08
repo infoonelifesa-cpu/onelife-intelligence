@@ -7,12 +7,18 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh}
+html{scroll-behavior:smooth}
 .container{max-width:1400px;margin:0 auto;padding:20px}
 header{text-align:center;padding:30px 0 20px}
 header h1{font-size:28px;font-weight:800;color:#f8fafc}
 header h1 span{color:#22c55e}
 header .sub{color:#94a3b8;font-size:14px;margin-top:4px}
 header .date{color:#64748b;font-size:12px;margin-top:2px}
+.quick-nav{position:sticky;top:10px;z-index:30;display:flex;gap:8px;overflow-x:auto;padding:0 0 14px;margin-bottom:16px;background:linear-gradient(180deg,rgba(15,23,42,.98),rgba(15,23,42,.92) 82%,rgba(15,23,42,0))}
+.quick-nav::-webkit-scrollbar{display:none}
+.quick-nav a{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;padding:10px 14px;border-radius:999px;border:1px solid #334155;background:#1e293b;color:#cbd5e1;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.01em}
+.quick-nav a:hover{background:#22c55e;color:#0f172a;border-color:#22c55e}
+.jump-target{scroll-margin-top:90px}
 
 .kpi-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
 .kpi{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:16px}
@@ -125,13 +131,25 @@ footer .lo{color:#22c55e}
 .ugrid,.mgrid,.store-grid{grid-template-columns:1fr}
 .progress-row .spark{display:none}
 div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+.quick-nav{top:8px;padding-bottom:12px}
 }
 
 </style></head><body><div class="container">
 <header><h1>Onelife <span>Intelligence</span></h1>
 <div class="sub">3 Stores + Online | Real-time Business Intelligence</div>
-<div class="date">08 April 2026 | Data as at 2026-04-08 05:01</div>
+<div class="date">08 April 2026 | Refreshed 2026-04-08 05:08 | Omni latest trade date 2026-04-07</div>
 </header>
+<nav class="quick-nav">
+<a href="#summary">Summary</a>
+<a href="#stores">Stores</a>
+<a href="#online">Online</a>
+<a href="#products">Products</a>
+<a href="#suppliers">Suppliers</a>
+<a href="#seo">SEO</a>
+<a href="#reviews">Reviews</a>
+<a href="#trends">Trends</a>
+</nav>
+<div id="summary" class="jump-target"></div>
 <div class="story-card">
 <div class="story-header"><span style="font-size:18px">&#x1f9e0;</span><span class="story-title">Today's Story</span><span class="story-date">08 April 2026</span></div>
 <div class="story-sentences">
@@ -154,6 +172,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <div class="kpi"><div class="label">Daily Run Rate</div><div class="val blue">R74K</div><div class="note">Yesterday: R23K</div></div>
 <div class="kpi"><div class="label">Projected Month</div><div class="val yellow">R1.90M</div><div class="note">Target: R2.23M</div></div>
 </div>
+<div id="stores" class="jump-target"></div>
 <div class="store-grid">
 <div class="store-card">
 <div class="sname">Centurion</div>
@@ -212,7 +231,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <div class="spark"></div>
 <div class="tgt">R74K / R450K <span style="color:#ef4444;font-size:11px;font-weight:700">↓&nbsp;-14.3%</span></div></div>
 </div>
-<div class="card"><h3>&#x1f310; Online Performance</h3>
+<div id="online" class="card jump-target"><h3>&#x1f310; Online Performance</h3>
 <div class="desc">Google Analytics 4 — last 28 days vs prior 28 days | Powered by Analyzify tracking</div>
 <div class="kpi-strip" style="margin-bottom:14px">
 <div class="kpi"><div class="label" style="color:#00ff88">Today Online Sales</div><div class="val" style="color:#00ff88;font-size:26px">R0</div><div class="note">Yesterday: R4K</div></div>
@@ -267,7 +286,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <div class="story-sentence">28,169 mobile vs 12,516 desktop sessions. Mobile conversion: 0.23%, Desktop: 0.30%. Mobile experience needs work — most traffic but lower conversion.</div>
 </div></div>
 </div>
-<div class="card"><h3>&#x1f48e; Hidden Gems</h3>
+<div id="products" class="card jump-target"><h3>&#x1f48e; Hidden Gems</h3>
 <div class="desc">High GP% products with low unit sales — shelf visibility problem. Move them and watch revenue climb.</div>
 <div class="action-cards">
 <div class="action-card gem">
@@ -402,7 +421,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <tr><td>INFLAM X 60S</td><td>ECO VALLEY NUTRITION</td><td class="num">R15K</td><td class="num">62</td><td class="num gpm">34%</td><td class="miss">GVS</td></tr>
 <tr><td>CANDLES REPLACEMENT FILTER</td><td></td><td class="num">R15K</td><td class="num">37</td><td class="num gpl">28%</td><td class="miss">GVS, EDN</td></tr>
 </tbody></table></div>
-<div class="card"><h3>Supplier ABC Scorecard</h3>
+<div id="suppliers" class="card jump-target"><h3>Supplier ABC Scorecard</h3>
 <div class="desc">Top 30 suppliers by revenue. A = top 80% cumulative, B = next 15%, C = bottom 5%.</div>
 <table><thead><tr><th>Class</th><th>Supplier</th><th class="num">Revenue</th><th class="num">GP%</th><th class="num">Units</th><th class="num">Products</th></tr></thead><tbody>
 <tr><td><span class="abc-a">A</span></td><td>DS INTERNATIONAL</td><td class="num">R1.83M</td><td class="num gpm">35.4%</td><td class="num">5,118</td><td class="num">224</td></tr>
@@ -468,7 +487,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <div class="uitem">60C CHOLESTIN <span class="num">R7K</span></div>
 </div>
 </div></div>
-<div class="card"><h3>&#x1f50d; Search Performance</h3>
+<div id="seo" class="card jump-target"><h3>&#x1f50d; Search Performance</h3>
 <div class="desc">Google organic search data — 2026-03-09 to 2026-04-06 vs prior 28 days</div>
 <div class="kpi-strip" style="margin-bottom:16px">
 <div class="kpi"><div class="label">Clicks (28d)</div><div class="val">2,502</div><div class="note"><span style="color:#22c55e;font-size:11px;font-weight:700">↑&nbsp;+30.1%</span> vs prior</div></div>
@@ -523,7 +542,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <div class="story-sentence">Overall CTR is 1.2% — below the 2-3% e-commerce benchmark. Improving meta titles and descriptions can boost this without changing rankings.</div>
 </div></div>
 </div>
-<div class="card"><h3>⭐ Google Reviews</h3>
+<div id="reviews" class="card jump-target"><h3>⭐ Google Reviews</h3>
 <div class="desc">Review tracking across all 3 stores | Data as at 2026-04-08 | Weekly target: 11 new reviews</div>
 <div class="kpi-strip" style="margin-bottom:14px">
 <div class="kpi"><div class="label">Total Reviews</div><div class="val">371</div><div class="note">Across all stores</div></div>
@@ -559,7 +578,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 </div>
 </div>
 </div>
-<div class="card"><h3>Monthly Revenue Trends</h3><div class="desc">Last 3 months by store</div>
+<div id="trends" class="card jump-target"><h3>Monthly Revenue Trends</h3><div class="desc">Last 3 months by store</div>
 <div class="mgrid">
 <div class="mcard"><div class="mo">2026-02</div><div class="tot">R1.38M</div>
 <div class="bd">CEN: R903K | GVS: R215K | EDN: R264K</div>
@@ -573,5 +592,5 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
 <div class="bd">CEN: R259K | GVS: R34K | EDN: R74K</div>
 </div>
 </div></div>
-<footer>Onelife Intelligence V7 &middot; 08 April 2026 05:01 SAST &middot; 3 stores + online &middot; Powered by <span class="lo">Jarvis</span> &#x1f99e;</footer>
+<footer>Onelife Intelligence V7 &middot; 08 April 2026 05:08 SAST &middot; 3 stores + online &middot; Powered by <span class="lo">Jarvis</span> &#x1f99e;</footer>
 </div></body></html>
