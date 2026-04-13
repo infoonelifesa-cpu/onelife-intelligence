@@ -1268,6 +1268,7 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
     w('<a class="jump-btn" href="#search">Search</a>')
     w('<a class="jump-btn" href="#reviews">Reviews</a>')
     w('<a class="jump-btn" href="#trends">Trends</a>')
+    w('<a class="jump-btn" href="https://xcgagj-ip-104-28-154-134.tunnelmole.net" target="_blank" rel="noopener noreferrer">&#x1f4ce; Paperclip</a>')
     w('</div>')
 
     # Data health warning if Omni API is down
