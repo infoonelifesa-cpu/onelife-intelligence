@@ -967,7 +967,6 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
     w('<nav class="quick-nav">')
     for label, target in [("Summary", "summary"), ("Stores", "stores"), ("Online", "online"), ("Products", "products"), ("Suppliers", "suppliers"), ("SEO", "seo"), ("Reviews", "reviews"), ("Trends", "trends")]:
         w(f'<a href="#{target}">{label}</a>')
-    w('<a href="https://xcgagj-ip-104-28-154-134.tunnelmole.net" target="_blank" rel="noopener noreferrer">&#x1f4ce; Paperclip</a>')
     w('</nav>')
 
     # Data health warning if Omni API is down or materially stale
