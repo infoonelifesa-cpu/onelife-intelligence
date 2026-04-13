@@ -458,6 +458,7 @@ def main():
             remaining_trading = max(0, days_in_month_total - last_trade_day)
         projected = data["rev"] + (run_rate * remaining_trading)
         pct_of_target = (projected / TARGETS[s] * 100) if TARGETS[s] > 0 else 0
+        actual_pct_of_target = (data["rev"] / TARGETS[s] * 100) if TARGETS[s] > 0 else 0
         # Required daily to hit target
         shortfall = TARGETS[s] - data["rev"]
         required_daily = shortfall / remaining_trading if remaining_trading > 0 else 0
@@ -465,6 +466,7 @@ def main():
             "run_rate": run_rate,
             "projected": projected,
             "pct": pct_of_target,
+            "actual_pct": actual_pct_of_target,
             "trading_days": trading_days,
             "remaining_trading": remaining_trading,
             "required_daily": required_daily,
@@ -1008,14 +1010,14 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
     for s in ["CEN", "GVS", "EDN"]:
         sa = store_analysis[s]
         data = store_mtd[s]
-        cls = "ok" if sa["pct"] >= 95 else ("warn" if sa["pct"] >= 80 else "bad")
+        cls = "ok" if sa["actual_pct"] >= 95 else ("warn" if sa["actual_pct"] >= 80 else "bad")
         status_cls = "highlight" if sa["pct"] >= 95 else ("alert" if sa["pct"] < 80 else "")
 
         w(f'<div class="store-card">')
         w(f'<div class="sname">{STORE_LABELS[s]}</div>')
         w(f'<div class="srev">{fmt_r(data["rev"])}</div>')
-        w(f'<div class="bar-mini"><div class="bar-fill {cls}" style="width:{min(sa["pct"],100):.0f}%"></div></div>')
-        w(f'<div class="spct">{sa["pct"]:.0f}% of {fmt_r(TARGETS[s])} target</div>')
+        w(f'<div class="bar-mini"><div class="bar-fill {cls}" style="width:{min(sa["actual_pct"],100):.0f}%"></div></div>')
+        w(f'<div class="spct">{sa["actual_pct"]:.0f}% of {fmt_r(TARGETS[s])} target</div>')
         td = store_today[s]
         td_gp_pct = (td["gp"] / td["rev"] * 100) if td["rev"] > 0 else 0
         w(f'<div class="srow" style="border-bottom:1px solid #1e1e2e;padding-bottom:6px;margin-bottom:6px"><span style="color:#00ff88;font-weight:700">{latest_day_label} Sales</span><span class="sv" style="color:#00ff88;font-weight:700">{fmt_r(td["rev"])}</span></div>')
@@ -1030,13 +1032,13 @@ div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
     w('</div>')
 
     # Store Progress Bars (kept for visual overview)
-    w('<div class="card"><h3>Store Tracking vs Target</h3><div class="desc">Projected month-end based on current run rate</div>')
+    w('<div class="card"><h3>Store Tracking vs Target</h3><div class="desc">Actual month-to-date sales vs monthly target</div>')
     for s in ["CEN","GVS","EDN"]:
         sa = store_analysis[s]
-        cls = "ok" if sa["pct"]>=95 else ("warn" if sa["pct"]>=80 else "bad")
+        cls = "ok" if sa["actual_pct"]>=95 else ("warn" if sa["actual_pct"]>=80 else "bad")
         spark = sparkline_svg({"CEN":cen_week,"GVS":gvs_week,"EDN":edn_week}[s])
         w(f'<div class="progress-row"><div class="sn">{s}</div>')
-        w(f'<div class="bar-wrap"><div class="bar {cls}" style="width:{min(sa["pct"],100):.0f}%">{sa["pct"]:.0f}%</div></div>')
+        w(f'<div class="bar-wrap"><div class="bar {cls}" style="width:{min(sa["actual_pct"],100):.0f}%">{sa["actual_pct"]:.0f}%</div></div>')
         w(f'<div class="spark">{spark}</div>')
         w(f'<div class="tgt">{fmt_r(store_mtd[s]["rev"])} / {fmt_r(TARGETS[s])} {trend_badge(wow.get(s))}</div></div>')
     w('</div>')
