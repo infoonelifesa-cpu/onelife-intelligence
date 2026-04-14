@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-04-13T09:54:53.612413+02:00",
-  "run_date": "2026-04-13",
+  "generated_at": "2026-04-14T16:53:24.133673+02:00",
+  "run_date": "2026-04-14",
   "system": "onelife-commerce-intelligence",
   "mode": "run",
   "feed_refresh": {
-    "generated_at": "2026-04-13T09:54:53.348927",
-    "target_date": "2026-04-13",
+    "generated_at": "2026-04-14T16:53:23.852284",
+    "target_date": "2026-04-14",
     "results": [
       {
         "feed": "shopify_sales_feed",
         "status": "ok",
-        "started": "2026-04-13T09:53:10.116069",
+        "started": "2026-04-14T16:49:10.718735",
         "summary_keys": [
           "generated_at",
           "date",
@@ -26,7 +26,7 @@
       {
         "feed": "product_performance_feed",
         "status": "ok",
-        "started": "2026-04-13T09:53:35.872843",
+        "started": "2026-04-14T16:49:39.170960",
         "summary_keys": [
           "generated_at",
           "date",
@@ -40,7 +40,7 @@
       {
         "feed": "inventory_feed",
         "status": "ok",
-        "started": "2026-04-13T09:54:24.716231",
+        "started": "2026-04-14T16:52:53.786757",
         "summary_keys": [
           "generated_at",
           "date",
@@ -53,7 +53,7 @@
       {
         "feed": "customer_intelligence_feed",
         "status": "ok",
-        "started": "2026-04-13T09:54:50.192183",
+        "started": "2026-04-14T16:53:20.617731",
         "summary_keys": [
           "generated_at",
           "date",
@@ -65,7 +65,7 @@
       {
         "feed": "branch_intelligence_feed",
         "status": "ok",
-        "started": "2026-04-13T09:54:52.922061",
+        "started": "2026-04-14T16:53:23.475365",
         "summary_keys": [
           "generated_at",
           "date",
@@ -77,7 +77,7 @@
       {
         "feed": "supplier_scorecard_feed",
         "status": "ok",
-        "started": "2026-04-13T09:54:52.995757",
+        "started": "2026-04-14T16:53:23.540022",
         "summary_keys": [
           "generated_at",
           "date",
@@ -88,7 +88,7 @@
       {
         "feed": "competitor_intelligence_feed",
         "status": "ok",
-        "started": "2026-04-13T09:54:53.083237",
+        "started": "2026-04-14T16:53:23.613308",
         "summary_keys": [
           "generated_at",
           "date",
@@ -114,9 +114,9 @@
             "supplier-intelligence.md",
             "inventory-alerts.md"
           ],
-          "daily_briefing": "# Daily Commercial Briefing\n\nGenerated: 2026-04-13T09:54:53.332623+02:00\n\n## Key Metrics\n- Revenue: R208.20\n- Orders: 2\n- AOV: R104.10\n- Units per transaction: 1.5\n- GP%: 36.38%\n- New vs returning: 2 new / 0 returning\n\n## Trends\n- Discount usage: 0 orders, R0.00 discounted\n- Active customers (180d): 199\n- Repeat purchase rate: 4.52%\n- Stockout risks: 342\n- Competitor price-match risks: 2\n\n## Alerts\n- Edenvale stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Glen Village stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Edenvale stockout:  CoQ10 enzyme (6009663990240)\n- Glen Village stockout:  CoQ10 enzyme (6009663990240)\n- Centurion stockout:  DC POKE ROOT 100G (6009675501410)\n- Edenvale stockout:  DC POKE ROOT 100G (6009675501410)\n- Glen Village stockout:  DC POKE ROOT 100G (6009675501410)\n- Centurion stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Edenvale stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Glen Village stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n\n## Recommended Actions\n- Replenish SKUs with <7 days cover, prioritising top revenue lines.\n- Push repeat-purchase campaigns into Klaviyo for churn-risk customers.\n- Review discount-heavy orders for margin leakage.\n- Shift inventory away from overstocked branches into demand nodes.\n",
+          "daily_briefing": "# Daily Commercial Briefing\n\nGenerated: 2026-04-14T16:53:23.834564+02:00\n\n## Key Metrics\n- Revenue: R2,216.10\n- Orders: 6\n- AOV: R369.35\n- Units per transaction: 3.83\n- GP%: 45.51%\n- New vs returning: 5 new / 1 returning\n\n## Trends\n- Discount usage: 1 orders, R50.44 discounted\n- Active customers (180d): 208\n- Repeat purchase rate: 4.81%\n- Stockout risks: 370\n- Competitor price-match risks: 12\n\n## Alerts\n- Edenvale stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Glen Village stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Edenvale stockout:  CoQ10 enzyme (6009663990240)\n- Glen Village stockout:  CoQ10 enzyme (6009663990240)\n- Centurion stockout:  DC POKE ROOT 100G (6009675501410)\n- Edenvale stockout:  DC POKE ROOT 100G (6009675501410)\n- Glen Village stockout:  DC POKE ROOT 100G (6009675501410)\n- Centurion stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Edenvale stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Glen Village stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n\n## Recommended Actions\n- Replenish SKUs with <7 days cover, prioritising top revenue lines.\n- Push repeat-purchase campaigns into Klaviyo for churn-risk customers.\n- Review discount-heavy orders for margin leakage.\n- Shift inventory away from overstocked branches into demand nodes.\n",
           "competitor_status": "normalised",
-          "target_date": "2026-04-13"
+          "target_date": "2026-04-14"
         }
       }
     ],
@@ -125,68 +125,68 @@
   "sources": [
     {
       "label": "Shopify sales feed",
-      "path": "vaults/onelife/raw/shopify-sales-2026-04-13.json",
-      "generated_at": "2026-04-13T09:53:35.865007+02:00",
+      "path": "vaults/onelife/raw/shopify-sales-2026-04-14.json",
+      "generated_at": "2026-04-14T16:49:39.162066+02:00",
       "exists": true
     },
     {
       "label": "Product performance feed",
-      "path": "vaults/onelife/raw/product-performance-2026-04-13.json",
-      "generated_at": "2026-04-13T09:54:24.644211+02:00",
+      "path": "vaults/onelife/raw/product-performance-2026-04-14.json",
+      "generated_at": "2026-04-14T16:52:53.699059+02:00",
       "exists": true
     },
     {
       "label": "Inventory health feed",
-      "path": "vaults/onelife/raw/inventory-health-2026-04-13.json",
-      "generated_at": "2026-04-13T09:54:50.044509+02:00",
+      "path": "vaults/onelife/raw/inventory-health-2026-04-14.json",
+      "generated_at": "2026-04-14T16:53:20.420986+02:00",
       "exists": true
     },
     {
       "label": "Customer intelligence feed",
-      "path": "vaults/onelife/raw/customer-intelligence-2026-04-13.json",
-      "generated_at": "2026-04-13T09:54:52.557577+02:00",
+      "path": "vaults/onelife/raw/customer-intelligence-2026-04-14.json",
+      "generated_at": "2026-04-14T16:53:23.081719+02:00",
       "exists": true
     },
     {
       "label": "Branch intelligence feed",
-      "path": "vaults/onelife/raw/branch-intelligence-2026-04-13.json",
-      "generated_at": "2026-04-13T09:54:52.992126+02:00",
+      "path": "vaults/onelife/raw/branch-intelligence-2026-04-14.json",
+      "generated_at": "2026-04-14T16:53:23.535793+02:00",
       "exists": true
     },
     {
       "label": "Competitor intelligence feed",
-      "path": "vaults/onelife/raw/competitor-intelligence-2026-04-13.json",
-      "generated_at": "2026-04-13T09:54:53.085113+02:00",
+      "path": "vaults/onelife/raw/competitor-intelligence-2026-04-14.json",
+      "generated_at": "2026-04-14T16:53:23.615266+02:00",
       "exists": true
     },
     {
       "label": "Marketing decision audit",
       "path": "memory/marketing-decision-audit-latest.json",
-      "generated_at": "2026-04-13T09:52:05.610591+02:00",
+      "generated_at": "2026-04-14T16:49:06.455020+02:00",
       "exists": true
     },
     {
       "label": "SEO decision audit",
       "path": "memory/seo-decision-audit-latest.json",
-      "generated_at": "2026-04-13T09:52:05.728628+02:00",
+      "generated_at": "2026-04-14T16:49:06.600643+02:00",
       "exists": true
     },
     {
       "label": "Klaviyo decision audit",
       "path": "memory/klaviyo-decision-audit-latest.json",
-      "generated_at": "2026-04-13T09:52:05.845468+02:00",
+      "generated_at": "2026-04-14T16:49:06.747327+02:00",
       "exists": true
     },
     {
       "label": "GA4 decision audit",
       "path": "memory/ga4-decision-audit-latest.json",
-      "generated_at": "2026-04-13T09:52:05.954700+02:00",
+      "generated_at": "2026-04-14T16:49:10.485068+02:00",
       "exists": true
     },
     {
       "label": "Store ops alerts",
       "path": "memory/store-ops-alerts-latest.json",
-      "generated_at": "2026-04-13T09:52:05.482370+02:00",
+      "generated_at": "2026-04-14T16:49:06.290269+02:00",
       "exists": true
     },
     {
@@ -209,21 +209,21 @@
     }
   ],
   "summary_lines": [
-    "Online R208.20 from 2 orders, AOV R104.10.",
-    "Physical MTD R694,495.52, focus store Glen Village at 28.20% of target.",
+    "Online R2,216.10 from 6 orders, AOV R369.35.",
+    "Physical MTD R761,986.29, focus store Glen Village at 32.40% of target.",
     "0 high-value lapsed customers, 8 winning SKUs at stock risk, 2 approval-gated recommendations."
   ],
   "highlights": [
-    "Online trade delivered R208.20 from 2 orders at 36.38% GP.",
-    "Physical stores are sitting on R694,495.52 MTD revenue, with Glen Village currently the main pace risk.",
+    "Online trade delivered R2,216.10 from 6 orders at 45.51% GP.",
+    "Physical stores are sitting on R761,986.29 MTD revenue, with Glen Village currently the main pace risk.",
     "8 winning SKUs are already showing stock pressure, led by DELFRAN - Pcositol - 30 Sachets.",
-    "Customer base shows 0 high-value lapsed customers and 77 buyers due for repeat.",
-    "Top geo demand is concentrated in Pretoria with R28,809.37 in the 90d view.",
-    "Competitor scan shows 3 clear price wins and 2 price-position risks."
+    "Customer base shows 0 high-value lapsed customers and 75 buyers due for repeat.",
+    "Top geo demand is concentrated in Pretoria with R28,359.73 in the 90d view.",
+    "Competitor scan shows 6 clear price wins and 0 price-position risks."
   ],
   "actions": [
     "Protect winning SKU DELFRAN - Pcositol - 30 Sachets first, it produced R3,707.34 in 90d and is already under stock pressure.",
-    "Treat Glen Village as the branch priority, it is running at 28.2% of MTD target with pressure on same-day recovery.",
+    "Treat Glen Village as the branch priority, it is running at 32.4% of MTD target with pressure on same-day recovery.",
     "Review the price position on Natroceutics Ashwagandha Bioactive 60 Capsules, competitor pressure is visible in the latest market scan.",
     "Push the next content batch around 'Current TikTok winners cluster around brain fog, stress, sleep, and energy hooks.' and point it at NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules, HEEL - Lymphomyosot N Oral Drops - 30ml, YOUR WELLBEING - Cholest-Well - 60 Capsules."
   ],
@@ -286,9 +286,9 @@
         "Keep price and add a value bundle"
       ],
       "evidence": [
-        "Competitor price-position risk count 2",
-        "Onelife price-win count 3",
-        "Competitor-cheaper count 2"
+        "Competitor price-position risk count 4",
+        "Onelife price-win count 6",
+        "Competitor-cheaper count 0"
       ],
       "execution": {
         "supported": true,
@@ -342,55 +342,147 @@
     }
   ],
   "executive": {
-    "shopify_revenue": 208.2,
-    "shopify_orders": 2,
-    "shopify_aov": 104.1,
-    "shopify_gp_pct": 36.38,
-    "new_orders": 2,
-    "returning_orders": 0,
-    "physical_revenue_today": 21932.5,
-    "physical_gp_pct_today": 34.6,
-    "physical_mtd_revenue": 694495.52,
+    "shopify_revenue": 2216.1,
+    "shopify_orders": 6,
+    "shopify_aov": 369.35,
+    "shopify_gp_pct": 45.51,
+    "new_orders": 5,
+    "returning_orders": 1,
+    "physical_revenue_today": 67490.77,
+    "physical_gp_pct_today": 34.8,
+    "physical_mtd_revenue": 761986.29,
     "physical_mtd_gp_pct": 34.3,
     "top_city": {
       "city": "Pretoria",
       "orders": 32,
-      "revenue": 28809.37,
+      "revenue": 28359.73,
       "customers": 29,
-      "average_order_value": 900.29
+      "average_order_value": 886.24
     },
     "high_value_lapsed_customers": 0,
     "winning_items_at_risk": 8,
     "focus_store": "Glen Village",
-    "focus_store_target_pct": 28.2
+    "focus_store_target_pct": 32.4
   },
   "sections": {
     "top_movers_today": [
       {
-        "sku": "6009609004284",
-        "title": "NUTRILIFE - Brewer’s Yeast 200g",
-        "category": "SHOP",
-        "units": 2,
-        "revenue": 151.48,
-        "gross_profit": 65.86,
-        "gp_pct": 50.0,
-        "stock_cover_days": 30.0,
-        "inventory_quantity": 2,
+        "sku": "600000000019",
+        "title": "Florish Spore Probiotic with Fulvic Acid - 60 Capsules",
+        "category": "Unknown",
+        "units": 1,
+        "revenue": 440.06,
+        "gross_profit": 382.66,
+        "gp_pct": 100.0,
+        "stock_cover_days": 570.0,
+        "inventory_quantity": 19,
         "stockout_stores": [],
         "reorder_stores": []
       },
       {
-        "sku": "6009675500468",
-        "title": "PHARMA GERMANIA - Chase Tree Berries - 75g",
+        "sku": "6009643460800",
+        "title": "ALOE FEROX - Fabulous Fibre Bitter - 90 Tablets",
         "category": "NON",
+        "units": 3,
+        "revenue": 381.03,
+        "gross_profit": 220.89,
+        "gp_pct": 66.67,
+        "stock_cover_days": 20.0,
+        "inventory_quantity": 2,
+        "stockout_stores": [],
+        "reorder_stores": [
+          "Centurion"
+        ]
+      },
+      {
+        "sku": "6009609790484",
+        "title": "ALMANS - Peaches Cling - 150g",
+        "category": "SHOP",
+        "units": 8,
+        "revenue": 311.68,
+        "gross_profit": 237.15,
+        "gp_pct": 87.5,
+        "stock_cover_days": 30.0,
+        "inventory_quantity": 8,
+        "stockout_stores": [],
+        "reorder_stores": [
+          "Centurion"
+        ]
+      },
+      {
+        "sku": "6009609791726",
+        "title": "ALMANS - Peaches Cling - 1kg",
+        "category": "SHOP",
         "units": 1,
-        "revenue": 56.72,
+        "revenue": 257.6,
+        "gross_profit": 0.0,
+        "gp_pct": 0.0,
+        "stock_cover_days": 30.0,
+        "inventory_quantity": 1,
+        "stockout_stores": [],
+        "reorder_stores": [
+          "Centurion",
+          "Edenvale"
+        ]
+      },
+      {
+        "sku": "6007650001290",
+        "title": "A.VOGEL - Menopause Formula - 30ml",
+        "category": "SHOP",
+        "units": 1,
+        "revenue": 160.81,
+        "gross_profit": 0.0,
+        "gp_pct": 0.0,
+        "stock_cover_days": 30.0,
+        "inventory_quantity": 1,
+        "stockout_stores": [],
+        "reorder_stores": [
+          "Centurion"
+        ]
+      },
+      {
+        "sku": "6007650001306",
+        "title": "A.VOGEL - Menstruation Formula - 30ml",
+        "category": "SHOP",
+        "units": 1,
+        "revenue": 152.83,
+        "gross_profit": 0.0,
+        "gp_pct": 0.0,
+        "stock_cover_days": 30.0,
+        "inventory_quantity": 1,
+        "stockout_stores": [],
+        "reorder_stores": [
+          "Centurion"
+        ]
+      },
+      {
+        "sku": "6009609004338",
+        "title": "NUTRILIFE - Digestezyme High Potency - 60 Capsules",
+        "category": "SHOP",
+        "units": 1,
+        "revenue": 142.0,
+        "gross_profit": 0.0,
+        "gp_pct": 0.0,
+        "stock_cover_days": 930.0,
+        "inventory_quantity": 31,
+        "stockout_stores": [],
+        "reorder_stores": []
+      },
+      {
+        "sku": "6009705616015",
+        "title": "KURA - Menopause Complex - 50ml",
+        "category": "SHOP",
+        "units": 1,
+        "revenue": 92.0,
         "gross_profit": 0.0,
         "gp_pct": 0.0,
         "stock_cover_days": 60.0,
         "inventory_quantity": 2,
         "stockout_stores": [],
-        "reorder_stores": []
+        "reorder_stores": [
+          "Centurion",
+          "Edenvale"
+        ]
       }
     ],
     "winning_items_stock_risk": [
@@ -406,6 +498,22 @@
         "stock_cover_days": 105.0,
         "stockout_stores": [],
         "reorder_stores": [
+          "Edenvale"
+        ]
+      },
+      {
+        "sku": "6009801022321",
+        "title": "DELFRAN - Family Starter Pack",
+        "category": "Family Health Pack",
+        "revenue_30": 2985.0,
+        "revenue_90": 2985.0,
+        "units_30": 3,
+        "units_90": 3,
+        "inventory_quantity": 0,
+        "stock_cover_days": 0.0,
+        "stockout_stores": [],
+        "reorder_stores": [
+          "Centurion",
           "Edenvale"
         ]
       },
@@ -436,8 +544,7 @@
         "stock_cover_days": 0.0,
         "stockout_stores": [],
         "reorder_stores": [
-          "Centurion",
-          "Edenvale"
+          "Centurion"
         ]
       },
       {
@@ -456,15 +563,15 @@
         ]
       },
       {
-        "sku": "6009801022321",
-        "title": "DELFRAN - Family Starter Pack",
-        "category": "Family Health Pack",
-        "revenue_30": 1990.0,
-        "revenue_90": 1990.0,
-        "units_30": 2,
-        "units_90": 2,
-        "inventory_quantity": 1,
-        "stock_cover_days": 15.0,
+        "sku": "6009675200580",
+        "title": "MEDFORD - ViralScript - 60 Vegetable Capsules",
+        "category": "Immune Support Supplement",
+        "revenue_30": 0.0,
+        "revenue_90": 1692.0,
+        "units_30": 0,
+        "units_90": 6,
+        "inventory_quantity": 6,
+        "stock_cover_days": 90.0,
         "stockout_stores": [],
         "reorder_stores": [
           "Edenvale"
@@ -482,8 +589,7 @@
         "stock_cover_days": 0.0,
         "stockout_stores": [],
         "reorder_stores": [
-          "Centurion",
-          "Edenvale"
+          "Centurion"
         ]
       },
       {
@@ -500,21 +606,6 @@
         "reorder_stores": [
           "Edenvale"
         ]
-      },
-      {
-        "sku": "6001651146882",
-        "title": "HEALTH NUT SOUTH AFRICA - Restore Collagen 1Kg",
-        "category": "Collagen Supplement",
-        "revenue_30": 0.0,
-        "revenue_90": 1275.12,
-        "units_30": 0,
-        "units_90": 1,
-        "inventory_quantity": 2,
-        "stock_cover_days": 180.0,
-        "stockout_stores": [],
-        "reorder_stores": [
-          "Edenvale"
-        ]
       }
     ],
     "branch_watch": [
@@ -522,13 +613,13 @@
         "store_code": "CEN",
         "store": "Centurion",
         "online_revenue": 0.0,
-        "physical_revenue_today": 0.0,
-        "physical_gp_pct_today": 0.0,
-        "mtd_revenue": 467539.01,
-        "mtd_target_pct": 32.2,
-        "projected_eom": 1350668.0,
-        "pace_gap_amount": -982460.99,
-        "mom_trend_revenue": 22.33,
+        "physical_revenue_today": 39846.26,
+        "physical_gp_pct_today": 34.7,
+        "mtd_revenue": 507385.27,
+        "mtd_target_pct": 35.0,
+        "projected_eom": 1319202.0,
+        "pace_gap_amount": -942614.73,
+        "mom_trend_revenue": -30.32,
         "top_products": [],
         "active_alerts": [
           "Makarios pace miss",
@@ -539,16 +630,15 @@
         "store_code": "EDN",
         "store": "Edenvale",
         "online_revenue": 0.0,
-        "physical_revenue_today": 15340.97,
-        "physical_gp_pct_today": 34.5,
-        "mtd_revenue": 134058.84,
-        "mtd_target_pct": 29.8,
-        "projected_eom": 346319.0,
-        "pace_gap_amount": -315941.16,
-        "mom_trend_revenue": 62.03,
+        "physical_revenue_today": 13649.8,
+        "physical_gp_pct_today": 35.4,
+        "mtd_revenue": 147708.64,
+        "mtd_target_pct": 32.8,
+        "projected_eom": 352228.0,
+        "pace_gap_amount": -302291.36,
+        "mom_trend_revenue": -11.02,
         "top_products": [],
         "active_alerts": [
-          "Makarios cash-up variance",
           "Revenue behind monthly pace",
           "EDN deposit recording gap",
           "Same-direction cash variance streak",
@@ -559,24 +649,23 @@
         "store_code": "GVS",
         "store": "Glen Village",
         "online_revenue": 0.0,
-        "physical_revenue_today": 6591.53,
-        "physical_gp_pct_today": 34.9,
-        "mtd_revenue": 92897.67,
-        "mtd_target_pct": 28.2,
-        "projected_eom": 359978.0,
-        "pace_gap_amount": -237102.33,
-        "mom_trend_revenue": -37.21,
+        "physical_revenue_today": 13994.71,
+        "physical_gp_pct_today": 34.5,
+        "mtd_revenue": 106892.38,
+        "mtd_target_pct": 32.4,
+        "projected_eom": 368185.0,
+        "pace_gap_amount": -223107.62,
+        "mom_trend_revenue": 112.31,
         "top_products": [],
         "active_alerts": [
-          "Makarios cash-up variance",
-          "Makarios pace miss",
-          "Revenue behind monthly pace"
+          "Revenue behind monthly pace",
+          "Makarios pace miss"
         ]
       },
       {
         "store_code": "ONLINE",
         "store": "Online",
-        "online_revenue": 208.2,
+        "online_revenue": 2216.1,
         "physical_revenue_today": 0.0,
         "physical_gp_pct_today": 0.0,
         "mtd_revenue": 0.0,
@@ -585,41 +674,42 @@
         "pace_gap_amount": null,
         "mom_trend_revenue": null,
         "top_products": [
-          "NUTRILIFE - Brewer’s Yeast 200g",
-          "PHARMA GERMANIA - Chase Tree Berries - 75g"
+          "ALMANS - Peaches Cling - 150g",
+          "ALOE FEROX - Fabulous Fibre Bitter - 90 Tablets",
+          "Florish Spore Probiotic with Fulvic Acid - 60 Capsules"
         ],
         "active_alerts": []
       }
     ],
     "customer_geo": {
-      "active_customers_180d": 199,
-      "new_customers_30d": 115,
-      "repeat_purchase_rate_90d": 4.52,
-      "repeat_purchase_customers_90d": 9,
+      "active_customers_180d": 208,
+      "new_customers_30d": 126,
+      "repeat_purchase_rate_90d": 4.81,
+      "repeat_purchase_customers_90d": 10,
       "churn_risk_customers": 0,
-      "due_for_repeat_31_60d": 77,
-      "slipping_61_90d": 1,
+      "due_for_repeat_31_60d": 75,
+      "slipping_61_90d": 0,
       "lapsed_91_plus": 0,
       "high_value_lapsed_91_plus": 0,
       "ltv_segments": {
         "high": 4,
         "mid": 39,
-        "low": 156
+        "low": 165
       },
       "top_cities_90d": [
         {
           "city": "Pretoria",
           "orders": 32,
-          "revenue": 28809.37,
+          "revenue": 28359.73,
           "customers": 29,
-          "average_order_value": 900.29
+          "average_order_value": 886.24
         },
         {
           "city": "Johannesburg",
-          "orders": 17,
-          "revenue": 16455.27,
-          "customers": 17,
-          "average_order_value": 967.96
+          "orders": 18,
+          "revenue": 16642.47,
+          "customers": 18,
+          "average_order_value": 924.58
         },
         {
           "city": "Midrand",
@@ -653,17 +743,17 @@
       "top_cities_30d": [
         {
           "city": "Pretoria",
-          "orders": 16,
-          "revenue": 13339.03,
-          "customers": 15,
-          "average_order_value": 833.69
+          "orders": 17,
+          "revenue": 13914.13,
+          "customers": 16,
+          "average_order_value": 818.48
         },
         {
           "city": "Johannesburg",
-          "orders": 7,
-          "revenue": 4400.55,
-          "customers": 7,
-          "average_order_value": 628.65
+          "orders": 8,
+          "revenue": 4587.75,
+          "customers": 8,
+          "average_order_value": 573.47
         },
         {
           "city": "Cape Town",
@@ -697,7 +787,7 @@
       "repeat_customer_top_categories": [
         {
           "category": "Unknown",
-          "units": 87
+          "units": 110
         }
       ],
       "lapsed_customer_top_categories": []
@@ -734,9 +824,9 @@
         "lane": "value_positioning",
         "theme": "Promote clear value leaders against Wellness Warehouse / FTN.",
         "products_to_push": [
+          "Natroceutics Magnesium & Trace Mineral Complex 60 Capsules",
           "Natroceutics Omega 3 Fortified 60 Capsules",
-          "Natroceutics Magnesium Trace Mineral Complex 60 Capsules",
-          "Natroceutics Omega 3 Pure Alaskan 60 Capsules"
+          "Natroceutics Omega 3 Pure & Wild 60 Capsules"
         ],
         "why_now": "The competitor scan shows Onelife already has provable price wins worth turning into conversion messaging."
       },
@@ -752,35 +842,51 @@
     ],
     "competitor_watch": {
       "status": "normalised",
-      "total_products_compared": 24,
-      "onelife_cheaper": 3,
-      "competitor_cheaper": 2,
-      "new_products_detected": 4,
-      "active_sales": 1,
+      "total_products_compared": 23,
+      "onelife_cheaper": 6,
+      "competitor_cheaper": 0,
+      "new_products_detected": 0,
+      "active_sales": 0,
       "competitive_advantages": [
+        {
+          "id": "natroceutics-magnesium-trace-mineral-60s",
+          "product": "Natroceutics Magnesium & Trace Mineral Complex 60 Capsules",
+          "onelife_price": 320.0,
+          "competitor": "wellness_warehouse",
+          "competitor_price": 339.95,
+          "diff": -19.95,
+          "pct": -5.87,
+          "match_quality": "exact_vs_WW_only"
+        },
         {
           "id": "natroceutics-omega3-fortified-60s",
           "product": "Natroceutics Omega 3 Fortified 60 Capsules",
           "onelife_price": 496.0,
-          "ww_price": 499.95,
-          "saving_vs_ww": 3.95,
-          "note": "Onelife cheaper - promote in marketing"
+          "competitor": "ftn",
+          "competitor_price": 497.0,
+          "diff": -1.0,
+          "pct": -0.2,
+          "match_quality": "exact"
         },
         {
-          "id": "natroceutics-magnesium-trace-mineral-60s",
-          "product": "Natroceutics Magnesium Trace Mineral Complex 60 Capsules",
-          "onelife_price": 320.0,
-          "ww_price": 339.95,
-          "saving_vs_ww": 19.95,
-          "note": "5.9% cheaper - strong value proposition"
+          "id": "natroceutics-omega3-pure-wild-60s",
+          "product": "Natroceutics Omega 3 Pure & Wild 60 Capsules",
+          "onelife_price": 377.0,
+          "competitor": "ftn",
+          "competitor_price": 378.0,
+          "diff": -1.0,
+          "pct": -0.26,
+          "match_quality": "exact_onelife_ftn_only"
         },
         {
-          "id": "natroceutics-omega3-pure-alaskan-60s",
-          "product": "Natroceutics Omega 3 Pure Alaskan 60 Capsules",
-          "onelife_price": 375.0,
-          "ww_price": 379.95,
-          "saving_vs_ww": 4.95,
-          "note": "1.3% cheaper - competitive positioning"
+          "id": "primeself-l-theanine-60s",
+          "product": "PrimeSelf L-Theanine 60 Capsules",
+          "onelife_price": 242.78,
+          "competitor": "ftn",
+          "competitor_price": 249.0,
+          "diff": -6.22,
+          "pct": -2.5,
+          "match_quality": "exact"
         }
       ],
       "price_match_risks": [
@@ -788,50 +894,94 @@
           "id": "natroceutics-ashwagandha-60s",
           "product": "Natroceutics Ashwagandha Bioactive 60 Capsules",
           "onelife_price": 327.0,
-          "competitor_price": 324.95,
           "competitor": "wellness_warehouse",
+          "competitor_price": 324.95,
           "diff": 2.05,
-          "pct": 0.6,
-          "recommendation": "Price match to R324.95 or bundle with other Natroceutics products"
+          "pct": 0.63,
+          "match_quality": "exact"
         },
         {
           "id": "natroceutics-magnesium-glycinate-complex-60s",
           "product": "Natroceutics Magnesium Glycinate Complex 60 Capsules",
           "onelife_price": 320.0,
-          "competitor_price": 319.95,
+          "competitor": "ftn",
+          "competitor_price": 319.0,
+          "diff": 1.0,
+          "pct": 0.31,
+          "match_quality": "exact"
+        },
+        {
+          "id": "natroceutics-l-theanine-60s",
+          "product": "Natroceutics L-Theanine Bioactive 60 Capsules",
+          "onelife_price": 319.0,
           "competitor": "wellness_warehouse",
-          "diff": 0.05,
-          "pct": 0.02,
-          "recommendation": "Negligible difference BUT WW is OUT OF STOCK - maintain price and capture demand"
+          "competitor_price": 299.95,
+          "diff": 19.05,
+          "pct": 6.35,
+          "match_quality": "exact"
+        },
+        {
+          "id": "natroceutics-saffron-30s",
+          "product": "Natroceutics Saffron Bioactive 30 Capsules",
+          "onelife_price": 289.0,
+          "competitor": "wellness_warehouse",
+          "competitor_price": 284.95,
+          "diff": 4.05,
+          "pct": 1.42,
+          "match_quality": "exact"
         }
       ],
       "live_promotions": [
         {
-          "product": "Beauty Gen Naked Collagen Complete I, II & III 600g",
-          "type": "SALE",
-          "was": 749.95,
-          "now": 639.95,
-          "saving": 110.0,
-          "pct_off": 14.7,
-          "tag_evidence": "SALE - Save R110",
-          "detected": "2026-04-01",
-          "status": "STILL_ACTIVE",
+          "product": "Metagenics UltraFlora Balance Probiotic Promo Pack 60s",
+          "type": "PROMO",
+          "now": 539.0,
+          "reference_regular": 654.95,
+          "saving": 115.95,
+          "pct_off": 17.7,
+          "detected": "2026-04-13",
+          "url": "https://wellnesswarehouse.com/products/metagenics-ultraflora-balance-probiotic-promo-pack-60s-519600007537",
           "competitor": "wellness_warehouse"
         },
         {
-          "product": "Metagenics D3 1000",
-          "type": "PROMOTION",
-          "note": "Buy 1 Get 1 Free mentioned in customer reviews",
-          "detected": "2026-04-01",
-          "confidence": "low",
+          "product": "Metagenics UltraFlora Balance Probiotic Promo Pack 30s",
+          "type": "PROMO",
+          "now": 309.95,
+          "reference_regular": 354.95,
+          "saving": 45.0,
+          "pct_off": 12.7,
+          "detected": "2026-04-13",
+          "url": "https://wellnesswarehouse.com/products/metagenics-ultraflora-balance-probiotic-promo-pack-30s-519600007536",
+          "competitor": "wellness_warehouse"
+        },
+        {
+          "product": "Future Health Omega-3 Assist 30 Day Supply",
+          "type": "SALE",
+          "was": 439.0,
+          "now": 307.3,
+          "saving": 131.7,
+          "pct_off": 30.0,
+          "detected": "2026-04-13",
+          "url": "https://www.faithful-to-nature.co.za/future-health-omega-assist-60",
+          "competitor": "ftn"
+        },
+        {
+          "product": "Metagenics UltraFlora Balance Probiotics 60C Promo - 15%",
+          "type": "PROMO",
+          "now": 540.0,
+          "reference_regular": 655.0,
+          "saving": 115.0,
+          "pct_off": 17.6,
+          "detected": "2026-04-13",
+          "url": "https://www.faithful-to-nature.co.za/metagenics-ultraflora-balance-probiotics-60c-promo-15",
           "competitor": "ftn"
         }
       ],
       "action_items": [
-        "Verify if Onelife stocks Natroceutics L-Theanine (WW has it at R299.95)",
-        "Check Onelife pricing on Natroceutics Curcumin Complete vs WW R594.95",
-        "Confirm Onelife has Natroceutics Saffron, Rhodiola, and B-Complex to match WW range",
-        "Consider price-matching Natroceutics Ashwagandha to R324.95 (R2.05 difference)"
+        "Price match or bundle Natroceutics Ashwagandha versus WW R324.95.",
+        "Tighten Natroceutics L-Theanine, Curcumin Complete, and Activated B-Complex pricing, because those are clearly above market and Activated B-Complex is also out of stock on Onelife.",
+        "Review Harvest Table Multi Collagen 350g, Onelife is materially above both WW and FTN.",
+        "Restock Natroceutics Omega 3 Fortified and SOLAL Magnesium Glycinate before using them in value messaging. Their listed prices are good, but both now show out of stock on Onelife."
       ]
     },
     "safe_to_push_products": [
@@ -849,7 +999,7 @@
         "category": "Homeopathic Drops",
         "revenue_90": 2651.85,
         "gross_profit_pct": 88.89,
-        "stock_cover_days": 33.33
+        "stock_cover_days": 20.0
       },
       {
         "sku": "737186082604",
@@ -860,26 +1010,26 @@
         "stock_cover_days": 15.0
       },
       {
+        "sku": "6009880565030",
+        "title": "NATTREND - Ceylon Cinnamon 200g",
+        "category": "Spice & Superfood Powder",
+        "revenue_90": 2012.94,
+        "gross_profit_pct": 89.42,
+        "stock_cover_days": 66.67
+      },
+      {
         "sku": "6009702596907",
         "title": "GOOD LIFE WELLNES - Glycine - 250G",
         "category": "Amino Acid Supplement",
         "revenue_90": 1747.44,
         "gross_profit_pct": 91.67,
         "stock_cover_days": 22.5
-      },
-      {
-        "sku": "6009675200580",
-        "title": "MEDFORD - ViralScript - 60 Vegetable Capsules",
-        "category": "Immune Support Supplement",
-        "revenue_90": 1692.0,
-        "gross_profit_pct": 83.33,
-        "stock_cover_days": 90.0
       }
     ]
   },
   "outputs": {
-    "raw_json": "vaults/onelife/raw/daily-trade-brief-2026-04-13.json",
-    "compiled_md": "vaults/onelife/compiled/daily-trade-brief-2026-04-13.md",
+    "raw_json": "vaults/onelife/raw/daily-trade-brief-2026-04-14.json",
+    "compiled_md": "vaults/onelife/compiled/daily-trade-brief-2026-04-14.md",
     "latest_json": "memory/onelife-trade-brief-latest.json",
     "latest_md": "memory/onelife-trade-brief-latest.md",
     "app_json": "onelife-intelligence/data/trade_brief_latest.json"
