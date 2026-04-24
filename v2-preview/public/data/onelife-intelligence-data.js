@@ -1,0 +1,2249 @@
+window.ONELIFE_INTELLIGENCE_DATA = {
+  "schema_version": "onelife-intelligence-preview/v2.0",
+  "generated_at": "2026-04-24T01:41:12+02:00",
+  "as_of": "2026-04-23",
+  "date_range": "2026-04-01 to 2026-04-23",
+  "source_health": [
+    {
+      "id": "omni",
+      "label": "Omni dashboard cache",
+      "path": "memory/omni_cache.json",
+      "exists": true,
+      "generated_at": "2026-04-23T19:33:51.092503+02:00",
+      "age_days": 0,
+      "status": "fresh",
+      "note": "OK - refreshed from live Omni Daily Turnover reports. Latest available date: 2026-04-23."
+    },
+    {
+      "id": "trade_brief",
+      "label": "Trade brief",
+      "path": "onelife-intelligence/data/trade_brief_latest.json",
+      "exists": true,
+      "generated_at": "2026-04-23T06:19:26.250730+02:00",
+      "age_days": 0,
+      "status": "fresh",
+      "note": "Commerce/action brief used for stock, online and content cards."
+    },
+    {
+      "id": "ana_gp",
+      "label": "ANA popular GP snapshot",
+      "path": "memory/snapshots/2026-02/ana_popular_gp.json",
+      "exists": true,
+      "generated_at": "2026-02-22T00:00:00+02:00",
+      "age_days": 61,
+      "status": "stale",
+      "note": "Used only for margin leak triage; stale by design until refreshed."
+    },
+    {
+      "id": "daily_sales",
+      "label": "Daily sales cache",
+      "path": "memory/daily-sales-cache.json",
+      "exists": true,
+      "generated_at": "2026-03-25T19:14:47.158960+02:00",
+      "age_days": 29,
+      "status": "stale",
+      "note": "Legacy history cache retained for warning only; Omni cache drives the preview."
+    },
+    {
+      "id": "reviews",
+      "label": "Google review history",
+      "path": "onelife-intelligence/data/google_reviews/review_history.json",
+      "exists": true,
+      "generated_at": "2026-03-27T00:00:00+02:00",
+      "age_days": 28,
+      "status": "stale",
+      "note": "Only one snapshot available, so review trend is not yet chartable."
+    }
+  ],
+  "executive": {
+    "mtd_revenue": 1455456.75,
+    "mtd_gross_profit": 497655.43,
+    "mtd_gp_pct": 34.2,
+    "today_revenue": 64879.31,
+    "today_gross_profit": 21855.04,
+    "today_gp_pct": 33.7,
+    "target": 2230000.0,
+    "projected_eom": 2045843.0,
+    "target_pct_current": 65.3,
+    "target_pct_projected": 91.7,
+    "projected_gap": -184157.0
+  },
+  "stores": [
+    {
+      "code": "CEN",
+      "source_code": "HO",
+      "name": "Centurion",
+      "today_revenue": 41863.51,
+      "today_gp_pct": 33.5,
+      "mtd_revenue": 954998.7,
+      "gross_profit": 326564.26,
+      "gp_pct": 34.2,
+      "target": 1450000.0,
+      "target_pct": 65.9,
+      "trading_days_done": 19,
+      "trading_days_total": 26,
+      "days_remaining": 7,
+      "projected_eom": 1306840.0,
+      "projected_target_pct": 90.1,
+      "pace_gap_amount": -143160.0,
+      "daily_run_rate": 50263.09,
+      "daily_needed": 70714.47,
+      "status": "behind",
+      "alerts": [
+        "Projected R143,160 below target",
+        "Revenue behind monthly pace",
+        "Makarios pace miss"
+      ]
+    },
+    {
+      "code": "GVS",
+      "source_code": "GVS",
+      "name": "Glen Village",
+      "today_revenue": 10921.89,
+      "today_gp_pct": 33.3,
+      "mtd_revenue": 227214.17,
+      "gross_profit": 77017.15,
+      "gp_pct": 33.9,
+      "target": 330000.0,
+      "target_pct": 68.9,
+      "trading_days_done": 19,
+      "trading_days_total": 31,
+      "days_remaining": 12,
+      "projected_eom": 370718.0,
+      "projected_target_pct": 112.3,
+      "pace_gap_amount": 40718.0,
+      "daily_run_rate": 11958.64,
+      "daily_needed": 8565.49,
+      "status": "on-track",
+      "alerts": [
+        "Revenue behind monthly pace",
+        "Makarios pace miss"
+      ]
+    },
+    {
+      "code": "EDN",
+      "source_code": "EDN",
+      "name": "Edenvale",
+      "today_revenue": 12093.91,
+      "today_gp_pct": 34.7,
+      "mtd_revenue": 273243.88,
+      "gross_profit": 94074.02,
+      "gp_pct": 34.4,
+      "target": 450000.0,
+      "target_pct": 60.7,
+      "trading_days_done": 23,
+      "trading_days_total": 31,
+      "days_remaining": 8,
+      "projected_eom": 368285.0,
+      "projected_target_pct": 81.8,
+      "pace_gap_amount": -81715.0,
+      "daily_run_rate": 11880.17,
+      "daily_needed": 22094.51,
+      "status": "behind",
+      "alerts": [
+        "Projected R81,715 below target",
+        "Revenue behind monthly pace",
+        "EDN deposit recording gap",
+        "Same-direction cash variance streak",
+        "Makarios pace miss"
+      ]
+    }
+  ],
+  "trends": [
+    {
+      "code": "ALL",
+      "label": "All stores",
+      "points": [
+        {
+          "date": "2026-04-01",
+          "revenue": 82631.18,
+          "gross_profit": 27756.38,
+          "gp_pct": 33.6
+        },
+        {
+          "date": "2026-04-02",
+          "revenue": 94916.68,
+          "gross_profit": 32168.58,
+          "gp_pct": 33.9
+        },
+        {
+          "date": "2026-04-03",
+          "revenue": 8418.51,
+          "gross_profit": 3187.48,
+          "gp_pct": 37.9
+        },
+        {
+          "date": "2026-04-04",
+          "revenue": 75111.18,
+          "gross_profit": 25916.69,
+          "gp_pct": 34.5
+        },
+        {
+          "date": "2026-04-05",
+          "revenue": 2135.13,
+          "gross_profit": 821.91,
+          "gp_pct": 38.5
+        },
+        {
+          "date": "2026-04-06",
+          "revenue": 22845.6,
+          "gross_profit": 7913.18,
+          "gp_pct": 34.6
+        },
+        {
+          "date": "2026-04-07",
+          "revenue": 80394.58,
+          "gross_profit": 28551.81,
+          "gp_pct": 35.5
+        },
+        {
+          "date": "2026-04-08",
+          "revenue": 80846.66,
+          "gross_profit": 27657.87,
+          "gp_pct": 34.2
+        },
+        {
+          "date": "2026-04-09",
+          "revenue": 80973.96,
+          "gross_profit": 27139.44,
+          "gp_pct": 33.5
+        },
+        {
+          "date": "2026-04-10",
+          "revenue": 67142.7,
+          "gross_profit": 23600.52,
+          "gp_pct": 35.1
+        },
+        {
+          "date": "2026-04-11",
+          "revenue": 77146.84,
+          "gross_profit": 25551.99,
+          "gp_pct": 33.1
+        },
+        {
+          "date": "2026-04-12",
+          "revenue": 21932.5,
+          "gross_profit": 7599.49,
+          "gp_pct": 34.6
+        },
+        {
+          "date": "2026-04-13",
+          "revenue": 67490.77,
+          "gross_profit": 23472.84,
+          "gp_pct": 34.8
+        },
+        {
+          "date": "2026-04-14",
+          "revenue": 86218.5,
+          "gross_profit": 29985.6,
+          "gp_pct": 34.8
+        },
+        {
+          "date": "2026-04-15",
+          "revenue": 84070.58,
+          "gross_profit": 28162.42,
+          "gp_pct": 33.5
+        },
+        {
+          "date": "2026-04-16",
+          "revenue": 55837.73,
+          "gross_profit": 19221.23,
+          "gp_pct": 34.4
+        },
+        {
+          "date": "2026-04-17",
+          "revenue": 74854.47,
+          "gross_profit": 24348.08,
+          "gp_pct": 32.5
+        },
+        {
+          "date": "2026-04-18",
+          "revenue": 81265.63,
+          "gross_profit": 28006.05,
+          "gp_pct": 34.5
+        },
+        {
+          "date": "2026-04-19",
+          "revenue": 24826.91,
+          "gross_profit": 8578.96,
+          "gp_pct": 34.6
+        },
+        {
+          "date": "2026-04-20",
+          "revenue": 65534.55,
+          "gross_profit": 22927.14,
+          "gp_pct": 35.0
+        },
+        {
+          "date": "2026-04-21",
+          "revenue": 67373.35,
+          "gross_profit": 22885.89,
+          "gp_pct": 34.0
+        },
+        {
+          "date": "2026-04-22",
+          "revenue": 88609.43,
+          "gross_profit": 30346.84,
+          "gp_pct": 34.2
+        },
+        {
+          "date": "2026-04-23",
+          "revenue": 64879.31,
+          "gross_profit": 21855.04,
+          "gp_pct": 33.7
+        }
+      ]
+    },
+    {
+      "code": "CEN",
+      "label": "Centurion",
+      "points": [
+        {
+          "date": "2026-04-01",
+          "revenue": 54377.9,
+          "gross_profit": 18895.38,
+          "gp_pct": 34.7
+        },
+        {
+          "date": "2026-04-02",
+          "revenue": 72027.85,
+          "gross_profit": 24586.46,
+          "gp_pct": 34.1
+        },
+        {
+          "date": "2026-04-03",
+          "revenue": 0.0,
+          "gross_profit": 0.0,
+          "gp_pct": 0.0
+        },
+        {
+          "date": "2026-04-04",
+          "revenue": 60554.6,
+          "gross_profit": 20952.75,
+          "gp_pct": 34.6
+        },
+        {
+          "date": "2026-04-05",
+          "revenue": 0.0,
+          "gross_profit": 0.0,
+          "gp_pct": 0.0
+        },
+        {
+          "date": "2026-04-06",
+          "revenue": 18146.38,
+          "gross_profit": 6402.68,
+          "gp_pct": 35.3
+        },
+        {
+          "date": "2026-04-07",
+          "revenue": 53925.56,
+          "gross_profit": 18945.76,
+          "gp_pct": 35.1
+        },
+        {
+          "date": "2026-04-08",
+          "revenue": 57076.67,
+          "gross_profit": 19357.16,
+          "gp_pct": 33.9
+        },
+        {
+          "date": "2026-04-09",
+          "revenue": 47506.05,
+          "gross_profit": 16319.67,
+          "gp_pct": 34.4
+        },
+        {
+          "date": "2026-04-10",
+          "revenue": 46742.38,
+          "gross_profit": 16368.17,
+          "gp_pct": 35.0
+        },
+        {
+          "date": "2026-04-11",
+          "revenue": 57181.62,
+          "gross_profit": 18820.25,
+          "gp_pct": 32.9
+        },
+        {
+          "date": "2026-04-12",
+          "revenue": 0.0,
+          "gross_profit": 0.0,
+          "gp_pct": 0.0
+        },
+        {
+          "date": "2026-04-13",
+          "revenue": 39846.26,
+          "gross_profit": 13806.75,
+          "gp_pct": 34.7
+        },
+        {
+          "date": "2026-04-14",
+          "revenue": 60577.99,
+          "gross_profit": 20876.92,
+          "gp_pct": 34.5
+        },
+        {
+          "date": "2026-04-15",
+          "revenue": 49088.73,
+          "gross_profit": 16287.93,
+          "gp_pct": 33.2
+        },
+        {
+          "date": "2026-04-16",
+          "revenue": 38959.0,
+          "gross_profit": 13351.08,
+          "gp_pct": 34.3
+        },
+        {
+          "date": "2026-04-17",
+          "revenue": 51465.37,
+          "gross_profit": 16676.81,
+          "gp_pct": 32.4
+        },
+        {
+          "date": "2026-04-18",
+          "revenue": 59818.91,
+          "gross_profit": 20418.33,
+          "gp_pct": 34.1
+        },
+        {
+          "date": "2026-04-19",
+          "revenue": 0.0,
+          "gross_profit": 0.0,
+          "gp_pct": 0.0
+        },
+        {
+          "date": "2026-04-20",
+          "revenue": 44736.17,
+          "gross_profit": 15528.39,
+          "gp_pct": 34.7
+        },
+        {
+          "date": "2026-04-21",
+          "revenue": 42856.45,
+          "gross_profit": 14714.63,
+          "gp_pct": 34.3
+        },
+        {
+          "date": "2026-04-22",
+          "revenue": 58247.3,
+          "gross_profit": 20240.04,
+          "gp_pct": 34.7
+        },
+        {
+          "date": "2026-04-23",
+          "revenue": 41863.51,
+          "gross_profit": 14015.1,
+          "gp_pct": 33.5
+        }
+      ]
+    },
+    {
+      "code": "GVS",
+      "label": "Glen Village",
+      "points": [
+        {
+          "date": "2026-04-01",
+          "revenue": 11598.34,
+          "gross_profit": 3543.2,
+          "gp_pct": 30.5
+        },
+        {
+          "date": "2026-04-02",
+          "revenue": 8928.53,
+          "gross_profit": 2757.54,
+          "gp_pct": 30.9
+        },
+        {
+          "date": "2026-04-03",
+          "revenue": 0.0,
+          "gross_profit": 0.0,
+          "gp_pct": 0.0
+        },
+        {
+          "date": "2026-04-04",
+          "revenue": 0.0,
+          "gross_profit": 0.0,
+          "gp_pct": 0.0
+        },
+        {
+          "date": "2026-04-05",
+          "revenue": 0.0,
+          "gross_profit": 0.0,
+          "gp_pct": 0.0
+        },
+        {
+          "date": "2026-04-06",
+          "revenue": 0.0,
+          "gross_profit": 0.0,
+          "gp_pct": 0.0
+        },
+        {
+          "date": "2026-04-07",
+          "revenue": 13014.75,
+          "gross_profit": 4627.61,
+          "gp_pct": 35.6
+        },
+        {
+          "date": "2026-04-08",
+          "revenue": 12169.72,
+          "gross_profit": 4377.94,
+          "gp_pct": 36.0
+        },
+        {
+          "date": "2026-04-09",
+          "revenue": 19881.19,
+          "gross_profit": 6606.76,
+          "gp_pct": 33.2
+        },
+        {
+          "date": "2026-04-10",
+          "revenue": 10216.49,
+          "gross_profit": 3332.22,
+          "gp_pct": 32.6
+        },
+        {
+          "date": "2026-04-11",
+          "revenue": 10497.12,
+          "gross_profit": 3690.86,
+          "gp_pct": 35.2
+        },
+        {
+          "date": "2026-04-12",
+          "revenue": 6591.53,
+          "gross_profit": 2299.64,
+          "gp_pct": 34.9
+        },
+        {
+          "date": "2026-04-13",
+          "revenue": 13994.71,
+          "gross_profit": 4832.07,
+          "gp_pct": 34.5
+        },
+        {
+          "date": "2026-04-14",
+          "revenue": 10192.0,
+          "gross_profit": 3610.29,
+          "gp_pct": 35.4
+        },
+        {
+          "date": "2026-04-15",
+          "revenue": 14955.65,
+          "gross_profit": 4713.15,
+          "gp_pct": 31.5
+        },
+        {
+          "date": "2026-04-16",
+          "revenue": 7480.07,
+          "gross_profit": 2661.63,
+          "gp_pct": 35.6
+        },
+        {
+          "date": "2026-04-17",
+          "revenue": 13756.09,
+          "gross_profit": 4430.67,
+          "gp_pct": 32.2
+        },
+        {
+          "date": "2026-04-18",
+          "revenue": 12680.33,
+          "gross_profit": 4742.18,
+          "gp_pct": 37.4
+        },
+        {
+          "date": "2026-04-19",
+          "revenue": 10742.52,
+          "gross_profit": 3540.97,
+          "gp_pct": 33.0
+        },
+        {
+          "date": "2026-04-20",
+          "revenue": 5619.6,
+          "gross_profit": 2102.98,
+          "gp_pct": 37.4
+        },
+        {
+          "date": "2026-04-21",
+          "revenue": 14205.12,
+          "gross_profit": 4926.21,
+          "gp_pct": 34.7
+        },
+        {
+          "date": "2026-04-22",
+          "revenue": 19768.52,
+          "gross_profit": 6583.87,
+          "gp_pct": 33.3
+        },
+        {
+          "date": "2026-04-23",
+          "revenue": 10921.89,
+          "gross_profit": 3637.36,
+          "gp_pct": 33.3
+        }
+      ]
+    },
+    {
+      "code": "EDN",
+      "label": "Edenvale",
+      "points": [
+        {
+          "date": "2026-04-01",
+          "revenue": 16654.94,
+          "gross_profit": 5317.8,
+          "gp_pct": 31.9
+        },
+        {
+          "date": "2026-04-02",
+          "revenue": 13960.3,
+          "gross_profit": 4824.58,
+          "gp_pct": 34.6
+        },
+        {
+          "date": "2026-04-03",
+          "revenue": 8418.51,
+          "gross_profit": 3187.48,
+          "gp_pct": 37.9
+        },
+        {
+          "date": "2026-04-04",
+          "revenue": 14556.58,
+          "gross_profit": 4963.94,
+          "gp_pct": 34.1
+        },
+        {
+          "date": "2026-04-05",
+          "revenue": 2135.13,
+          "gross_profit": 821.91,
+          "gp_pct": 38.5
+        },
+        {
+          "date": "2026-04-06",
+          "revenue": 4699.22,
+          "gross_profit": 1510.5,
+          "gp_pct": 32.1
+        },
+        {
+          "date": "2026-04-07",
+          "revenue": 13454.27,
+          "gross_profit": 4978.44,
+          "gp_pct": 37.0
+        },
+        {
+          "date": "2026-04-08",
+          "revenue": 11600.27,
+          "gross_profit": 3922.77,
+          "gp_pct": 33.8
+        },
+        {
+          "date": "2026-04-09",
+          "revenue": 13586.72,
+          "gross_profit": 4213.01,
+          "gp_pct": 31.0
+        },
+        {
+          "date": "2026-04-10",
+          "revenue": 10183.83,
+          "gross_profit": 3900.13,
+          "gp_pct": 38.3
+        },
+        {
+          "date": "2026-04-11",
+          "revenue": 9468.1,
+          "gross_profit": 3040.88,
+          "gp_pct": 32.1
+        },
+        {
+          "date": "2026-04-12",
+          "revenue": 15340.97,
+          "gross_profit": 5299.85,
+          "gp_pct": 34.5
+        },
+        {
+          "date": "2026-04-13",
+          "revenue": 13649.8,
+          "gross_profit": 4834.02,
+          "gp_pct": 35.4
+        },
+        {
+          "date": "2026-04-14",
+          "revenue": 15448.51,
+          "gross_profit": 5498.39,
+          "gp_pct": 35.6
+        },
+        {
+          "date": "2026-04-15",
+          "revenue": 20026.2,
+          "gross_profit": 7161.34,
+          "gp_pct": 35.8
+        },
+        {
+          "date": "2026-04-16",
+          "revenue": 9398.66,
+          "gross_profit": 3208.52,
+          "gp_pct": 34.1
+        },
+        {
+          "date": "2026-04-17",
+          "revenue": 9633.01,
+          "gross_profit": 3240.6,
+          "gp_pct": 33.6
+        },
+        {
+          "date": "2026-04-18",
+          "revenue": 8766.39,
+          "gross_profit": 2845.54,
+          "gp_pct": 32.5
+        },
+        {
+          "date": "2026-04-19",
+          "revenue": 14084.39,
+          "gross_profit": 5037.99,
+          "gp_pct": 35.8
+        },
+        {
+          "date": "2026-04-20",
+          "revenue": 15178.78,
+          "gross_profit": 5295.77,
+          "gp_pct": 34.9
+        },
+        {
+          "date": "2026-04-21",
+          "revenue": 10311.78,
+          "gross_profit": 3245.05,
+          "gp_pct": 31.5
+        },
+        {
+          "date": "2026-04-22",
+          "revenue": 10593.61,
+          "gross_profit": 3522.93,
+          "gp_pct": 33.3
+        },
+        {
+          "date": "2026-04-23",
+          "revenue": 12093.91,
+          "gross_profit": 4202.58,
+          "gp_pct": 34.7
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "priority": "High",
+      "lane": "Store pace",
+      "title": "Recover Centurion month-end pace",
+      "owner": "Store lead / Naadir",
+      "store_code": "CEN",
+      "reason": "Projected EOM is R143,160 below target at 90.1% projected target cover.",
+      "expected_move": "Needs roughly R70,714/trading day for the remaining 7 trading days.",
+      "evidence": [
+        "Projected R143,160 below target",
+        "Revenue behind monthly pace",
+        "Makarios pace miss"
+      ]
+    },
+    {
+      "priority": "High",
+      "lane": "Stock protection",
+      "title": "Protect DELFRAN - Family Starter Pack",
+      "owner": "Buying / Store ops",
+      "store_code": "Centurion",
+      "reason": "R2,985 90d demand with 0 units and 0 days cover.",
+      "expected_move": "Transfer, reorder, or supplier follow-up before demand outruns cover.",
+      "evidence": [
+        "Reorder stores: Centurion, Edenvale",
+        "30d units: 2"
+      ]
+    },
+    {
+      "priority": "Medium",
+      "lane": "Margin leak",
+      "title": "Validate GP leak on BRD WHITE RICE",
+      "owner": "Buying / Finance",
+      "store_code": "CEN",
+      "reason": "17.9% GP on R134,680 revenue in stale ANA snapshot.",
+      "expected_move": "If still current, lifting to 35% GP recovers about R22,975.",
+      "evidence": [
+        "Supplier: LOVE YOURSELF BREADZ",
+        "Validate against current Omni before acting"
+      ]
+    },
+    {
+      "priority": "High",
+      "lane": "inventory",
+      "title": "Protect DELFRAN - Pcositol - 30 Sachets",
+      "owner": "Manual approval",
+      "store_code": "ALL",
+      "reason": "Read-only brief identified a winning SKU with live stock risk.",
+      "expected_move": "Choose the lowest-risk replenishment move before demand outpaces stock cover.",
+      "evidence": [
+        "90d revenue R4,352.34",
+        "Stock cover 390.0 days",
+        "Pressure nodes Edenvale"
+      ]
+    }
+  ],
+  "margin_leaks": {
+    "summary": {
+      "candidate_count": 1948,
+      "total_recoverable_to_35": 570046.23,
+      "stale_warning": "Product margin data is from the February ANA snapshot. Use this for triage, not final decisions."
+    },
+    "items": [
+      {
+        "sku": "600000014181",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "BRD WHITE RICE",
+        "supplier_code": "LOVE",
+        "supplier": "LOVE YOURSELF BREADZ",
+        "revenue": 134679.88,
+        "gross_profit": 24162.88,
+        "quantity": 2016,
+        "gp_pct": 17.9,
+        "recoverable_to_35": 22975.08,
+        "recoverable_to_40": 29709.07,
+        "severity": "high"
+      },
+      {
+        "sku": "600000014181",
+        "store_code": "GVS",
+        "store": "Glen Village",
+        "title": "BRD WHITE RICE",
+        "supplier_code": "LOVE",
+        "supplier": "LOVE YOURSELF BREADZ",
+        "revenue": 56131.27,
+        "gross_profit": 10595.27,
+        "quantity": 828,
+        "gp_pct": 18.9,
+        "recoverable_to_35": 9050.67,
+        "recoverable_to_40": 11857.24,
+        "severity": "high"
+      },
+      {
+        "sku": "600000013614",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "BRD BROWN RICE",
+        "supplier_code": "LOVE",
+        "supplier": "LOVE YOURSELF BREADZ",
+        "revenue": 48336.86,
+        "gross_profit": 8619.86,
+        "quantity": 725,
+        "gp_pct": 17.8,
+        "recoverable_to_35": 8298.04,
+        "recoverable_to_40": 10714.88,
+        "severity": "high"
+      },
+      {
+        "sku": "600000000019",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "FLORISH SPORE PROBIOTIC 60C",
+        "supplier_code": "NH",
+        "supplier": "INOVO - REGENESIS HEALTH",
+        "revenue": 105639.33,
+        "gross_profit": 30106.53,
+        "quantity": 292,
+        "gp_pct": 28.5,
+        "recoverable_to_35": 6867.24,
+        "recoverable_to_40": 12149.2,
+        "severity": "medium"
+      },
+      {
+        "sku": "600000000613",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "BRD SORG/QUIN",
+        "supplier_code": "LOVE",
+        "supplier": "LOVE YOURSELF BREADZ",
+        "revenue": 39774.31,
+        "gross_profit": 7077.31,
+        "quantity": 595,
+        "gp_pct": 17.8,
+        "recoverable_to_35": 6843.7,
+        "recoverable_to_40": 8832.41,
+        "severity": "high"
+      },
+      {
+        "sku": "6009888578087",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "OMEGA 3 Z+L   60\"S",
+        "supplier_code": "NATRO",
+        "supplier": "NATROCEUTICS SA (PTY) LTD (ONELI01)",
+        "revenue": 123954.74,
+        "gross_profit": 36676.74,
+        "quantity": 302,
+        "gp_pct": 29.6,
+        "recoverable_to_35": 6707.42,
+        "recoverable_to_40": 12905.16,
+        "severity": "medium"
+      },
+      {
+        "sku": "600000002981",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "BRD BANTING",
+        "supplier_code": "LOVE",
+        "supplier": "LOVE YOURSELF BREADZ",
+        "revenue": 38330.5,
+        "gross_profit": 8732.5,
+        "quantity": 487,
+        "gp_pct": 22.8,
+        "recoverable_to_35": 4683.17,
+        "recoverable_to_40": 6599.7,
+        "severity": "high"
+      },
+      {
+        "sku": "6009888578117",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "OMEGA 3 60\"S",
+        "supplier_code": "NATRO",
+        "supplier": "NATROCEUTICS SA (PTY) LTD (ONELI01)",
+        "revenue": 93602.08,
+        "gross_profit": 28262.08,
+        "quantity": 297,
+        "gp_pct": 30.2,
+        "recoverable_to_35": 4498.65,
+        "recoverable_to_40": 9178.75,
+        "severity": "medium"
+      },
+      {
+        "sku": "600000002487",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "BRD FLAX",
+        "supplier_code": "LOVE",
+        "supplier": "LOVE YOURSELF BREADZ",
+        "revenue": 33949.77,
+        "gross_profit": 7771.77,
+        "quantity": 431,
+        "gp_pct": 22.9,
+        "recoverable_to_35": 4110.65,
+        "recoverable_to_40": 5808.14,
+        "severity": "high"
+      },
+      {
+        "sku": "600000013614",
+        "store_code": "GVS",
+        "store": "Glen Village",
+        "title": "BRD BROWN RICE",
+        "supplier_code": "LOVE",
+        "supplier": "LOVE YOURSELF BREADZ",
+        "revenue": 20530.47,
+        "gross_profit": 3949.47,
+        "quantity": 302,
+        "gp_pct": 19.2,
+        "recoverable_to_35": 3236.19,
+        "recoverable_to_40": 4262.72,
+        "severity": "high"
+      },
+      {
+        "sku": "6009888578001",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "BERBERINE COMPLEX 60\"S",
+        "supplier_code": "NATRO",
+        "supplier": "NATROCEUTICS SA (PTY) LTD (ONELI01)",
+        "revenue": 71018.32,
+        "gross_profit": 21689.32,
+        "quantity": 189,
+        "gp_pct": 30.5,
+        "recoverable_to_35": 3167.09,
+        "recoverable_to_40": 6718.01,
+        "severity": "medium"
+      },
+      {
+        "sku": "6009669460860",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "BRD SWEET POTATOE",
+        "supplier_code": "LOVE",
+        "supplier": "LOVE YOURSELF BREADZ",
+        "revenue": 25455.94,
+        "gross_profit": 5847.94,
+        "quantity": 355,
+        "gp_pct": 23.0,
+        "recoverable_to_35": 3061.64,
+        "recoverable_to_40": 4334.44,
+        "severity": "high"
+      },
+      {
+        "sku": "748927022803",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "GLUTAMINE POWDER 500G",
+        "supplier_code": "IL",
+        "supplier": "Interlife Distributors (INTERLIFE WHOLESALERS (PTY) LTD)",
+        "revenue": 47418.46,
+        "gross_profit": 13646.46,
+        "quantity": 185,
+        "gp_pct": 28.8,
+        "recoverable_to_35": 2950.0,
+        "recoverable_to_40": 5320.92,
+        "severity": "medium"
+      },
+      {
+        "sku": "6009888578131",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "B COMPLEX 30\"S",
+        "supplier_code": "NATRO",
+        "supplier": "NATROCEUTICS SA (PTY) LTD (ONELI01)",
+        "revenue": 63939.5,
+        "gross_profit": 19489.5,
+        "quantity": 254,
+        "gp_pct": 30.5,
+        "recoverable_to_35": 2889.32,
+        "recoverable_to_40": 6086.3,
+        "severity": "medium"
+      },
+      {
+        "sku": "600000000620",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "BUNS WHITE  6S",
+        "supplier_code": "LOVE",
+        "supplier": "LOVE YOURSELF BREADZ",
+        "revenue": 15848.8,
+        "gross_profit": 2706.8,
+        "quantity": 187,
+        "gp_pct": 17.1,
+        "recoverable_to_35": 2840.28,
+        "recoverable_to_40": 3632.72,
+        "severity": "high"
+      },
+      {
+        "sku": "658325088762",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "POTASSIUM MAX 60'S",
+        "supplier_code": "EVN",
+        "supplier": "ECO VALLEY NUTRITION",
+        "revenue": 66490.35,
+        "gross_profit": 20504.49,
+        "quantity": 366,
+        "gp_pct": 30.8,
+        "recoverable_to_35": 2767.13,
+        "recoverable_to_40": 6091.65,
+        "severity": "medium"
+      },
+      {
+        "sku": "600000000613",
+        "store_code": "GVS",
+        "store": "Glen Village",
+        "title": "BRD SORG/QUIN",
+        "supplier_code": "LOVE",
+        "supplier": "LOVE YOURSELF BREADZ",
+        "revenue": 17162.05,
+        "gross_profit": 3290.05,
+        "quantity": 252,
+        "gp_pct": 19.2,
+        "recoverable_to_35": 2716.67,
+        "recoverable_to_40": 3574.77,
+        "severity": "high"
+      },
+      {
+        "sku": "600000002981",
+        "store_code": "GVS",
+        "store": "Glen Village",
+        "title": "BRD BANTING",
+        "supplier_code": "LOVE",
+        "supplier": "LOVE YOURSELF BREADZ",
+        "revenue": 25533.2,
+        "gross_profit": 6378.2,
+        "quantity": 315,
+        "gp_pct": 25.0,
+        "recoverable_to_35": 2558.42,
+        "recoverable_to_40": 3835.08,
+        "severity": "medium"
+      },
+      {
+        "sku": "737186435622",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "ARTHRITIS ADV FRML 360G",
+        "supplier_code": "ALTW",
+        "supplier": "ALTWELL (PTY) LTD",
+        "revenue": 33105.65,
+        "gross_profit": 9063.65,
+        "quantity": 36,
+        "gp_pct": 27.4,
+        "recoverable_to_35": 2523.33,
+        "recoverable_to_40": 4178.61,
+        "severity": "medium"
+      },
+      {
+        "sku": "600000013796",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "BRD WHITE MAC",
+        "supplier_code": "LOVE",
+        "supplier": "LOVE YOURSELF BREADZ",
+        "revenue": 13544.79,
+        "gross_profit": 2279.79,
+        "quantity": 201,
+        "gp_pct": 16.8,
+        "recoverable_to_35": 2460.89,
+        "recoverable_to_40": 3138.13,
+        "severity": "high"
+      },
+      {
+        "sku": "6009801203447",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "MEGA OMEGA SUPR150C",
+        "supplier_code": "TRTFC",
+        "supplier": "The Real Thing Food Supplements cc",
+        "revenue": 49006.33,
+        "gross_profit": 14721.33,
+        "quantity": 97,
+        "gp_pct": 30.0,
+        "recoverable_to_35": 2430.89,
+        "recoverable_to_40": 4881.2,
+        "severity": "medium"
+      },
+      {
+        "sku": "614143249167",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "VIT K2-7 & D3 60S",
+        "supplier_code": "VERHAKI",
+        "supplier": "VERHAKI (PTY) LTD",
+        "revenue": 39886.97,
+        "gross_profit": 11549.57,
+        "quantity": 154,
+        "gp_pct": 29.0,
+        "recoverable_to_35": 2410.87,
+        "recoverable_to_40": 4405.22,
+        "severity": "medium"
+      },
+      {
+        "sku": "6007930001088",
+        "store_code": "GVS",
+        "store": "Glen Village",
+        "title": "CRITICAL CARE 500ML",
+        "supplier_code": "CHSA",
+        "supplier": "Cili Health S.A. (Pty) Ltd (ONELIF)",
+        "revenue": 42765.38,
+        "gross_profit": 12588.53,
+        "quantity": 83,
+        "gp_pct": 29.4,
+        "recoverable_to_35": 2379.35,
+        "recoverable_to_40": 4517.62,
+        "severity": "medium"
+      },
+      {
+        "sku": "737186650315",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "ETERNA VIT E 120's",
+        "supplier_code": "SON",
+        "supplier": "Something Natural CC",
+        "revenue": 30051.25,
+        "gross_profit": 8290.0,
+        "quantity": 21,
+        "gp_pct": 27.6,
+        "recoverable_to_35": 2227.94,
+        "recoverable_to_40": 3730.5,
+        "severity": "medium"
+      },
+      {
+        "sku": "6000000000123",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "ENERGY BARS",
+        "supplier_code": "LOVE",
+        "supplier": "LOVE YOURSELF BREADZ",
+        "revenue": 17893.47,
+        "gross_profit": 4093.47,
+        "quantity": 231,
+        "gp_pct": 22.9,
+        "recoverable_to_35": 2169.24,
+        "recoverable_to_40": 3063.92,
+        "severity": "high"
+      },
+      {
+        "sku": "6009700920025",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "HORMONE ASSIST 60's",
+        "supplier_code": "PROD",
+        "supplier": "PRO DISTRIBUTORS (TVL1444)",
+        "revenue": 44090.56,
+        "gross_profit": 13330.08,
+        "quantity": 78,
+        "gp_pct": 30.2,
+        "recoverable_to_35": 2101.62,
+        "recoverable_to_40": 4306.14,
+        "severity": "medium"
+      },
+      {
+        "sku": "6009687953511",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "PRO PROBIOTIC 30 CAPS",
+        "supplier_code": "TRTFC",
+        "supplier": "The Real Thing Food Supplements cc",
+        "revenue": 49562.78,
+        "gross_profit": 15277.78,
+        "quantity": 181,
+        "gp_pct": 30.8,
+        "recoverable_to_35": 2069.19,
+        "recoverable_to_40": 4547.33,
+        "severity": "medium"
+      },
+      {
+        "sku": "6009801203461",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "TRI MAG 90CAPS",
+        "supplier_code": "TRTFC",
+        "supplier": "The Real Thing Food Supplements cc",
+        "revenue": 50224.5,
+        "gross_profit": 15524.5,
+        "quantity": 206,
+        "gp_pct": 30.9,
+        "recoverable_to_35": 2054.07,
+        "recoverable_to_40": 4565.3,
+        "severity": "medium"
+      },
+      {
+        "sku": "6000000800154",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "BONE SUPREME 500'S",
+        "supplier_code": "IL",
+        "supplier": "Interlife Distributors (INTERLIFE WHOLESALERS (PTY) LTD)",
+        "revenue": 20694.2,
+        "gross_profit": 5282.5,
+        "quantity": 25,
+        "gp_pct": 25.5,
+        "recoverable_to_35": 1960.47,
+        "recoverable_to_40": 2995.18,
+        "severity": "medium"
+      },
+      {
+        "sku": "600000000019",
+        "store_code": "GVS",
+        "store": "Glen Village",
+        "title": "FLORISH SPORE PROBIOTIC 60C",
+        "supplier_code": "NH",
+        "supplier": "INOVO - REGENESIS HEALTH",
+        "revenue": 35859.02,
+        "gross_profit": 10638.72,
+        "quantity": 97,
+        "gp_pct": 29.7,
+        "recoverable_to_35": 1911.94,
+        "recoverable_to_40": 3704.89,
+        "severity": "medium"
+      },
+      {
+        "sku": "6009689720975",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "2L MILK KEFIR",
+        "supplier_code": "NUM",
+        "supplier": "NUMESA",
+        "revenue": 17402.05,
+        "gross_profit": 4240.36,
+        "quantity": 139,
+        "gp_pct": 24.4,
+        "recoverable_to_35": 1850.36,
+        "recoverable_to_40": 2720.46,
+        "severity": "high"
+      },
+      {
+        "sku": "6009660077326",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "RAW HONEY 500G",
+        "supplier_code": "DOP",
+        "supplier": "DORATHIA'S PANTRY",
+        "revenue": 17006.58,
+        "gross_profit": 4106.58,
+        "quantity": 215,
+        "gp_pct": 24.1,
+        "recoverable_to_35": 1845.72,
+        "recoverable_to_40": 2696.05,
+        "severity": "high"
+      },
+      {
+        "sku": "733739026446",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "CHLOROPHYLL MINT 473ML",
+        "supplier_code": "DSI",
+        "supplier": "DS INTERNATIONAL (NOW)",
+        "revenue": 62401.72,
+        "gross_profit": 20012.47,
+        "quantity": 130,
+        "gp_pct": 32.1,
+        "recoverable_to_35": 1828.13,
+        "recoverable_to_40": 4948.22,
+        "severity": "medium"
+      },
+      {
+        "sku": "600000003399",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "PRIME 1 900ML",
+        "supplier_code": "IL",
+        "supplier": "Interlife Distributors (INTERLIFE WHOLESALERS (PTY) LTD)",
+        "revenue": 27319.73,
+        "gross_profit": 7759.1,
+        "quantity": 87,
+        "gp_pct": 28.4,
+        "recoverable_to_35": 1802.81,
+        "recoverable_to_40": 3168.79,
+        "severity": "medium"
+      },
+      {
+        "sku": "6001390060883",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "LENNON PEPPERMINT DROPS",
+        "supplier_code": "CITY",
+        "supplier": "CITY MEDICAL WHOLESALERS (PTY) LTD (109412)",
+        "revenue": 17591.3,
+        "gross_profit": 4390.14,
+        "quantity": 476,
+        "gp_pct": 25.0,
+        "recoverable_to_35": 1766.81,
+        "recoverable_to_40": 2646.38,
+        "severity": "medium"
+      },
+      {
+        "sku": "600000070155",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "ALOE DRINK GEL 1L",
+        "supplier_code": "FERO",
+        "supplier": "FEROXII NATURALS",
+        "revenue": 27624.52,
+        "gross_profit": 7929.52,
+        "quantity": 101,
+        "gp_pct": 28.7,
+        "recoverable_to_35": 1739.06,
+        "recoverable_to_40": 3120.29,
+        "severity": "medium"
+      },
+      {
+        "sku": "6009800132120",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "COLOPERM POWDER 900G",
+        "supplier_code": "BIODOSA",
+        "supplier": "BIODOSA (PTY) LTD",
+        "revenue": 29836.42,
+        "gross_profit": 8711.05,
+        "quantity": 49,
+        "gp_pct": 29.2,
+        "recoverable_to_35": 1731.7,
+        "recoverable_to_40": 3223.52,
+        "severity": "medium"
+      },
+      {
+        "sku": "6009801022451",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "PCOSITOL 8g 30 SATCHET",
+        "supplier_code": "DELF",
+        "supplier": "DELFRAN (PTY) LTD",
+        "revenue": 41103.13,
+        "gross_profit": 12671.48,
+        "quantity": 79,
+        "gp_pct": 30.8,
+        "recoverable_to_35": 1714.62,
+        "recoverable_to_40": 3769.77,
+        "severity": "medium"
+      },
+      {
+        "sku": "600000002981",
+        "store_code": "EDN",
+        "store": "Edenvale",
+        "title": "BRD BANTING",
+        "supplier_code": "LOVE",
+        "supplier": "LOVE YOURSELF BREADZ",
+        "revenue": 17776.51,
+        "gross_profit": 4573.51,
+        "quantity": 216,
+        "gp_pct": 25.7,
+        "recoverable_to_35": 1648.27,
+        "recoverable_to_40": 2537.09,
+        "severity": "medium"
+      },
+      {
+        "sku": "48930703",
+        "store_code": "CEN",
+        "store": "Centurion",
+        "title": "PAK FAH YEOW 20ML",
+        "supplier_code": "FERO",
+        "supplier": "FEROXII NATURALS",
+        "revenue": 28283.93,
+        "gross_profit": 8273.93,
+        "quantity": 87,
+        "gp_pct": 29.3,
+        "recoverable_to_35": 1625.45,
+        "recoverable_to_40": 3039.64,
+        "severity": "medium"
+      }
+    ]
+  },
+  "range_stock": {
+    "stock_risks": [
+      {
+        "sku": "6009801022321",
+        "title": "DELFRAN - Family Starter Pack",
+        "category": "Family Health Pack",
+        "revenue_30": 1990.0,
+        "revenue_90": 2985.0,
+        "units_30": 2,
+        "inventory_quantity": 0,
+        "stock_cover_days": 0.0,
+        "reorder_stores": [
+          "Centurion",
+          "Edenvale"
+        ],
+        "severity": "high",
+        "action": "Replenish or transfer"
+      },
+      {
+        "sku": "7896877470205",
+        "title": "STEPHANIE FILTERS - Ceramic Gravity Filter 4L",
+        "category": "Water Filter",
+        "revenue_30": 0.0,
+        "revenue_90": 2784.86,
+        "units_30": 0,
+        "inventory_quantity": 0,
+        "stock_cover_days": 0.0,
+        "reorder_stores": [
+          "Centurion",
+          "Edenvale"
+        ],
+        "severity": "high",
+        "action": "Replenish or transfer"
+      },
+      {
+        "sku": "6009665891088",
+        "title": "HEEL - Lymphomyosot N Oral Drops - 30ml",
+        "category": "Homeopathic Drops",
+        "revenue_30": 2651.85,
+        "revenue_90": 2651.85,
+        "units_30": 9,
+        "inventory_quantity": 4,
+        "stock_cover_days": 13.33,
+        "reorder_stores": [
+          "Centurion"
+        ],
+        "severity": "high",
+        "action": "Replenish or transfer"
+      },
+      {
+        "sku": "6901070110177",
+        "title": "CHINAHERB - Yunnan Baiyao Powder",
+        "category": "Herbal Powder",
+        "revenue_30": 1372.49,
+        "revenue_90": 1568.57,
+        "units_30": 7,
+        "inventory_quantity": 0,
+        "stock_cover_days": 0.0,
+        "reorder_stores": [
+          "Centurion"
+        ],
+        "severity": "high",
+        "action": "Replenish or transfer"
+      },
+      {
+        "sku": "6009675502165",
+        "title": "PHARMA GERMANIA - Slippery Elm Powder - 100g",
+        "category": "Herbal Digestive Remedy",
+        "revenue_30": 1041.92,
+        "revenue_90": 1041.92,
+        "units_30": 4,
+        "inventory_quantity": 2,
+        "stock_cover_days": 15.0,
+        "reorder_stores": [
+          "Centurion"
+        ],
+        "severity": "high",
+        "action": "Replenish or transfer"
+      },
+      {
+        "sku": "658325088663",
+        "title": "ECO VALLEY NUTRITION - 5HTP - 60 Capsules",
+        "category": "Mood Support Supplement",
+        "revenue_30": 719.76,
+        "revenue_90": 959.69,
+        "units_30": 3,
+        "inventory_quantity": 0,
+        "stock_cover_days": 0.0,
+        "reorder_stores": [
+          "Centurion"
+        ],
+        "severity": "high",
+        "action": "Replenish or transfer"
+      },
+      {
+        "sku": "6009801022451",
+        "title": "DELFRAN - Pcositol - 30 Sachets",
+        "category": "Women's Health Supplement",
+        "revenue_30": 645.0,
+        "revenue_90": 4352.34,
+        "units_30": 1,
+        "inventory_quantity": 13,
+        "stock_cover_days": 390.0,
+        "reorder_stores": [
+          "Edenvale"
+        ],
+        "severity": "watch",
+        "action": "Watch and confirm branch cover"
+      },
+      {
+        "sku": "600000000154",
+        "title": "OCEAN THERAPY - Pain Gel - 200g",
+        "category": "Topical Pain Relief Gel",
+        "revenue_30": 190.91,
+        "revenue_90": 1336.37,
+        "units_30": 1,
+        "inventory_quantity": 6,
+        "stock_cover_days": 180.0,
+        "reorder_stores": [
+          "Edenvale"
+        ],
+        "severity": "watch",
+        "action": "Watch and confirm branch cover"
+      }
+    ],
+    "safe_to_push": [
+      {
+        "sku": "781159888670",
+        "title": "NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules",
+        "category": "Nootropic Supplement",
+        "revenue_90": 4382.6,
+        "gross_profit_pct": 80.0,
+        "stock_cover_days": 30.0
+      },
+      {
+        "sku": "6009801022642",
+        "title": "DELFRAN - Naleo Spectrum - 30 x 5g Scoops",
+        "category": "Brain Health Supplement",
+        "revenue_90": 2925.0,
+        "gross_profit_pct": 79.15,
+        "stock_cover_days": 108.0
+      },
+      {
+        "sku": "6009880565030",
+        "title": "NATTREND - Ceylon Cinnamon 200g",
+        "category": "Spice & Superfood Powder",
+        "revenue_90": 2225.92,
+        "gross_profit_pct": 90.43,
+        "stock_cover_days": 67.5
+      },
+      {
+        "sku": "737186082604",
+        "title": "YOUR WELLBEING - Cholest-Well - 60 Capsules",
+        "category": "Cardiovascular Health Supplement",
+        "revenue_90": 2038.22,
+        "gross_profit_pct": 50.0,
+        "stock_cover_days": 45.0
+      },
+      {
+        "sku": "737186096175",
+        "title": "PRIMESELF - Magnesium Complex - 60 Veg Capsules",
+        "category": "Magnesium Supplement",
+        "revenue_90": 2000.0,
+        "gross_profit_pct": 75.0,
+        "stock_cover_days": 75.0
+      }
+    ],
+    "content_to_commerce": [
+      {
+        "lane": "organic_and_paid",
+        "theme": "Current TikTok winners cluster around brain fog, stress, sleep, and energy hooks.",
+        "products_to_push": [
+          "NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules",
+          "DELFRAN - Naleo Spectrum - 30 x 5g Scoops",
+          "NATTREND - Ceylon Cinnamon 200g"
+        ],
+        "why_now": "These SKUs have live demand plus safe stock cover, so content can scale without creating a stockout problem."
+      },
+      {
+        "lane": "seo_to_commerce",
+        "theme": "Herbal Tonic: Benefits, Dosage and Where to Buy in South Africa",
+        "products_to_push": [
+          "NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules",
+          "DELFRAN - Naleo Spectrum - 30 x 5g Scoops"
+        ],
+        "why_now": "Use active search demand to support products that can still absorb demand operationally."
+      },
+      {
+        "lane": "seo_to_commerce",
+        "theme": "Best Women's Multivitamins in South Africa (2026 Guide)",
+        "products_to_push": [
+          "NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules",
+          "DELFRAN - Naleo Spectrum - 30 x 5g Scoops"
+        ],
+        "why_now": "Use active search demand to support products that can still absorb demand operationally."
+      },
+      {
+        "lane": "range_and_content",
+        "theme": "Gap watch: New Leaf",
+        "products_to_push": [
+          "NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules",
+          "DELFRAN - Naleo Spectrum - 30 x 5g Scoops"
+        ],
+        "why_now": "Open supplier conversation with New Leaf or identify a premium equivalent for the same use-case."
+      },
+      {
+        "lane": "search_conversion",
+        "theme": "Organic search already converted 0 purchases in the latest GA4 slice.",
+        "products_to_push": [
+          "NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules",
+          "DELFRAN - Naleo Spectrum - 30 x 5g Scoops"
+        ],
+        "why_now": "Bridge search demand into product-led landing pages and conversion-focused creative."
+      }
+    ],
+    "range_gaps": [
+      {
+        "title": "MgK ASPARTATE 450mg 90s",
+        "revenue": 34874.0,
+        "quantity": 239,
+        "gp_pct": 33.3,
+        "missing_stores": [
+          "GVS"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "BRD FLAX",
+        "revenue": 33950.0,
+        "quantity": 431,
+        "gp_pct": 22.9,
+        "missing_stores": [
+          "EDN"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "60C BRO BALANCE",
+        "revenue": 29160.0,
+        "quantity": 82,
+        "gp_pct": 31.3,
+        "missing_stores": [
+          "GVS"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "BODYMAG 120VC",
+        "revenue": 27316.0,
+        "quantity": 95,
+        "gp_pct": 32.8,
+        "missing_stores": [
+          "GVS"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "CRITICAL CARE 500ML",
+        "revenue": 24917.0,
+        "quantity": 47,
+        "gp_pct": 31.7,
+        "missing_stores": [
+          "EDN"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "COQ10 BIOMAX",
+        "revenue": 24449.0,
+        "quantity": 74,
+        "gp_pct": 32.9,
+        "missing_stores": [
+          "GVS"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "QUERCETIN COMPLEX 60S",
+        "revenue": 23518.0,
+        "quantity": 98,
+        "gp_pct": 34.8,
+        "missing_stores": [
+          "GVS"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "ENERGY FLOW 45S",
+        "revenue": 23446.0,
+        "quantity": 47,
+        "gp_pct": 35.9,
+        "missing_stores": [
+          "GVS"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "BLUE LIGHTNING 500ML",
+        "revenue": 23136.0,
+        "quantity": 67,
+        "gp_pct": 30.5,
+        "missing_stores": [
+          "GVS"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "LIVERTONE 60C",
+        "revenue": 22770.0,
+        "quantity": 119,
+        "gp_pct": 41.1,
+        "missing_stores": [
+          "GVS",
+          "EDN"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "POTCILYTE 90C",
+        "revenue": 22176.0,
+        "quantity": 58,
+        "gp_pct": 31.8,
+        "missing_stores": [
+          "GVS",
+          "EDN"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "CALM FLOW 45S",
+        "revenue": 21753.0,
+        "quantity": 44,
+        "gp_pct": 35.3,
+        "missing_stores": [
+          "GVS"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "VITAMIN B5 60'S",
+        "revenue": 21484.0,
+        "quantity": 103,
+        "gp_pct": 32.2,
+        "missing_stores": [
+          "GVS"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "ZINC & GINGER 60'S",
+        "revenue": 21200.0,
+        "quantity": 124,
+        "gp_pct": 35.5,
+        "missing_stores": [
+          "GVS",
+          "EDN"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "BONE SUPREME 500'S",
+        "revenue": 20694.0,
+        "quantity": 25,
+        "gp_pct": 25.5,
+        "missing_stores": [
+          "GVS",
+          "EDN"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "BIO BERBERINE 60C",
+        "revenue": 19771.0,
+        "quantity": 55,
+        "gp_pct": 38.3,
+        "missing_stores": [
+          "GVS"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "5HTP 60'S",
+        "revenue": 19508.0,
+        "quantity": 97,
+        "gp_pct": 31.6,
+        "missing_stores": [
+          "EDN"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "BLOOD PRESSURE 60CAP",
+        "revenue": 19272.0,
+        "quantity": 75,
+        "gp_pct": 35.2,
+        "missing_stores": [
+          "GVS"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "HAIR SKIN & NAILS 90S",
+        "revenue": 18618.0,
+        "quantity": 39,
+        "gp_pct": 42.4,
+        "missing_stores": [
+          "GVS"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      },
+      {
+        "title": "RELAX 60T",
+        "revenue": 18036.0,
+        "quantity": 114,
+        "gp_pct": 41.4,
+        "missing_stores": [
+          "GVS"
+        ],
+        "action": "Validate range gap before supplier/order move"
+      }
+    ]
+  },
+  "supplier": {
+    "rows": [
+      {
+        "supplier_code": "DSI",
+        "supplier": "DS INTERNATIONAL (NOW)",
+        "revenue": 1829671.13,
+        "gross_profit": 647331.9,
+        "gp_pct": 35.4,
+        "quantity": 5118,
+        "sku_count": 197,
+        "share_pct": 8.1
+      },
+      {
+        "supplier_code": "WILLOW",
+        "supplier": "LONGEVITY SUPPLEMENTS PTY LTD (OUTCROP) WILLOW WELLNESS",
+        "revenue": 1413629.41,
+        "gross_profit": 624033.44,
+        "gp_pct": 44.1,
+        "quantity": 6593,
+        "sku_count": 303,
+        "share_pct": 6.3
+      },
+      {
+        "supplier_code": "NATRO",
+        "supplier": "NATROCEUTICS SA (PTY) LTD (ONELI01)",
+        "revenue": 1266005.62,
+        "gross_profit": 392104.83,
+        "gp_pct": 31.0,
+        "quantity": 3854,
+        "sku_count": 54,
+        "share_pct": 5.6
+      },
+      {
+        "supplier_code": "IL",
+        "supplier": "Interlife Distributors (INTERLIFE WHOLESALERS (PTY) LTD)",
+        "revenue": 921355.82,
+        "gross_profit": 328494.96,
+        "gp_pct": 35.7,
+        "quantity": 5325,
+        "sku_count": 74,
+        "share_pct": 4.1
+      },
+      {
+        "supplier_code": "LOVE",
+        "supplier": "LOVE YOURSELF BREADZ",
+        "revenue": 831982.44,
+        "gross_profit": 173664.44,
+        "gp_pct": 20.9,
+        "quantity": 12156,
+        "sku_count": 66,
+        "share_pct": 3.7
+      },
+      {
+        "supplier_code": "COYNE",
+        "supplier": "PHYTOCEUTICS  (coyne) (ED01)",
+        "revenue": 674253.62,
+        "gross_profit": 232254.76,
+        "gp_pct": 34.4,
+        "quantity": 1984,
+        "sku_count": 80,
+        "share_pct": 3.0
+      },
+      {
+        "supplier_code": "AMIPRO",
+        "supplier": "AMIPRO",
+        "revenue": 632339.44,
+        "gross_profit": 202714.16,
+        "gp_pct": 32.1,
+        "quantity": 1334,
+        "sku_count": 75,
+        "share_pct": 2.8
+      },
+      {
+        "supplier_code": "NUG",
+        "supplier": "NUTRIGREEN(Pty) Ltd",
+        "revenue": 561422.86,
+        "gross_profit": 238197.29,
+        "gp_pct": 42.4,
+        "quantity": 4156,
+        "sku_count": 113,
+        "share_pct": 2.5
+      },
+      {
+        "supplier_code": "NN",
+        "supplier": "WELL I AM",
+        "revenue": 553217.12,
+        "gross_profit": 196932.11,
+        "gp_pct": 35.6,
+        "quantity": 3063,
+        "sku_count": 70,
+        "share_pct": 2.5
+      },
+      {
+        "supplier_code": "VERHAKI",
+        "supplier": "VERHAKI (PTY) LTD",
+        "revenue": 549668.74,
+        "gross_profit": 170765.26,
+        "gp_pct": 31.1,
+        "quantity": 2565,
+        "sku_count": 110,
+        "share_pct": 2.4
+      },
+      {
+        "supplier_code": "EVN",
+        "supplier": "ECO VALLEY NUTRITION",
+        "revenue": 545277.96,
+        "gross_profit": 185280.38,
+        "gp_pct": 34.0,
+        "quantity": 2833,
+        "sku_count": 17,
+        "share_pct": 2.4
+      },
+      {
+        "supplier_code": "PN",
+        "supplier": "PMR NUTRITION",
+        "revenue": 495706.09,
+        "gross_profit": 177788.22,
+        "gp_pct": 35.9,
+        "quantity": 2528,
+        "sku_count": 31,
+        "share_pct": 2.2
+      },
+      {
+        "supplier_code": "GP",
+        "supplier": "GREEN PHARM SOUTH AFRICA (PTY) LTD",
+        "revenue": 431173.66,
+        "gross_profit": 146033.66,
+        "gp_pct": 33.9,
+        "quantity": 3592,
+        "sku_count": 256,
+        "share_pct": 1.9
+      },
+      {
+        "supplier_code": "NG",
+        "supplier": "NEOGENESIS HEALTH PRODUCTS (PTY) LDT",
+        "revenue": 397429.0,
+        "gross_profit": 165775.1,
+        "gp_pct": 41.7,
+        "quantity": 1286,
+        "sku_count": 79,
+        "share_pct": 1.8
+      },
+      {
+        "supplier_code": "PRIMES",
+        "supplier": "PRIME HEALTH HOLDINGS",
+        "revenue": 380269.18,
+        "gross_profit": 136125.75,
+        "gp_pct": 35.8,
+        "quantity": 1859,
+        "sku_count": 56,
+        "share_pct": 1.7
+      },
+      {
+        "supplier_code": "ESCP",
+        "supplier": "ESCENTIA PRODUCTS",
+        "revenue": 345509.79,
+        "gross_profit": 119746.49,
+        "gp_pct": 34.7,
+        "quantity": 3138,
+        "sku_count": 243,
+        "share_pct": 1.5
+      },
+      {
+        "supplier_code": "TRTFC",
+        "supplier": "The Real Thing Food Supplements cc",
+        "revenue": 295904.81,
+        "gross_profit": 91338.81,
+        "gp_pct": 30.9,
+        "quantity": 1041,
+        "sku_count": 25,
+        "share_pct": 1.3
+      },
+      {
+        "supplier_code": "SOL",
+        "supplier": "Solgar C011175 (do not use)",
+        "revenue": 285563.44,
+        "gross_profit": 108854.61,
+        "gp_pct": 38.1,
+        "quantity": 1118,
+        "sku_count": 90,
+        "share_pct": 1.3
+      },
+      {
+        "supplier_code": "GENO",
+        "supplier": "GENOLOGIX DISTRIBUTORS PTY LTD",
+        "revenue": 275279.81,
+        "gross_profit": 88634.74,
+        "gp_pct": 32.2,
+        "quantity": 1398,
+        "sku_count": 48,
+        "share_pct": 1.2
+      },
+      {
+        "supplier_code": "CIMO",
+        "supplier": "CIMO DISTRIBUTION CC",
+        "revenue": 252748.72,
+        "gross_profit": 82941.47,
+        "gp_pct": 32.8,
+        "quantity": 1875,
+        "sku_count": 73,
+        "share_pct": 1.1
+      },
+      {
+        "supplier_code": "YW",
+        "supplier": "YOUR WELLBEING (PTY) LTD",
+        "revenue": 242622.04,
+        "gross_profit": 83121.87,
+        "gp_pct": 34.3,
+        "quantity": 711,
+        "sku_count": 45,
+        "share_pct": 1.1
+      },
+      {
+        "supplier_code": "FERO",
+        "supplier": "FEROXII NATURALS",
+        "revenue": 239388.51,
+        "gross_profit": 72085.51,
+        "gp_pct": 30.1,
+        "quantity": 1185,
+        "sku_count": 18,
+        "share_pct": 1.1
+      },
+      {
+        "supplier_code": "SFERA",
+        "supplier": "SFERA BIO NUTRITION",
+        "revenue": 228428.38,
+        "gross_profit": 87601.73,
+        "gp_pct": 38.3,
+        "quantity": 632,
+        "sku_count": 26,
+        "share_pct": 1.0
+      },
+      {
+        "supplier_code": "PROD",
+        "supplier": "PRO DISTRIBUTORS (TVL1444)",
+        "revenue": 210525.6,
+        "gross_profit": 68624.19,
+        "gp_pct": 32.6,
+        "quantity": 550,
+        "sku_count": 22,
+        "share_pct": 0.9
+      },
+      {
+        "supplier_code": "CHINA",
+        "supplier": "CHINAHERB (PTY) LTD",
+        "revenue": 209406.66,
+        "gross_profit": 71710.66,
+        "gp_pct": 34.2,
+        "quantity": 1073,
+        "sku_count": 80,
+        "share_pct": 0.9
+      }
+    ],
+    "concentration": {
+      "supplier_count": 244,
+      "top5_revenue_share_pct": 27.8,
+      "total_revenue": 22456263.08
+    }
+  },
+  "online_funnel": {
+    "status": "limited",
+    "metrics": {
+      "revenue": 0.0,
+      "orders": 0,
+      "aov": 0.0,
+      "gp_pct": 0.0,
+      "new_orders": 0,
+      "returning_orders": 0,
+      "repeat_purchase_rate_90d": 5.86,
+      "due_for_repeat_31_60d": 69
+    },
+    "funnel": [
+      {
+        "stage": "Sessions",
+        "value": null,
+        "note": "GA4 detail not present in local preview contract"
+      },
+      {
+        "stage": "Product views",
+        "value": null,
+        "note": "GA4 detail not present in local preview contract"
+      },
+      {
+        "stage": "Add to cart",
+        "value": null,
+        "note": "GA4 detail not present in local preview contract"
+      },
+      {
+        "stage": "Orders",
+        "value": 0,
+        "note": "Shopify feed"
+      },
+      {
+        "stage": "Revenue",
+        "value": 0.0,
+        "note": "Shopify feed"
+      }
+    ],
+    "top_cities_90d": [
+      {
+        "city": "Pretoria",
+        "orders": 36,
+        "revenue": 30538.63,
+        "customers": 33,
+        "average_order_value": 848.3
+      },
+      {
+        "city": "JOHANNESBURG",
+        "orders": 18,
+        "revenue": 14358.54,
+        "customers": 16,
+        "average_order_value": 797.7
+      },
+      {
+        "city": "Centurion",
+        "orders": 10,
+        "revenue": 7932.36,
+        "customers": 8,
+        "average_order_value": 793.24
+      },
+      {
+        "city": "Midrand",
+        "orders": 7,
+        "revenue": 6642.88,
+        "customers": 6,
+        "average_order_value": 948.98
+      },
+      {
+        "city": "Cape Town",
+        "orders": 14,
+        "revenue": 6269.65,
+        "customers": 13,
+        "average_order_value": 447.83
+      },
+      {
+        "city": "Durban",
+        "orders": 9,
+        "revenue": 5541.91,
+        "customers": 9,
+        "average_order_value": 615.77
+      }
+    ],
+    "warning": "Shopify feed is fresh but currently reports R0 / 0 orders. Channel and device funnel metrics were not available in the local files used for this preview."
+  },
+  "search_reviews": {
+    "reviews_date": "2026-03-27",
+    "reviews": [
+      {
+        "store_code": "CEN",
+        "store": "Centurion",
+        "rating": 4.7,
+        "total_reviews": 294,
+        "five_star": 240,
+        "one_two_star": 13
+      },
+      {
+        "store_code": "GVS",
+        "store": "Glen Village",
+        "rating": 5.0,
+        "total_reviews": 44,
+        "five_star": 44,
+        "one_two_star": 0
+      },
+      {
+        "store_code": "EDN",
+        "store": "Edenvale",
+        "rating": 4.9,
+        "total_reviews": 31,
+        "five_star": 29,
+        "one_two_star": 0
+      }
+    ],
+    "seo_opportunities": [
+      {
+        "lane": "seo_to_commerce",
+        "theme": "Herbal Tonic: Benefits, Dosage and Where to Buy in South Africa",
+        "products_to_push": [
+          "NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules",
+          "DELFRAN - Naleo Spectrum - 30 x 5g Scoops"
+        ],
+        "why_now": "Use active search demand to support products that can still absorb demand operationally."
+      },
+      {
+        "lane": "seo_to_commerce",
+        "theme": "Best Women's Multivitamins in South Africa (2026 Guide)",
+        "products_to_push": [
+          "NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules",
+          "DELFRAN - Naleo Spectrum - 30 x 5g Scoops"
+        ],
+        "why_now": "Use active search demand to support products that can still absorb demand operationally."
+      },
+      {
+        "lane": "search_conversion",
+        "theme": "Organic search already converted 0 purchases in the latest GA4 slice.",
+        "products_to_push": [
+          "NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules",
+          "DELFRAN - Naleo Spectrum - 30 x 5g Scoops"
+        ],
+        "why_now": "Bridge search demand into product-led landing pages and conversion-focused creative."
+      }
+    ]
+  },
+  "foresight": {
+    "target": 2230000.0,
+    "base_projection": 2045843.0,
+    "base_gap": -184157.0,
+    "target_cover_pct": 91.7,
+    "scenarios": [
+      {
+        "name": "Soft landing",
+        "value": 1986804.75,
+        "gap": -243195.25,
+        "note": "Run-rate fades 10% from current pace."
+      },
+      {
+        "name": "Current pace",
+        "value": 2045843.0,
+        "gap": -184157.0,
+        "note": "Omni projection using current MTD pace."
+      },
+      {
+        "name": "Recovery push",
+        "value": 2282198.09,
+        "gap": 52198.09,
+        "note": "Stores hit needed run-rate or 8% above current pace where needed."
+      }
+    ],
+    "limitations": [
+      "Forecast is physical-store-led. Online orders are showing zero in the current Shopify feed.",
+      "Centurion/Glen Village use 19 trading days in Omni while Edenvale uses 23, so total pace is directional rather than accounting-grade."
+    ]
+  }
+};
