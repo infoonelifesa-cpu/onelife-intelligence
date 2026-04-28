@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-04-27T06:16:03.393694+02:00",
-  "run_date": "2026-04-27",
+  "generated_at": "2026-04-28T06:17:03.426929+02:00",
+  "run_date": "2026-04-28",
   "system": "onelife-commerce-intelligence",
   "mode": "run",
   "feed_refresh": {
-    "generated_at": "2026-04-27T06:16:03.343215",
-    "target_date": "2026-04-27",
+    "generated_at": "2026-04-28T06:17:03.375470",
+    "target_date": "2026-04-28",
     "results": [
       {
         "feed": "shopify_sales_feed",
         "status": "ok",
-        "started": "2026-04-27T06:13:18.631713",
+        "started": "2026-04-28T06:12:51.706143",
         "summary_keys": [
           "generated_at",
           "date",
@@ -26,7 +26,7 @@
       {
         "feed": "product_performance_feed",
         "status": "ok",
-        "started": "2026-04-27T06:13:42.747483",
+        "started": "2026-04-28T06:13:43.613503",
         "summary_keys": [
           "generated_at",
           "date",
@@ -40,7 +40,7 @@
       {
         "feed": "inventory_feed",
         "status": "ok",
-        "started": "2026-04-27T06:15:36.252663",
+        "started": "2026-04-28T06:16:30.912055",
         "summary_keys": [
           "generated_at",
           "date",
@@ -53,7 +53,7 @@
       {
         "feed": "customer_intelligence_feed",
         "status": "ok",
-        "started": "2026-04-27T06:16:00.050564",
+        "started": "2026-04-28T06:16:59.861685",
         "summary_keys": [
           "generated_at",
           "date",
@@ -65,7 +65,7 @@
       {
         "feed": "branch_intelligence_feed",
         "status": "ok",
-        "started": "2026-04-27T06:16:03.233563",
+        "started": "2026-04-28T06:17:03.265941",
         "summary_keys": [
           "generated_at",
           "date",
@@ -77,7 +77,7 @@
       {
         "feed": "supplier_scorecard_feed",
         "status": "ok",
-        "started": "2026-04-27T06:16:03.268309",
+        "started": "2026-04-28T06:17:03.298329",
         "summary_keys": [
           "generated_at",
           "date",
@@ -88,7 +88,7 @@
       {
         "feed": "competitor_intelligence_feed",
         "status": "ok",
-        "started": "2026-04-27T06:16:03.290217",
+        "started": "2026-04-28T06:17:03.320502",
         "summary_keys": [
           "generated_at",
           "date",
@@ -114,9 +114,9 @@
             "supplier-intelligence.md",
             "inventory-alerts.md"
           ],
-          "daily_briefing": "# Daily Commercial Briefing\n\nGenerated: 2026-04-27T06:16:03.340093+02:00\n\n## Key Metrics\n- Revenue: R0.00\n- Orders: 0\n- AOV: R0.00\n- Units per transaction: 0.0\n- GP%: 0.00%\n- New vs returning: 0 new / 0 returning\n\n## Trends\n- Discount usage: 0 orders, R0.00 discounted\n- Active customers (180d): 239\n- Repeat purchase rate: 7.95%\n- Stockout risks: 370\n- Competitor price-match risks: 0\n\n## Alerts\n- Edenvale stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Glen Village stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Edenvale stockout:  CoQ10 enzyme (6009663990240)\n- Glen Village stockout:  CoQ10 enzyme (6009663990240)\n- Centurion stockout:  DC POKE ROOT 100G (6009675501410)\n- Edenvale stockout:  DC POKE ROOT 100G (6009675501410)\n- Glen Village stockout:  DC POKE ROOT 100G (6009675501410)\n- Centurion stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Edenvale stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Glen Village stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n\n## Recommended Actions\n- Replenish SKUs with <7 days cover, prioritising top revenue lines.\n- Push repeat-purchase campaigns into Klaviyo for churn-risk customers.\n- Review discount-heavy orders for margin leakage.\n- Shift inventory away from overstocked branches into demand nodes.\n",
+          "daily_briefing": "# Daily Commercial Briefing\n\nGenerated: 2026-04-28T06:17:03.372272+02:00\n\n## Key Metrics\n- Revenue: R0.00\n- Orders: 0\n- AOV: R0.00\n- Units per transaction: 0.0\n- GP%: 0.00%\n- New vs returning: 0 new / 0 returning\n\n## Trends\n- Discount usage: 0 orders, R0.00 discounted\n- Active customers (180d): 238\n- Repeat purchase rate: 7.56%\n- Stockout risks: 377\n- Competitor price-match risks: 0\n\n## Alerts\n- Edenvale stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Glen Village stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Edenvale stockout:  CoQ10 enzyme (6009663990240)\n- Glen Village stockout:  CoQ10 enzyme (6009663990240)\n- Centurion stockout:  DC POKE ROOT 100G (6009675501410)\n- Edenvale stockout:  DC POKE ROOT 100G (6009675501410)\n- Glen Village stockout:  DC POKE ROOT 100G (6009675501410)\n- Centurion stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Edenvale stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Glen Village stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n\n## Recommended Actions\n- Replenish SKUs with <7 days cover, prioritising top revenue lines.\n- Push repeat-purchase campaigns into Klaviyo for churn-risk customers.\n- Review discount-heavy orders for margin leakage.\n- Shift inventory away from overstocked branches into demand nodes.\n",
           "competitor_status": "normalised",
-          "target_date": "2026-04-27"
+          "target_date": "2026-04-28"
         }
       }
     ],
@@ -125,68 +125,68 @@
   "sources": [
     {
       "label": "Shopify sales feed",
-      "path": "vaults/onelife/raw/shopify-sales-2026-04-27.json",
-      "generated_at": "2026-04-27T06:13:42.745318+02:00",
+      "path": "vaults/onelife/raw/shopify-sales-2026-04-28.json",
+      "generated_at": "2026-04-28T06:13:43.611427+02:00",
       "exists": true
     },
     {
       "label": "Product performance feed",
-      "path": "vaults/onelife/raw/product-performance-2026-04-27.json",
-      "generated_at": "2026-04-27T06:15:36.237240+02:00",
+      "path": "vaults/onelife/raw/product-performance-2026-04-28.json",
+      "generated_at": "2026-04-28T06:16:30.896512+02:00",
       "exists": true
     },
     {
       "label": "Inventory health feed",
-      "path": "vaults/onelife/raw/inventory-health-2026-04-27.json",
-      "generated_at": "2026-04-27T06:16:00.013925+02:00",
+      "path": "vaults/onelife/raw/inventory-health-2026-04-28.json",
+      "generated_at": "2026-04-28T06:16:59.825409+02:00",
       "exists": true
     },
     {
       "label": "Customer intelligence feed",
-      "path": "vaults/onelife/raw/customer-intelligence-2026-04-27.json",
-      "generated_at": "2026-04-27T06:16:02.857413+02:00",
+      "path": "vaults/onelife/raw/customer-intelligence-2026-04-28.json",
+      "generated_at": "2026-04-28T06:17:02.889941+02:00",
       "exists": true
     },
     {
       "label": "Branch intelligence feed",
-      "path": "vaults/onelife/raw/branch-intelligence-2026-04-27.json",
-      "generated_at": "2026-04-27T06:16:03.267241+02:00",
+      "path": "vaults/onelife/raw/branch-intelligence-2026-04-28.json",
+      "generated_at": "2026-04-28T06:17:03.297227+02:00",
       "exists": true
     },
     {
       "label": "Competitor intelligence feed",
-      "path": "vaults/onelife/raw/competitor-intelligence-2026-04-27.json",
-      "generated_at": "2026-04-27T06:16:03.290850+02:00",
+      "path": "vaults/onelife/raw/competitor-intelligence-2026-04-28.json",
+      "generated_at": "2026-04-28T06:17:03.321233+02:00",
       "exists": true
     },
     {
       "label": "Marketing decision audit",
       "path": "memory/marketing-decision-audit-latest.json",
-      "generated_at": "2026-04-27T06:12:36.808469+02:00",
+      "generated_at": "2026-04-28T06:12:48.276730+02:00",
       "exists": true
     },
     {
       "label": "SEO decision audit",
       "path": "memory/seo-decision-audit-latest.json",
-      "generated_at": "2026-04-27T06:12:36.843805+02:00",
+      "generated_at": "2026-04-28T06:12:48.310213+02:00",
       "exists": true
     },
     {
       "label": "Klaviyo decision audit",
       "path": "memory/klaviyo-decision-audit-latest.json",
-      "generated_at": "2026-04-27T06:12:36.878291+02:00",
+      "generated_at": "2026-04-28T06:12:48.344873+02:00",
       "exists": true
     },
     {
       "label": "GA4 decision audit",
       "path": "memory/ga4-decision-audit-latest.json",
-      "generated_at": "2026-04-27T06:12:39.427803+02:00",
+      "generated_at": "2026-04-28T06:12:51.653701+02:00",
       "exists": true
     },
     {
       "label": "Store ops alerts",
       "path": "memory/store-ops-alerts-latest.json",
-      "generated_at": "2026-04-27T06:12:36.769632+02:00",
+      "generated_at": "2026-04-28T06:12:48.237851+02:00",
       "exists": true
     },
     {
@@ -210,20 +210,20 @@
   ],
   "summary_lines": [
     "Online R0.00 from 0 orders, AOV R0.00.",
-    "Physical MTD R1,643,500.83, focus store Edenvale at 68.80% of target.",
+    "Physical MTD R1,691,300.02, focus store Edenvale at 72.30% of target.",
     "0 high-value lapsed customers, 8 winning SKUs at stock risk, 1 approval-gated recommendations."
   ],
   "highlights": [
     "Online trade delivered R0.00 from 0 orders at 0.00% GP.",
-    "Physical stores are sitting on R1,643,500.83 MTD revenue, with Edenvale currently the main pace risk.",
+    "Physical stores are sitting on R1,691,300.02 MTD revenue, with Edenvale currently the main pace risk.",
     "8 winning SKUs are already showing stock pressure, led by DELFRAN - Pcositol - 30 Sachets.",
-    "Customer base shows 0 high-value lapsed customers and 69 buyers due for repeat.",
+    "Customer base shows 0 high-value lapsed customers and 74 buyers due for repeat.",
     "Top geo demand is concentrated in Pretoria with R34,724.16 in the 90d view.",
     "Competitor scan shows 6 clear price wins and 0 price-position risks."
   ],
   "actions": [
     "Protect winning SKU DELFRAN - Pcositol - 30 Sachets first, it produced R4,352.34 in 90d and is already under stock pressure.",
-    "Treat Edenvale as the branch priority, it is running at 68.8% of MTD target with pressure on same-day recovery.",
+    "Treat Edenvale as the branch priority, it is running at 72.3% of MTD target with pressure on same-day recovery.",
     "Push the next content batch around 'Current TikTok winners cluster around brain fog, stress, sleep, and energy hooks.' and point it at NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules, PRIMESELF - Magnesium Complex - 60 Veg Capsules, DELFRAN - Naleo Spectrum - 30 x 5g Scoops."
   ],
   "approval_gated_actions": [
@@ -271,9 +271,9 @@
     "shopify_gp_pct": 0.0,
     "new_orders": 0,
     "returning_orders": 0,
-    "physical_revenue_today": 24550.39,
-    "physical_gp_pct_today": 35.2,
-    "physical_mtd_revenue": 1643500.83,
+    "physical_revenue_today": 47799.19,
+    "physical_gp_pct_today": 34.1,
+    "physical_mtd_revenue": 1691300.02,
     "physical_mtd_gp_pct": 34.2,
     "top_city": {
       "city": "Pretoria",
@@ -285,7 +285,7 @@
     "high_value_lapsed_customers": 0,
     "winning_items_at_risk": 8,
     "focus_store": "Edenvale",
-    "focus_store_target_pct": 68.8
+    "focus_store_target_pct": 72.3
   },
   "sections": {
     "top_movers_today": [],
@@ -333,24 +333,51 @@
         "stock_cover_days": 0.0,
         "stockout_stores": [],
         "reorder_stores": [
-          "Centurion",
-          "Edenvale"
+          "Centurion"
         ]
       },
       {
         "sku": "6009665891088",
         "title": "HEEL - Lymphomyosot N Oral Drops - 30ml",
         "category": "Homeopathic Drops",
-        "revenue_30": 2357.2,
+        "revenue_30": 883.95,
         "revenue_90": 2651.85,
-        "units_30": 8,
+        "units_30": 3,
         "units_90": 9,
         "inventory_quantity": 4,
-        "stock_cover_days": 15.0,
+        "stock_cover_days": 40.0,
         "stockout_stores": [],
         "reorder_stores": [
           "Centurion"
         ]
+      },
+      {
+        "sku": "6009702596907",
+        "title": "GOOD LIFE WELLNES - Glycine - 250G",
+        "category": "Amino Acid Supplement",
+        "revenue_30": 1164.96,
+        "revenue_90": 2038.68,
+        "units_30": 8,
+        "units_90": 14,
+        "inventory_quantity": 2,
+        "stock_cover_days": 7.5,
+        "stockout_stores": [],
+        "reorder_stores": [
+          "Centurion"
+        ]
+      },
+      {
+        "sku": "6901070110177",
+        "title": "CHINAHERB - Yunnan Baiyao Powder",
+        "category": "Herbal Powder",
+        "revenue_30": 1764.63,
+        "revenue_90": 1960.71,
+        "units_30": 9,
+        "units_90": 10,
+        "inventory_quantity": 2,
+        "stock_cover_days": 6.67,
+        "stockout_stores": [],
+        "reorder_stores": []
       },
       {
         "sku": "6009675502165",
@@ -381,34 +408,6 @@
         "reorder_stores": [
           "Centurion"
         ]
-      },
-      {
-        "sku": "7610313411016",
-        "title": "A.VOGEL - Bambu® - 100g",
-        "category": "Coffee Substitute",
-        "revenue_30": 940.76,
-        "revenue_90": 940.76,
-        "units_30": 4,
-        "units_90": 4,
-        "inventory_quantity": 3,
-        "stock_cover_days": 22.5,
-        "stockout_stores": [],
-        "reorder_stores": [
-          "Centurion"
-        ]
-      },
-      {
-        "sku": "600000079961",
-        "title": "FORTIFOOD - Magnesium Orotate - 120 Capsules",
-        "category": "Magnesium Supplement",
-        "revenue_30": 0.0,
-        "revenue_90": 863.25,
-        "units_30": 0,
-        "units_90": 3,
-        "inventory_quantity": 0,
-        "stock_cover_days": 0.0,
-        "stockout_stores": [],
-        "reorder_stores": []
       }
     ],
     "branch_watch": [
@@ -416,13 +415,13 @@
         "store_code": "CEN",
         "store": "Centurion",
         "online_revenue": 0.0,
-        "physical_revenue_today": 0.0,
-        "physical_gp_pct_today": 0.0,
-        "mtd_revenue": 1074850.42,
-        "mtd_target_pct": 74.1,
-        "projected_eom": 1330767.0,
-        "pace_gap_amount": -375149.58,
-        "mom_trend_revenue": 66.66,
+        "physical_revenue_today": 27151.6,
+        "physical_gp_pct_today": 34.6,
+        "mtd_revenue": 1102002.02,
+        "mtd_target_pct": 76.0,
+        "projected_eom": 1302366.0,
+        "pace_gap_amount": -347997.98,
+        "mom_trend_revenue": -63.75,
         "top_products": [],
         "active_alerts": [
           "Revenue behind monthly pace",
@@ -433,13 +432,13 @@
         "store_code": "EDN",
         "store": "Edenvale",
         "online_revenue": 0.0,
-        "physical_revenue_today": 10159.22,
-        "physical_gp_pct_today": 35.0,
-        "mtd_revenue": 309710.06,
-        "mtd_target_pct": 68.8,
-        "projected_eom": 369270.0,
-        "pace_gap_amount": -140289.94,
-        "mom_trend_revenue": -38.4,
+        "physical_revenue_today": 15667.3,
+        "physical_gp_pct_today": 33.6,
+        "mtd_revenue": 325377.36,
+        "mtd_target_pct": 72.3,
+        "projected_eom": 373581.0,
+        "pace_gap_amount": -124622.64,
+        "mom_trend_revenue": 54.22,
         "top_products": [],
         "active_alerts": [
           "Revenue behind monthly pace",
@@ -452,13 +451,13 @@
         "store_code": "GVS",
         "store": "Glen Village",
         "online_revenue": 0.0,
-        "physical_revenue_today": 14391.17,
-        "physical_gp_pct_today": 35.4,
-        "mtd_revenue": 258940.35,
-        "mtd_target_pct": 78.5,
-        "projected_eom": 364870.0,
-        "pace_gap_amount": -71059.65,
-        "mom_trend_revenue": 46.19,
+        "physical_revenue_today": 4980.29,
+        "physical_gp_pct_today": 32.9,
+        "mtd_revenue": 263920.64,
+        "mtd_target_pct": 80.0,
+        "projected_eom": 355719.0,
+        "pace_gap_amount": -66079.36,
+        "mom_trend_revenue": -65.39,
         "top_products": [],
         "active_alerts": [
           "Revenue behind monthly pace",
@@ -481,18 +480,18 @@
       }
     ],
     "customer_geo": {
-      "active_customers_180d": 239,
-      "new_customers_30d": 155,
-      "repeat_purchase_rate_90d": 7.95,
-      "repeat_purchase_customers_90d": 19,
+      "active_customers_180d": 238,
+      "new_customers_30d": 151,
+      "repeat_purchase_rate_90d": 7.56,
+      "repeat_purchase_customers_90d": 18,
       "churn_risk_customers": 0,
-      "due_for_repeat_31_60d": 69,
+      "due_for_repeat_31_60d": 74,
       "slipping_61_90d": 3,
       "lapsed_91_plus": 0,
       "high_value_lapsed_91_plus": 0,
       "ltv_segments": {
         "high": 2,
-        "mid": 41,
+        "mid": 40,
         "low": 196
       },
       "top_cities_90d": [
@@ -512,10 +511,10 @@
         },
         {
           "city": "Centurion",
-          "orders": 9,
-          "revenue": 7284.63,
-          "customers": 7,
-          "average_order_value": 809.4
+          "orders": 8,
+          "revenue": 6749.68,
+          "customers": 6,
+          "average_order_value": 843.71
         },
         {
           "city": "Cape Town",
@@ -532,20 +531,20 @@
           "average_order_value": 748.79
         },
         {
-          "city": "Midrand",
-          "orders": 6,
-          "revenue": 5220.56,
-          "customers": 5,
-          "average_order_value": 870.09
+          "city": "Durban",
+          "orders": 8,
+          "revenue": 4581.91,
+          "customers": 8,
+          "average_order_value": 572.74
         }
       ],
       "top_cities_30d": [
         {
           "city": "Pretoria",
-          "orders": 22,
-          "revenue": 18013.02,
-          "customers": 20,
-          "average_order_value": 818.77
+          "orders": 20,
+          "revenue": 16753.48,
+          "customers": 18,
+          "average_order_value": 837.67
         },
         {
           "city": "Johannesburg",
@@ -556,10 +555,10 @@
         },
         {
           "city": "Cape Town",
-          "orders": 13,
-          "revenue": 5454.26,
-          "customers": 12,
-          "average_order_value": 419.56
+          "orders": 12,
+          "revenue": 4570.31,
+          "customers": 11,
+          "average_order_value": 380.86
         },
         {
           "city": "Sandton",
@@ -570,23 +569,23 @@
         },
         {
           "city": "Midrand",
-          "orders": 4,
-          "revenue": 3558.12,
-          "customers": 4,
-          "average_order_value": 889.53
+          "orders": 5,
+          "revenue": 3787.57,
+          "customers": 5,
+          "average_order_value": 757.51
         },
         {
-          "city": "Centurion",
-          "orders": 4,
-          "revenue": 3216.05,
-          "customers": 4,
-          "average_order_value": 804.01
+          "city": "Durban",
+          "orders": 6,
+          "revenue": 3204.82,
+          "customers": 6,
+          "average_order_value": 534.14
         }
       ],
       "repeat_customer_top_categories": [
         {
           "category": "Unknown",
-          "units": 173
+          "units": 164
         }
       ],
       "lapsed_customer_top_categories": []
@@ -604,7 +603,7 @@
       },
       {
         "lane": "seo_to_commerce",
-        "theme": "Herbal Tonic: Benefits, Dosage and Where to Buy in South Africa",
+        "theme": "Berberine in South Africa: Benefits, Dosage & Where to Buy",
         "products_to_push": [
           "NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules",
           "PRIMESELF - Magnesium Complex - 60 Veg Capsules"
@@ -613,7 +612,7 @@
       },
       {
         "lane": "seo_to_commerce",
-        "theme": "Best Women's Multivitamins in South Africa (2026 Guide)",
+        "theme": "Topical Pain Relief Cream: Benefits, Dosage and Where to Buy in South Africa",
         "products_to_push": [
           "NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules",
           "PRIMESELF - Magnesium Complex - 60 Veg Capsules"
@@ -706,26 +705,26 @@
         "stock_cover_days": 90.0
       },
       {
-        "sku": "6009702596907",
-        "title": "GOOD LIFE WELLNES - Glycine - 250G",
-        "category": "Amino Acid Supplement",
-        "revenue_90": 2621.16,
-        "gross_profit_pct": 94.44,
-        "stock_cover_days": 18.75
-      },
-      {
         "sku": "737186082604",
         "title": "YOUR WELLBEING - Cholest-Well - 60 Capsules",
         "category": "Cardiovascular Health Supplement",
         "revenue_90": 2038.22,
         "gross_profit_pct": 50.0,
         "stock_cover_days": 45.0
+      },
+      {
+        "sku": "6009880565030",
+        "title": "NATTREND - Ceylon Cinnamon 200g",
+        "category": "Spice & Superfood Powder",
+        "revenue_90": 2032.43,
+        "gross_profit_pct": 89.52,
+        "stock_cover_days": 64.29
       }
     ]
   },
   "outputs": {
-    "raw_json": "vaults/onelife/raw/daily-trade-brief-2026-04-27.json",
-    "compiled_md": "vaults/onelife/compiled/daily-trade-brief-2026-04-27.md",
+    "raw_json": "vaults/onelife/raw/daily-trade-brief-2026-04-28.json",
+    "compiled_md": "vaults/onelife/compiled/daily-trade-brief-2026-04-28.md",
     "latest_json": "memory/onelife-trade-brief-latest.json",
     "latest_md": "memory/onelife-trade-brief-latest.md",
     "app_json": "onelife-intelligence/data/trade_brief_latest.json"
