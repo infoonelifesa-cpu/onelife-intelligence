@@ -1,59 +1,37 @@
 {
-  "generated_at": "2026-05-01T06:16:36.327342+02:00",
-  "run_date": "2026-05-01",
+  "generated_at": "2026-05-02T06:14:44.282358+02:00",
+  "run_date": "2026-05-02",
   "system": "onelife-commerce-intelligence",
   "mode": "run",
   "feed_refresh": {
-    "generated_at": "2026-05-01T06:16:36.280291",
-    "target_date": "2026-05-01",
+    "generated_at": "2026-05-02T06:14:44.220879",
+    "target_date": "2026-05-02",
     "results": [
       {
         "feed": "shopify_sales_feed",
-        "status": "ok",
-        "started": "2026-05-01T06:12:56.067262",
-        "summary_keys": [
-          "generated_at",
-          "date",
-          "source",
-          "summary",
-          "store_summary",
-          "product_summary",
-          "category_summary",
-          "top_products",
-          "top_categories"
-        ]
+        "status": "failed",
+        "started": "2026-05-02T06:12:43.001585",
+        "error": "HTTP Error 500: Internal Server Error",
+        "traceback": "Traceback (most recent call last):\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/run_all_feeds.py\", line 26, in run_all\n    payload = getattr(mod, fn_name)(target_date)\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/shopify_sales_feed.py\", line 37, in build_feed\n    omni_rows = fetch_omni_stock_by_branch()\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/common.py\", line 264, in fetch_omni_stock_by_branch\n    return {branch: fetch_omni_report(report) for branch, report in BRANCH_REPORTS.items()}\n                    ~~~~~~~~~~~~~~~~~^^^^^^^^\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/common.py\", line 253, in fetch_omni_report\n    with urllib.request.urlopen(req, timeout=180) as resp:\n         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 187, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 493, in open\n    response = meth(req, response)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 602, in http_response\n    response = self.parent.error(\n        'http', request, response, code, msg, hdrs)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 531, in error\n    return self._call_chain(*args)\n           ~~~~~~~~~~~~~~~~^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 464, in _call_chain\n    result = func(*args)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 611, in http_error_default\n    raise HTTPError(req.full_url, code, msg, hdrs, fp)\nurllib.error.HTTPError: HTTP Error 500: Internal Server Error\n"
       },
       {
         "feed": "product_performance_feed",
-        "status": "ok",
-        "started": "2026-05-01T06:13:21.188592",
-        "summary_keys": [
-          "generated_at",
-          "date",
-          "summary",
-          "sku_performance",
-          "top_20",
-          "bottom_20",
-          "category_rollup"
-        ]
+        "status": "failed",
+        "started": "2026-05-02T06:12:43.935331",
+        "error": "HTTP Error 500: Internal Server Error",
+        "traceback": "Traceback (most recent call last):\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/run_all_feeds.py\", line 26, in run_all\n    payload = getattr(mod, fn_name)(target_date)\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/product_performance_feed.py\", line 35, in build_feed\n    stock_by_branch = fetch_omni_stock_by_branch()\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/common.py\", line 264, in fetch_omni_stock_by_branch\n    return {branch: fetch_omni_report(report) for branch, report in BRANCH_REPORTS.items()}\n                    ~~~~~~~~~~~~~~~~~^^^^^^^^\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/common.py\", line 253, in fetch_omni_report\n    with urllib.request.urlopen(req, timeout=180) as resp:\n         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 187, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 493, in open\n    response = meth(req, response)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 602, in http_response\n    response = self.parent.error(\n        'http', request, response, code, msg, hdrs)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 531, in error\n    return self._call_chain(*args)\n           ~~~~~~~~~~~~~~~~^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 464, in _call_chain\n    result = func(*args)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 611, in http_error_default\n    raise HTTPError(req.full_url, code, msg, hdrs, fp)\nurllib.error.HTTPError: HTTP Error 500: Internal Server Error\n"
       },
       {
         "feed": "inventory_feed",
-        "status": "ok",
-        "started": "2026-05-01T06:16:08.794891",
-        "summary_keys": [
-          "generated_at",
-          "date",
-          "summary",
-          "branch_summary",
-          "inventory_rows",
-          "alerts"
-        ]
+        "status": "failed",
+        "started": "2026-05-02T06:14:39.972588",
+        "error": "HTTP Error 500: Internal Server Error",
+        "traceback": "Traceback (most recent call last):\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/run_all_feeds.py\", line 26, in run_all\n    payload = getattr(mod, fn_name)(target_date)\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/inventory_feed.py\", line 24, in build_feed\n    stock_by_branch = fetch_omni_stock_by_branch()\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/common.py\", line 264, in fetch_omni_stock_by_branch\n    return {branch: fetch_omni_report(report) for branch, report in BRANCH_REPORTS.items()}\n                    ~~~~~~~~~~~~~~~~~^^^^^^^^\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/common.py\", line 253, in fetch_omni_report\n    with urllib.request.urlopen(req, timeout=180) as resp:\n         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 187, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 493, in open\n    response = meth(req, response)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 602, in http_response\n    response = self.parent.error(\n        'http', request, response, code, msg, hdrs)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 531, in error\n    return self._call_chain(*args)\n           ~~~~~~~~~~~~~~~~^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 464, in _call_chain\n    result = func(*args)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 611, in http_error_default\n    raise HTTPError(req.full_url, code, msg, hdrs, fp)\nurllib.error.HTTPError: HTTP Error 500: Internal Server Error\n"
       },
       {
         "feed": "customer_intelligence_feed",
         "status": "ok",
-        "started": "2026-05-01T06:16:32.880938",
+        "started": "2026-05-02T06:14:40.992653",
         "summary_keys": [
           "generated_at",
           "date",
@@ -65,7 +43,7 @@
       {
         "feed": "branch_intelligence_feed",
         "status": "ok",
-        "started": "2026-05-01T06:16:36.178139",
+        "started": "2026-05-02T06:14:44.186231",
         "summary_keys": [
           "generated_at",
           "date",
@@ -77,7 +55,7 @@
       {
         "feed": "supplier_scorecard_feed",
         "status": "ok",
-        "started": "2026-05-01T06:16:36.204964",
+        "started": "2026-05-02T06:14:44.202580",
         "summary_keys": [
           "generated_at",
           "date",
@@ -88,7 +66,7 @@
       {
         "feed": "competitor_intelligence_feed",
         "status": "ok",
-        "started": "2026-05-01T06:16:36.226449",
+        "started": "2026-05-02T06:14:44.219333",
         "summary_keys": [
           "generated_at",
           "date",
@@ -114,13 +92,13 @@
             "supplier-intelligence.md",
             "inventory-alerts.md"
           ],
-          "daily_briefing": "# Daily Commercial Briefing\n\nGenerated: 2026-05-01T06:16:36.277163+02:00\n\n## Key Metrics\n- Revenue: R850.00\n- Orders: 1\n- AOV: R850.00\n- Units per transaction: 2.0\n- GP%: 50.00%\n- New vs returning: 1 new / 0 returning\n\n## Trends\n- Discount usage: 0 orders, R0.00 discounted\n- Active customers (180d): 263\n- Repeat purchase rate: 6.46%\n- Stockout risks: 443\n- Competitor price-match risks: 0\n\n## Alerts\n- Edenvale stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Glen Village stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Edenvale stockout:  CoQ10 enzyme (6009663990240)\n- Glen Village stockout:  CoQ10 enzyme (6009663990240)\n- Centurion stockout:  DC POKE ROOT 100G (6009675501410)\n- Edenvale stockout:  DC POKE ROOT 100G (6009675501410)\n- Glen Village stockout:  DC POKE ROOT 100G (6009675501410)\n- Centurion stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Edenvale stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Glen Village stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n\n## Recommended Actions\n- Replenish SKUs with <7 days cover, prioritising top revenue lines.\n- Push repeat-purchase campaigns into Klaviyo for churn-risk customers.\n- Review discount-heavy orders for margin leakage.\n- Shift inventory away from overstocked branches into demand nodes.\n",
+          "daily_briefing": "# Daily Commercial Briefing\n\nGenerated: 2026-05-02T06:14:44.220452+02:00\n\n## Key Metrics\n- Revenue: R0.00\n- Orders: 0\n- AOV: R0.00\n- Units per transaction: 0\n- GP%: 0.00%\n- New vs returning: 0 new / 0 returning\n\n## Trends\n- Discount usage: 0 orders, R0.00 discounted\n- Active customers (180d): 263\n- Repeat purchase rate: 6.46%\n- Stockout risks: 0\n- Competitor price-match risks: 0\n\n## Alerts\n- No data\n\n## Recommended Actions\n- Replenish SKUs with <7 days cover, prioritising top revenue lines.\n- Push repeat-purchase campaigns into Klaviyo for churn-risk customers.\n- Review discount-heavy orders for margin leakage.\n- Shift inventory away from overstocked branches into demand nodes.\n",
           "competitor_status": "normalised",
-          "target_date": "2026-05-01"
+          "target_date": "2026-05-02"
         }
       }
     ],
-    "status": "ok"
+    "status": "partial"
   },
   "sources": [
     {
@@ -143,50 +121,50 @@
     },
     {
       "label": "Customer intelligence feed",
-      "path": "vaults/onelife/raw/customer-intelligence-2026-05-01.json",
-      "generated_at": "2026-05-01T06:16:35.809936+02:00",
+      "path": "vaults/onelife/raw/customer-intelligence-2026-05-02.json",
+      "generated_at": "2026-05-02T06:14:43.830382+02:00",
       "exists": true
     },
     {
       "label": "Branch intelligence feed",
-      "path": "vaults/onelife/raw/branch-intelligence-2026-05-01.json",
-      "generated_at": "2026-05-01T06:16:36.203963+02:00",
+      "path": "vaults/onelife/raw/branch-intelligence-2026-05-02.json",
+      "generated_at": "2026-05-02T06:14:44.201656+02:00",
       "exists": true
     },
     {
       "label": "Competitor intelligence feed",
-      "path": "vaults/onelife/raw/competitor-intelligence-2026-05-01.json",
-      "generated_at": "2026-05-01T06:16:36.227228+02:00",
+      "path": "vaults/onelife/raw/competitor-intelligence-2026-05-02.json",
+      "generated_at": "2026-05-02T06:14:44.219582+02:00",
       "exists": true
     },
     {
       "label": "Marketing decision audit",
       "path": "memory/marketing-decision-audit-latest.json",
-      "generated_at": "2026-05-01T06:12:52.914325+02:00",
+      "generated_at": "2026-05-02T06:13:10.984280+02:00",
       "exists": true
     },
     {
       "label": "SEO decision audit",
       "path": "memory/seo-decision-audit-latest.json",
-      "generated_at": "2026-05-01T06:12:52.950577+02:00",
+      "generated_at": "2026-05-02T06:13:11.035560+02:00",
       "exists": true
     },
     {
       "label": "Klaviyo decision audit",
       "path": "memory/klaviyo-decision-audit-latest.json",
-      "generated_at": "2026-05-01T06:12:52.985634+02:00",
+      "generated_at": "2026-05-02T06:13:11.080269+02:00",
       "exists": true
     },
     {
       "label": "GA4 decision audit",
       "path": "memory/ga4-decision-audit-latest.json",
-      "generated_at": "2026-05-01T06:12:56.019923+02:00",
+      "generated_at": "2026-05-02T06:13:13.878496+02:00",
       "exists": true
     },
     {
       "label": "Store ops alerts",
       "path": "memory/store-ops-alerts-latest.json",
-      "generated_at": "2026-05-01T06:12:52.854766+02:00",
+      "generated_at": "2026-05-02T06:13:10.903155+02:00",
       "exists": true
     },
     {
@@ -210,20 +188,20 @@
   ],
   "summary_lines": [
     "Online R850.00 from 1 orders, AOV R850.00.",
-    "Physical MTD R1,956,918.08, focus store Edenvale at 80.20% of target.",
+    "Physical MTD R41,453.70, focus store Centurion at 1.80% of target.",
     "0 high-value lapsed customers, 8 winning SKUs at stock risk, 1 approval-gated recommendations."
   ],
   "highlights": [
     "Online trade delivered R850.00 from 1 orders at 50.00% GP.",
-    "Physical stores are sitting on R1,956,918.08 MTD revenue, with Edenvale currently the main pace risk.",
+    "Physical stores are sitting on R41,453.70 MTD revenue, with Centurion currently the main pace risk.",
     "8 winning SKUs are already showing stock pressure, led by DELFRAN - Family Starter Pack.",
-    "Customer base shows 0 high-value lapsed customers and 80 buyers due for repeat.",
-    "Top geo demand is concentrated in Pretoria with R34,917.72 in the 90d view.",
+    "Customer base shows 0 high-value lapsed customers and 81 buyers due for repeat.",
+    "Top geo demand is concentrated in Pretoria with R31,858.22 in the 90d view.",
     "Competitor scan shows 6 clear price wins and 0 price-position risks."
   ],
   "actions": [
     "Protect winning SKU DELFRAN - Family Starter Pack first, it produced R2,985.00 in 90d and is already under stock pressure.",
-    "Treat Edenvale as the branch priority, it is running at 80.2% of MTD target with pressure on same-day recovery.",
+    "Treat Centurion as the branch priority, it is running at 1.8% of MTD target with pressure on same-day recovery.",
     "Push the next content batch around 'Current TikTok winners cluster around brain fog, stress, sleep, and energy hooks.' and point it at NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules, PRIMESELF - Magnesium Complex - 60 Veg Capsules, DELFRAN - Naleo Spectrum - 30 x 5g Scoops."
   ],
   "approval_gated_actions": [
@@ -271,21 +249,21 @@
     "shopify_gp_pct": 50.0,
     "new_orders": 1,
     "returning_orders": 0,
-    "physical_revenue_today": 94889.78,
-    "physical_gp_pct_today": 33.0,
-    "physical_mtd_revenue": 1956918.08,
-    "physical_mtd_gp_pct": 34.1,
+    "physical_revenue_today": 41453.7,
+    "physical_gp_pct_today": 33.9,
+    "physical_mtd_revenue": 41453.7,
+    "physical_mtd_gp_pct": 33.9,
     "top_city": {
       "city": "Pretoria",
-      "orders": 41,
-      "revenue": 34917.72,
-      "customers": 35,
-      "average_order_value": 851.65
+      "orders": 39,
+      "revenue": 31858.22,
+      "customers": 33,
+      "average_order_value": 816.88
     },
     "high_value_lapsed_customers": 0,
     "winning_items_at_risk": 8,
-    "focus_store": "Edenvale",
-    "focus_store_target_pct": 80.2
+    "focus_store": "Centurion",
+    "focus_store_target_pct": 1.8
   },
   "sections": {
     "top_movers_today": [
@@ -429,51 +407,51 @@
         "store_code": "CEN",
         "store": "Centurion",
         "online_revenue": 0.0,
-        "physical_revenue_today": 70089.22,
-        "physical_gp_pct_today": 33.2,
-        "mtd_revenue": 1289466.37,
-        "mtd_target_pct": 88.9,
-        "projected_eom": 1341045.0,
-        "pace_gap_amount": -160533.63,
-        "mom_trend_revenue": -1.08,
+        "physical_revenue_today": 26268.97,
+        "physical_gp_pct_today": 33.5,
+        "mtd_revenue": 26268.97,
+        "mtd_target_pct": 1.8,
+        "projected_eom": 682993.0,
+        "pace_gap_amount": -1423731.03,
+        "mom_trend_revenue": null,
         "top_products": [],
         "active_alerts": [
-          "Revenue behind monthly pace",
-          "Makarios pace miss"
+          "Makarios pace miss",
+          "Revenue behind monthly pace"
         ]
       },
       {
         "store_code": "EDN",
         "store": "Edenvale",
         "online_revenue": 0.0,
-        "physical_revenue_today": 10595.43,
-        "physical_gp_pct_today": 33.9,
-        "mtd_revenue": 360853.52,
-        "mtd_target_pct": 80.2,
-        "projected_eom": 372882.0,
-        "pace_gap_amount": -89146.48,
-        "mom_trend_revenue": -19.15,
+        "physical_revenue_today": 7958.63,
+        "physical_gp_pct_today": 35.2,
+        "mtd_revenue": 7958.63,
+        "mtd_target_pct": 1.8,
+        "projected_eom": 246718.0,
+        "pace_gap_amount": -442041.37,
+        "mom_trend_revenue": null,
         "top_products": [],
         "active_alerts": [
-          "Revenue behind monthly pace",
-          "Makarios pace miss"
+          "Makarios pace miss",
+          "Revenue behind monthly pace"
         ]
       },
       {
         "store_code": "GVS",
         "store": "Glen Village",
         "online_revenue": 0.0,
-        "physical_revenue_today": 14205.13,
-        "physical_gp_pct_today": 31.3,
-        "mtd_revenue": 306598.19,
-        "mtd_target_pct": 92.9,
-        "projected_eom": 365559.0,
-        "pace_gap_amount": -23401.81,
-        "mom_trend_revenue": -1.55,
+        "physical_revenue_today": 7226.1,
+        "physical_gp_pct_today": 34.0,
+        "mtd_revenue": 7226.1,
+        "mtd_target_pct": 2.2,
+        "projected_eom": 224009.0,
+        "pace_gap_amount": -322773.9,
+        "mom_trend_revenue": null,
         "top_products": [],
         "active_alerts": [
           "Revenue behind monthly pace",
-          "Makarios GP below floor"
+          "Makarios pace miss"
         ]
       },
       {
@@ -495,26 +473,26 @@
     ],
     "customer_geo": {
       "active_customers_180d": 263,
-      "new_customers_30d": 169,
+      "new_customers_30d": 166,
       "repeat_purchase_rate_90d": 6.46,
       "repeat_purchase_customers_90d": 17,
       "churn_risk_customers": 0,
-      "due_for_repeat_31_60d": 80,
-      "slipping_61_90d": 4,
+      "due_for_repeat_31_60d": 81,
+      "slipping_61_90d": 5,
       "lapsed_91_plus": 0,
       "high_value_lapsed_91_plus": 0,
       "ltv_segments": {
         "high": 4,
-        "mid": 41,
-        "low": 218
+        "mid": 40,
+        "low": 219
       },
       "top_cities_90d": [
         {
           "city": "Pretoria",
-          "orders": 41,
-          "revenue": 34917.72,
-          "customers": 35,
-          "average_order_value": 851.65
+          "orders": 39,
+          "revenue": 31858.22,
+          "customers": 33,
+          "average_order_value": 816.88
         },
         {
           "city": "Johannesburg",
@@ -539,10 +517,10 @@
         },
         {
           "city": "Centurion",
-          "orders": 9,
-          "revenue": 6806.81,
+          "orders": 8,
+          "revenue": 6018.32,
           "customers": 7,
-          "average_order_value": 756.31
+          "average_order_value": 752.29
         },
         {
           "city": "Durban",
@@ -555,10 +533,10 @@
       "top_cities_30d": [
         {
           "city": "Pretoria",
-          "orders": 21,
-          "revenue": 17344.09,
+          "orders": 20,
+          "revenue": 15352.63,
           "customers": 19,
-          "average_order_value": 825.91
+          "average_order_value": 767.63
         },
         {
           "city": "Sandton",
@@ -575,13 +553,6 @@
           "average_order_value": 391.71
         },
         {
-          "city": "Johannesburg",
-          "orders": 11,
-          "revenue": 5084.06,
-          "customers": 11,
-          "average_order_value": 462.19
-        },
-        {
           "city": "Midrand",
           "orders": 6,
           "revenue": 4589.31,
@@ -594,12 +565,19 @@
           "revenue": 4132.76,
           "customers": 7,
           "average_order_value": 590.39
+        },
+        {
+          "city": "Johannesburg",
+          "orders": 10,
+          "revenue": 3987.12,
+          "customers": 10,
+          "average_order_value": 398.71
         }
       ],
       "repeat_customer_top_categories": [
         {
           "category": "Unknown",
-          "units": 168
+          "units": 164
         }
       ],
       "lapsed_customer_top_categories": []
@@ -644,7 +622,7 @@
       },
       {
         "lane": "search_conversion",
-        "theme": "Organic search already converted 7 purchases in the latest GA4 slice.",
+        "theme": "Organic search already converted 8 purchases in the latest GA4 slice.",
         "products_to_push": [
           "NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules",
           "PRIMESELF - Magnesium Complex - 60 Veg Capsules"
@@ -737,8 +715,8 @@
     ]
   },
   "outputs": {
-    "raw_json": "vaults/onelife/raw/daily-trade-brief-2026-05-01.json",
-    "compiled_md": "vaults/onelife/compiled/daily-trade-brief-2026-05-01.md",
+    "raw_json": "vaults/onelife/raw/daily-trade-brief-2026-05-02.json",
+    "compiled_md": "vaults/onelife/compiled/daily-trade-brief-2026-05-02.md",
     "latest_json": "memory/onelife-trade-brief-latest.json",
     "latest_md": "memory/onelife-trade-brief-latest.md",
     "app_json": "onelife-intelligence/data/trade_brief_latest.json"
