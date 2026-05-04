@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="cache-control" content="no-store" />
+<title>Onelife Intelligence | Ops fallback active</title>
+<style>
+:root { color-scheme: dark; --bg:#06111f; --card:#0f172a; --card2:#111c31; --muted:#94a3b8; --text:#e5edf8; --line:#243244; --red:#ef4444; --amber:#f59e0b; --green:#22c55e; --blue:#38bdf8; }
+* { box-sizing:border-box }
+body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:radial-gradient(circle at top left,#123b31 0,#07111f 38%,#020617 100%); color:var(--text); }
+a { color:#7dd3fc; text-decoration:none } a:hover { text-decoration:underline }
+.wrap { max-width:1160px; margin:0 auto; padding:32px 18px 52px; }
+.hero { border:1px solid rgba(34,197,94,.42); background:linear-gradient(135deg,rgba(20,83,45,.55),rgba(15,23,42,.96)); border-radius:26px; padding:28px; box-shadow:0 24px 90px rgba(0,0,0,.42); }
+.eyebrow { color:#bbf7d0; text-transform:uppercase; letter-spacing:.16em; font-size:12px; font-weight:850; }
+h1 { margin:10px 0 10px; font-size:clamp(30px,5vw,56px); line-height:.98; letter-spacing:-.04em; }
+.lead { color:#d4e2f3; font-size:18px; line-height:1.55; max-width:900px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px; margin-top:18px; }
+.card { background:rgba(15,23,42,.92); border:1px solid var(--line); border-radius:18px; padding:18px; }
+.card h2,.card h3 { margin:0 0 10px; font-size:18px; }
+.card-top { display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.card-top span { color:var(--muted); font-size:12px; }
+.status { display:inline-flex; gap:8px; align-items:center; border-radius:999px; padding:7px 11px; font-size:12px; font-weight:850; text-transform:uppercase; letter-spacing:.08em; }
+.bad { background:rgba(239,68,68,.15); color:#fecaca; border:1px solid rgba(239,68,68,.45); }
+.warn { background:rgba(245,158,11,.13); color:#fde68a; border:1px solid rgba(245,158,11,.42); }
+.good { background:rgba(34,197,94,.13); color:#bbf7d0; border:1px solid rgba(34,197,94,.42); }
+.blue { background:rgba(56,189,248,.12); color:#bae6fd; border:1px solid rgba(56,189,248,.4); }
+.k { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.08em; margin-top:12px; }
+.v,.note { color:#cbd5e1; font-size:14px; line-height:1.5; }
+.big { font-size:28px; font-weight:850; color:#f8fafc; margin-top:2px; letter-spacing:-.03em; }
+.metric-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.bar { height:8px; background:#0b1220; border-radius:999px; overflow:hidden; margin-top:14px; border:1px solid #1f2a3b; }
+.bar i { display:block; height:100%; background:linear-gradient(90deg,#22c55e,#86efac); border-radius:999px; }
+.actions { margin:12px 0 0; padding-left:18px; color:#dbeafe; line-height:1.65; }
+pre { white-space:pre-wrap; overflow-wrap:anywhere; background:#020617; border:1px solid #1f2937; border-radius:12px; padding:12px; color:#fecaca; font-size:13px; }
+table { width:100%; border-collapse:collapse; margin-top:10px; font-size:14px; }
+th,td { border-bottom:1px solid #1e293b; padding:10px 8px; text-align:left; vertical-align:top; }
+th { color:#cbd5e1; font-size:12px; text-transform:uppercase; letter-spacing:.08em; }
+.num { text-align:right; font-variant-numeric:tabular-nums; }
+.red { color:#fecaca; font-weight:800; } .amber { color:#fde68a; font-weight:800; } .green-text { color:#bbf7d0; font-weight:800; }
+.footer { color:#64748b; margin-top:20px; font-size:13px; }
+.notice { margin-top:16px; border-left:4px solid var(--amber); }
+@media (max-width:700px) { .metric-grid { grid-template-columns:1fr; } .wrap { padding-top:18px; } th,td { font-size:12px; padding:8px 6px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Onelife Intelligence · live-safe fallback</div>
+    <h1>Ops dashboard is live-safe. Omni sales intelligence is still blocked.</h1>
+    <p class="lead">The live Omni API refresh failed on 2026-05-04T17:52:33.775667+02:00. I am not publishing cached Omni turnover as current. This page is now using the latest email/PDF daily ops pack already in the workspace: reporting date <strong>2026-05-02</strong>, printed 2026-05-03 around 05:00 SAST.</p>
+    <div class="grid">
+      <div class="card"><span class="status good">Fallback active</span><div class="k">Safe source</div><div class="v">Email-derived Omni PDF ops pack in <code>data/scout_omni_reports</code>, parsed into <code>data/daily_dashboard_2026-05-02.json</code>.</div></div>
+      <div class="card"><span class="status bad">API blocked</span><div class="k">Live Omni refresh</div><div class="v">live_refresh_ok = false; cache_fallback.used = true; endpoint returned HTTP 500.</div></div>
+      <div class="card"><span class="status warn">Hidden</span><div class="k">Cached turnover</div><div class="v">Last cached API timestamp: 2026-05-04T17:52:35.037253+02:00; cached trade date: 2026-05-04. These numbers are deliberately not used as current.</div></div>
+      <div class="card"><span class="status blue">Open</span><div class="k">Detailed ops page</div><div class="v"><a href="daily.html">Daily Ops dashboard</a> remains the detailed PDF-derived view for the same report pack.</div></div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Ops snapshot from PDF pack</h2>
+      <div class="k">All stores yesterday</div><div class="big">R76,711</div><div class="note">GP 35.1% · 148 invoices · AOV R518</div>
+      <div class="k">All stores MTD</div><div class="big">R118,165</div><div class="note">GP 34.7% · target progress 5.3%</div>
+    </div>
+    <div class="card">
+      <h2>Today’s operational watchlist</h2>
+      <ul class="actions">
+        <li><strong>1 cash-up variance</strong> over R5: max R7.50.</li>
+        <li><strong>2 non-bakery low-GP items</strong> need checking below 25% GP.</li>
+        <li><strong>Peak trading hour:</strong> 11:00 with 36 invoices and R19,573; quietest reported hour 16:00 with 3 invoices.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="grid">
+    
+      <article class="card branch">
+        <div class="card-top"><h3>Centurion</h3><span>5.8% of target</span></div>
+        <div class="metric-grid">
+          <div><div class="k">Yesterday</div><div class="big">R57,839</div><div class="note">GP 35.3%</div></div>
+          <div><div class="k">MTD</div><div class="big">R84,108</div><div class="note">GP 34.8%</div></div>
+        </div>
+        <div class="bar"><i style="width:5.8%"></i></div>
+      </article>
+      <article class="card branch">
+        <div class="card-top"><h3>Glen Village</h3><span>4.0% of target</span></div>
+        <div class="metric-grid">
+          <div><div class="k">Yesterday</div><div class="big">R5,835</div><div class="note">GP 32.9%</div></div>
+          <div><div class="k">MTD</div><div class="big">R13,061</div><div class="note">GP 33.5%</div></div>
+        </div>
+        <div class="bar"><i style="width:4.0%"></i></div>
+      </article>
+      <article class="card branch">
+        <div class="card-top"><h3>Edenvale</h3><span>4.7% of target</span></div>
+        <div class="metric-grid">
+          <div><div class="k">Yesterday</div><div class="big">R13,038</div><div class="note">GP 35.0%</div></div>
+          <div><div class="k">MTD</div><div class="big">R20,997</div><div class="note">GP 35.1%</div></div>
+        </div>
+        <div class="bar"><i style="width:4.7%"></i></div>
+      </article>
+      <article class="card branch">
+        <div class="card-top"><h3>All stores</h3><span>5.3% of target</span></div>
+        <div class="metric-grid">
+          <div><div class="k">Yesterday</div><div class="big">R76,711</div><div class="note">GP 35.1%</div></div>
+          <div><div class="k">MTD</div><div class="big">R118,165</div><div class="note">GP 34.7%</div></div>
+        </div>
+        <div class="bar"><i style="width:5.3%"></i></div>
+      </article>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Cash-up exceptions</h2>
+      <table><thead><tr><th>Store</th><th>Session</th><th>Opened by</th><th class="num">System</th><th class="num">Counted</th><th class="num">Variance</th></tr></thead><tbody><tr><td>CEN</td><td>3578</td><td>JJ</td><td class="num">R42,902.00</td><td class="num">R42,909.50</td><td class="num amber">R7.50</td></tr></tbody></table>
+    </div>
+    <div class="card">
+      <h2>Non-bakery GP under 25%</h2>
+      <table><thead><tr><th>Item</th><th>Supplier</th><th class="num">Selling</th><th class="num">Cost</th><th class="num">GP%</th></tr></thead><tbody><tr><td>STRESS DAMAGE CONTROL 60S</td><td>SAT</td><td class="num">R320.41</td><td class="num">R267.00</td><td class="num red">16.7%</td></tr>
+<tr><td>NATURALLY SWEET POWDER 250G</td><td>SAT</td><td class="num">R166.96</td><td class="num">R141.00</td><td class="num red">15.6%</td></tr></tbody></table>
+    </div>
+  </section>
+
+  <section class="card notice">
+    <h2>Live Omni API gate</h2>
+    <p class="v">The root intelligence page will stay off cached API sales recommendations until a fresh API refresh succeeds. Latest observed refresh status:</p>
+    <pre>OK - refreshed from live Omni Daily Turnover reports. Latest available date: 2026-05-04.</pre>
+  </section>
+
+  <section class="card" style="margin-top:16px">
+    <h2>Evidence files</h2>
+    <table><thead><tr><th>File</th><th>Report</th><th>Reporting date</th><th>Printed / timestamp</th></tr></thead><tbody><tr><td>OL_DASHBOARD - ALL.pdf</td><td>ALL</td><td>2026-05-02</td><td>2026-05-03 05:00</td></tr>
+<tr><td>OL_DASHBOARD - CEN.pdf</td><td>Centurion</td><td>2026-05-02</td><td>2026-05-03 05:00</td></tr>
+<tr><td>OL_DASHBOARD - GVS.pdf</td><td>GVS</td><td>2026-05-02</td><td>2026-05-03 05:01</td></tr>
+<tr><td>OL_DASHBOARD - EDN.pdf</td><td>EDN</td><td>2026-05-02</td><td>2026-05-03 05:01</td></tr>
+<tr><td>OL_Busy Times_Yesterday.pdf</td><td>ops report</td><td>From Document Date: Yesterday (2026/05/02)</td><td>2026-05-03 05:02:30</td></tr>
+<tr><td>OL_HO_Busy Times_Yesterday.pdf</td><td>ops report</td><td>From Document Date: Yesterday (2026/05/02)</td><td>2026-05-03 05:03:23</td></tr>
+<tr><td>OL_Busy Times_MTD.PDF</td><td>ops report</td><td>From Document Date: First Day of this Month (2026/05/01)</td><td>2026-05-03 05:02:35</td></tr>
+<tr><td>OL_HO_Busy Times_MTD.PDF</td><td>ops report</td><td>From Document Date: First Day of this Month (2026/05/01)</td><td>2026-05-03 05:03:27</td></tr></tbody></table>
+  </section>
+
+  <div class="footer">Generated by Jarvis · 2026-05-04T17:52:43+02:00 · Safe mode: PDF ops data only, no cached Omni API turnover treated as current.</div>
+</div>
+</body>
+</html>
