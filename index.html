@@ -1,487 +1,79 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Onelife Intelligence | V8</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Onelife Intelligence | Live data blocked</title>
 <style>
+:root { color-scheme: dark; --bg:#070b14; --card:#0f172a; --muted:#94a3b8; --text:#e5edf8; --line:#1e293b; --red:#ef4444; --amber:#f59e0b; --green:#22c55e; --blue:#38bdf8; }
+* { box-sizing:border-box }
+body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:radial-gradient(circle at top left,#172554 0,#070b14 34%,#020617 100%); color:var(--text); }
+.wrap { max-width:1080px; margin:0 auto; padding:32px 18px 48px; }
+.hero { border:1px solid rgba(239,68,68,.45); background:linear-gradient(135deg,rgba(127,29,29,.55),rgba(15,23,42,.96)); border-radius:24px; padding:28px; box-shadow:0 24px 80px rgba(0,0,0,.42); }
+.eyebrow { color:#fecaca; text-transform:uppercase; letter-spacing:.16em; font-size:12px; font-weight:800; }
+h1 { margin:10px 0 8px; font-size:clamp(30px,5vw,54px); line-height:.98; }
+.lead { color:#cbd5e1; font-size:18px; line-height:1.55; max-width:860px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:18px; }
+.card { background:rgba(15,23,42,.92); border:1px solid var(--line); border-radius:18px; padding:18px; }
+.card h2,.card h3 { margin:0 0 10px; font-size:18px; }
+.status { display:inline-flex; gap:8px; align-items:center; border-radius:999px; padding:7px 11px; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.08em; }
+.bad { background:rgba(239,68,68,.15); color:#fecaca; border:1px solid rgba(239,68,68,.45); }
+.warn { background:rgba(245,158,11,.13); color:#fde68a; border:1px solid rgba(245,158,11,.42); }
+.good { background:rgba(34,197,94,.13); color:#bbf7d0; border:1px solid rgba(34,197,94,.42); }
+.k { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.08em; margin-top:12px; }
+.v { margin-top:4px; font-size:15px; line-height:1.45; }
+pre { white-space:pre-wrap; overflow-wrap:anywhere; background:#020617; border:1px solid #1f2937; border-radius:12px; padding:12px; color:#fecaca; font-size:13px; }
+a { color:#7dd3fc; }
+table { width:100%; border-collapse:collapse; margin-top:10px; font-size:14px; }
+th,td { border-bottom:1px solid #1e293b; padding:10px 8px; text-align:left; }
+th { color:#cbd5e1; font-size:12px; text-transform:uppercase; letter-spacing:.08em; }
+.footer { color:#64748b; margin-top:20px; font-size:13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="eyebrow">Onelife Intelligence · Fail-closed data guard</div>
+    <h1>Live sales intelligence is temporarily blocked.</h1>
+    <p class="lead">Jarvis checked the live Omni Daily Turnover reports on 04 May 2026 16:54 SAST. The Omni web server is reachable, but all three Daily Turnover report calls are failing at the database layer. Current sales KPIs and recommendations are intentionally hidden until a live refresh succeeds.</p>
+    <div class="grid">
+      <div class="card"><span class="status bad">Blocked</span><div class="k">Live Omni reports</div><div class="v">Daily Turnover One Life, GVS and EDEN each return HTTP 500.</div></div>
+      <div class="card"><span class="status warn">Do not use</span><div class="k">Cached turnover</div><div class="v">Last cached Omni timestamp: 2026-05-01T19:30:47.963170+02:00. This is not current trading data.</div></div>
+      <div class="card"><span class="status good">Available</span><div class="k">Daily ops backup</div><div class="v"><a href="daily.html">Daily Ops dashboard</a> remains available, currently served from its own last published report.</div></div>
+    </div>
+  </section>
 
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter',sans-serif;background:#0f172a;color:#e2e8f0;min-height:100vh}
-html{scroll-behavior:smooth}
-.container{max-width:1400px;margin:0 auto;padding:20px}
-header{text-align:center;padding:30px 0 20px}
-header h1{font-size:28px;font-weight:800;color:#f8fafc}
-header h1 span{color:#22c55e}
-header .sub{color:#94a3b8;font-size:14px;margin-top:4px}
-header .date{color:#64748b;font-size:12px;margin-top:2px}
-.quick-nav{position:sticky;top:10px;z-index:30;display:flex;gap:8px;overflow-x:auto;padding:0 0 14px;margin-bottom:16px;background:linear-gradient(180deg,rgba(15,23,42,.98),rgba(15,23,42,.92) 82%,rgba(15,23,42,0))}
-.quick-nav::-webkit-scrollbar{display:none}
-.quick-nav a{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;padding:10px 14px;border-radius:999px;border:1px solid #334155;background:#1e293b;color:#cbd5e1;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.01em}
-.quick-nav a:hover{background:#22c55e;color:#0f172a;border-color:#22c55e}
-.jump-target{scroll-margin-top:90px}
+  <section class="grid">
+    <div class="card">
+      <h2>Live evidence captured</h2>
+      <div class="k">Omni web server</div>
+      <div class="v">Reachable: “Omni Web Server. Version 7.21.68.3389.”</div>
+      <div class="k">Report endpoint failure</div>
+      <pre>HTTP 500 Internal Server Error
+SQL error state =08006
+Connection lost to database.</pre>
+      <div class="k">Refresh attempt</div>
+      <div class="v">2026-05-04T16:49:46.984050+02:00</div>
+      <div class="k">Tracker status</div>
+      <div class="v">STALE - live Omni refresh failed at 2026-05-04T16:49:46.984050+02:00. Using cached turnover data from 2026-05-01T19:30:47.963170+02:00. Error: HTTP Error 500: Internal Server Error</div>
+    </div>
 
-.kpi-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
-.kpi{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:16px}
-.kpi .label{color:#94a3b8;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
-.kpi .val{font-size:24px;font-weight:800;color:#f8fafc;margin:6px 0 4px}
-.kpi .note{color:#64748b;font-size:11px}
-.green{color:#22c55e!important} .red{color:#ef4444!important} .blue{color:#3b82f6!important} .yellow{color:#f59e0b!important} .grey{color:#94a3b8!important}
+    <div class="card">
+      <h2>What this means</h2>
+      <p class="v">The public dashboard will not show stale sales targets, projections, product actions, or month commentary as if they are current. Once Omni’s database connection is healthy, Jarvis can rerun the refresh and restore the intelligence dashboard from live reports.</p>
+      <p class="v">No email-priority check was run during this heartbeat; that remains handled by the dedicated cron job.</p>
+    </div>
+  </section>
 
-.card{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:20px;margin-bottom:20px;overflow-x:auto}
-.card h3{color:#f8fafc;font-size:15px;margin-bottom:4px}
-.card .desc{color:#64748b;font-size:11px;margin-bottom:14px}
+  <section class="card" style="margin-top:16px">
+    <h2>Google Reviews heartbeat snapshot — 2026-05-04</h2>
+    <p class="v">Monday weekly progress is 0 / 11. Centurion is behind expected pace and has already been nudged in the HO topic.</p>
+    <table><thead><tr><th>Store</th><th>Rating</th><th>Total reviews</th><th>New this week / target</th><th>Count source</th></tr></thead><tbody><tr><td>Centurion</td><td>4.7</td><td>294</td><td>0 / 5</td><td>last_known</td></tr>
+<tr><td>Glen Village</td><td>5.0</td><td>46</td><td>0 / 3</td><td>last_known</td></tr>
+<tr><td>Edenvale</td><td>4.9</td><td>31</td><td>0 / 3</td><td>last_known</td></tr></tbody></table>
+  </section>
 
-.narrative{background:linear-gradient(135deg,#1e293b,#1a2332);border:1px solid #334155;border-left:4px solid #22c55e;border-radius:12px;padding:20px;margin-bottom:20px}
-.narrative h3{color:#22c55e;font-size:13px;margin-bottom:10px}
-.narrative p{line-height:1.7;color:#cbd5e1;font-size:13px}
-
-/* Store Detail Cards */
-.store-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
-.store-card{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:16px}
-.store-card .sname{font-size:12px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
-.store-card .srev{font-size:22px;font-weight:800;color:#f8fafc;margin-bottom:4px}
-.store-card .srow{display:flex;justify-content:space-between;font-size:12px;color:#94a3b8;padding:3px 0;border-bottom:1px solid #0f172a}
-.store-card .srow .sv{color:#e2e8f0;font-weight:600}
-.store-card .bar-mini{background:#0f172a;border-radius:4px;height:6px;margin:8px 0;overflow:hidden}
-.store-card .bar-fill{height:100%;border-radius:4px}
-.bar-fill.ok{background:#22c55e} .bar-fill.warn{background:#f59e0b} .bar-fill.bad{background:#ef4444}
-.store-card .spct{font-size:11px;color:#64748b;text-align:right}
-.store-card .highlight{color:#22c55e;font-weight:700}
-.store-card .alert{color:#ef4444;font-weight:700}
-
-.progress-row{display:flex;align-items:center;margin-bottom:12px}
-.progress-row .sn{width:60px;font-weight:700;font-size:14px}
-.progress-row .bar-wrap{flex:1;background:#0f172a;border-radius:6px;height:24px;margin:0 12px;overflow:hidden}
-.progress-row .bar{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:8px;font-size:11px;font-weight:700;color:#0f172a}
-.bar.ok{background:linear-gradient(90deg,#22c55e,#4ade80)}
-.bar.warn{background:linear-gradient(90deg,#f59e0b,#fbbf24)}
-.bar.bad{background:linear-gradient(90deg,#ef4444,#f87171)}
-.progress-row .spark{width:130px;text-align:center}
-.progress-row .tgt{width:140px;text-align:right;color:#64748b;font-size:12px}
-
-table{width:100%;border-collapse:collapse;font-size:12px}
-th{text-align:left;color:#94a3b8;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.05em;padding:6px 10px;border-bottom:2px solid #334155}
-td{padding:6px 10px;border-bottom:1px solid #1e293b22}
-.card table tr:hover{background:#0f172a}
-.num{text-align:right;font-variant-numeric:tabular-nums}
-.miss{color:#ef4444;font-weight:600}
-.gph{color:#22c55e} .gpm{color:#f59e0b} .gpl{color:#ef4444;font-weight:700}
-
-.abc-a{background:#22c55e;color:#0f172a;padding:2px 6px;border-radius:4px;font-weight:800;font-size:10px}
-.abc-b{background:#3b82f6;color:#f8fafc;padding:2px 6px;border-radius:4px;font-weight:800;font-size:10px}
-.abc-c{background:#64748b;color:#f8fafc;padding:2px 6px;border-radius:4px;font-weight:800;font-size:10px}
-
-.ugrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.ustore h4{color:#94a3b8;font-size:12px;margin-bottom:6px}
-.uitem{padding:5px 0;border-bottom:1px solid #334155;font-size:12px;display:flex;justify-content:space-between}
-.uitem .num{color:#22c55e}
-.dim{color:#475569}
-
-.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center}
-.mcard{background:#0f172a;border-radius:8px;padding:14px}
-.mcard .mo{color:#94a3b8;font-size:11px;font-weight:600}
-.mcard .tot{font-size:20px;font-weight:800;color:#f8fafc;margin:6px 0}
-.mcard .bd{font-size:11px;color:#64748b}
-.mcard .incomplete{color:#f59e0b;font-size:10px;font-style:italic;margin-top:4px}
-
-.data-warning{background:#1e293b;border:1px solid #f59e0b;border-radius:8px;padding:12px;margin-bottom:16px;font-size:12px;color:#fbbf24;display:flex;align-items:center;gap:8px}
-.data-warning .icon{font-size:16px}
-
-/* Today's Story */
-.story-card{background:linear-gradient(135deg,#142314,#0f1e10);border:1px solid #22c55e33;border-left:4px solid #22c55e;border-radius:14px;padding:18px;margin-bottom:16px}
-.story-header{display:flex;align-items:center;gap:8px;margin-bottom:12px}
-.story-title{color:#22c55e;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
-.story-date{color:#64748b;font-size:10px;margin-left:auto}
-.story-sentences{display:flex;flex-direction:column;gap:7px}
-.story-sentence{color:#cbd5e1;font-size:13px;line-height:1.65;padding:6px 12px;border-left:3px solid #1e3a2e;border-radius:0 6px 6px 0}
-.story-sentence.lead{color:#e2e8f0;font-size:14px;font-weight:500;border-left-color:#22c55e;background:#22c55e0a}
-.story-sentence.alert-sentence{border-left-color:#ef4444;color:#fca5a5;background:#ef44440a}
-.story-sentence.opp-sentence{border-left-color:#f59e0b;color:#fde68a;background:#f59e0b0a}
-
-/* Daily Action */
-.daily-action{border-radius:14px;padding:16px 18px;margin-bottom:16px;display:flex;align-items:flex-start;gap:14px}
-.daily-action.urgent{background:linear-gradient(135deg,#2d1515,#1c0d0d);border:1px solid #ef444444;border-left:4px solid #ef4444}
-.daily-action.opportunity{background:linear-gradient(135deg,#0e1e3a,#091525);border:1px solid #3b82f644;border-left:4px solid #3b82f6}
-.daily-action.margin{background:linear-gradient(135deg,#1e1a0a,#150f05);border:1px solid #f59e0b44;border-left:4px solid #f59e0b}
-.da-icon{font-size:22px;flex-shrink:0;margin-top:1px}
-.da-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
-.urgent .da-label{color:#ef4444}.opportunity .da-label{color:#3b82f6}.margin .da-label{color:#f59e0b}
-.da-text{color:#f1f5f9;font-size:14px;line-height:1.65;font-weight:500}
-
-/* Action Cards (low GP / hidden gems) */
-.action-cards{display:flex;flex-direction:column;gap:10px}
-.action-card{border-radius:10px;padding:14px 16px;border:1px solid #334155;background:#1a2535}
-.action-card.swap{border-left:3px solid #ef4444}
-.action-card.gem{border-left:3px solid #a855f7}
-.action-card.range{border-left:3px solid #3b82f6}
-.ac-badge{display:inline-block;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:2px 7px;border-radius:4px;margin-bottom:6px}
-.ac-badge.swap{background:#ef444422;color:#ef4444}.ac-badge.gem{background:#a855f722;color:#a855f7}.ac-badge.range{background:#3b82f622;color:#3b82f6}
-.ac-title{color:#f1f5f9;font-size:13px;font-weight:600;line-height:1.5;margin-bottom:4px}
-.ac-meta{color:#64748b;font-size:11px}
-.ac-uplift{color:#22c55e;font-weight:700;font-size:12px;margin-top:4px}
-
-/* WoW badge in store card */
-.store-wow{text-align:right;margin-top:5px;font-size:11px}
-
-footer{text-align:center;padding:24px 0;color:#475569;font-size:11px}
-footer .lo{color:#22c55e}
-
-@media(max-width:768px){
-.kpi-strip{grid-template-columns:repeat(2,1fr)}
-.ugrid,.mgrid,.store-grid{grid-template-columns:1fr}
-.progress-row .spark{display:none}
-div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
-.quick-nav{top:8px;padding-bottom:12px}
-}
-
-</style></head><body><div class="container">
-<header><h1>Onelife <span>Intelligence</span></h1>
-<div class="sub">3 Stores + Online | Real-time Business Intelligence</div>
-<div class="date">02 May 2026 | Refreshed 2026-05-01 19:30 | Omni latest trade date 2026-05-01</div>
-</header>
-<nav class="quick-nav">
-<a href="#summary">Summary</a>
-<a href="#stores">Stores</a>
-<a href="#online">Online</a>
-<a href="#products">Products</a>
-<a href="#suppliers">Suppliers</a>
-<a href="#seo">SEO</a>
-<a href="#reviews">Reviews</a>
-<a href="#trends">Trends</a>
-</nav>
-<div class="data-warning"><span class="icon">&#x26a0;</span> Omni API may be down. Using cached data. Numbers may not reflect today's full trading.</div>
-<div id="summary" class="jump-target"></div>
-<div class="story-card">
-<div class="story-header"><span style="font-size:18px">&#x1f9e0;</span><span class="story-title">Today's Story</span><span class="story-date">02 May 2026</span></div>
-<div class="story-sentences">
-<div class="story-sentence lead">March is under pressure — projected R1.15M vs R2.23M target (52%). The R1.08M shortfall needs action in the next 30 days.</div>
-<div class="story-sentence alert-sentence">Centurion is the concern — 47% trajectory, up 0% WoW. Running R26K/day, needs R57K/day.</div>
-<div class="story-sentence alert-sentence">Glen Village is the concern — 68% trajectory, up 11% WoW. Running R7.2K/day, needs R11K/day.</div>
-<div class="story-sentence alert-sentence">Edenvale is the concern — 55% trajectory, down 14% WoW. Running R8.0K/day, needs R15K/day.</div>
-<div class="story-sentence">GP margin healthy at 33.9%.</div>
-<div class="story-sentence opp-sentence">Best cross-store opp: KILL A GERM 60s (35% GP, R66K at CEN) is absent from EDN — free revenue waiting.</div>
-</div></div>
-<div class="daily-action urgent">
-<div class="da-icon">&#x1f6a8;</div>
-<div class="da-body">
-<div class="da-label">&#x2605; Daily Action</div>
-<div class="da-text">URGENT — Centurion is at 47% of target: running R26K/day but needs R57K/day. Call the manager and plan a weekend push today.</div>
-</div></div>
-<div class="kpi-strip">
-<div class="kpi"><div class="label">MTD Revenue</div><div class="val">R41K</div><div class="note">Day 1 of 31</div><div class="wow">WoW: <span style="color:#ef4444;font-size:11px;font-weight:700">↓&nbsp;-0.3%</span></div></div>
-<div class="kpi"><div class="label">MTD Gross Profit</div><div class="val green">R14K</div><div class="note">33.9% blended GP</div></div>
-<div class="kpi"><div class="label">Daily Run Rate</div><div class="val blue">R41K</div><div class="note">Yesterday: R0</div></div>
-<div class="kpi"><div class="label">Projected Month</div><div class="val red">R1.15M</div><div class="note">Target: R2.23M</div></div>
+  <div class="footer">Generated by Jarvis · 2026-05-04T16:54:15.773541+02:00 · This page is a safety stop, not a sales dashboard.</div>
 </div>
-<div id="stores" class="jump-target"></div>
-<div class="store-grid">
-<div class="store-card">
-<div class="sname">Centurion</div>
-<div class="srev">R26K</div>
-<div class="bar-mini"><div class="bar-fill bad" style="width:2%"></div></div>
-<div class="spct">2% of R1.45M target</div>
-<div class="srow" style="border-bottom:1px solid #1e1e2e;padding-bottom:6px;margin-bottom:6px"><span style="color:#00ff88;font-weight:700">Yesterday Sales</span><span class="sv" style="color:#00ff88;font-weight:700">R26K</span></div>
-<div class="srow"><span style="color:#00ff88">Yesterday GP</span><span class="sv" style="color:#00ff88">R9K (34%)</span></div>
-<div class="srow"><span>Run Rate</span><span class="sv">R26K/day</span></div>
-<div class="srow"><span>Required Rate</span><span class="sv alert">R57K/day</span></div>
-<div class="srow"><span>Projected</span><span class="sv">R683K</span></div>
-<div class="srow"><span>GP Margin</span><span class="sv">33.5%</span></div>
-<div class="srow"><span>Trading Days</span><span class="sv">1 done, 25 left</span></div>
-<div class="store-wow">WoW: <span style="color:#22c55e;font-size:11px;font-weight:700">↑&nbsp;+0.5%</span></div>
-</div>
-<div class="store-card">
-<div class="sname">Glen Village</div>
-<div class="srev">R7K</div>
-<div class="bar-mini"><div class="bar-fill bad" style="width:2%"></div></div>
-<div class="spct">2% of R330K target</div>
-<div class="srow" style="border-bottom:1px solid #1e1e2e;padding-bottom:6px;margin-bottom:6px"><span style="color:#00ff88;font-weight:700">Yesterday Sales</span><span class="sv" style="color:#00ff88;font-weight:700">R7K</span></div>
-<div class="srow"><span style="color:#00ff88">Yesterday GP</span><span class="sv" style="color:#00ff88">R2K (34%)</span></div>
-<div class="srow"><span>Run Rate</span><span class="sv">R7K/day</span></div>
-<div class="srow"><span>Required Rate</span><span class="sv alert">R11K/day</span></div>
-<div class="srow"><span>Projected</span><span class="sv">R224K</span></div>
-<div class="srow"><span>GP Margin</span><span class="sv">34.0%</span></div>
-<div class="srow"><span>Trading Days</span><span class="sv">1 done, 30 left</span></div>
-<div class="store-wow">WoW: <span style="color:#22c55e;font-size:11px;font-weight:700">↑&nbsp;+11.4%</span></div>
-</div>
-<div class="store-card">
-<div class="sname">Edenvale</div>
-<div class="srev">R8K</div>
-<div class="bar-mini"><div class="bar-fill bad" style="width:2%"></div></div>
-<div class="spct">2% of R450K target</div>
-<div class="srow" style="border-bottom:1px solid #1e1e2e;padding-bottom:6px;margin-bottom:6px"><span style="color:#00ff88;font-weight:700">Yesterday Sales</span><span class="sv" style="color:#00ff88;font-weight:700">R8K</span></div>
-<div class="srow"><span style="color:#00ff88">Yesterday GP</span><span class="sv" style="color:#00ff88">R3K (35%)</span></div>
-<div class="srow"><span>Run Rate</span><span class="sv">R8K/day</span></div>
-<div class="srow"><span>Required Rate</span><span class="sv alert">R15K/day</span></div>
-<div class="srow"><span>Projected</span><span class="sv">R247K</span></div>
-<div class="srow"><span>GP Margin</span><span class="sv">35.2%</span></div>
-<div class="srow"><span>Trading Days</span><span class="sv">1 done, 30 left</span></div>
-<div class="store-wow">WoW: <span style="color:#ef4444;font-size:11px;font-weight:700">↓&nbsp;-14.3%</span></div>
-</div>
-</div>
-<div class="card"><h3>Store Tracking vs Target</h3><div class="desc">Actual month-to-date sales vs monthly target</div>
-<div class="progress-row"><div class="sn">CEN</div>
-<div class="bar-wrap"><div class="bar bad" style="width:2%">2%</div></div>
-<div class="spark"></div>
-<div class="tgt">R26K / R1.45M <span style="color:#22c55e;font-size:11px;font-weight:700">↑&nbsp;+0.5%</span></div></div>
-<div class="progress-row"><div class="sn">GVS</div>
-<div class="bar-wrap"><div class="bar bad" style="width:2%">2%</div></div>
-<div class="spark"></div>
-<div class="tgt">R7K / R330K <span style="color:#22c55e;font-size:11px;font-weight:700">↑&nbsp;+11.4%</span></div></div>
-<div class="progress-row"><div class="sn">EDN</div>
-<div class="bar-wrap"><div class="bar bad" style="width:2%">2%</div></div>
-<div class="spark"></div>
-<div class="tgt">R8K / R450K <span style="color:#ef4444;font-size:11px;font-weight:700">↓&nbsp;-14.3%</span></div></div>
-</div>
-<div id="products" class="card jump-target"><h3>&#x1f48e; Hidden Gems</h3>
-<div class="desc">High GP% products with low unit sales — shelf visibility problem. Move them and watch revenue climb.</div>
-<div class="action-cards">
-<div class="action-card gem">
-<span class="ac-badge gem">Hidden Gem</span>
-<div class="ac-title">LIFESPAN 30C @ Centurion</div>
-<div class="ac-meta">87% GP &middot; only 1 units sold &middot; R851 revenue &middot; Supplier: NEOGENESIS HEALTH PRODUCTS</div>
-<div class="ac-uplift">&#x27a4; Move to eye level or endcap. 3x sales potential = R3K/month</div>
-</div>
-<div class="action-card gem">
-<span class="ac-badge gem">Hidden Gem</span>
-<div class="ac-title">MORINGA 30C @ Centurion</div>
-<div class="ac-meta">84% GP &middot; only 6 units sold &middot; R2K revenue &middot; Supplier: NEOGENESIS HEALTH PRODUCTS</div>
-<div class="ac-uplift">&#x27a4; Move to eye level or endcap. 3x sales potential = R5K/month</div>
-</div>
-<div class="action-card gem">
-<span class="ac-badge gem">Hidden Gem</span>
-<div class="ac-title">30C TUDNAC @ Centurion</div>
-<div class="ac-meta">74% GP &middot; only 4 units sold &middot; R2K revenue &middot; Supplier: NEOGENESIS HEALTH PRODUCTS</div>
-<div class="ac-uplift">&#x27a4; Move to eye level or endcap. 3x sales potential = R5K/month</div>
-</div>
-<div class="action-card gem">
-<span class="ac-badge gem">Hidden Gem</span>
-<div class="ac-title">SCO DIGESTIGEN 60C @ Centurion</div>
-<div class="ac-meta">62% GP &middot; only 2 units sold &middot; R877 revenue &middot; Supplier: NEOGENESIS HEALTH PRODUCTS</div>
-<div class="ac-uplift">&#x27a4; Move to eye level or endcap. 3x sales potential = R3K/month</div>
-</div>
-<div class="action-card gem">
-<span class="ac-badge gem">Hidden Gem</span>
-<div class="ac-title">BODY CLEANSE DETOX PACK @ Glen Village</div>
-<div class="ac-meta">62% GP &middot; only 2 units sold &middot; R2K revenue &middot; Supplier: Good Health Products</div>
-<div class="ac-uplift">&#x27a4; Move to eye level or endcap. 3x sales potential = R5K/month</div>
-</div>
-<div class="action-card gem">
-<span class="ac-badge gem">Hidden Gem</span>
-<div class="ac-title">B12 ENERGY PATCH @ Edenvale</div>
-<div class="ac-meta">59% GP &middot; only 8 units sold &middot; R2K revenue &middot; Supplier: NEOGENESIS HEALTH PRODUCTS</div>
-<div class="ac-uplift">&#x27a4; Move to eye level or endcap. 3x sales potential = R5K/month</div>
-</div>
-</div></div>
-<div class="card"><h3>&#x26a0;&#xfe0f; Low GP Action Cards</h3>
-<div class="desc">Products dragging your margin. Each card shows the swap opportunity and estimated monthly GP uplift.</div>
-<div class="action-cards">
-<div class="action-card swap">
-<span class="ac-badge swap">Swap / Reprice</span>
-<div class="ac-title">BRD WHITE RICE</div>
-<div class="ac-meta">18% GP &middot; R197K revenue &middot; 2939 units &middot; Supplier: LOVE YOURSELF BREADZ</div>
-<div class="ac-uplift">&#x27a4; Replace with 35%+ GP equivalent &rarr; est. +R33K/month GP uplift</div>
-</div>
-<div class="action-card swap">
-<span class="ac-badge swap">Swap / Reprice</span>
-<div class="ac-title">BRD BROWN RICE</div>
-<div class="ac-meta">18% GP &middot; R70K revenue &middot; 1044 units &middot; Supplier: LOVE YOURSELF BREADZ</div>
-<div class="ac-uplift">&#x27a4; Replace with 35%+ GP equivalent &rarr; est. +R12K/month GP uplift</div>
-</div>
-<div class="action-card swap">
-<span class="ac-badge swap">Swap / Reprice</span>
-<div class="ac-title">BRD SORG/QUIN</div>
-<div class="ac-meta">18% GP &middot; R58K revenue &middot; 869 units &middot; Supplier: LOVE YOURSELF BREADZ</div>
-<div class="ac-uplift">&#x27a4; Replace with 35%+ GP equivalent &rarr; est. +R10K/month GP uplift</div>
-</div>
-<div class="action-card swap">
-<span class="ac-badge swap">Swap / Reprice</span>
-<div class="ac-title">BUNS WHITE  6S</div>
-<div class="ac-meta">18% GP &middot; R22K revenue &middot; 261 units &middot; Supplier: LOVE YOURSELF BREADZ</div>
-<div class="ac-uplift">&#x27a4; Replace with 35%+ GP equivalent &rarr; est. +R4K/month GP uplift</div>
-</div>
-<div class="action-card swap">
-<span class="ac-badge swap">Swap / Reprice</span>
-<div class="ac-title">BRD WHITE MAC</div>
-<div class="ac-meta">18% GP &middot; R19K revenue &middot; 283 units &middot; Supplier: LOVE YOURSELF BREADZ</div>
-<div class="ac-uplift">&#x27a4; Replace with 35%+ GP equivalent &rarr; est. +R3K/month GP uplift</div>
-</div>
-</div></div>
-<div class="card"><h3>&#x1f4e6; Cross-Store Range Opportunities</h3>
-<div class="desc">Products selling well at CEN but missing from other stores. 677 opportunities — top 5 shown as action cards, full list below.</div>
-<div class="action-cards" style="margin-bottom:16px">
-<div class="action-card range">
-<span class="ac-badge range">Range It</span>
-<div class="ac-title">KILL A GERM 60s</div>
-<div class="ac-meta">35% GP &middot; R66K at CEN &middot; 356 units &middot; Supplier: PMR NUTRITION &middot; Missing: EDN</div>
-<div class="ac-uplift">&#x27a4; Stock at EDN &rarr; potential R26K/month additional revenue per store</div>
-</div>
-<div class="action-card range">
-<span class="ac-badge range">Range It</span>
-<div class="ac-title">MgK ASPARTATE 450mg 90s</div>
-<div class="ac-meta">33% GP &middot; R35K at CEN &middot; 239 units &middot; Supplier: FORTIFOOD HEALTH SERVICES &middot; Missing: GVS</div>
-<div class="ac-uplift">&#x27a4; Stock at GVS &rarr; potential R14K/month additional revenue per store</div>
-</div>
-<div class="action-card range">
-<span class="ac-badge range">Range It</span>
-<div class="ac-title">BRD FLAX</div>
-<div class="ac-meta">23% GP &middot; R34K at CEN &middot; 431 units &middot; Supplier: LOVE YOURSELF BREADZ &middot; Missing: EDN</div>
-<div class="ac-uplift">&#x27a4; Stock at EDN &rarr; potential R14K/month additional revenue per store</div>
-</div>
-<div class="action-card range">
-<span class="ac-badge range">Range It</span>
-<div class="ac-title">60C BRO BALANCE</div>
-<div class="ac-meta">31% GP &middot; R29K at CEN &middot; 82 units &middot; Supplier: Plants of the Gods &middot; Missing: GVS</div>
-<div class="ac-uplift">&#x27a4; Stock at GVS &rarr; potential R12K/month additional revenue per store</div>
-</div>
-<div class="action-card range">
-<span class="ac-badge range">Range It</span>
-<div class="ac-title">BODYMAG 120VC</div>
-<div class="ac-meta">33% GP &middot; R27K at CEN &middot; 95 units &middot; Supplier: GENOLOGIX DISTRIBUTORS PTY LTD &middot; Missing: GVS</div>
-<div class="ac-uplift">&#x27a4; Stock at GVS &rarr; potential R11K/month additional revenue per store</div>
-</div>
-</div>
-<table><thead><tr><th>Product</th><th>Supplier</th><th class="num">CEN Revenue</th><th class="num">CEN Units</th><th class="num">GP%</th><th>Missing At</th></tr></thead><tbody>
-<tr><td>KILL A GERM 60s</td><td>PMR NUTRITION</td><td class="num">R66K</td><td class="num">356</td><td class="num gpm">35%</td><td class="miss">EDN</td></tr>
-<tr><td>MgK ASPARTATE 450mg 90s</td><td>FORTIFOOD HEALTH SERVICES</td><td class="num">R35K</td><td class="num">239</td><td class="num gpm">33%</td><td class="miss">GVS</td></tr>
-<tr><td>BRD FLAX</td><td>LOVE YOURSELF BREADZ</td><td class="num">R34K</td><td class="num">431</td><td class="num gpl">23%</td><td class="miss">EDN</td></tr>
-<tr><td>60C BRO BALANCE</td><td>Plants of the Gods</td><td class="num">R29K</td><td class="num">82</td><td class="num gpm">31%</td><td class="miss">GVS</td></tr>
-<tr><td>BODYMAG 120VC</td><td>GENOLOGIX DISTRIBUTORS PTY LTD</td><td class="num">R27K</td><td class="num">95</td><td class="num gpm">33%</td><td class="miss">GVS</td></tr>
-<tr><td>CRITICAL CARE 500ML</td><td>Cili Health S.A.</td><td class="num">R25K</td><td class="num">47</td><td class="num gpm">32%</td><td class="miss">EDN</td></tr>
-<tr><td>COQ10 BIOMAX</td><td>PHYTOCEUTICS</td><td class="num">R24K</td><td class="num">74</td><td class="num gpm">33%</td><td class="miss">GVS</td></tr>
-<tr><td>QUERCETIN COMPLEX 60S</td><td>Interlife Distributors</td><td class="num">R24K</td><td class="num">98</td><td class="num gpm">35%</td><td class="miss">GVS</td></tr>
-<tr><td>BLUE LIGHTNING 500ML</td><td>TRUE BLUE SUPPLEMENTS</td><td class="num">R23K</td><td class="num">67</td><td class="num gpm">30%</td><td class="miss">GVS</td></tr>
-<tr><td>LIVERTONE 60C</td><td>NUTRIGREEN</td><td class="num">R23K</td><td class="num">119</td><td class="num gph">41%</td><td class="miss">GVS, EDN</td></tr>
-<tr><td>POTCILYTE 90C</td><td>ENGINEERS AND DOCTORS</td><td class="num">R22K</td><td class="num">58</td><td class="num gpm">32%</td><td class="miss">GVS, EDN</td></tr>
-<tr><td>CALM FLOW 45S</td><td>BEAUTY ENCAPSULATED</td><td class="num">R22K</td><td class="num">44</td><td class="num gpm">35%</td><td class="miss">GVS</td></tr>
-<tr><td>VITAMIN B5 60'S</td><td>ECO VALLEY NUTRITION</td><td class="num">R21K</td><td class="num">103</td><td class="num gpm">32%</td><td class="miss">GVS</td></tr>
-<tr><td>ZINC &amp; GINGER 60'S</td><td>ECO VALLEY NUTRITION</td><td class="num">R21K</td><td class="num">124</td><td class="num gpm">36%</td><td class="miss">GVS, EDN</td></tr>
-<tr><td>BONE SUPREME 500'S</td><td>Interlife Distributors</td><td class="num">R21K</td><td class="num">25</td><td class="num gpl">26%</td><td class="miss">GVS, EDN</td></tr>
-<tr><td>5HTP 60'S</td><td>ECO VALLEY NUTRITION</td><td class="num">R20K</td><td class="num">97</td><td class="num gpm">32%</td><td class="miss">EDN</td></tr>
-<tr><td>BLOOD PRESSURE 60CAP</td><td>ECO VALLEY NUTRITION</td><td class="num">R19K</td><td class="num">75</td><td class="num gpm">35%</td><td class="miss">GVS</td></tr>
-<tr><td>HAIR SKIN &amp; NAILS 90S</td><td>BEAUTY ENCAPSULATED</td><td class="num">R19K</td><td class="num">39</td><td class="num gph">42%</td><td class="miss">GVS</td></tr>
-<tr><td>RELAX 60T</td><td>PRO NUTRITION</td><td class="num">R18K</td><td class="num">114</td><td class="num gph">41%</td><td class="miss">GVS</td></tr>
-<tr><td>DORMEASAN 50ML</td><td>PHARMAFORCE</td><td class="num">R18K</td><td class="num">82</td><td class="num gpm">33%</td><td class="miss">GVS, EDN</td></tr>
-<tr><td>THIAMINE B1 500MG 60</td><td>LV NUTRITIONAL PRODUCTS PTY LT</td><td class="num">R17K</td><td class="num">42</td><td class="num gpm">32%</td><td class="miss">GVS, EDN</td></tr>
-<tr><td>MAGN COMPLEX 60VC</td><td>Red Button Consulting</td><td class="num">R17K</td><td class="num">87</td><td class="num gpm">34%</td><td class="miss">GVS</td></tr>
-<tr><td>LENNON PEPPERMINT DROPS</td><td>CITY MEDICAL WHOLESALERS</td><td class="num">R16K</td><td class="num">432</td><td class="num gpl">25%</td><td class="miss">GVS, EDN</td></tr>
-<tr><td>INFLAM X 60S</td><td>ECO VALLEY NUTRITION</td><td class="num">R15K</td><td class="num">62</td><td class="num gpm">34%</td><td class="miss">GVS</td></tr>
-<tr><td>CANDLES REPLACEMENT FILTER</td><td></td><td class="num">R15K</td><td class="num">37</td><td class="num gpl">28%</td><td class="miss">GVS, EDN</td></tr>
-</tbody></table></div>
-<div id="suppliers" class="card jump-target"><h3>Supplier ABC Scorecard</h3>
-<div class="desc">Top 30 suppliers by revenue. A = top 80% cumulative, B = next 15%, C = bottom 5%.</div>
-<table><thead><tr><th>Class</th><th>Supplier</th><th class="num">Revenue</th><th class="num">GP%</th><th class="num">Units</th><th class="num">Products</th></tr></thead><tbody>
-<tr><td><span class="abc-a">A</span></td><td>DS INTERNATIONAL</td><td class="num">R1.83M</td><td class="num gpm">35.4%</td><td class="num">5,118</td><td class="num">224</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>LONGEVITY SUPPLEMENTS PTY LTD</td><td class="num">R1.41M</td><td class="num gph">44.1%</td><td class="num">6,593</td><td class="num">325</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>NATROCEUTICS SA</td><td class="num">R1.27M</td><td class="num gpm">31.0%</td><td class="num">3,854</td><td class="num">72</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>Interlife Distributors</td><td class="num">R921K</td><td class="num gpm">35.7%</td><td class="num">5,325</td><td class="num">78</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>LOVE YOURSELF BREADZ</td><td class="num">R832K</td><td class="num gpl">20.9%</td><td class="num">12,156</td><td class="num">67</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>PHYTOCEUTICS</td><td class="num">R674K</td><td class="num gpm">34.4%</td><td class="num">1,984</td><td class="num">90</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>AMIPRO</td><td class="num">R632K</td><td class="num gpm">32.1%</td><td class="num">1,334</td><td class="num">100</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>NUTRIGREEN</td><td class="num">R561K</td><td class="num gph">42.4%</td><td class="num">4,156</td><td class="num">119</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>WELL I AM</td><td class="num">R553K</td><td class="num gpm">35.6%</td><td class="num">3,063</td><td class="num">110</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>VERHAKI</td><td class="num">R550K</td><td class="num gpm">31.1%</td><td class="num">2,565</td><td class="num">117</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>ECO VALLEY NUTRITION</td><td class="num">R545K</td><td class="num gpm">34.0%</td><td class="num">2,833</td><td class="num">18</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>PMR NUTRITION</td><td class="num">R496K</td><td class="num gpm">35.9%</td><td class="num">2,528</td><td class="num">38</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>GREEN PHARM SOUTH AFRICA</td><td class="num">R431K</td><td class="num gpm">33.9%</td><td class="num">3,592</td><td class="num">258</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>NEOGENESIS HEALTH PRODUCTS</td><td class="num">R397K</td><td class="num gph">41.7%</td><td class="num">1,286</td><td class="num">81</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>PRIME HEALTH HOLDINGS</td><td class="num">R380K</td><td class="num gpm">35.8%</td><td class="num">1,859</td><td class="num">62</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>ESCENTIA PRODUCTS</td><td class="num">R346K</td><td class="num gpm">34.7%</td><td class="num">3,138</td><td class="num">248</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>The Real Thing Food Supplement</td><td class="num">R296K</td><td class="num gpm">30.9%</td><td class="num">1,041</td><td class="num">31</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>Solgar C011175</td><td class="num">R286K</td><td class="num gpm">38.1%</td><td class="num">1,118</td><td class="num">99</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>GENOLOGIX DISTRIBUTORS PTY LTD</td><td class="num">R275K</td><td class="num gpm">32.2%</td><td class="num">1,398</td><td class="num">56</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>CIMO DISTRIBUTION CC</td><td class="num">R253K</td><td class="num gpm">32.8%</td><td class="num">1,875</td><td class="num">73</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>YOUR WELLBEING</td><td class="num">R243K</td><td class="num gpm">34.3%</td><td class="num">711</td><td class="num">52</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>FEROXII NATURALS</td><td class="num">R239K</td><td class="num gpm">30.1%</td><td class="num">1,185</td><td class="num">22</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>SFERA BIO NUTRITION</td><td class="num">R228K</td><td class="num gpm">38.3%</td><td class="num">632</td><td class="num">27</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>PRO DISTRIBUTORS</td><td class="num">R211K</td><td class="num gpm">32.6%</td><td class="num">550</td><td class="num">24</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>CHINAHERB</td><td class="num">R209K</td><td class="num gpm">34.2%</td><td class="num">1,073</td><td class="num">83</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>BEAUTY ENCAPSULATED</td><td class="num">R207K</td><td class="num gph">41.0%</td><td class="num">499</td><td class="num">8</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>Infinity Therapeutics Africa</td><td class="num">R202K</td><td class="num gpm">36.4%</td><td class="num">328</td><td class="num">26</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>ALTWELL</td><td class="num">R201K</td><td class="num gpm">30.7%</td><td class="num">432</td><td class="num">20</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>SOARING FREE SUPERFOODS</td><td class="num">R201K</td><td class="num gpm">31.7%</td><td class="num">903</td><td class="num">47</td></tr>
-<tr><td><span class="abc-a">A</span></td><td>ALMAN'S DRIED FRUIT & NUTS</td><td class="num">R200K</td><td class="num gpl">27.2%</td><td class="num">3,586</td><td class="num">104</td></tr>
-</tbody></table></div>
-<div class="card"><h3>Store Comparison</h3><div class="desc">Revenue, GP, and unique sellers per store (snapshot period)</div>
-<table><thead><tr><th>Metric</th><th class="num">CEN</th><th class="num">GVS</th><th class="num">EDN</th></tr></thead><tbody>
-<tr><td>Revenue (snapshot)</td><td class="num">R15.66M</td><td class="num">R3.08M</td><td class="num">R3.63M</td></tr>
-<tr><td>Gross Profit</td><td class="num">R5.24M</td><td class="num">R1.04M</td><td class="num">R1.26M</td></tr>
-<tr><td>Units Sold</td><td class="num">101,343.7</td><td class="num">19,825</td><td class="num">18,994</td></tr>
-<tr><td>GP%</td><td class="num">33.4%</td><td class="num">33.7%</td><td class="num">34.6%</td></tr>
-</tbody></table>
-<h3 style="margin-top:16px;color:#f8fafc;font-size:13px">Unique Sellers by Store</h3>
-<div class="desc">Products that sell 3x+ more at one store vs others</div>
-<div class="ugrid">
-<div class="ustore"><h4>CEN</h4>
-<div class="uitem">MAG 7/87 60'S <span class="num">R177K</span></div>
-<div class="uitem">VIT D3 5000IU 120'S <span class="num">R162K</span></div>
-<div class="uitem">VIT D3 5000IU 240'S <span class="num">R83K</span></div>
-<div class="uitem">HEART HEALTH 60 CAPS <span class="num">R78K</span></div>
-<div class="uitem">POTASSIUM MAX 60'S <span class="num">R66K</span></div>
-</div>
-<div class="ustore"><h4>GVS</h4>
-<div class="uitem">UF WOMEN PROB 30S <span class="num">R9K</span></div>
-<div class="uitem">SPR B COMPLX 60S <span class="num">R5K</span></div>
-<div class="uitem">CHILL COCOBALLS  60S <span class="num">R5K</span></div>
-<div class="uitem">SCO ULTRACLEAR RENEW DETOX PWD 756G <span class="num">R5K</span></div>
-<div class="uitem">NAD PLUS COMP 60VC <span class="num">R4K</span></div>
-</div>
-<div class="ustore"><h4>EDN</h4>
-<div class="uitem">ZENTIUM 60T <span class="num">R51K</span></div>
-<div class="uitem">GLYCOGENICS 60T <span class="num">R8K</span></div>
-<div class="uitem">ML COCONUT MILK 1L <span class="num">R8K</span></div>
-<div class="uitem">HUMICAPS 120'S <span class="num">R7K</span></div>
-<div class="uitem">60C CHOLESTIN <span class="num">R7K</span></div>
-</div>
-</div></div>
-<div id="reviews" class="card jump-target"><h3>⭐ Google Reviews</h3>
-<div class="desc">Review tracking across all 3 stores | Data as at 2026-05-02 | Weekly target: 11 new reviews</div>
-<div class="kpi-strip" style="margin-bottom:14px">
-<div class="kpi"><div class="label">Total Reviews</div><div class="val">371</div><div class="note">Across all stores</div></div>
-<div class="kpi"><div class="label">New This Week</div><div class="val red">0</div><div class="note">Target: 11</div></div>
-<div class="kpi"><div class="label">🏆 Centurion</div><div class="val">4.7⭐</div><div class="note">294 reviews | <span class="red">+0/5 this week</span></div></div>
-<div class="kpi"><div class="label">🌿 Glen Village</div><div class="val">5.0⭐</div><div class="note">46 reviews | <span class="red">+0/3 this week</span></div></div>
-<div class="kpi"><div class="label">💚 Edenvale</div><div class="val">4.9⭐</div><div class="note">31 reviews | <span class="red">+0/3 this week</span></div></div>
-</div>
-<div class="store-grid">
-<div class="store-card">
-<div class="sname">🏆 Centurion</div>
-<div class="srev">4.7 ⭐</div>
-<div style="color:#94a3b8;font-size:12px;margin-bottom:8px">294 total reviews</div>
-<div class="bar-mini"><div class="bar-fill bad" style="width:0%"></div></div>
-<div class="spct">Weekly: +0 / 5 target</div>
-<div style="display:flex;gap:4px;margin-top:10px"><div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:40px;background:#22c55e;border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">5★ (240)</div></div><div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:6px;background:#a3e635;border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">4★ (36)</div></div><div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:0px;background:#fbbf24;border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">3★ (5)</div></div><div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:0px;background:#fb923c;border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">2★ (1)</div></div><div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:2px;background:#ef4444;border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">1★ (12)</div></div></div>
-</div>
-<div class="store-card">
-<div class="sname">🌿 Glen Village</div>
-<div class="srev">5.0 ⭐</div>
-<div style="color:#94a3b8;font-size:12px;margin-bottom:8px">46 total reviews</div>
-<div class="bar-mini"><div class="bar-fill bad" style="width:0%"></div></div>
-<div class="spct">Weekly: +0 / 3 target</div>
-<div style="display:flex;gap:4px;margin-top:10px"><div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:40px;background:#22c55e;border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">5★ (46)</div></div><div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:0px;background:#a3e635;border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">4★ (0)</div></div><div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:0px;background:#fbbf24;border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">3★ (0)</div></div><div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:0px;background:#fb923c;border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">2★ (0)</div></div><div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:0px;background:#ef4444;border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">1★ (0)</div></div></div>
-</div>
-<div class="store-card">
-<div class="sname">💚 Edenvale</div>
-<div class="srev">4.9 ⭐</div>
-<div style="color:#94a3b8;font-size:12px;margin-bottom:8px">31 total reviews</div>
-<div class="bar-mini"><div class="bar-fill bad" style="width:0%"></div></div>
-<div class="spct">Weekly: +0 / 3 target</div>
-<div style="display:flex;gap:4px;margin-top:10px"><div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:40px;background:#22c55e;border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">5★ (29)</div></div><div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:2px;background:#a3e635;border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">4★ (2)</div></div><div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:0px;background:#fbbf24;border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">3★ (0)</div></div><div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:0px;background:#fb923c;border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">2★ (0)</div></div><div style="text-align:center;flex:1"><div style="background:#0f172a;border-radius:3px;height:40px;display:flex;flex-direction:column-reverse;overflow:hidden"><div style="height:0px;background:#ef4444;border-radius:0 0 3px 3px"></div></div><div style="font-size:9px;color:#64748b;margin-top:2px">1★ (0)</div></div></div>
-</div>
-</div>
-</div>
-<div id="trends" class="card jump-target"><h3>Monthly Revenue Trends</h3><div class="desc">Last 3 months by store</div>
-<div class="mgrid">
-<div class="mcard"><div class="mo">2026-03</div><div class="tot">R1.31M</div>
-<div class="bd">CEN: R866K | GVS: R223K | EDN: R224K</div>
-<div class="incomplete">&#x26a0; Partial data (18/31 days)</div>
-</div>
-<div class="mcard"><div class="mo">2026-04</div><div class="tot">R0</div>
-<div class="bd">CEN: R0 | GVS: R0 | EDN: R0</div>
-<div class="incomplete">&#x26a0; Partial data (0/30 days)</div>
-</div>
-<div class="mcard"><div class="mo">2026-05</div><div class="tot">R41K</div>
-<div class="bd">CEN: R26K | GVS: R7K | EDN: R8K</div>
-</div>
-</div></div>
-<footer>Onelife Intelligence V7 &middot; 02 May 2026 19:34 SAST &middot; 3 stores + online &middot; Powered by <span class="lo">Jarvis</span> &#x1f99e;</footer>
-</div></body></html>
+</body>
+</html>
