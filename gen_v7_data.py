@@ -177,8 +177,10 @@ edn_dir = "ahead of" if edn_trend >= 0 else "behind"
 gvs_cmt = "strong growth" if gvs_trend >= 5 else ("steady" if gvs_trend >= 0 else "needs a push")
 edn_cmt = "on track" if edn_trend >= -5 else "worth investigating"
 
+month_name = datetime.now().strftime("%B")
+
 narrative = (
-    f"March is tracking well \u2014 <strong>R{mtd_rev:,.0f} MTD</strong> across 3 stores over "
+    f"{month_name} is tracking well \u2014 <strong>R{mtd_rev:,.0f} MTD</strong> across 3 stores over "
     f"{mtd_days} trading days. "
     f"CEN is your engine: <strong>R{cen_mtd:,.0f} MTD</strong>, running {abs(cen_trend):.0f}% "
     f"{cen_dir} Feb\u2019s daily pace. "

@@ -399,7 +399,7 @@ def main():
     edn_history = omni.get("edn_history", [])
 
     current_month = NOW.strftime("%Y-%m")
-    days_in_month_total = calendar.monthrange(NOW.year, NOW.month)[1]  # 31 for March
+    days_in_month_total = calendar.monthrange(NOW.year, NOW.month)[1]
 
     def history_dates_for_month(history, month):
         dates = []
@@ -739,13 +739,14 @@ def main():
     F = fmt_r_narrative
 
     pct_target = combined_projected / total_target * 100 if total_target > 0 else 0
+    month_name = NOW.strftime("%B")
 
     if pct_target >= 100:
-        lead = f"All 3 stores are running ahead of target — projected {F(combined_projected)} against a {F(total_target)} March target ({pct_target:.0f}%). The month is looking strong."
+        lead = f"All 3 stores are running ahead of target — projected {F(combined_projected)} against a {F(total_target)} {month_name} target ({pct_target:.0f}%). The month is looking strong."
     elif pct_target >= 90:
-        lead = f"March is close but not there yet — projected {F(combined_projected)} vs {F(total_target)} target ({pct_target:.0f}%). A {F(total_target - combined_projected)} gap remains with {days_remaining} days left."
+        lead = f"{month_name} is close but not there yet — projected {F(combined_projected)} vs {F(total_target)} target ({pct_target:.0f}%). A {F(total_target - combined_projected)} gap remains with {days_remaining} days left."
     else:
-        lead = f"March is under pressure — projected {F(combined_projected)} vs {F(total_target)} target ({pct_target:.0f}%). The {F(total_target - combined_projected)} shortfall needs action in the next {days_remaining} days."
+        lead = f"{month_name} is under pressure — projected {F(combined_projected)} vs {F(total_target)} target ({pct_target:.0f}%). The {F(total_target - combined_projected)} shortfall needs action in the next {days_remaining} days."
 
     story_parts = [{"text": lead, "cls": "lead"}]
 
