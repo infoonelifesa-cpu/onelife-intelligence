@@ -1,37 +1,59 @@
 {
-  "generated_at": "2026-07-01T06:19:40.992566+02:00",
-  "run_date": "2026-07-01",
+  "generated_at": "2026-07-02T06:15:40.693693+02:00",
+  "run_date": "2026-07-02",
   "system": "onelife-commerce-intelligence",
   "mode": "run",
   "feed_refresh": {
-    "generated_at": "2026-07-01T06:19:40.934488",
-    "target_date": "2026-07-01",
+    "generated_at": "2026-07-02T06:15:40.643567",
+    "target_date": "2026-07-02",
     "results": [
       {
         "feed": "shopify_sales_feed",
-        "status": "failed",
-        "started": "2026-07-01T06:14:20.383680",
-        "error": "<urlopen error [Errno 60] Operation timed out>",
-        "traceback": "Traceback (most recent call last):\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 1321, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n              encode_chunked=req.has_header('Transfer-encoding'))\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1358, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1404, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1353, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1113, in _send_output\n    self.send(msg)\n    ~~~~~~~~~^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1057, in send\n    self.connect()\n    ~~~~~~~~~~~~^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1023, in connect\n    self.sock = self._create_connection(\n                ~~~~~~~~~~~~~~~~~~~~~~~^\n        (self.host,self.port), self.timeout, self.source_address)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socket.py\", line 870, in create_connection\n    raise exceptions[0]\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socket.py\", line 855, in create_connection\n    sock.connect(sa)\n    ~~~~~~~~~~~~^^^^\nTimeoutError: [Errno 60] Operation timed out\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/run_all_feeds.py\", line 26, in run_all\n    payload = getattr(mod, fn_name)(target_date)\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/shopify_sales_feed.py\", line 37, in build_feed\n    omni_rows = fetch_omni_stock_by_branch()\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/common.py\", line 264, in fetch_omni_stock_by_branch\n    return {branch: fetch_omni_report(report) for branch, report in BRANCH_REPORTS.items()}\n                    ~~~~~~~~~~~~~~~~~^^^^^^^^\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/common.py\", line 253, in fetch_omni_report\n    with urllib.request.urlopen(req, timeout=180) as resp:\n         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 187, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 487, in open\n    response = self._open(req, data)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 504, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n                              '_open', req)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 464, in _call_chain\n    result = func(*args)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 1350, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 1324, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 60] Operation timed out>\n"
+        "status": "ok",
+        "started": "2026-07-02T06:13:05.877113",
+        "summary_keys": [
+          "generated_at",
+          "date",
+          "source",
+          "summary",
+          "store_summary",
+          "product_summary",
+          "category_summary",
+          "top_products",
+          "top_categories"
+        ]
       },
       {
         "feed": "product_performance_feed",
-        "status": "failed",
-        "started": "2026-07-01T06:15:35.802351",
-        "error": "<urlopen error [Errno 60] Operation timed out>",
-        "traceback": "Traceback (most recent call last):\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 1321, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n              encode_chunked=req.has_header('Transfer-encoding'))\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1358, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1404, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1353, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1113, in _send_output\n    self.send(msg)\n    ~~~~~~~~~^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1057, in send\n    self.connect()\n    ~~~~~~~~~~~~^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1023, in connect\n    self.sock = self._create_connection(\n                ~~~~~~~~~~~~~~~~~~~~~~~^\n        (self.host,self.port), self.timeout, self.source_address)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socket.py\", line 870, in create_connection\n    raise exceptions[0]\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socket.py\", line 855, in create_connection\n    sock.connect(sa)\n    ~~~~~~~~~~~~^^^^\nTimeoutError: [Errno 60] Operation timed out\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/run_all_feeds.py\", line 26, in run_all\n    payload = getattr(mod, fn_name)(target_date)\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/product_performance_feed.py\", line 35, in build_feed\n    stock_by_branch = fetch_omni_stock_by_branch()\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/common.py\", line 264, in fetch_omni_stock_by_branch\n    return {branch: fetch_omni_report(report) for branch, report in BRANCH_REPORTS.items()}\n                    ~~~~~~~~~~~~~~~~~^^^^^^^^\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/common.py\", line 253, in fetch_omni_report\n    with urllib.request.urlopen(req, timeout=180) as resp:\n         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 187, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 487, in open\n    response = self._open(req, data)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 504, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n                              '_open', req)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 464, in _call_chain\n    result = func(*args)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 1350, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 1324, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 60] Operation timed out>\n"
+        "status": "ok",
+        "started": "2026-07-02T06:13:32.437799",
+        "summary_keys": [
+          "generated_at",
+          "date",
+          "summary",
+          "sku_performance",
+          "top_20",
+          "bottom_20",
+          "category_rollup"
+        ]
       },
       {
         "feed": "inventory_feed",
-        "status": "failed",
-        "started": "2026-07-01T06:18:13.447975",
-        "error": "<urlopen error [Errno 60] Operation timed out>",
-        "traceback": "Traceback (most recent call last):\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 1321, in do_open\n    h.request(req.get_method(), req.selector, req.data, headers,\n    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n              encode_chunked=req.has_header('Transfer-encoding'))\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1358, in request\n    self._send_request(method, url, body, headers, encode_chunked)\n    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1404, in _send_request\n    self.endheaders(body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1353, in endheaders\n    self._send_output(message_body, encode_chunked=encode_chunked)\n    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1113, in _send_output\n    self.send(msg)\n    ~~~~~~~~~^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1057, in send\n    self.connect()\n    ~~~~~~~~~~~~^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/http/client.py\", line 1023, in connect\n    self.sock = self._create_connection(\n                ~~~~~~~~~~~~~~~~~~~~~~~^\n        (self.host,self.port), self.timeout, self.source_address)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socket.py\", line 870, in create_connection\n    raise exceptions[0]\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/socket.py\", line 855, in create_connection\n    sock.connect(sa)\n    ~~~~~~~~~~~~^^^^\nTimeoutError: [Errno 60] Operation timed out\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/run_all_feeds.py\", line 26, in run_all\n    payload = getattr(mod, fn_name)(target_date)\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/inventory_feed.py\", line 24, in build_feed\n    stock_by_branch = fetch_omni_stock_by_branch()\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/common.py\", line 264, in fetch_omni_stock_by_branch\n    return {branch: fetch_omni_report(report) for branch, report in BRANCH_REPORTS.items()}\n                    ~~~~~~~~~~~~~~~~~^^^^^^^^\n  File \"/Users/naadir/.openclaw/workspace/scripts/commercial_data_feeds/common.py\", line 253, in fetch_omni_report\n    with urllib.request.urlopen(req, timeout=180) as resp:\n         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 187, in urlopen\n    return opener.open(url, data, timeout)\n           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 487, in open\n    response = self._open(req, data)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 504, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n                              '_open', req)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 464, in _call_chain\n    result = func(*args)\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 1350, in http_open\n    return self.do_open(http.client.HTTPConnection, req)\n           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/urllib/request.py\", line 1324, in do_open\n    raise URLError(err)\nurllib.error.URLError: <urlopen error [Errno 60] Operation timed out>\n"
+        "status": "ok",
+        "started": "2026-07-02T06:14:59.828054",
+        "summary_keys": [
+          "generated_at",
+          "date",
+          "summary",
+          "branch_summary",
+          "inventory_rows",
+          "alerts"
+        ]
       },
       {
         "feed": "customer_intelligence_feed",
         "status": "ok",
-        "started": "2026-07-01T06:19:28.319452",
+        "started": "2026-07-02T06:15:26.922088",
         "summary_keys": [
           "generated_at",
           "date",
@@ -43,7 +65,7 @@
       {
         "feed": "branch_intelligence_feed",
         "status": "ok",
-        "started": "2026-07-01T06:19:40.864127",
+        "started": "2026-07-02T06:15:40.533641",
         "summary_keys": [
           "generated_at",
           "date",
@@ -55,7 +77,7 @@
       {
         "feed": "supplier_scorecard_feed",
         "status": "ok",
-        "started": "2026-07-01T06:19:40.904587",
+        "started": "2026-07-02T06:15:40.566312",
         "summary_keys": [
           "generated_at",
           "date",
@@ -66,7 +88,7 @@
       {
         "feed": "competitor_intelligence_feed",
         "status": "ok",
-        "started": "2026-07-01T06:19:40.931650",
+        "started": "2026-07-02T06:15:40.589993",
         "summary_keys": [
           "generated_at",
           "date",
@@ -92,79 +114,79 @@
             "supplier-intelligence.md",
             "inventory-alerts.md"
           ],
-          "daily_briefing": "# Daily Commercial Briefing\n\nGenerated: 2026-07-01T06:19:40.933491+02:00\n\n## Key Metrics\n- Revenue: R0.00\n- Orders: 0\n- AOV: R0.00\n- Units per transaction: 0\n- GP%: 0.00%\n- New vs returning: 0 new / 0 returning\n\n## Trends\n- Discount usage: 0 orders, R0.00 discounted\n- Active customers (180d): 719\n- Repeat purchase rate: 7.65%\n- Stockout risks: 0\n- Competitor price-match risks: 0\n\n## Alerts\n- No data\n\n## Recommended Actions\n- Replenish SKUs with <7 days cover, prioritising top revenue lines.\n- Push repeat-purchase campaigns into Klaviyo for churn-risk customers.\n- Review discount-heavy orders for margin leakage.\n- Shift inventory away from overstocked branches into demand nodes.\n",
+          "daily_briefing": "# Daily Commercial Briefing\n\nGenerated: 2026-07-02T06:15:40.640291+02:00\n\n## Key Metrics\n- Revenue: R0.00\n- Orders: 0\n- AOV: R0.00\n- Units per transaction: 0.0\n- GP%: 0.00%\n- New vs returning: 0 new / 0 returning\n\n## Trends\n- Discount usage: 0 orders, R0.00 discounted\n- Active customers (180d): 723\n- Repeat purchase rate: 7.61%\n- Stockout risks: 620\n- Competitor price-match risks: 0\n\n## Alerts\n- Edenvale stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Glen Village stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Edenvale stockout:  CoQ10 enzyme (6009663990240)\n- Glen Village stockout:  CoQ10 enzyme (6009663990240)\n- Centurion stockout:  DC POKE ROOT 100G (6009675501410)\n- Edenvale stockout:  DC POKE ROOT 100G (6009675501410)\n- Glen Village stockout:  DC POKE ROOT 100G (6009675501410)\n- Centurion stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Edenvale stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Glen Village stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n\n## Recommended Actions\n- Replenish SKUs with <7 days cover, prioritising top revenue lines.\n- Push repeat-purchase campaigns into Klaviyo for churn-risk customers.\n- Review discount-heavy orders for margin leakage.\n- Shift inventory away from overstocked branches into demand nodes.\n",
           "competitor_status": "normalised",
-          "target_date": "2026-07-01"
+          "target_date": "2026-07-02"
         }
       }
     ],
-    "status": "partial"
+    "status": "ok"
   },
   "sources": [
     {
       "label": "Shopify sales feed",
-      "path": "vaults/onelife/raw/shopify-sales-2026-06-30.json",
-      "generated_at": "2026-06-30T06:14:34.793286+02:00",
+      "path": "vaults/onelife/raw/shopify-sales-2026-07-02.json",
+      "generated_at": "2026-07-02T06:13:32.435100+02:00",
       "exists": true
     },
     {
       "label": "Product performance feed",
-      "path": "vaults/onelife/raw/product-performance-2026-06-30.json",
-      "generated_at": "2026-06-30T06:16:13.714758+02:00",
+      "path": "vaults/onelife/raw/product-performance-2026-07-02.json",
+      "generated_at": "2026-07-02T06:14:59.812523+02:00",
       "exists": true
     },
     {
       "label": "Inventory health feed",
-      "path": "vaults/onelife/raw/inventory-health-2026-06-30.json",
-      "generated_at": "2026-06-30T06:16:43.308672+02:00",
+      "path": "vaults/onelife/raw/inventory-health-2026-07-02.json",
+      "generated_at": "2026-07-02T06:15:26.884404+02:00",
       "exists": true
     },
     {
       "label": "Customer intelligence feed",
-      "path": "vaults/onelife/raw/customer-intelligence-2026-07-01.json",
-      "generated_at": "2026-07-01T06:19:40.495202+02:00",
+      "path": "vaults/onelife/raw/customer-intelligence-2026-07-02.json",
+      "generated_at": "2026-07-02T06:15:40.161848+02:00",
       "exists": true
     },
     {
       "label": "Branch intelligence feed",
-      "path": "vaults/onelife/raw/branch-intelligence-2026-07-01.json",
-      "generated_at": "2026-07-01T06:19:40.903187+02:00",
+      "path": "vaults/onelife/raw/branch-intelligence-2026-07-02.json",
+      "generated_at": "2026-07-02T06:15:40.564779+02:00",
       "exists": true
     },
     {
       "label": "Competitor intelligence feed",
-      "path": "vaults/onelife/raw/competitor-intelligence-2026-07-01.json",
-      "generated_at": "2026-07-01T06:19:40.932209+02:00",
+      "path": "vaults/onelife/raw/competitor-intelligence-2026-07-02.json",
+      "generated_at": "2026-07-02T06:15:40.590627+02:00",
       "exists": true
     },
     {
       "label": "Marketing decision audit",
       "path": "memory/marketing-decision-audit-latest.json",
-      "generated_at": "2026-07-01T06:14:17.165060+02:00",
+      "generated_at": "2026-07-02T06:13:02.909316+02:00",
       "exists": true
     },
     {
       "label": "SEO decision audit",
       "path": "memory/seo-decision-audit-latest.json",
-      "generated_at": "2026-07-01T06:14:17.195809+02:00",
+      "generated_at": "2026-07-02T06:13:02.954483+02:00",
       "exists": true
     },
     {
       "label": "Klaviyo decision audit",
       "path": "memory/klaviyo-decision-audit-latest.json",
-      "generated_at": "2026-07-01T06:14:17.248050+02:00",
+      "generated_at": "2026-07-02T06:13:03.008943+02:00",
       "exists": true
     },
     {
       "label": "GA4 decision audit",
       "path": "memory/ga4-decision-audit-latest.json",
-      "generated_at": "2026-07-01T06:14:20.332772+02:00",
+      "generated_at": "2026-07-02T06:13:05.826312+02:00",
       "exists": true
     },
     {
       "label": "Store ops alerts",
       "path": "memory/store-ops-alerts-latest.json",
-      "generated_at": "2026-07-01T06:14:17.114546+02:00",
+      "generated_at": "2026-07-02T06:13:02.843126+02:00",
       "exists": true
     },
     {
@@ -188,22 +210,22 @@
   ],
   "summary_lines": [
     "Online R0.00 from 0 orders, AOV R0.00.",
-    "Physical MTD R2,179,113.63, focus store Edenvale at 84.50% of target.",
+    "Physical MTD R86,175.61, focus store Edenvale at 2.30% of target.",
     "47 high-value lapsed customers, 8 winning SKUs at stock risk, 2 approval-gated recommendations."
   ],
   "highlights": [
     "Online trade delivered R0.00 from 0 orders at 0.00% GP.",
-    "Physical stores are sitting on R2,179,113.63 MTD revenue, with Edenvale currently the main pace risk.",
+    "Physical stores are sitting on R86,175.61 MTD revenue, with Edenvale currently the main pace risk.",
     "8 winning SKUs are already showing stock pressure, led by HOLISTQ - Pure Cold Pressed Black Seed Oil - 120 Softgels.",
-    "Customer base shows 47 high-value lapsed customers and 162 buyers due for repeat.",
+    "Customer base shows 47 high-value lapsed customers and 160 buyers due for repeat.",
     "Top geo demand is concentrated in Pretoria with R89,963.94 in the 90d view.",
     "Competitor scan shows 6 clear price wins and 0 price-position risks."
   ],
   "actions": [
     "Protect winning SKU HOLISTQ - Pure Cold Pressed Black Seed Oil - 120 Softgels first, it produced R5,489.00 in 90d and is already under stock pressure.",
     "Stage a win-back segment for 47 high-value lapsed customers, led by Unknown.",
-    "Treat Edenvale as the branch priority, it is running at 84.5% of MTD target with pressure on same-day recovery.",
-    "Push the next content batch around 'Use the email loop output to tighten subject lines and retention campaign angles.' and point it at Florish Spore Probiotic with Fulvic Acid - 60 Capsules, GOOD LIFE WELLNES - Glycine - 250G, PRIMESELF - Magnesium Complex - 60 Veg Capsules."
+    "Treat Edenvale as the branch priority, it is running at 2.3% of MTD target with pressure on same-day recovery.",
+    "Push the next content batch around 'Use the email loop output to tighten subject lines and retention campaign angles.' and point it at Florish Spore Probiotic with Fulvic Acid - 60 Capsules, GOOD LIFE WELLNES - Glycine - 250G, DELFRAN - Pcositol - 30 Sachets."
   ],
   "approval_gated_actions": [
     {
@@ -228,7 +250,7 @@
       ],
       "evidence": [
         "90d revenue R5,489.00",
-        "Stock cover 45.0 days",
+        "Stock cover 90.0 days",
         "Pressure nodes Centurion"
       ],
       "execution": {
@@ -283,10 +305,10 @@
     "shopify_gp_pct": 0.0,
     "new_orders": 0,
     "returning_orders": 0,
-    "physical_revenue_today": 88535.71,
-    "physical_gp_pct_today": 33.1,
-    "physical_mtd_revenue": 2179113.63,
-    "physical_mtd_gp_pct": 33.4,
+    "physical_revenue_today": 86175.61,
+    "physical_gp_pct_today": 33.9,
+    "physical_mtd_revenue": 86175.61,
+    "physical_mtd_gp_pct": 33.9,
     "top_city": {
       "city": "Pretoria",
       "orders": 102,
@@ -297,7 +319,7 @@
     "high_value_lapsed_customers": 47,
     "winning_items_at_risk": 8,
     "focus_store": "Edenvale",
-    "focus_store_target_pct": 84.5
+    "focus_store_target_pct": 2.3
   },
   "sections": {
     "top_movers_today": [],
@@ -306,27 +328,12 @@
         "sku": "9345616000893",
         "title": "HOLISTQ - Pure Cold Pressed Black Seed Oil - 120 Softgels",
         "category": "Black Seed Oil Supplement",
-        "revenue_30": 998.0,
+        "revenue_30": 499.0,
         "revenue_90": 5489.0,
-        "units_30": 2,
+        "units_30": 1,
         "units_90": 11,
         "inventory_quantity": 3,
-        "stock_cover_days": 45.0,
-        "stockout_stores": [],
-        "reorder_stores": [
-          "Centurion"
-        ]
-      },
-      {
-        "sku": "781159888670",
-        "title": "NEUROACTIVE - Neuro Day Plus - 60 Veg Capsules",
-        "category": "Nootropic Supplement",
-        "revenue_30": 0.0,
-        "revenue_90": 3506.08,
-        "units_30": 0,
-        "units_90": 4,
-        "inventory_quantity": 1,
-        "stock_cover_days": 22.5,
+        "stock_cover_days": 90.0,
         "stockout_stores": [],
         "reorder_stores": [
           "Centurion"
@@ -349,6 +356,21 @@
         ]
       },
       {
+        "sku": "6009800366488",
+        "title": "PMR NUTRITION - 5 HTP Plus - 60 Capsules",
+        "category": "Mood Support Supplement",
+        "revenue_30": 1049.1,
+        "revenue_90": 2098.2,
+        "units_30": 3,
+        "units_90": 6,
+        "inventory_quantity": 2,
+        "stock_cover_days": 20.0,
+        "stockout_stores": [],
+        "reorder_stores": [
+          "Centurion"
+        ]
+      },
+      {
         "sku": "0781718953597",
         "title": "ALEXIA RICH - Orgono Liquid Silica - 1L",
         "category": "Silica Supplement",
@@ -360,6 +382,21 @@
         "stock_cover_days": 0.0,
         "stockout_stores": [],
         "reorder_stores": []
+      },
+      {
+        "sku": "6000000033170",
+        "title": "RAFAA - Unflavoured Rafaa® 1L",
+        "category": "Liquid Probiotic",
+        "revenue_30": 1404.0,
+        "revenue_90": 1755.0,
+        "units_30": 4,
+        "units_90": 5,
+        "inventory_quantity": 0,
+        "stock_cover_days": 0.0,
+        "stockout_stores": [],
+        "reorder_stores": [
+          "Centurion"
+        ]
       },
       {
         "sku": "6009657780529",
@@ -403,22 +440,6 @@
         "reorder_stores": [
           "Centurion"
         ]
-      },
-      {
-        "sku": "6009703197165",
-        "title": "ESSE - Foundation 5 - 30ml",
-        "category": "Organic Foundation",
-        "revenue_30": 0.0,
-        "revenue_90": 1460.0,
-        "units_30": 0,
-        "units_90": 2,
-        "inventory_quantity": 1,
-        "stock_cover_days": 45.0,
-        "stockout_stores": [
-          "Edenvale",
-          "Glen Village"
-        ],
-        "reorder_stores": []
       }
     ],
     "branch_watch": [
@@ -426,13 +447,13 @@
         "store_code": "CEN",
         "store": "Centurion",
         "online_revenue": 0.0,
-        "physical_revenue_today": 66218.5,
-        "physical_gp_pct_today": 32.6,
-        "mtd_revenue": 1471350.2,
-        "mtd_target_pct": 101.5,
-        "projected_eom": 1471350.0,
-        "pace_gap_amount": 21350.2,
-        "mom_trend_revenue": 24.44,
+        "physical_revenue_today": 63483.22,
+        "physical_gp_pct_today": 33.5,
+        "mtd_revenue": 63483.22,
+        "mtd_target_pct": 4.4,
+        "projected_eom": 1650564.0,
+        "pace_gap_amount": -1386516.78,
+        "mom_trend_revenue": null,
         "top_products": [],
         "active_alerts": [
           "Revenue behind monthly pace"
@@ -442,29 +463,30 @@
         "store_code": "EDN",
         "store": "Edenvale",
         "online_revenue": 0.0,
-        "physical_revenue_today": 7973.56,
-        "physical_gp_pct_today": 35.5,
-        "mtd_revenue": 380087.28,
-        "mtd_target_pct": 84.5,
-        "projected_eom": 392757.0,
-        "pace_gap_amount": -69912.72,
-        "mom_trend_revenue": -23.93,
+        "physical_revenue_today": 10528.87,
+        "physical_gp_pct_today": 33.2,
+        "mtd_revenue": 10528.87,
+        "mtd_target_pct": 2.3,
+        "projected_eom": 326395.0,
+        "pace_gap_amount": -439471.13,
+        "mom_trend_revenue": null,
         "top_products": [],
         "active_alerts": [
-          "Revenue behind monthly pace"
+          "Revenue behind monthly pace",
+          "Makarios pace miss"
         ]
       },
       {
         "store_code": "GVS",
         "store": "Glen Village",
         "online_revenue": 0.0,
-        "physical_revenue_today": 14343.65,
-        "physical_gp_pct_today": 34.1,
-        "mtd_revenue": 327676.15,
-        "mtd_target_pct": 99.3,
-        "projected_eom": 338599.0,
-        "pace_gap_amount": -2323.85,
-        "mom_trend_revenue": 1.52,
+        "physical_revenue_today": 12163.52,
+        "physical_gp_pct_today": 37.1,
+        "mtd_revenue": 12163.52,
+        "mtd_target_pct": 3.7,
+        "projected_eom": 377069.0,
+        "pace_gap_amount": -317836.48,
+        "mom_trend_revenue": null,
         "top_products": [],
         "active_alerts": [
           "Revenue behind monthly pace"
@@ -486,19 +508,19 @@
       }
     ],
     "customer_geo": {
-      "active_customers_180d": 719,
-      "new_customers_30d": 158,
-      "repeat_purchase_rate_90d": 7.65,
+      "active_customers_180d": 723,
+      "new_customers_30d": 159,
+      "repeat_purchase_rate_90d": 7.61,
       "repeat_purchase_customers_90d": 55,
-      "churn_risk_customers": 215,
-      "due_for_repeat_31_60d": 162,
-      "slipping_61_90d": 159,
-      "lapsed_91_plus": 215,
+      "churn_risk_customers": 221,
+      "due_for_repeat_31_60d": 160,
+      "slipping_61_90d": 157,
+      "lapsed_91_plus": 221,
       "high_value_lapsed_91_plus": 47,
       "ltv_segments": {
         "high": 14,
-        "mid": 120,
-        "low": 585
+        "mid": 119,
+        "low": 590
       },
       "top_cities_90d": [
         {
@@ -517,31 +539,31 @@
         },
         {
           "city": "Cape Town",
-          "orders": 53,
-          "revenue": 29820.84,
-          "customers": 46,
-          "average_order_value": 562.66
+          "orders": 55,
+          "revenue": 30826.03,
+          "customers": 48,
+          "average_order_value": 560.47
         },
         {
           "city": "Midrand",
-          "orders": 23,
-          "revenue": 19079.67,
-          "customers": 19,
-          "average_order_value": 829.55
+          "orders": 24,
+          "revenue": 19851.87,
+          "customers": 20,
+          "average_order_value": 827.16
         },
         {
-          "city": "Sandton",
-          "orders": 19,
-          "revenue": 15337.12,
-          "customers": 16,
-          "average_order_value": 807.22
+          "city": "Durban",
+          "orders": 24,
+          "revenue": 15662.5,
+          "customers": 24,
+          "average_order_value": 652.6
         },
         {
           "city": "Unknown",
-          "orders": 28,
-          "revenue": 15294.48,
-          "customers": 28,
-          "average_order_value": 546.23
+          "orders": 29,
+          "revenue": 15358.31,
+          "customers": 29,
+          "average_order_value": 529.6
         }
       ],
       "top_cities_30d": [
@@ -561,17 +583,17 @@
         },
         {
           "city": "Cape Town",
-          "orders": 17,
-          "revenue": 8731.44,
-          "customers": 15,
-          "average_order_value": 513.61
+          "orders": 18,
+          "revenue": 9233.15,
+          "customers": 17,
+          "average_order_value": 512.95
         },
         {
           "city": "Unknown",
           "orders": 6,
-          "revenue": 5431.7,
+          "revenue": 5233.53,
           "customers": 6,
-          "average_order_value": 905.28
+          "average_order_value": 872.25
         },
         {
           "city": "Erasmia",
@@ -581,23 +603,23 @@
           "average_order_value": 2185.66
         },
         {
-          "city": "Sandton",
-          "orders": 4,
-          "revenue": 3900.22,
-          "customers": 4,
-          "average_order_value": 975.05
+          "city": "Durban",
+          "orders": 7,
+          "revenue": 3919.35,
+          "customers": 7,
+          "average_order_value": 559.91
         }
       ],
       "repeat_customer_top_categories": [
         {
           "category": "Unknown",
-          "units": 593
+          "units": 607
         }
       ],
       "lapsed_customer_top_categories": [
         {
           "category": "Unknown",
-          "units": 721
+          "units": 729
         }
       ]
     },
@@ -608,7 +630,7 @@
         "products_to_push": [
           "Florish Spore Probiotic with Fulvic Acid - 60 Capsules",
           "GOOD LIFE WELLNES - Glycine - 250G",
-          "PRIMESELF - Magnesium Complex - 60 Veg Capsules"
+          "DELFRAN - Pcositol - 30 Sachets"
         ],
         "why_now": "These SKUs have live demand plus safe stock cover, so content can scale without creating a stockout problem."
       },
@@ -627,7 +649,7 @@
         "products_to_push": [
           "Florish Spore Probiotic with Fulvic Acid - 60 Capsules",
           "GOOD LIFE WELLNES - Glycine - 250G",
-          "PRIMESELF - Magnesium Complex - 60 Veg Capsules"
+          "DELFRAN - Pcositol - 30 Sachets"
         ],
         "why_now": "Use active search demand to support products that can still absorb demand operationally."
       },
@@ -642,7 +664,7 @@
       },
       {
         "lane": "search_conversion",
-        "theme": "Organic search already converted 5 purchases in the latest GA4 slice.",
+        "theme": "Organic search already converted 3 purchases in the latest GA4 slice.",
         "products_to_push": [
           "Florish Spore Probiotic with Fulvic Acid - 60 Capsules",
           "GOOD LIFE WELLNES - Glycine - 250G"
@@ -709,20 +731,20 @@
         "stock_cover_days": 21.67
       },
       {
-        "sku": "737186096175",
-        "title": "PRIMESELF - Magnesium Complex - 60 Veg Capsules",
-        "category": "Magnesium Supplement",
-        "revenue_90": 4500.0,
+        "sku": "6009801022451",
+        "title": "DELFRAN - Pcositol - 30 Sachets",
+        "category": "Women's Health Supplement",
+        "revenue_90": 5805.0,
         "gross_profit_pct": 88.89,
-        "stock_cover_days": 70.0
+        "stock_cover_days": 15.0
       },
       {
         "sku": "6009888578117",
         "title": "NATROCEUTICS® SA - Omega 3 Pure & Wild 60 Capsules",
         "category": "Omega-3 Supplement",
-        "revenue_90": 4147.0,
-        "gross_profit_pct": 90.91,
-        "stock_cover_days": 70.0
+        "revenue_90": 3770.0,
+        "gross_profit_pct": 90.0,
+        "stock_cover_days": 30.0
       },
       {
         "sku": "6901070110177",
@@ -730,13 +752,13 @@
         "category": "Herbal Powder",
         "revenue_90": 3725.33,
         "gross_profit_pct": 94.74,
-        "stock_cover_days": 30.0
+        "stock_cover_days": 56.25
       }
     ]
   },
   "outputs": {
-    "raw_json": "vaults/onelife/raw/daily-trade-brief-2026-07-01.json",
-    "compiled_md": "vaults/onelife/compiled/daily-trade-brief-2026-07-01.md",
+    "raw_json": "vaults/onelife/raw/daily-trade-brief-2026-07-02.json",
+    "compiled_md": "vaults/onelife/compiled/daily-trade-brief-2026-07-02.md",
     "latest_json": "memory/onelife-trade-brief-latest.json",
     "latest_md": "memory/onelife-trade-brief-latest.md",
     "app_json": "onelife-intelligence/data/trade_brief_latest.json"
