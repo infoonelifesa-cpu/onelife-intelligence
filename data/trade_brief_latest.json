@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-07-17T06:15:58.225049+02:00",
-  "run_date": "2026-07-17",
+  "generated_at": "2026-07-18T06:15:39.624080+02:00",
+  "run_date": "2026-07-18",
   "system": "onelife-commerce-intelligence",
   "mode": "run",
   "feed_refresh": {
-    "generated_at": "2026-07-17T06:15:58.180294",
-    "target_date": "2026-07-17",
+    "generated_at": "2026-07-18T06:15:39.571820",
+    "target_date": "2026-07-18",
     "results": [
       {
         "feed": "shopify_sales_feed",
         "status": "ok",
-        "started": "2026-07-17T06:13:08.375456",
+        "started": "2026-07-18T06:12:47.209126",
         "summary_keys": [
           "generated_at",
           "date",
@@ -26,7 +26,7 @@
       {
         "feed": "product_performance_feed",
         "status": "ok",
-        "started": "2026-07-17T06:13:35.371842",
+        "started": "2026-07-18T06:13:14.241820",
         "summary_keys": [
           "generated_at",
           "date",
@@ -40,7 +40,7 @@
       {
         "feed": "inventory_feed",
         "status": "ok",
-        "started": "2026-07-17T06:15:15.471998",
+        "started": "2026-07-18T06:14:56.118353",
         "summary_keys": [
           "generated_at",
           "date",
@@ -53,7 +53,7 @@
       {
         "feed": "customer_intelligence_feed",
         "status": "ok",
-        "started": "2026-07-17T06:15:41.544969",
+        "started": "2026-07-18T06:15:22.538698",
         "summary_keys": [
           "generated_at",
           "date",
@@ -65,7 +65,7 @@
       {
         "feed": "branch_intelligence_feed",
         "status": "ok",
-        "started": "2026-07-17T06:15:58.077070",
+        "started": "2026-07-18T06:15:39.480241",
         "summary_keys": [
           "generated_at",
           "date",
@@ -77,7 +77,7 @@
       {
         "feed": "supplier_scorecard_feed",
         "status": "ok",
-        "started": "2026-07-17T06:15:58.106660",
+        "started": "2026-07-18T06:15:39.502420",
         "summary_keys": [
           "generated_at",
           "date",
@@ -88,7 +88,7 @@
       {
         "feed": "competitor_intelligence_feed",
         "status": "ok",
-        "started": "2026-07-17T06:15:58.127770",
+        "started": "2026-07-18T06:15:39.517599",
         "summary_keys": [
           "generated_at",
           "date",
@@ -114,9 +114,9 @@
             "supplier-intelligence.md",
             "inventory-alerts.md"
           ],
-          "daily_briefing": "# Daily Commercial Briefing\n\nGenerated: 2026-07-17T06:15:58.176347+02:00\n\n## Key Metrics\n- Revenue: R0.00\n- Orders: 0\n- AOV: R0.00\n- Units per transaction: 0.0\n- GP%: 0.00%\n- New vs returning: 0 new / 0 returning\n\n## Trends\n- Discount usage: 0 orders, R0.00 discounted\n- Active customers (180d): 758\n- Repeat purchase rate: 8.05%\n- Stockout risks: 587\n- Competitor price-match risks: 0\n\n## Alerts\n- Edenvale stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Glen Village stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Edenvale stockout:  CoQ10 enzyme (6009663990240)\n- Glen Village stockout:  CoQ10 enzyme (6009663990240)\n- Centurion stockout:  DC POKE ROOT 100G (6009675501410)\n- Edenvale stockout:  DC POKE ROOT 100G (6009675501410)\n- Glen Village stockout:  DC POKE ROOT 100G (6009675501410)\n- Centurion stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Edenvale stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Glen Village stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n\n## Recommended Actions\n- Replenish SKUs with <7 days cover, prioritising top revenue lines.\n- Push repeat-purchase campaigns into Klaviyo for churn-risk customers.\n- Review discount-heavy orders for margin leakage.\n- Shift inventory away from overstocked branches into demand nodes.\n",
+          "daily_briefing": "# Daily Commercial Briefing\n\nGenerated: 2026-07-18T06:15:39.568047+02:00\n\n## Key Metrics\n- Revenue: R0.00\n- Orders: 0\n- AOV: R0.00\n- Units per transaction: 0.0\n- GP%: 0.00%\n- New vs returning: 0 new / 0 returning\n\n## Trends\n- Discount usage: 0 orders, R0.00 discounted\n- Active customers (180d): 759\n- Repeat purchase rate: 7.77%\n- Stockout risks: 578\n- Competitor price-match risks: 0\n\n## Alerts\n- Edenvale stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Glen Village stockout:  BARRY'S MACADAMIA NOUGAT 50G (6001883000396)\n- Edenvale stockout:  CoQ10 enzyme (6009663990240)\n- Glen Village stockout:  CoQ10 enzyme (6009663990240)\n- Centurion stockout:  DC POKE ROOT 100G (6009675501410)\n- Edenvale stockout:  DC POKE ROOT 100G (6009675501410)\n- Glen Village stockout:  DC POKE ROOT 100G (6009675501410)\n- Centurion stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Edenvale stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n- Glen Village stockout:  PETADOLOR ANALGESIC FORMULA 30ML (6007650001320)\n\n## Recommended Actions\n- Replenish SKUs with <7 days cover, prioritising top revenue lines.\n- Push repeat-purchase campaigns into Klaviyo for churn-risk customers.\n- Review discount-heavy orders for margin leakage.\n- Shift inventory away from overstocked branches into demand nodes.\n",
           "competitor_status": "normalised",
-          "target_date": "2026-07-17"
+          "target_date": "2026-07-18"
         }
       }
     ],
@@ -125,68 +125,68 @@
   "sources": [
     {
       "label": "Shopify sales feed",
-      "path": "vaults/onelife/raw/shopify-sales-2026-07-17.json",
-      "generated_at": "2026-07-17T06:13:35.369197+02:00",
+      "path": "vaults/onelife/raw/shopify-sales-2026-07-18.json",
+      "generated_at": "2026-07-18T06:13:14.238214+02:00",
       "exists": true
     },
     {
       "label": "Product performance feed",
-      "path": "vaults/onelife/raw/product-performance-2026-07-17.json",
-      "generated_at": "2026-07-17T06:15:15.457656+02:00",
+      "path": "vaults/onelife/raw/product-performance-2026-07-18.json",
+      "generated_at": "2026-07-18T06:14:56.100765+02:00",
       "exists": true
     },
     {
       "label": "Inventory health feed",
-      "path": "vaults/onelife/raw/inventory-health-2026-07-17.json",
-      "generated_at": "2026-07-17T06:15:41.507707+02:00",
+      "path": "vaults/onelife/raw/inventory-health-2026-07-18.json",
+      "generated_at": "2026-07-18T06:15:22.494604+02:00",
       "exists": true
     },
     {
       "label": "Customer intelligence feed",
-      "path": "vaults/onelife/raw/customer-intelligence-2026-07-17.json",
-      "generated_at": "2026-07-17T06:15:57.696951+02:00",
+      "path": "vaults/onelife/raw/customer-intelligence-2026-07-18.json",
+      "generated_at": "2026-07-18T06:15:39.119792+02:00",
       "exists": true
     },
     {
       "label": "Branch intelligence feed",
-      "path": "vaults/onelife/raw/branch-intelligence-2026-07-17.json",
-      "generated_at": "2026-07-17T06:15:58.105324+02:00",
+      "path": "vaults/onelife/raw/branch-intelligence-2026-07-18.json",
+      "generated_at": "2026-07-18T06:15:39.501551+02:00",
       "exists": true
     },
     {
       "label": "Competitor intelligence feed",
-      "path": "vaults/onelife/raw/competitor-intelligence-2026-07-17.json",
-      "generated_at": "2026-07-17T06:15:58.128385+02:00",
+      "path": "vaults/onelife/raw/competitor-intelligence-2026-07-18.json",
+      "generated_at": "2026-07-18T06:15:39.518228+02:00",
       "exists": true
     },
     {
       "label": "Marketing decision audit",
       "path": "memory/marketing-decision-audit-latest.json",
-      "generated_at": "2026-07-17T06:13:05.698008+02:00",
+      "generated_at": "2026-07-18T06:12:44.391844+02:00",
       "exists": true
     },
     {
       "label": "SEO decision audit",
       "path": "memory/seo-decision-audit-latest.json",
-      "generated_at": "2026-07-17T06:13:05.728568+02:00",
+      "generated_at": "2026-07-18T06:12:44.452675+02:00",
       "exists": true
     },
     {
       "label": "Klaviyo decision audit",
       "path": "memory/klaviyo-decision-audit-latest.json",
-      "generated_at": "2026-07-17T06:13:05.778085+02:00",
+      "generated_at": "2026-07-18T06:12:44.524573+02:00",
       "exists": true
     },
     {
       "label": "GA4 decision audit",
       "path": "memory/ga4-decision-audit-latest.json",
-      "generated_at": "2026-07-17T06:13:08.325737+02:00",
+      "generated_at": "2026-07-18T06:12:47.131640+02:00",
       "exists": true
     },
     {
       "label": "Store ops alerts",
       "path": "memory/store-ops-alerts-latest.json",
-      "generated_at": "2026-07-17T06:13:05.610158+02:00",
+      "generated_at": "2026-07-18T06:12:44.227243+02:00",
       "exists": true
     },
     {
@@ -210,37 +210,37 @@
   ],
   "summary_lines": [
     "Online R0.00 from 0 orders, AOV R0.00.",
-    "Physical MTD R1,159,535.56, focus store Edenvale at 47.10% of target.",
-    "46 high-value lapsed customers, 8 winning SKUs at stock risk, 2 approval-gated recommendations."
+    "Physical MTD R1,242,424.09, focus store Edenvale at 50.10% of target.",
+    "45 high-value lapsed customers, 8 winning SKUs at stock risk, 2 approval-gated recommendations."
   ],
   "highlights": [
     "Online trade delivered R0.00 from 0 orders at 0.00% GP.",
-    "Physical stores are sitting on R1,159,535.56 MTD revenue, with Edenvale currently the main pace risk.",
-    "8 winning SKUs are already showing stock pressure, led by MEDFORD - LiverScript - 60 Vegetable Capsules.",
-    "Customer base shows 46 high-value lapsed customers and 169 buyers due for repeat.",
-    "Top geo demand is concentrated in Pretoria with R92,531.86 in the 90d view.",
+    "Physical stores are sitting on R1,242,424.09 MTD revenue, with Edenvale currently the main pace risk.",
+    "8 winning SKUs are already showing stock pressure, led by HOLISTQ - Pure Cold Pressed Black Seed Oil - 120 Softgels.",
+    "Customer base shows 45 high-value lapsed customers and 167 buyers due for repeat.",
+    "Top geo demand is concentrated in Pretoria with R92,752.44 in the 90d view.",
     "Competitor scan shows 6 clear price wins and 0 price-position risks."
   ],
   "actions": [
-    "Protect winning SKU MEDFORD - LiverScript - 60 Vegetable Capsules first, it produced R3,690.00 in 90d and is already under stock pressure.",
-    "Stage a win-back segment for 46 high-value lapsed customers, led by Unknown.",
-    "Treat Edenvale as the branch priority, it is running at 47.1% of MTD target with pressure on same-day recovery.",
-    "Push the next content batch around 'Use the email loop output to tighten subject lines and retention campaign angles.' and point it at GOOD LIFE WELLNES - Glycine - 250G, DELFRAN - Pcositol - 30 Sachets, ALTWELL - C19 Plus Immune Booster - 360g."
+    "Protect winning SKU HOLISTQ - Pure Cold Pressed Black Seed Oil - 120 Softgels first, it produced R3,493.00 in 90d and is already under stock pressure.",
+    "Stage a win-back segment for 45 high-value lapsed customers, led by Unknown.",
+    "Treat Edenvale as the branch priority, it is running at 50.1% of MTD target with pressure on same-day recovery.",
+    "Push the next content batch around 'Use the email loop output to tighten subject lines and retention campaign angles.' and point it at GOOD LIFE WELLNES - Glycine - 250G, DELFRAN - Pcositol - 30 Sachets, MEDFORD - LiverScript - 60 Vegetable Capsules."
   ],
   "approval_gated_actions": [
     {
-      "id": "inventory-stock-protection-6009675200665",
+      "id": "inventory-stock-protection-9345616000893",
       "lane": "inventory",
       "action_type": "stock-protection",
       "approval_required": true,
       "priority": "high",
-      "title": "Protect MEDFORD - LiverScript - 60 Vegetable Capsules",
-      "description": "Approve branch transfer, reorder, or supplier follow-up for MEDFORD - LiverScript - 60 Vegetable Capsules (6009675200665).",
+      "title": "Protect HOLISTQ - Pure Cold Pressed Black Seed Oil - 120 Softgels",
+      "description": "Approve branch transfer, reorder, or supplier follow-up for HOLISTQ - Pure Cold Pressed Black Seed Oil - 120 Softgels (9345616000893).",
       "reason": "Read-only brief identified a winning SKU with live stock risk.",
       "entity": {
-        "sku": "6009675200665",
-        "title": "MEDFORD - LiverScript - 60 Vegetable Capsules",
-        "category": "Liver Support Supplement"
+        "sku": "9345616000893",
+        "title": "HOLISTQ - Pure Cold Pressed Black Seed Oil - 120 Softgels",
+        "category": "Black Seed Oil Supplement"
       },
       "recommended_decision": "Choose the lowest-risk replenishment move before demand outpaces stock cover.",
       "decision_options": [
@@ -249,9 +249,9 @@
         "Escalate supplier follow-up"
       ],
       "evidence": [
-        "90d revenue R3,690.00",
-        "Stock cover 0.0 days",
-        "Pressure nodes general cover risk"
+        "90d revenue R3,493.00",
+        "Stock cover 12.86 days",
+        "Pressure nodes Centurion"
       ],
       "execution": {
         "supported": false,
@@ -275,7 +275,7 @@
       "reason": "The brief surfaced revenue at risk from dormant customers.",
       "entity": {
         "segment": "high_value_lapsed_91_plus",
-        "customers": 46
+        "customers": 45
       },
       "recommended_decision": "Decide whether to launch a targeted win-back flow or a one-off campaign.",
       "decision_options": [
@@ -284,7 +284,7 @@
         "Hold and review the segment first"
       ],
       "evidence": [
-        "High-value lapsed customers 46",
+        "High-value lapsed customers 45",
         "Top lapsed categories Unknown"
       ],
       "execution": {
@@ -305,38 +305,25 @@
     "shopify_gp_pct": 0.0,
     "new_orders": 0,
     "returning_orders": 0,
-    "physical_revenue_today": 63432.62,
-    "physical_gp_pct_today": 33.5,
-    "physical_mtd_revenue": 1159535.56,
+    "physical_revenue_today": 82888.53,
+    "physical_gp_pct_today": 33.9,
+    "physical_mtd_revenue": 1242424.09,
     "physical_mtd_gp_pct": 33.4,
     "top_city": {
       "city": "Pretoria",
-      "orders": 102,
-      "revenue": 92531.86,
-      "customers": 76,
-      "average_order_value": 907.18
+      "orders": 103,
+      "revenue": 92752.44,
+      "customers": 77,
+      "average_order_value": 900.51
     },
-    "high_value_lapsed_customers": 46,
+    "high_value_lapsed_customers": 45,
     "winning_items_at_risk": 8,
     "focus_store": "Edenvale",
-    "focus_store_target_pct": 47.1
+    "focus_store_target_pct": 50.1
   },
   "sections": {
     "top_movers_today": [],
     "winning_items_stock_risk": [
-      {
-        "sku": "6009675200665",
-        "title": "MEDFORD - LiverScript - 60 Vegetable Capsules",
-        "category": "Liver Support Supplement",
-        "revenue_30": 1107.0,
-        "revenue_90": 3690.0,
-        "units_30": 3,
-        "units_90": 10,
-        "inventory_quantity": 0,
-        "stock_cover_days": 0.0,
-        "stockout_stores": [],
-        "reorder_stores": []
-      },
       {
         "sku": "9345616000893",
         "title": "HOLISTQ - Pure Cold Pressed Black Seed Oil - 120 Softgels",
@@ -353,21 +340,6 @@
         ]
       },
       {
-        "sku": "6009693240773",
-        "title": "ADORE NATURE - Green Banana Chips 80g",
-        "category": "Health Snack",
-        "revenue_30": 1888.5,
-        "revenue_90": 3157.6,
-        "units_30": 50,
-        "units_90": 85,
-        "inventory_quantity": 0,
-        "stock_cover_days": 0.0,
-        "stockout_stores": [],
-        "reorder_stores": [
-          "Centurion"
-        ]
-      },
-      {
         "sku": "6001651146882",
         "title": "HEALTH NUT SOUTH AFRICA - Restore Collagen 1Kg",
         "category": "Collagen Supplement",
@@ -377,36 +349,6 @@
         "units_90": 2,
         "inventory_quantity": 3,
         "stock_cover_days": 135.0,
-        "stockout_stores": [],
-        "reorder_stores": [
-          "Edenvale"
-        ]
-      },
-      {
-        "sku": "6009675200580",
-        "title": "MEDFORD - ViralScript - 60 Vegetable Capsules",
-        "category": "Immune Support Supplement",
-        "revenue_30": 1128.0,
-        "revenue_90": 2538.0,
-        "units_30": 4,
-        "units_90": 9,
-        "inventory_quantity": 2,
-        "stock_cover_days": 15.0,
-        "stockout_stores": [],
-        "reorder_stores": [
-          "Centurion"
-        ]
-      },
-      {
-        "sku": "6000000033170",
-        "title": "RAFAA - Unflavoured Rafaa® 1L",
-        "category": "Liquid Probiotic",
-        "revenue_30": 1404.0,
-        "revenue_90": 1755.0,
-        "units_30": 4,
-        "units_90": 5,
-        "inventory_quantity": 6,
-        "stock_cover_days": 45.0,
         "stockout_stores": [],
         "reorder_stores": [
           "Edenvale"
@@ -441,6 +383,66 @@
         "reorder_stores": [
           "Centurion"
         ]
+      },
+      {
+        "sku": "6000000830472",
+        "title": "SILVER GENESIS - Nano Silver Colloid - 2L",
+        "category": "Colloidal Silver",
+        "revenue_30": 358.8,
+        "revenue_90": 1076.4,
+        "units_30": 1,
+        "units_90": 3,
+        "inventory_quantity": 3,
+        "stock_cover_days": 90.0,
+        "stockout_stores": [],
+        "reorder_stores": [
+          "Edenvale"
+        ]
+      },
+      {
+        "sku": "6007930000388",
+        "title": "CILI-BAO HEALTH SA - Antioxidant Formula - 500ml",
+        "category": "Antioxidant Formula",
+        "revenue_30": 0.0,
+        "revenue_90": 1025.22,
+        "units_30": 0,
+        "units_90": 3,
+        "inventory_quantity": 8,
+        "stock_cover_days": 240.0,
+        "stockout_stores": [],
+        "reorder_stores": [
+          "Edenvale"
+        ]
+      },
+      {
+        "sku": "6009668550746",
+        "title": "BIOSIL - Lithium Orotate with Sutherlandia - 60 Veg Capsules",
+        "category": "Mood Support Supplement",
+        "revenue_30": 675.8,
+        "revenue_90": 1013.7,
+        "units_30": 4,
+        "units_90": 6,
+        "inventory_quantity": 1,
+        "stock_cover_days": 7.5,
+        "stockout_stores": [],
+        "reorder_stores": [
+          "Edenvale"
+        ]
+      },
+      {
+        "sku": "737186435745",
+        "title": "ALTWELL - NMN500 Plus - 30 Capsules",
+        "category": "Anti-Ageing Supplement",
+        "revenue_30": 895.0,
+        "revenue_90": 895.0,
+        "units_30": 1,
+        "units_90": 1,
+        "inventory_quantity": 0,
+        "stock_cover_days": 0.0,
+        "stockout_stores": [],
+        "reorder_stores": [
+          "Centurion"
+        ]
       }
     ],
     "branch_watch": [
@@ -448,13 +450,13 @@
         "store_code": "CEN",
         "store": "Centurion",
         "online_revenue": 0.0,
-        "physical_revenue_today": 45369.56,
-        "physical_gp_pct_today": 34.0,
-        "mtd_revenue": 760426.51,
-        "mtd_target_pct": 52.4,
-        "projected_eom": 1412221.0,
-        "pace_gap_amount": -689573.49,
-        "mom_trend_revenue": -28.95,
+        "physical_revenue_today": 52866.39,
+        "physical_gp_pct_today": 34.2,
+        "mtd_revenue": 813292.9,
+        "mtd_target_pct": 56.1,
+        "projected_eom": 1409708.0,
+        "pace_gap_amount": -636707.1,
+        "mom_trend_revenue": 16.52,
         "top_products": [],
         "active_alerts": [
           "Revenue behind monthly pace"
@@ -464,13 +466,13 @@
         "store_code": "EDN",
         "store": "Edenvale",
         "online_revenue": 0.0,
-        "physical_revenue_today": 9628.21,
-        "physical_gp_pct_today": 32.6,
-        "mtd_revenue": 212103.63,
-        "mtd_target_pct": 47.1,
-        "projected_eom": 410951.0,
-        "pace_gap_amount": -237896.37,
-        "mom_trend_revenue": -14.65,
+        "physical_revenue_today": 13545.11,
+        "physical_gp_pct_today": 34.0,
+        "mtd_revenue": 225648.74,
+        "mtd_target_pct": 50.1,
+        "projected_eom": 411477.0,
+        "pace_gap_amount": -224351.26,
+        "mom_trend_revenue": 40.68,
         "top_products": [],
         "active_alerts": [
           "Revenue behind monthly pace",
@@ -481,13 +483,13 @@
         "store_code": "GVS",
         "store": "Glen Village",
         "online_revenue": 0.0,
-        "physical_revenue_today": 8434.85,
-        "physical_gp_pct_today": 32.2,
-        "mtd_revenue": 187005.42,
-        "mtd_target_pct": 56.7,
-        "projected_eom": 362323.0,
-        "pace_gap_amount": -142994.58,
-        "mom_trend_revenue": -46.85,
+        "physical_revenue_today": 16477.03,
+        "physical_gp_pct_today": 32.8,
+        "mtd_revenue": 203482.45,
+        "mtd_target_pct": 61.7,
+        "projected_eom": 371056.0,
+        "pace_gap_amount": -126517.55,
+        "mom_trend_revenue": 95.34,
         "top_products": [],
         "active_alerts": [
           "Makarios cash-up variance",
@@ -510,27 +512,27 @@
       }
     ],
     "customer_geo": {
-      "active_customers_180d": 758,
-      "new_customers_30d": 148,
-      "repeat_purchase_rate_90d": 8.05,
-      "repeat_purchase_customers_90d": 61,
-      "churn_risk_customers": 244,
-      "due_for_repeat_31_60d": 169,
-      "slipping_61_90d": 165,
-      "lapsed_91_plus": 244,
-      "high_value_lapsed_91_plus": 46,
+      "active_customers_180d": 759,
+      "new_customers_30d": 149,
+      "repeat_purchase_rate_90d": 7.77,
+      "repeat_purchase_customers_90d": 59,
+      "churn_risk_customers": 251,
+      "due_for_repeat_31_60d": 167,
+      "slipping_61_90d": 160,
+      "lapsed_91_plus": 251,
+      "high_value_lapsed_91_plus": 45,
       "ltv_segments": {
         "high": 16,
-        "mid": 121,
-        "low": 621
+        "mid": 119,
+        "low": 624
       },
       "top_cities_90d": [
         {
           "city": "Pretoria",
-          "orders": 102,
-          "revenue": 92531.86,
-          "customers": 76,
-          "average_order_value": 907.18
+          "orders": 103,
+          "revenue": 92752.44,
+          "customers": 77,
+          "average_order_value": 900.51
         },
         {
           "city": "Johannesburg",
@@ -578,17 +580,17 @@
         },
         {
           "city": "Pretoria",
-          "orders": 10,
-          "revenue": 11642.68,
-          "customers": 10,
-          "average_order_value": 1164.27
+          "orders": 11,
+          "revenue": 11863.26,
+          "customers": 11,
+          "average_order_value": 1078.48
         },
         {
           "city": "Cape Town",
-          "orders": 15,
-          "revenue": 6811.21,
-          "customers": 14,
-          "average_order_value": 454.08
+          "orders": 14,
+          "revenue": 6570.75,
+          "customers": 13,
+          "average_order_value": 469.34
         },
         {
           "city": "Unknown",
@@ -615,13 +617,13 @@
       "repeat_customer_top_categories": [
         {
           "category": "Unknown",
-          "units": 670
+          "units": 653
         }
       ],
       "lapsed_customer_top_categories": [
         {
           "category": "Unknown",
-          "units": 805
+          "units": 846
         }
       ]
     },
@@ -632,7 +634,7 @@
         "products_to_push": [
           "GOOD LIFE WELLNES - Glycine - 250G",
           "DELFRAN - Pcositol - 30 Sachets",
-          "ALTWELL - C19 Plus Immune Booster - 360g"
+          "MEDFORD - LiverScript - 60 Vegetable Capsules"
         ],
         "why_now": "These SKUs have live demand plus safe stock cover, so content can scale without creating a stockout problem."
       },
@@ -650,7 +652,7 @@
         "products_to_push": [
           "GOOD LIFE WELLNES - Glycine - 250G",
           "DELFRAN - Pcositol - 30 Sachets",
-          "ALTWELL - C19 Plus Immune Booster - 360g"
+          "MEDFORD - LiverScript - 60 Vegetable Capsules"
         ],
         "why_now": "Use active search demand to support products that can still absorb demand operationally."
       },
@@ -721,7 +723,7 @@
         "category": "Amino Acid Supplement",
         "revenue_90": 7281.0,
         "gross_profit_pct": 98.0,
-        "stock_cover_days": 24.71
+        "stock_cover_days": 21.18
       },
       {
         "sku": "6009801022451",
@@ -732,12 +734,12 @@
         "stock_cover_days": 110.0
       },
       {
-        "sku": "0781159624285",
-        "title": "ALTWELL - C19 Plus Immune Booster - 360g",
-        "category": "Immune Support Supplement",
-        "revenue_90": 3594.0,
+        "sku": "6009675200665",
+        "title": "MEDFORD - LiverScript - 60 Vegetable Capsules",
+        "category": "Liver Support Supplement",
+        "revenue_90": 3690.0,
         "gross_profit_pct": 100.0,
-        "stock_cover_days": 20.0
+        "stock_cover_days": 100.0
       },
       {
         "sku": "6009687953511",
@@ -745,7 +747,7 @@
         "category": "Probiotic Supplement",
         "revenue_90": 3255.69,
         "gross_profit_pct": 90.0,
-        "stock_cover_days": 112.5
+        "stock_cover_days": 105.0
       },
       {
         "sku": "0781159645815",
@@ -758,8 +760,8 @@
     ]
   },
   "outputs": {
-    "raw_json": "vaults/onelife/raw/daily-trade-brief-2026-07-17.json",
-    "compiled_md": "vaults/onelife/compiled/daily-trade-brief-2026-07-17.md",
+    "raw_json": "vaults/onelife/raw/daily-trade-brief-2026-07-18.json",
+    "compiled_md": "vaults/onelife/compiled/daily-trade-brief-2026-07-18.md",
     "latest_json": "memory/onelife-trade-brief-latest.json",
     "latest_md": "memory/onelife-trade-brief-latest.md",
     "app_json": "onelife-intelligence/data/trade_brief_latest.json"
