@@ -1,0 +1,811 @@
+{
+  "generated_at": "2026-09-01T07:01:04.320660+02:00",
+  "reporting_month": "2026-09",
+  "month_start": "2026-09-01",
+  "month_end_exclusive": "2026-10-01",
+  "sources": {
+    "turnover_cen": {
+      "status": "ok",
+      "rows": 0,
+      "notes": "Daily Turnover One Life via HO"
+    },
+    "turnover_gvs": {
+      "status": "ok",
+      "rows": 0,
+      "notes": "Daily Turnover GVS via GVS"
+    },
+    "turnover_edn": {
+      "status": "ok",
+      "rows": 0,
+      "notes": "Daily Turnover EDEN via EDN"
+    },
+    "credit_notes": {
+      "status": "ok",
+      "rows": 0,
+      "branch_rows": {
+        "HO": 0,
+        "EDN": 0,
+        "GVS": 0
+      },
+      "notes": "Fetched 0 rows across 3 branch calls, deduped to 0; branch filter appears non-isolating"
+    },
+    "overrides": {
+      "status": "ok",
+      "rows": 78,
+      "branch_rows": {
+        "HO": 78,
+        "EDN": 78,
+        "GVS": 78
+      },
+      "notes": "Fetched 234 rows across 3 branch calls, deduped to 78; branch filter appears non-isolating"
+    },
+    "discounts": {
+      "status": "ok",
+      "rows": 1,
+      "branch_rows": {
+        "HO": 1
+      },
+      "notes": "Fetched 1 rows across 1 branch calls, deduped to 1"
+    },
+    "pos_invoices": {
+      "status": "ok",
+      "rows": 452,
+      "branch_rows": {
+        "HO": 452,
+        "EDN": 452,
+        "GVS": 452
+      },
+      "notes": "Fetched 1356 rows across 3 branch calls, deduped to 452; branch filter appears non-isolating"
+    }
+  },
+  "store_labels": {
+    "CEN": "Centurion",
+    "EDN": "Edenvale",
+    "GVS": "Glen Village",
+    "UNK": "Unallocated"
+  },
+  "raw": {
+    "credit_notes": [],
+    "overrides": [
+      {
+        "timestamp": "2026-09-01T06:00:15.882000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T06:00:16.020000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T06:02:07.006000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:00:02.835000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:00:02.950000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:02:13.303000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:02:20.084000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:02:20.335000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:03:58.356000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:04:02.959000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:04:03.056000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:05:01.621000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:05:06.545000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:05:06.649000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:06:08.811000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:06:15.745000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:06:15.845000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:06:19.912000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:06:24.869000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:06:25.026000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:06:28.469000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:09:35.476000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:09:35.714000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:10:13.804000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:10:19.887000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:10:19.972000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:10:23.376000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:10:29.101000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:10:29.403000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:10:32.577000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:13:39.290000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:13:39.459000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:14:09.066000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:14:15.565000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:14:15.710000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:14:19.229000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:14:23.998000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:14:24.110000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:14:27.798000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:17:34.219000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:17:34.316000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:17:58.787000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:18:05.694000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:18:05.978000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:18:10.086000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:18:14.841000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:18:14.925000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:18:17.886000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:21:24.543000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:21:24.644000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:21:49.843000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:21:57.308000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:21:57.441000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T07:22:00.742000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T07:30:04.672000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T07:30:04.768000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T08:01:16.068000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Web Service Disconnected",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-09-01T08:01:16.249000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T08:10:46.677000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Unknown",
+        "category": "Security",
+        "event_description": "Incorrect password entered for user admin",
+        "type": "Incorrect Password"
+      },
+      {
+        "timestamp": "2026-09-01T08:10:56.293000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Admin",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T08:10:56.445000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Admin",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T08:13:33.173000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Analytic",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T08:13:33.256000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Analytic",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T08:28:17.013000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Admin",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T08:44:32.073000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Robin",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T08:44:32.170000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Robin",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T08:45:54.042000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Robin",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T08:46:36.699000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Admin",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T08:46:36.816000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Admin",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T08:46:53.947000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Admin",
+        "category": "Information",
+        "event_description": "Current Period Changed",
+        "type": "Periods"
+      },
+      {
+        "timestamp": "2026-09-01T08:47:07.110000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Admin",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-09-01T08:48:57.399000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Robin",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T08:48:57.499000+02:00",
+        "date": "2026-09-01",
+        "user_name": "Robin",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T08:50:16.726000+02:00",
+        "date": "2026-09-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-09-01T08:50:16.825000+02:00",
+        "date": "2026-09-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-09-01T08:50:18.478000+02:00",
+        "date": "2026-09-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "Logged on to POS Session",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-09-01T08:50:43.190000+02:00",
+        "date": "2026-09-01",
+        "user_name": "eden1",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-09-01T08:50:51.150000+02:00",
+        "date": "2026-09-01",
+        "user_name": "eden1",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      }
+    ],
+    "discounts": [],
+    "invoice_headers": [],
+    "cashup_variances": {},
+    "turnover_by_store": {
+      "CEN": [],
+      "GVS": [],
+      "EDN": []
+    }
+  },
+  "diagnostics": [
+    "Fetched 0 rows across 3 branch calls, deduped to 0; branch filter appears non-isolating",
+    "Fetched 234 rows across 3 branch calls, deduped to 78; branch filter appears non-isolating",
+    "Fetched 1 rows across 1 branch calls, deduped to 1",
+    "Fetched 1356 rows across 3 branch calls, deduped to 452; branch filter appears non-isolating"
+  ],
+  "store_revenue_totals": {
+    "CEN": 0,
+    "GVS": 0,
+    "EDN": 0
+  },
+  "analysis": {
+    "sections": [
+      {
+        "key": "credit_notes",
+        "title": "Credit Note / Refund Monitor",
+        "summary": {
+          "total_count": 0,
+          "total_value": 0,
+          "by_store": {},
+          "by_staff": {},
+          "daily_trend": {}
+        }
+      },
+      {
+        "key": "cancellations",
+        "title": "Order Cancellation Monitor",
+        "summary": {
+          "total_count": 0,
+          "by_user": {},
+          "daily_counts": {},
+          "heatmap": []
+        }
+      },
+      {
+        "key": "overrides",
+        "title": "Override & Security Events",
+        "summary": {
+          "override_entries_total": 2,
+          "override_by_user": {
+            "eden1": 2
+          },
+          "failed_passwords": [],
+          "forced_logouts": [],
+          "timeline": [
+            {
+              "timestamp": "2026-09-01T08:50:43.190000+02:00",
+              "date": "2026-09-01",
+              "user_name": "eden1",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-09-01T08:50:51.150000+02:00",
+              "date": "2026-09-01",
+              "user_name": "eden1",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            }
+          ]
+        }
+      },
+      {
+        "key": "discounts",
+        "title": "Discount Analysis",
+        "summary": {}
+      },
+      {
+        "key": "transaction_patterns",
+        "title": "Transaction Pattern Analysis",
+        "summary": {}
+      },
+      {
+        "key": "cashup_variance",
+        "title": "Cash-Up Variance Trend",
+        "summary": {}
+      },
+      {
+        "key": "bank_deposit_reconciliation",
+        "title": "Bank Deposit Reconciliation",
+        "summary": {
+          "status": "placeholder",
+          "expected_cashups_by_store": {},
+          "manual_input_required": true
+        }
+      }
+    ],
+    "flags": [
+      {
+        "section": "bank_deposit_reconciliation",
+        "title": "Manual reconciliation required",
+        "detected": "Bank deposit reconciliation is a placeholder until bank statement imports are wired in. Manual input still required.",
+        "who": "Finance",
+        "when": "2026-09",
+        "severity": "low",
+        "store": "UNK",
+        "details": {}
+      }
+    ],
+    "risk_score": 1,
+    "risk_level": "green",
+    "flagged_counts": {
+      "bank_deposit_reconciliation": 1
+    }
+  }
+}
