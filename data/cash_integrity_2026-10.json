@@ -1,0 +1,2704 @@
+{
+  "generated_at": "2026-10-01T17:07:19.163664+02:00",
+  "reporting_month": "2026-10",
+  "month_start": "2026-10-01",
+  "month_end_exclusive": "2026-11-01",
+  "sources": {
+    "turnover_cen": {
+      "status": "ok",
+      "rows": 1,
+      "notes": "Daily Turnover One Life via HO"
+    },
+    "turnover_gvs": {
+      "status": "ok",
+      "rows": 1,
+      "notes": "Daily Turnover GVS via GVS"
+    },
+    "turnover_edn": {
+      "status": "ok",
+      "rows": 1,
+      "notes": "Daily Turnover EDEN via EDN"
+    },
+    "credit_notes": {
+      "status": "ok",
+      "rows": 2,
+      "branch_rows": {
+        "HO": 2,
+        "EDN": 2,
+        "GVS": 2
+      },
+      "notes": "Fetched 6 rows across 3 branch calls, deduped to 2; branch filter appears non-isolating"
+    },
+    "overrides": {
+      "status": "ok",
+      "rows": 265,
+      "branch_rows": {
+        "HO": 265,
+        "EDN": 265,
+        "GVS": 265
+      },
+      "notes": "Fetched 795 rows across 3 branch calls, deduped to 265; branch filter appears non-isolating"
+    },
+    "discounts": {
+      "status": "ok",
+      "rows": 16,
+      "branch_rows": {
+        "HO": 16
+      },
+      "notes": "Fetched 16 rows across 1 branch calls, deduped to 16"
+    },
+    "pos_invoices": {
+      "status": "ok",
+      "rows": 371,
+      "branch_rows": {
+        "HO": 371,
+        "EDN": 371,
+        "GVS": 371
+      },
+      "notes": "Fetched 1113 rows across 3 branch calls, deduped to 371; branch filter appears non-isolating"
+    }
+  },
+  "store_labels": {
+    "CEN": "Centurion",
+    "EDN": "Edenvale",
+    "GVS": "Glen Village",
+    "UNK": "Unallocated"
+  },
+  "raw": {
+    "credit_notes": [
+      {
+        "id": 491,
+        "date": "2026-10-01",
+        "reference": "001929",
+        "store": "UNK",
+        "processed_by": "Lady",
+        "stock_code": "6009675500208",
+        "stock_description": "CLOVES PWDR 100G",
+        "value": 55.5,
+        "quantity": 1.0
+      },
+      {
+        "id": 492,
+        "date": "2026-10-01",
+        "reference": "001930",
+        "store": "UNK",
+        "processed_by": "TILL2",
+        "stock_code": "750810999703",
+        "stock_description": "DNA GREENS 150C",
+        "value": 268.8,
+        "quantity": 1.0
+      }
+    ],
+    "overrides": [
+      {
+        "timestamp": "2026-10-01T06:00:14.559000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T06:00:14.653000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T06:01:35.971000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:00:05.404000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:00:05.506000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:01:57.287000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:01:58.750000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:01:58.854000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:03:33.382000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:03:34.782000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:03:34.869000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:04:31.169000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:04:32.517000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:04:32.611000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:05:30.516000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:05:43.587000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:05:43.677000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:05:46.738000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:05:48.200000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:05:48.288000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:05:50.862000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:05:52.648000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:05:52.740000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:06:25.423000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:06:36.464000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:06:36.559000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:06:39.991000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:06:41.494000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:06:41.581000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:06:44.178000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:06:45.958000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:06:46.045000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:07:12.823000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:07:24.348000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:07:24.436000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:07:27.334000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:07:28.801000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:07:28.889000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:07:31.598000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:07:33.313000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:07:33.397000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:07:54.712000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:08:06.269000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:08:06.361000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:08:09.629000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:08:11.458000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:08:11.544000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:08:14.179000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:08:15.901000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:08:15.996000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:08:38.178000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:09:03.272000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:09:03.386000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:09:06.177000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:27:41.274000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Analytic",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T07:27:41.351000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Analytic",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T07:30:05.850000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Analytic",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T07:30:05.913000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T08:01:10.584000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Web Service Disconnected",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T08:01:10.671000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T09:38:36.135000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Dorea",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T09:38:46.476000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Unknown",
+        "category": "Security",
+        "event_description": "Incorrect password entered for user dorea",
+        "type": "Incorrect Password"
+      },
+      {
+        "timestamp": "2026-10-01T09:38:51.477000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Dorea",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T09:38:51.582000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Dorea",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T09:39:15.510000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Dorea",
+        "category": "Information",
+        "event_description": "Current Period Changed",
+        "type": "Periods"
+      },
+      {
+        "timestamp": "2026-10-01T09:47:53.378000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Unknown",
+        "category": "Security",
+        "event_description": "Incorrect password entered for user johanna",
+        "type": "Incorrect Password"
+      },
+      {
+        "timestamp": "2026-10-01T09:48:00.466000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T09:48:00.578000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T09:48:06.664000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Warehouse Changed",
+        "type": "Warehouse Changed"
+      },
+      {
+        "timestamp": "2026-10-01T09:56:28.345000+02:00",
+        "date": "2026-10-01",
+        "user_name": "PRECIOUS",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T09:56:28.451000+02:00",
+        "date": "2026-10-01",
+        "user_name": "PRECIOUS",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T10:24:58.020000+02:00",
+        "date": "2026-10-01",
+        "user_name": "TILL2",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T10:24:58.116000+02:00",
+        "date": "2026-10-01",
+        "user_name": "TILL2",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T10:24:59.802000+02:00",
+        "date": "2026-10-01",
+        "user_name": "TILL2",
+        "category": "Information",
+        "event_description": "Logged on to POS Session",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T10:27:06.387000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T10:27:06.483000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T10:27:07.987000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Information",
+        "event_description": "Logged on to POS Session",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T10:37:12.017000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Robin",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T10:37:12.112000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Robin",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T10:37:43.002000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T10:37:43.117000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T10:37:44.752000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "Logged on to POS Session",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T10:38:26.655000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T10:38:34.921000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T10:39:25.042000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T10:39:25.142000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T10:53:59.438000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Anais",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T10:53:59.538000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Anais",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T10:54:56.670000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Anais",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T10:54:56.710000+02:00",
+        "date": "2026-10-01",
+        "user_name": "GVS1",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T10:54:56.856000+02:00",
+        "date": "2026-10-01",
+        "user_name": "GVS1",
+        "category": "Information",
+        "event_description": "Logged on to POS Session",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T10:55:15.921000+02:00",
+        "date": "2026-10-01",
+        "user_name": "GVS1",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T10:55:19.165000+02:00",
+        "date": "2026-10-01",
+        "user_name": "GVS1",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T11:46:37.206000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T11:46:37.297000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T12:02:31.570000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Security",
+        "event_description": "Additional POS Invoice",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:09:02.050000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Security",
+        "event_description": "Additional POS Invoice",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:11:32.930000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Security",
+        "event_description": "Additional POS Invoice",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:12:47.363000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:14:08.994000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:14:09.191000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:14:09.277000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:14:09.438000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:14:09.541000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:14:09.690000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:14:10.645000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:17:58.825000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T12:20:44.816000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T12:21:10.899000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T12:24:37.388000+02:00",
+        "date": "2026-10-01",
+        "user_name": "TILL2",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T12:26:40.109000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:28:04.107000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T12:34:49.458000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:46:07.382000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:46:07.483000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:52:21.876000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Anais",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T12:52:21.972000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Anais",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T12:52:43.590000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:52:43.732000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:52:43.818000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:52:43.915000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:52:44.004000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:52:44.107000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:52:44.212000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:52:44.335000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:52:44.431000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:52:44.525000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T12:52:44.663000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:04:45.654000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:04:45.813000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:04:45.986000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:04:46.176000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:04:46.362000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:19:38.169000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:19:38.292000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:45:55.426000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:45:55.588000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:45:55.761000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:45:55.939000+02:00",
+        "date": "2026-10-01",
+        "user_name": "KEDIBONE",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:56:21.649000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:56:21.837000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:56:21.981000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:56:22.162000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:56:22.345000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:56:22.525000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:56:23.290000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:56:23.471000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:56:23.655000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:56:23.816000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:56:24.014000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T13:56:24.165000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T14:17:29.085000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Unknown",
+        "category": "Security",
+        "event_description": "Incorrect password entered for user Dorea",
+        "type": "Incorrect Password"
+      },
+      {
+        "timestamp": "2026-10-01T14:17:33.682000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Unknown",
+        "category": "Security",
+        "event_description": "Incorrect password entered for user Dorea",
+        "type": "Incorrect Password"
+      },
+      {
+        "timestamp": "2026-10-01T14:17:45.335000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T14:17:45.473000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T14:27:27.583000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Branch Changed",
+        "type": "Branch Changed"
+      },
+      {
+        "timestamp": "2026-10-01T14:28:58.716000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T14:49:34.702000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "Stock Below Minimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T14:59:01.964000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T14:59:02.047000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Analytic",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T15:04:18.428000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "Stock Below Minimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T15:10:04.291000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Analytic",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T15:10:04.364000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T15:20:30.887000+02:00",
+        "date": "2026-10-01",
+        "user_name": "TILL2",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T15:21:39.402000+02:00",
+        "date": "2026-10-01",
+        "user_name": "TILL2",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T15:23:54.510000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T15:48:20.935000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Information",
+        "event_description": "Stock Below Minimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T15:53:39.372000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "Stock Below Minimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T15:56:42.181000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "Stock Below Minimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T16:21:36.277000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Warehouse Changed",
+        "type": "Warehouse Changed"
+      },
+      {
+        "timestamp": "2026-10-01T16:34:05.448000+02:00",
+        "date": "2026-10-01",
+        "user_name": "PRECIOUS",
+        "category": "Information",
+        "event_description": "Order Cancelled",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T16:34:14.185000+02:00",
+        "date": "2026-10-01",
+        "user_name": "PRECIOUS",
+        "category": "Information",
+        "event_description": "Order Cancelled",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T16:40:12.409000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "Logged off POS Session",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T16:40:12.641000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T16:40:15.836000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Robin",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T16:40:38.096000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Robin",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T16:40:38.205000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Robin",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T16:40:51.784000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T16:40:51.881000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T16:40:53.961000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "Logged on to POS Session",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T16:47:03.635000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Admin",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T16:47:03.781000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Admin",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T16:49:35.259000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Warehouse Changed",
+        "type": "Warehouse Changed"
+      },
+      {
+        "timestamp": "2026-10-01T17:24:13.146000+02:00",
+        "date": "2026-10-01",
+        "user_name": "TILL2",
+        "category": "Security",
+        "event_description": "Incorrect password entered for user dorea",
+        "type": "Incorrect Password"
+      },
+      {
+        "timestamp": "2026-10-01T17:24:17.297000+02:00",
+        "date": "2026-10-01",
+        "user_name": "TILL2",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T17:30:41.240000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "Stock Below Minimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:32:16.371000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "Stock Below Minimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:41:05.670000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T17:49:12.301000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T17:49:12.381000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Analytic",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T17:49:36.967000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Analytic",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T17:49:37.036000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T17:55:33.796000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:55:33.940000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:55:34.149000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:55:34.249000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:55:34.542000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:55:34.626000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:55:34.747000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:55:34.841000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:55:34.937000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:55:35.181000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:55:35.265000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:55:35.417000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:55:35.647000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:55:35.733000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:55:35.824000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:58:11.191000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Below Minimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:58:12.301000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Below Minimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:58:12.508000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Below Minimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:59:04.433000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:59:04.584000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:59:04.719000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:59:04.818000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:59:04.912000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:59:05.007000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:59:05.127000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:59:05.229000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:59:05.398000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:59:05.512000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:59:05.612000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:59:05.710000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:59:05.837000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:59:05.945000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T17:59:06.075000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:01:59.552000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:01:59.700000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:01:59.837000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:01:59.929000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:02:00.065000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:04:35.297000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:04:35.442000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:04:35.553000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:04:35.653000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:04:35.794000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:04:42.882000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Information",
+        "event_description": "Stock Below Minimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:09:19.336000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:09:19.427000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:09:19.541000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:09:19.645000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:09:19.738000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "Stock Above Optimum Level",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:09:58.054000+02:00",
+        "date": "2026-10-01",
+        "user_name": "PRECIOUS",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T18:18:47.871000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Information",
+        "event_description": "Logged off POS Session",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:18:48.096000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T18:19:44.572000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Web Service Disconnected",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:19:44.742000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T18:27:44.405000+02:00",
+        "date": "2026-10-01",
+        "user_name": "GVS1",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T18:34:02.850000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JOHANNA",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T18:48:05.929000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "Cashup Totals Entered",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:52:19.552000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Analytic",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T18:52:19.634000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Analytic",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-10-01T18:56:33.896000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Security",
+        "event_description": "Incorrect password entered for user jj",
+        "type": "Incorrect Password"
+      },
+      {
+        "timestamp": "2026-10-01T18:56:39.046000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Joel",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T18:56:39.124000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JJ",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T18:56:55.442000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JJ",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T18:56:55.483000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T18:56:59.272000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Information",
+        "event_description": "Logged on to POS Session",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:57:33.055000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T18:57:43.088000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T18:57:47.842000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Information",
+        "event_description": "Logged off POS Session",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-10-01T18:57:55.220000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Lady",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-10-01T18:57:55.306000+02:00",
+        "date": "2026-10-01",
+        "user_name": "JJ",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-10-01T18:59:39.362000+02:00",
+        "date": "2026-10-01",
+        "user_name": "eden1",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T19:00:46.935000+02:00",
+        "date": "2026-10-01",
+        "user_name": "GVS1",
+        "category": "Security",
+        "event_description": "Override Password Entered",
+        "type": "Password Override"
+      },
+      {
+        "timestamp": "2026-10-01T19:03:21.821000+02:00",
+        "date": "2026-10-01",
+        "user_name": "Admin",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      }
+    ],
+    "discounts": [
+      {
+        "date": "2026-10-01",
+        "reference": "701869",
+        "store": "UNK",
+        "user_name": "Lady",
+        "amount": 14.27,
+        "transaction_category": "Sales Invoice",
+        "source_account": "1CASH"
+      },
+      {
+        "date": "2026-10-01",
+        "reference": "701876",
+        "store": "UNK",
+        "user_name": "Lady",
+        "amount": 73.75,
+        "transaction_category": "Sales Invoice",
+        "source_account": "1CASH"
+      },
+      {
+        "date": "2026-10-01",
+        "reference": "701879",
+        "store": "UNK",
+        "user_name": "Lady",
+        "amount": 153.9,
+        "transaction_category": "Sales Invoice",
+        "source_account": "1CASH"
+      },
+      {
+        "date": "2026-10-01",
+        "reference": "701880",
+        "store": "UNK",
+        "user_name": "Lady",
+        "amount": 138.23,
+        "transaction_category": "Sales Invoice",
+        "source_account": "1CASH"
+      },
+      {
+        "date": "2026-10-01",
+        "reference": "701883",
+        "store": "UNK",
+        "user_name": "Lady",
+        "amount": 57.52,
+        "transaction_category": "Sales Invoice",
+        "source_account": "1CASH"
+      },
+      {
+        "date": "2026-10-01",
+        "reference": "701889",
+        "store": "UNK",
+        "user_name": "Lady",
+        "amount": 59.29,
+        "transaction_category": "Sales Invoice",
+        "source_account": "1CASH"
+      },
+      {
+        "date": "2026-10-01",
+        "reference": "701891",
+        "store": "UNK",
+        "user_name": "Lady",
+        "amount": 40.92,
+        "transaction_category": "Sales Invoice",
+        "source_account": "1CASH"
+      },
+      {
+        "date": "2026-10-01",
+        "reference": "701899",
+        "store": "UNK",
+        "user_name": "Lady",
+        "amount": 219.53,
+        "transaction_category": "Sales Invoice",
+        "source_account": "1CASH"
+      },
+      {
+        "date": "2026-10-01",
+        "reference": "701920",
+        "store": "UNK",
+        "user_name": "Lady",
+        "amount": 56.03,
+        "transaction_category": "Sales Invoice",
+        "source_account": "1CASH"
+      },
+      {
+        "date": "2026-10-01",
+        "reference": "701939",
+        "store": "UNK",
+        "user_name": "Lady",
+        "amount": 650.51,
+        "transaction_category": "Sales Invoice",
+        "source_account": "1CASH"
+      },
+      {
+        "date": "2026-10-01",
+        "reference": "701942",
+        "store": "UNK",
+        "user_name": "Lady",
+        "amount": 82.08,
+        "transaction_category": "Sales Invoice",
+        "source_account": "1CASH"
+      },
+      {
+        "date": "2026-10-01",
+        "reference": "701951",
+        "store": "UNK",
+        "user_name": "Lady",
+        "amount": 97.29,
+        "transaction_category": "Sales Invoice",
+        "source_account": "1CASH"
+      },
+      {
+        "date": "2026-10-01",
+        "reference": "701977",
+        "store": "UNK",
+        "user_name": "Lady",
+        "amount": 80.87,
+        "transaction_category": "Sales Invoice",
+        "source_account": "1CASH"
+      },
+      {
+        "date": "2026-10-01",
+        "reference": "701974",
+        "store": "UNK",
+        "user_name": "TILL2",
+        "amount": 64.1,
+        "transaction_category": "Sales Invoice",
+        "source_account": "1CASH"
+      },
+      {
+        "date": "2026-10-01",
+        "reference": "701979",
+        "store": "UNK",
+        "user_name": "TILL2",
+        "amount": 161.48,
+        "transaction_category": "Sales Invoice",
+        "source_account": "1CASH"
+      }
+    ],
+    "invoice_headers": [],
+    "cashup_variances": {},
+    "turnover_by_store": {
+      "CEN": [
+        {
+          "date": "2026-10-01",
+          "value_excl_after_discount": 58368.13,
+          "gross_profit": 19774.07
+        }
+      ],
+      "GVS": [
+        {
+          "date": "2026-10-01",
+          "value_excl_after_discount": 9146.96,
+          "gross_profit": 3075.31
+        }
+      ],
+      "EDN": [
+        {
+          "date": "2026-10-01",
+          "value_excl_after_discount": 11825.9,
+          "gross_profit": 4210.02
+        }
+      ]
+    }
+  },
+  "diagnostics": [
+    "Fetched 6 rows across 3 branch calls, deduped to 2; branch filter appears non-isolating",
+    "Fetched 795 rows across 3 branch calls, deduped to 265; branch filter appears non-isolating",
+    "Fetched 16 rows across 1 branch calls, deduped to 16",
+    "Fetched 1113 rows across 3 branch calls, deduped to 371; branch filter appears non-isolating"
+  ],
+  "store_revenue_totals": {
+    "CEN": 58368.13,
+    "GVS": 9146.96,
+    "EDN": 11825.9
+  },
+  "analysis": {
+    "sections": [
+      {
+        "key": "credit_notes",
+        "title": "Credit Note / Refund Monitor",
+        "summary": {
+          "total_count": 2,
+          "total_value": 324.3,
+          "by_store": {
+            "UNK": {
+              "count": 2,
+              "value": 324.3
+            }
+          },
+          "by_staff": {
+            "Lady": {
+              "count": 1,
+              "value": 55.5,
+              "store_counts": {
+                "UNK": 1
+              }
+            },
+            "TILL2": {
+              "count": 1,
+              "value": 268.8,
+              "store_counts": {
+                "UNK": 1
+              }
+            }
+          },
+          "daily_trend": {
+            "2026-10-01": {
+              "count": 2,
+              "value": 324.3
+            }
+          }
+        }
+      },
+      {
+        "key": "cancellations",
+        "title": "Order Cancellation Monitor",
+        "summary": {
+          "total_count": 2,
+          "by_user": {
+            "PRECIOUS": 2
+          },
+          "daily_counts": {
+            "PRECIOUS|2026-10-01": 2
+          },
+          "heatmap": [
+            {
+              "hour": "16:00",
+              "user": "PRECIOUS",
+              "count": 2
+            }
+          ]
+        }
+      },
+      {
+        "key": "overrides",
+        "title": "Override & Security Events",
+        "summary": {
+          "override_entries_total": 19,
+          "override_by_user": {
+            "Lady": 7,
+            "eden1": 5,
+            "GVS1": 4,
+            "TILL2": 3
+          },
+          "failed_passwords": [],
+          "forced_logouts": [],
+          "timeline": [
+            {
+              "timestamp": "2026-10-01T10:38:26.655000+02:00",
+              "date": "2026-10-01",
+              "user_name": "eden1",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T10:38:34.921000+02:00",
+              "date": "2026-10-01",
+              "user_name": "eden1",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T10:55:15.921000+02:00",
+              "date": "2026-10-01",
+              "user_name": "GVS1",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T10:55:19.165000+02:00",
+              "date": "2026-10-01",
+              "user_name": "GVS1",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T12:17:58.825000+02:00",
+              "date": "2026-10-01",
+              "user_name": "Lady",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T12:20:44.816000+02:00",
+              "date": "2026-10-01",
+              "user_name": "Lady",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T12:21:10.899000+02:00",
+              "date": "2026-10-01",
+              "user_name": "Lady",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T12:24:37.388000+02:00",
+              "date": "2026-10-01",
+              "user_name": "TILL2",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T12:28:04.107000+02:00",
+              "date": "2026-10-01",
+              "user_name": "Lady",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T14:28:58.716000+02:00",
+              "date": "2026-10-01",
+              "user_name": "eden1",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T15:20:30.887000+02:00",
+              "date": "2026-10-01",
+              "user_name": "TILL2",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T15:23:54.510000+02:00",
+              "date": "2026-10-01",
+              "user_name": "eden1",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T17:24:17.297000+02:00",
+              "date": "2026-10-01",
+              "user_name": "TILL2",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T17:41:05.670000+02:00",
+              "date": "2026-10-01",
+              "user_name": "Lady",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T18:27:44.405000+02:00",
+              "date": "2026-10-01",
+              "user_name": "GVS1",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T18:57:33.055000+02:00",
+              "date": "2026-10-01",
+              "user_name": "Lady",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T18:57:43.088000+02:00",
+              "date": "2026-10-01",
+              "user_name": "Lady",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T18:59:39.362000+02:00",
+              "date": "2026-10-01",
+              "user_name": "eden1",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            },
+            {
+              "timestamp": "2026-10-01T19:00:46.935000+02:00",
+              "date": "2026-10-01",
+              "user_name": "GVS1",
+              "category": "Security",
+              "event_description": "Override Password Entered",
+              "type": "Password Override"
+            }
+          ]
+        }
+      },
+      {
+        "key": "discounts",
+        "title": "Discount Analysis",
+        "summary": {
+          "UNK": {
+            "total_amount": 1949.7699999999995,
+            "transaction_count": 15,
+            "discount_rate": null,
+            "store_avg_rate": null,
+            "by_user": {
+              "Lady": {
+                "amount": 1724.1899999999996,
+                "count": 13,
+                "avg_discount": 132.62999999999997,
+                "discount_rate": null
+              },
+              "TILL2": {
+                "amount": 225.57999999999998,
+                "count": 2,
+                "avg_discount": 112.78999999999999,
+                "discount_rate": null
+              }
+            }
+          }
+        }
+      },
+      {
+        "key": "transaction_patterns",
+        "title": "Transaction Pattern Analysis",
+        "summary": {}
+      },
+      {
+        "key": "cashup_variance",
+        "title": "Cash-Up Variance Trend",
+        "summary": {}
+      },
+      {
+        "key": "bank_deposit_reconciliation",
+        "title": "Bank Deposit Reconciliation",
+        "summary": {
+          "status": "placeholder",
+          "expected_cashups_by_store": {},
+          "manual_input_required": true
+        }
+      }
+    ],
+    "flags": [
+      {
+        "section": "overrides",
+        "title": "Excessive override use",
+        "detected": "Lady used override passwords 7 times on 2026-10-01, above the hard threshold of 5/day.",
+        "who": "Lady",
+        "when": "2026-10-01",
+        "severity": "high",
+        "store": "UNK",
+        "details": {}
+      },
+      {
+        "section": "discounts",
+        "title": "Large individual discount",
+        "detected": "Discount transaction 701939 at R650.51 exceeded R500.",
+        "who": "Lady",
+        "when": "2026-10-01",
+        "severity": "high",
+        "store": "UNK",
+        "details": {
+          "reference": "701939",
+          "amount": 650.51
+        }
+      },
+      {
+        "section": "bank_deposit_reconciliation",
+        "title": "Manual reconciliation required",
+        "detected": "Bank deposit reconciliation is a placeholder until bank statement imports are wired in. Manual input still required.",
+        "who": "Finance",
+        "when": "2026-10",
+        "severity": "low",
+        "store": "UNK",
+        "details": {}
+      }
+    ],
+    "risk_score": 3,
+    "risk_level": "amber",
+    "flagged_counts": {
+      "overrides": 1,
+      "discounts": 1,
+      "bank_deposit_reconciliation": 1
+    }
+  }
+}
