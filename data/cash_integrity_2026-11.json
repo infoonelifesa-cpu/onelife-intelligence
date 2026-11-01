@@ -1,0 +1,256 @@
+{
+  "generated_at": "2026-11-01T07:02:56.121494+02:00",
+  "reporting_month": "2026-11",
+  "month_start": "2026-11-01",
+  "month_end_exclusive": "2026-12-01",
+  "sources": {
+    "turnover_cen": {
+      "status": "ok",
+      "rows": 0,
+      "notes": "Daily Turnover One Life via HO"
+    },
+    "turnover_gvs": {
+      "status": "ok",
+      "rows": 0,
+      "notes": "Daily Turnover GVS via GVS"
+    },
+    "turnover_edn": {
+      "status": "ok",
+      "rows": 0,
+      "notes": "Daily Turnover EDEN via EDN"
+    },
+    "credit_notes": {
+      "status": "ok",
+      "rows": 10,
+      "branch_rows": {
+        "HO": 10,
+        "EDN": 10,
+        "GVS": 10
+      },
+      "notes": "Fetched 30 rows across 3 branch calls, deduped to 10; branch filter appears non-isolating"
+    },
+    "overrides": {
+      "status": "ok",
+      "rows": 11,
+      "branch_rows": {
+        "HO": 11,
+        "EDN": 11,
+        "GVS": 11
+      },
+      "notes": "Fetched 33 rows across 3 branch calls, deduped to 11; branch filter appears non-isolating"
+    },
+    "discounts": {
+      "status": "ok",
+      "rows": 310,
+      "branch_rows": {
+        "HO": 310
+      },
+      "notes": "Fetched 310 rows across 1 branch calls, deduped to 310"
+    },
+    "pos_invoices": {
+      "status": "ok",
+      "rows": 441,
+      "branch_rows": {
+        "HO": 441,
+        "EDN": 441,
+        "GVS": 441
+      },
+      "notes": "Fetched 1323 rows across 3 branch calls, deduped to 441; branch filter appears non-isolating"
+    }
+  },
+  "store_labels": {
+    "CEN": "Centurion",
+    "EDN": "Edenvale",
+    "GVS": "Glen Village",
+    "UNK": "Unallocated"
+  },
+  "raw": {
+    "credit_notes": [],
+    "overrides": [
+      {
+        "timestamp": "2026-11-01T06:00:04.321000+02:00",
+        "date": "2026-11-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-11-01T06:00:04.391000+02:00",
+        "date": "2026-11-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-11-01T06:11:04.433000+02:00",
+        "date": "2026-11-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-11-01T06:41:04.628000+02:00",
+        "date": "2026-11-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Web Service Disconnected",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-11-01T06:41:04.750000+02:00",
+        "date": "2026-11-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-11-01T07:00:05.450000+02:00",
+        "date": "2026-11-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-11-01T07:00:05.531000+02:00",
+        "date": "2026-11-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      },
+      {
+        "timestamp": "2026-11-01T07:31:17.693000+02:00",
+        "date": "2026-11-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "Web Service Disconnected",
+        "type": "Other"
+      },
+      {
+        "timestamp": "2026-11-01T07:31:17.771000+02:00",
+        "date": "2026-11-01",
+        "user_name": "Automate",
+        "category": "Information",
+        "event_description": "User logged out",
+        "type": "Logout"
+      },
+      {
+        "timestamp": "2026-11-01T09:00:06.747000+02:00",
+        "date": "2026-11-01",
+        "user_name": "Analytic",
+        "category": "Information",
+        "event_description": "User logged in",
+        "type": "Login"
+      },
+      {
+        "timestamp": "2026-11-01T09:00:06.810000+02:00",
+        "date": "2026-11-01",
+        "user_name": "Analytic",
+        "category": "Information",
+        "event_description": "Company Opened",
+        "type": "Connect to Company"
+      }
+    ],
+    "discounts": [],
+    "invoice_headers": [],
+    "cashup_variances": {},
+    "turnover_by_store": {
+      "CEN": [],
+      "GVS": [],
+      "EDN": []
+    }
+  },
+  "diagnostics": [
+    "Fetched 30 rows across 3 branch calls, deduped to 10; branch filter appears non-isolating",
+    "Fetched 33 rows across 3 branch calls, deduped to 11; branch filter appears non-isolating",
+    "Fetched 310 rows across 1 branch calls, deduped to 310",
+    "Fetched 1323 rows across 3 branch calls, deduped to 441; branch filter appears non-isolating"
+  ],
+  "store_revenue_totals": {
+    "CEN": 0,
+    "GVS": 0,
+    "EDN": 0
+  },
+  "analysis": {
+    "sections": [
+      {
+        "key": "credit_notes",
+        "title": "Credit Note / Refund Monitor",
+        "summary": {
+          "total_count": 0,
+          "total_value": 0,
+          "by_store": {},
+          "by_staff": {},
+          "daily_trend": {}
+        }
+      },
+      {
+        "key": "cancellations",
+        "title": "Order Cancellation Monitor",
+        "summary": {
+          "total_count": 0,
+          "by_user": {},
+          "daily_counts": {},
+          "heatmap": []
+        }
+      },
+      {
+        "key": "overrides",
+        "title": "Override & Security Events",
+        "summary": {
+          "override_entries_total": 0,
+          "override_by_user": {},
+          "failed_passwords": [],
+          "forced_logouts": [],
+          "timeline": []
+        }
+      },
+      {
+        "key": "discounts",
+        "title": "Discount Analysis",
+        "summary": {}
+      },
+      {
+        "key": "transaction_patterns",
+        "title": "Transaction Pattern Analysis",
+        "summary": {}
+      },
+      {
+        "key": "cashup_variance",
+        "title": "Cash-Up Variance Trend",
+        "summary": {}
+      },
+      {
+        "key": "bank_deposit_reconciliation",
+        "title": "Bank Deposit Reconciliation",
+        "summary": {
+          "status": "placeholder",
+          "expected_cashups_by_store": {},
+          "manual_input_required": true
+        }
+      }
+    ],
+    "flags": [
+      {
+        "section": "bank_deposit_reconciliation",
+        "title": "Manual reconciliation required",
+        "detected": "Bank deposit reconciliation is a placeholder until bank statement imports are wired in. Manual input still required.",
+        "who": "Finance",
+        "when": "2026-11",
+        "severity": "low",
+        "store": "UNK",
+        "details": {}
+      }
+    ],
+    "risk_score": 1,
+    "risk_level": "green",
+    "flagged_counts": {
+      "bank_deposit_reconciliation": 1
+    }
+  }
+}
